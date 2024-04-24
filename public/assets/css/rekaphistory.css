@@ -1,0 +1,110 @@
+* {
+    font-family: "Rubik", sans-serif !important;
+    text-decoration: none !important;
+  }
+  
+  /* hero section */
+  .hero {
+    padding: 50px 90px;
+    margin-bottom: 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+  }
+  
+  .hero img {
+    width: 100%;
+  }
+  
+  .campaign {
+    padding: 50px 90px 90px 90px;
+  }
+  
+  .campaign-hero {
+    margin-bottom: -90px;
+  }
+  
+  /* contents */
+  .contents {
+    padding: 50px 90px;
+  }
+  
+  .bio img {
+    width: 35px;
+    height: 35px;
+  }
+
+  .box .bio p {
+    font-size: 13px;
+    margin: 0;
+  }
+
+  .box .bio span {
+    font-size: 11px;
+    color: grey;
+  }
+  
+  /* side */
+  .password-container {
+    position: relative;
+  }
+  
+  .password-container input {
+    padding-left: 40px;
+    font-size: 15px;
+    box-shadow: none !important;
+    background: rgb(247, 247, 247);
+  }
+  
+  .form-check,
+  select,
+  .form-group input {
+    font-size: 15px !important;
+    box-shadow: none !important;
+    color: rgb(103, 102, 102);
+  }
+  
+  .form-check {
+    margin-bottom: 10px;
+  }
+  
+  .password-icon {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    height: 25px;
+  }
+  
+  .side-btn {
+    background-color: #233dff !important;
+    color: white !important;
+    margin-bottom: 10px;
+  }
+  
+  .side-btn:hover {
+    background-color: transparent !important;
+    border: 1px solid #233dff !important;
+    color: #233dff !important;
+  }
+  
+  .btn-outline {
+    background-color: transparent !important;
+    border: 1px solid #233dff !important;
+    color: #233dff !important;
+  }
+  
+  .btn-outline:hover {
+    background-color: #233dff !important;
+    color: white !important;
+  }
+
+  
+  @media (max-width: 600px) {
+    .hero, .contents, .campaign {
+      padding: 50px 30px;
+    }
+  }
+  

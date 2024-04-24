@@ -1,0 +1,29 @@
+* {
+    font-family: "Rubik", sans-serif !important;
+    text-decoration: none !important;
+  }
+  
+  .main-image .row h4 {
+    color: #233dff;
+  }
+  .main-image .row img {
+    width: 100%;
+    height: auto;
+  }
+  .profil-pembaca img {
+    width: 90%;
+  }
+  .kegiatan ul img {
+    margin-bottom: 5px;
+    width: 25px;
+    height: auto;
+    margin-right: 10px;
+  }
+  
+  .benefits ul img {
+    margin-bottom: 5px;
+    width: 25px;
+    height: auto;
+    margin-right: 10px;
+  }
+  

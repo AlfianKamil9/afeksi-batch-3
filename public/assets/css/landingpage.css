@@ -1,0 +1,182 @@
+* {
+    text-decoration: none !important;
+}
+
+:root {
+    --swiper-navigation-size: 25px !important;
+    --swiper-theme-color: blue !important;
+}
+
+/* Hero */
+.btn-konsultasi:hover {
+    background-color: #fff !important;
+    color: #233dff !important;
+    transition: 0.5s ease-in-out;
+}
+
+.btn-learn:hover {
+    background-color: #fff !important;
+    color: #ffd34e !important;
+    transition: 0.5s ease-in-out;
+}
+/* Hero End */
+
+/* Layanan Konsultasi  Start*/
+.btn-pilih {
+    font-size: 14px;
+    color: #fff;
+    background-color: #233dff;
+    padding: 8px 30px;
+    border: none;
+    border-radius: 10px;
+}
+
+.btn-pilih:hover {
+    background-color: #4e63ff;
+}
+/* Layanan Konsultasi End */
+
+/* Profil Psikolog dan Konselor */
+.btn-selengkapnya:hover {
+    background-color: #4e63ff !important;
+}
+/* Profil Psikolog dan Konselor */
+
+/* Tanya Admin Start */
+.btn-tanya {
+    color: #233dff;
+    padding: 10px 30px;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+.btn-tanya:hover {
+    background-color: #233dff;
+    color: #fff;
+}
+/* Tanya Admin End */
+
+/* caurosel */
+
+.contents {
+    margin: auto;
+    position: relative;
+}
+
+#swipper-slide {
+    margin-top: 50px;
+    background: var(--secondary);
+    overflow: visible;
+    border-radius: 20px;
+    padding: 15px;
+    margin-bottom: 100px;
+    border: 1px solid rgb(214, 213, 213);
+}
+
+.slide-container {
+    height: fit-content;
+    width: 80%;
+}
+
+.slide-container h2 {
+    color: blue;
+    margin-bottom: 10px;
+    font-size: 30px;
+}
+
+.slide-container p {
+    color: rgb(92, 92, 92);
+}
+
+.s-btn {
+    padding: 17px !important;
+    border-radius: 5px !important;
+}
+
+:root {
+    --swiper-navigation-size: 25px !important;
+    --swiper-theme-color: blue !important;
+}
+
+.swiper-button-next {
+    position: absolute !important;
+    background-color: blue;
+    color: white !important;
+    border: 3px solid blue;
+}
+
+.swiper-button-prev {
+    position: absolute !important;
+    border: 3px solid blue;
+}
+
+.card {
+    min-height: 250px !important;
+}
+
+.iconWrapp {
+    width: fit-content;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    margin: auto;
+    justify-content: center;
+    padding: 15px 10px 30px 10px;
+    flex-wrap: wrap;
+}
+
+.iconWrapp img {
+    width: 30px;
+}
+
+.field {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.iconWrapp span {
+    font-weight: bold;
+}
+
+#swiper-button-next {
+    position: absolute !important;
+    top: 35px !important;
+    background-color: blue;
+    color: white !important;
+    border: 3px solid blue;
+}
+
+#swiper-button-prev {
+    position: absolute !important;
+    top: 35px !important;
+    left: 91.7% !important;
+    border: 3px solid blue;
+}
+
+.slide-container .swiper-pagination-bullet {
+    height: 5px;
+    background-color: rgb(251, 223, 13);
+    opacity: 1;
+}
+
+.slide-container .swiper-pagination-bullet-active {
+    width: 25px;
+    height: 5px;
+    border-radius: 5px;
+}
+
+@media (max-width: 1040px) {
+    .swiper-button-next {
+        display: none !important;
+    }
+
+    .swiper-button-prev {
+        display: none !important;
+    }
+}
+
+/* carausel */

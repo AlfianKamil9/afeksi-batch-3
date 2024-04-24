@@ -1,0 +1,319 @@
+/* HEADER */
+div .container-fluid {
+    background: rgb(96, 121, 253);
+    background: linear-gradient(
+        270deg,
+        rgba(96, 121, 253, 0) 24%,
+        rgba(93, 118, 253, 0.35518520152201505) 32%,
+        rgba(95, 120, 253, 1) 45%
+    );
+    color: white;
+    padding: 5rem;
+    position: relative;
+}
+
+div .container-fluid img {
+    max-width: 40rem;
+    position: absolute;
+    top: 60%;
+    right: 0rem;
+    transform: translateY(-50%);
+    z-index: -1;
+}
+
+.background {
+    position: absolute;
+}
+.left {
+    top: 22rem;
+    left: 0rem;
+}
+
+.right {
+    top: 14.5rem;
+    right: 0px;
+    z-index: -1;
+}
+
+@media (min-width: 1600px) {
+    div .container-fluid {
+        padding: 5rem 15rem;
+        height: 31.9rem;
+        position: relative;
+    }
+
+    div .container-fluid img {
+        max-width: 65rem;
+        width: 65rem;
+        top: 75%;
+        right: 0rem;
+        transform: translateY(-50%);
+        z-index: -1;
+    }
+}
+/* END HEADER */
+/* CONTENT */
+span {
+    color: #233dff;
+}
+
+/* Tanya Admin Start */
+.btn-tanya {
+    color: #233dff;
+    padding: 10px 30px;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+.btn-tanya:hover {
+    background-color: #233dff;
+    color: #fff;
+}
+/* Tanya Admin End */
+
+/* RESPONSIVE */
+@media only screen and (max-width: 800px) {
+    /* For tablets: */
+    div .container-fluid {
+        padding: 2rem;
+    }
+    div .container-fluid img {
+        right: -8rem;
+    }
+    .left {
+        top: 15rem;
+        left: 0rem;
+    }
+
+    .right {
+        top: 14.5rem;
+        right: 0px;
+        z-index: -1;
+    }
+}
+@media only screen and (max-width: 500px) {
+    /* For mobile phones: */
+    div .container-fluid {
+        background: rgb(96, 121, 253);
+        background: linear-gradient(
+            280deg,
+            rgba(96, 121, 253, 0) 24%,
+            rgba(93, 118, 253, 0.35518520152201505) 32%,
+            rgba(95, 120, 253, 1) 45%
+        );
+        color: inear-gradient(
+            360deg,
+            rgba(96, 121, 253, 0) 24%,
+            rgba(93, 118, 253, 0.35518520152201505) 32%,
+            rgba(95, 120, 253, 1) 45%
+        );
+        padding: 2rem;
+        position: relative;
+    }
+    div .container-fluid img {
+        right: -40%;
+        width: 150%;
+        top: 73%;
+    }
+}
+
+/* caurosel */
+:root {
+    --swiper-navigation-size: 25px !important;
+}
+
+.contents {
+    padding: 0 100px;
+}
+
+.slide-container {
+    height: fit-content;
+}
+
+.slide-container h2 {
+    color: blue;
+    margin-bottom: 10px;
+    font-size: 30px;
+}
+
+.slide-container p {
+    color: rgb(92, 92, 92);
+}
+
+.swiper-slide {
+    margin-top: 50px;
+    background: var(--secondary);
+    overflow: visible;
+    border-radius: 20px;
+    padding: 15px;
+    margin-bottom: 100px;
+    border: 1px solid rgb(214, 213, 213);
+}
+
+.swiper-slide span {
+    font-size: 14px;
+    color: black;
+}
+
+.slide-container .swiper-pagination-bullet {
+    height: 5px;
+    background-color: rgb(251, 223, 13);
+    opacity: 1;
+}
+
+.slide-container .swiper-pagination-bullet-active {
+    width: 25px;
+    height: 5px;
+    border-radius: 5px;
+}
+
+.s-btn {
+    padding: 17px;
+    border-radius: 5px;
+}
+
+.swiper-button-next {
+    position: absolute !important;
+    top: 35px !important;
+    background-color: blue;
+    color: white !important;
+    border: 3px solid blue;
+}
+
+.swiper-button-prev {
+    position: absolute !important;
+    top: 35px !important;
+    left: 91.7% !important;
+    border: 3px solid blue;
+}
+
+@media (max-width: 1000px) {
+    .contents {
+        padding: 0 30px;
+        text-align: center;
+    }
+
+    .swiper-button-next {
+        display: none !important;
+    }
+
+    .swiper-button-prev {
+        display: none !important;
+    }
+}
+
+@media (min-width: 1000px) {
+    .card .card-text {
+        font-size: 1.5em;
+    }
+}
+
+.bg-card-custom {
+    background: rgb(89, 111, 255);
+    background: linear-gradient(
+        135deg,
+        rgba(89, 11, 255, 1) 29%,
+        rgba(255, 255, 255, 1) 28%,
+        rgba(255, 255, 255, 1) 32%,
+        rgba(254, 225, 121, 1) 32%
+    );
+    position: relative;
+}
+
+.bg-card-custom::after {
+    content: "";
+    background-image: url("../assets/img/konseling/bg-macam-konseling.png");
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    background-size: 20%;
+    position: absolute;
+    top: 0;
+    left: 80%;
+}
+
+@media (max-width: 767px) {
+    .bg-card-custom::after {
+        background-size: 50vw;
+        left: 47%;
+        top: 40%;
+        z-index: 0;
+    }
+    .bg-card-custom img {
+        position: relative;
+        z-index: 1;
+    }
+}
+
+/* POPUP */
+
+.popup p {
+    font-size: 1.2em;
+    height: 15em;
+}
+.popup {
+    color: yellow;
+}
+.button-popup {
+    width: 25em;
+}
+
+.list-popup {
+    position: relative;
+    width: 75%;
+}
+.list-popup li {
+    list-style-type: none;
+}
+.list-popup li::before {
+    content: "";
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background-color: #0623f8;
+    left: 20px;
+    border-radius: 30px;
+}
+
+.--bg-1 {
+    background: url("../assets/img/konseling/popup/pop-1.jpg") no-repeat;
+    background-size: 100% 110vh;
+    height: 110vh;
+    width: 30em;
+}
+.--bg-2 {
+    background: url("../assets/img/konseling/popup/pop-2.jpg") no-repeat;
+    background-size: 100% 110vh;
+    height: 110vh;
+    width: 30em;
+}
+
+@media (max-width: 1000px) {
+    .popup p {
+        height: 20em;
+    }
+    .--bg-1,
+    .--bg-2 {
+        width: 100%;
+        background-size: 100% 140vh;
+        height: 140vh;
+    }
+}
+
+@media (max-width: 500px) {
+    .popup p {
+        font-size: 1em;
+        height: 23em;
+    }
+
+    .button-popup {
+        width: 100%;
+    }
+
+    .list-popup {
+        width: 100%;
+    }
+}

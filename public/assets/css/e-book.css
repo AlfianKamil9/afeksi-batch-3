@@ -1,0 +1,88 @@
+:root {
+    --bg-afeksi-theme: #5a74fd;
+    --color-afeksi-custom: #374dfa;
+    --bg-final-footer: #4959db;
+}
+body {
+    overflow-x: hidden;
+    background-color: #ebebeb2c !important;
+}
+.color-custom {
+    color: var(--color-afeksi-custom);
+}
+.hero {
+    background-color: var(--bg-afeksi-theme);
+    color: white;
+    position: relative;
+    overflow: hidden;
+    padding-top: 10%;
+}
+span {
+    color: #fbdd41;
+}
+/* FOR DESKTOP ========================================================================================== */
+@media only screen and (min-width: 991px) {
+    /* HERO */
+    .hero {
+        background-color: var(--bg-afeksi-theme);
+        color: white;
+        position: relative;
+        overflow: hidden;
+        padding-top: 10%;
+    }
+}
+.active {
+    background: #233dff31 !important ;
+    border-left: 3px solid #233dff;
+}
+
+.active a {
+    color: #233dff !important;
+    font-weight: bold;
+}
+.active a svg {
+    fill: #233dff !important;
+}
+.dashboard {
+    width: 20%;
+    background: white;
+    z-index: 1;
+    position: absolute;
+    margin: -20% 60px;
+    border-radius: 10px;
+}
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Rubik", sans-serif !important;
+    text-decoration: none !important;
+}
+
+@media (max-width: 650px) {
+    #card-ebook .card {
+        margin-top: 5rem;
+    }
+
+    .ebookwrapp {
+        display: flex;
+        justify-content: center !important;
+    }
+}
+
+@media (max-width: 1000px) {
+    #card-ebook .card {
+        margin-top: 2rem;
+        margin-right: 0rem;
+        width: 350px !important;
+    }
+}
+
+@media (max-width: 900px) {
+    .dashboard {
+        width: 100%;
+        background: white;
+        z-index: 1;
+        position: relative;
+        margin: 0;
+    }
+}
