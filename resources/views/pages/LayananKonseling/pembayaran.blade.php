@@ -190,7 +190,7 @@
                     <img src="/assets/img/pembayaran/plus-counseling.png" alt="Profil" class="rounded-circle mx-2" width="110" height="110" />
                   </div>
                   <div class="flex-grow-1 ms-1 m-3">
-                    <h6 class="fw-bold" id='name'>{{ $data->konselor->nama }}</h6>
+                    <h6 class="fw-bold" id='name'>{{ $data->konselor->user->nama }}</h6>
                     <p class="text-muted">Konselor {{ $data->paket_profesional_conselings->professional_conseling->namaPengalaman }}</p>
                   </div>
                 </div>

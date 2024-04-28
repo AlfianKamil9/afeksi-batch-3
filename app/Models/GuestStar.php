@@ -6,11 +6,11 @@ use App\Models\EventMaterialSession;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Psikolog extends Model
+class GuestStar extends Model
 {
     use HasFactory;
 
-    protected $table = 'psikologs';
+    protected $table = 'gueststar';
 
     protected $fillable = [
         'layanan_non_professionals_id',
@@ -34,9 +34,9 @@ class Psikolog extends Model
         return $this->belongsTo(LayananNonProfessional::class, 'layanan_non_professionals_id', 'id');
     }
 
-    public function profresional_conselings()
+    public function profesional_konselings()
     {
-        return $this->belongsTo(profresional_conseling::class, 'professional_conseling_id', 'id');
+        return $this->belongsTo(profesional_konseling::class, 'professional_conseling_id', 'id');
     }
 
     public function pembayaran_layanans()

@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Models\Event;
-use App\Models\Psikolog;
+use App\Models\GuestStar;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -24,6 +24,6 @@ class EventMaterialSession extends Model
 
     public function pembicara()
     {
-        return $this->belongsTo(Psikolog::class, 'pembicara_id');
+        return $this->belongsTo(GuestStar::class, 'pembicara_id');
     }
 }

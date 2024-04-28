@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
+use App\Models\RolesUser;
 use App\Models\EventTransaction;
-use Illuminate\Auth\Passwords\CanResetPassword;
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Auth\Passwords\CanResetPassword;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -30,8 +31,9 @@ class User extends Authenticatable
         'umur',
         'google_id',
         'no_whatsapp',
-        'instansi',
+        //'instansi',
         'domisili',
+        'role_id',
         'pekerjaan'
     ];
 
@@ -55,17 +57,27 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    public function roles() 
+    {
+        return $this->belongsTo(RolesUser::class, 'role_id', 'id');
+    }
+
+    public function education() 
+    {
+        return $this->hasMany(UserEducation::class);
+    } 
+
     public function event_transaction()
     {
         return $this->hasMany(EventTransaction::class);
     }
 
-    public function volunteers()
+    public function psikolog_mentoring()
     {
-        return $this->hasMany(Volunteer::class);
+        return $this->hasMany(PsikologMentoring::class);
     }
 
-    public function konselors()
+    public function konselor_konseling()
     {
         return $this->hasMany(Konselor::class);
     }

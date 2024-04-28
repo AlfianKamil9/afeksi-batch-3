@@ -121,8 +121,10 @@
                     <span>(500)</span>
                   </div>
                   <div class="person">
-                    <h5 class="m-0">{{ $item->nama }}</h5>
-                    <span>{{ $item->pendidikan }}</span>
+                    <h5 class="m-0">{{ $item->user->nama }}</h5>
+                    <span>
+                     
+                      {{ $item->user->education[$item->user->education->count() - 1]->jenjang }} {{ $item->user->education[$item->user->education->count() - 1]->instansi }}</span>
                   </div>
                   <img src="/assets/img/psikolog-konselor/Rectangle 816.png" alt="" class="main-img">
                   <button type="submit" class="btn side-btn" name="value_id" value="{{ $item->id }}">Jadwalkan Sesi Sekarang</button>

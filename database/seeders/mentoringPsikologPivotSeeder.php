@@ -15,7 +15,7 @@ class mentoringPsikologPivotSeeder extends Seeder
     {
         DB::table('psikolog_mentoring_pivot')->insert([
             'mentoring_id' => 1 ,
-            'psikolog_id' =>6,
+            'psikolog_id' =>7,
         ]);
         DB::table('psikolog_mentoring_pivot')->insert([
             'mentoring_id' => 1 ,
@@ -27,7 +27,7 @@ class mentoringPsikologPivotSeeder extends Seeder
         ]);
         DB::table('psikolog_mentoring_pivot')->insert([
             'mentoring_id' => 2,
-            'psikolog_id' =>4,
+            'psikolog_id' =>5,
         ]);
         DB::table('psikolog_mentoring_pivot')->insert([
             'mentoring_id' => 3 ,
@@ -35,7 +35,11 @@ class mentoringPsikologPivotSeeder extends Seeder
         ]);
         DB::table('psikolog_mentoring_pivot')->insert([
             'mentoring_id' => 3 ,
-            'psikolog_id' =>5,
+            'psikolog_id' =>4,
+        ]);
+        DB::table('psikolog_mentoring_pivot')->insert([
+            'mentoring_id' => 3 ,
+            'psikolog_id' =>6,
         ]);
 // ------------------------------------------
         DB::table('konselor_topics')->insert([

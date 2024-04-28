@@ -8,8 +8,6 @@
 @endsection
 
 
-{{-- @include('../partials/navbar')  --}}
-
 @section('content')
 <!-- Step -->
 <div class="container" style="padding-top:calc(70px + 94px);">
@@ -46,7 +44,7 @@
   <p>Isi data anda dengan benar</p>
   <form action="/mentoring/{{ request('ref_transaction_layanan') }}/submit-form-mentoring" method="post">
     @csrf
-    <div class="mb-3">
+    {{-- <div class="mb-3">
       <label for="namaLengkap" class="form-label fw-bold">Nama Lengkap</label>
       <input type="text" class="form-control" id="namaLengkap" placeholder="Jawaban Anda" name="namaLengkap"  value="{{ Auth::user()->nama }}" required  readonly/>
     </div>
@@ -73,7 +71,7 @@
     <div class="mb-3">
       <label for="umur" class="form-label fw-bold">Umur (Dalam Angka)</label>
       <input type="text" class="form-control" id="umur" name="umur" placeholder="Jawaban Anda" value="{{ Auth::user()->umur }}" required />
-    </div>
+    </div> --}}
     <div class="mb-3">
       <label for="tanggalKonsultasi" class="form-label fw-bold">Tanggal Konsultasi</label>
       <input type="date" class="form-control" id="tanggalKonsultasi" name="tgl_konsultasi"  required/>

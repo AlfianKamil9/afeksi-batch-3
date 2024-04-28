@@ -21,7 +21,7 @@ class PaketProfesionalConseling extends Model
 
     public function professional_conseling()
     {
-        return $this->belongsTo(profresional_conseling::class, 'professional_conseling_id', 'id');
+        return $this->belongsTo(profesional_konseling::class, 'professional_conseling_id', 'id');
     }
 
     public function pembayaran_layanans()

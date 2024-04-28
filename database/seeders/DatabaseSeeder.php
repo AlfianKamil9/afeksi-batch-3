@@ -3,10 +3,14 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\GuestStar;
 use Illuminate\Database\Seeder;
 use Database\Seeders\UserSeeder;
 use Database\Seeders\EventSeeder;
+use Database\Seeders\RolesSeeder;
 use Database\Seeders\VoucherSeeder;
+use Database\Seeders\EducationUserSeeder;
 use Database\Seeders\EventCategorySeeder;
 use Database\Seeders\EventTransactionSeeder;
 use Database\Seeders\PaketLayananNonProfessionalSeeder;
@@ -20,16 +24,14 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         //user
+        $this->call(RolesSeeder::class);
         $this->call(LayananNonProfessionalSeeder::class);
         $this->call(ProfesionalKonselingSeeder::class);
         $this->call(PaketLayananNonProfessionalSeeder::class);
         $this->call(UserSeeder::class);
-        $this->call(PsikologSeeder::class);
+        $this->call(GuestStarSeeder::class);
         $this->call(EventCategorySeeder::class);
         $this->call(EventSeeder::class);
-        //$this->call(EventTransactionSeeder::class);
-        // $this->call(MentoringSeeder::class);
-        //$this->call(ConselingSeeder::class);
         $this->call(VolunteersSeeder::class);
         $this->call(KonselorsSeeder::class);
         $this->call(EventMaterialSessionSeeder::class);
@@ -44,5 +46,6 @@ class DatabaseSeeder extends Seeder
         $this->call(PsikologMentoringSeeder::class);
         $this->call(mentoringPsikologPivotSeeder::class);
         $this->call(konselingKonselorSeeder::class);
+        $this->call(EducationUserSeeder::class);
     }
 }

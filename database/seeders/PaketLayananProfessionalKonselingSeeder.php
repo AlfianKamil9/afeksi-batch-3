@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\PaketProfesionalConseling;
-use App\Models\profresional_conseling;
+use App\Models\profesional_konseling;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 

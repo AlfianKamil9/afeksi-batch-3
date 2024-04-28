@@ -351,63 +351,6 @@
     </div>
   </div>
 </div>
-  <!-- END-MODAL -->
-
-    {{-- <!-- MODAL PEERS KONSELING -->
-  <div class="modal fade static" id="peers-konseling" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-body">
-        <h3 class="fw-bold text-center mt-3">
-          <span>Layanan Peers Konseling Berupa :</span>
-        </h3>
-        <div class="row d-flex p-3 justify-content-center">
-          <div class="col-md-5  mx-3  mb-3" style=" flex:1; background-image: url('../assets/img/konseling/popup/pop-1.jpg'); object-fit: contain; background-repeat: no-repeat; border-radius: 40px; height: 70%; color: rgb(235, 224, 14)">
-            <h4 class="text-warning text-center pt-4">Equality Gender</h4>
-            <p class="text-warning p-3 text-justify" style="font-size: 14px;">Layanan Konseling Kesetaraan Gender di Afeksi adalah bagian integral dari produk kami yang bertujuan untuk membantu individu dan pasangan membangun hubungan yang sehat, seimbang, dan setara. Layanan ini menawarkan bimbingan professional yang fokus pada isu-isu gender, dengan tujuan mempromosikan pemahaman yang lebih baik tentang peran dan tanggung jawab dalam hubungan</p>
-            <div class="ps-3 pe-3">
-              <h5 class="text-warning">Apa saja yang dibahas :</h5>
-              <div class="p-3 fw-bold bg-dark text-light bg-opacity-75" style="border-radius: 25px; style=font-size:12px">
-                <ul>
-                  <li class="mt-3">Pemahaman Hubungan</li>
-                  <li class="mt-3">Membangun Intimasi</li>
-                  <li class="mt-3">Perencanaan Masa Depan</li>
-                </ul>
-              </div>
-            </div>
-            <center class="p-2">
-              <form method="POST" action="{{ route('peers.konseling.create.first') }}">
-                @csrf
-              <button type="submit" class="btn btn-warning mb-1" name="value_id" value="4" style="width: 100px;">Pilih</button>
-              </form>
-            </center>
-          </div>
-          <div class="col-md-5 mx-3 " style=" flex:1;background-image: url('../assets/img/konseling/popup/pop-2.jpg'); object-fit: contain; background-repeat: no-repeat; border-radius: 40px; height: 70%; color: rgb(235, 224, 14)">
-            <h4 class="text-warning text-center pt-4">Relationship</h4>
-            <p class="text-warning p-3 text-justify" style="font-size: 14px;">Layanan Relationship membantu individu dan pasangan membangun hubungan yang sehat, harmonis, dan berkelanjutan. Layanan ini dirancang untuk memberikan pemahaman, dukungan, dan alat yang diperlukan untuk mengatasi masalah yang mungkin muncul dalam hubungan, serta memperkuat ikatan antarindividu dan pasangan.</p>
-            <div class="ps-3 pe-3 mt-4 ">
-              <h5 class="text-warning">Apa saja yang dibahas :</h5>
-              <div class="p-3 fw-bold bg-dark text-light bg-opacity-75" style="border-radius: 25px; style=font-size:12px">
-                <ul>
-                  <li class="mt-3">Pemahaman Hubungan</li>
-                  <li class="mt-3">Membangun Intimasi</li>
-                  <li class="mt-3">Perencanaan Masa Depan</li>
-                </ul>
-              </div>
-            </div>
-            <center class="p-2 mt-2">
-              <form method="POST" action="{{ route('peers.konseling.create.first') }}">
-                @csrf
-               <button type="submit" class="btn btn-warning mb-1" name="value_id" value="3" style="width: 100px;">Pilih</button>
-              </form>
-            </center>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-  <!-- END-MODAL --> --}}
 @else
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <script>

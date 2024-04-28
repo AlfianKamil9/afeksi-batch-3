@@ -12,7 +12,7 @@ use App\Models\PembayaranLayanan;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Models\PaketProfesionalConseling;
-use App\Models\profresional_conseling;
+use App\Models\profesional_konseling;
 
 class ProfessionalController extends Controller
 {
@@ -37,7 +37,7 @@ class ProfessionalController extends Controller
         $t = PembayaranLayanan::with('konseling')->where('ref_transaction_layanan', $ref_transaction_layanan)->firstOrFail();
         $t = $t->konseling->namaPengalaman;
         $slug = $ref_transaction_layanan;
-        $kueri = Konselor::with('topic', 'konseling')->whereHas('konseling', function($query) use ($t) {
+        $kueri = Konselor::with('topic','user.education', 'konseling')->whereHas('konseling', function($query) use ($t) {
             $query->where('namaPengalaman', $t);
         })->orderBy('id', 'desc');
         
@@ -81,7 +81,7 @@ class ProfessionalController extends Controller
     public function showPaketKonseling($ref_transaction_layanan) {
         $profKonseling = PembayaranLayanan::where('ref_transaction_layanan', $ref_transaction_layanan)->firstOrFail();
         $data = PaketProfesionalConseling::with('professional_conseling')->where('professional_conseling_id', $profKonseling->conseling_id)->get();
-        $layanan = profresional_conseling::where('id', $profKonseling->conseling_id)->pluck('namaPengalaman')->first();
+        $layanan = profesional_konseling::where('id', $profKonseling->conseling_id)->pluck('namaPengalaman')->first();
         $slug = $ref_transaction_layanan;
         //return response()->json($data);
         return view('pages.ProfessionalKonseling.paket-professional-konseling', compact('data', 'slug', 'layanan'));

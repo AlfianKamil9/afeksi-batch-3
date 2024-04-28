@@ -203,6 +203,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/e-book', [MyBookController::class, 'showMyBook'])->name('show.e-book');
         // Rekap Transaksi
         Route::get('/recap-transactions',[RekapTransaction::class, 'showRecapTransaction'])->name('show.rekap.transaksi');
+        Route::post('/cancel-order', [RekapTransaction::class, 'cancelingOrder'])->name('cancel.order.transaksi');
     });
 });
 

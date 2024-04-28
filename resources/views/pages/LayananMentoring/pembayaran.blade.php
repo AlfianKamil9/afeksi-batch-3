@@ -184,7 +184,7 @@
                     <img src="/assets/img/pembayaran/plus-counseling.png" alt="Profil" class="rounded-circle mx-2" width="110" height="110" />
                   </div>
                   <div class="flex-grow-1 ms-1 m-3">
-                    <h6 class="fw-bold" id='name'>{{ $data->psikolog->nama }}</h6>
+                    <h6 class="fw-bold" id='name'>{{ $data->psikolog->user->nama }}</h6>
                     <p class="text-muted">Psikolog {{ $data->paket_non_professionals->layanan_non_professionals->nama_layanan }}</p>
                   </div>
                 </div>

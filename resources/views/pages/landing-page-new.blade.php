@@ -114,7 +114,7 @@
                     <div class="swiper-slide">
                       <div class="card">
                         <img
-                        @if (Str::substr( $item['profile'], 0 , 8) == 'Konselor')
+                        @if ($item['user']['roles']['roles'] == 'konselor')
                           src="../assets/img/landingpage/profilpsiko (1).png"
                         @else
                          src="../assets/img/landingpage/profilpsik (1).png"
@@ -123,7 +123,7 @@
                           alt="psikolog"
                           style="background-size: cover" />
                         <div class="card-body">
-                          <h5 class="card-title fw-bold" style="color: #2139f9">{{ $item['nama'] }}</h5>
+                          <h5 class="card-title fw-bold" style="color: #2139f9">{{ $item['user']['nama'] }}</h5>
                           <p class="card-text" style="color: #717171">{{ $item['profile'] }}</p>
                         </div>
                       </div>

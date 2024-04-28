@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\User;
 use App\Models\LayananNonProfessional;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -11,9 +12,13 @@ class PsikologMentoring extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'nama', 'pendidikan', 'avatar', 'profile', 'deskripsi'
+        'user_id', 'profile', 'deskripsi'
     ];
     protected $guarded = ['id'];
+
+    public function user() {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
 
     public function mentoring(): BelongsToMany
     {

@@ -14,49 +14,43 @@ class PsikologMentoringSeeder extends Seeder
     public function run(): void
     {
         PsikologMentoring::create([
-            'nama' => "Najwa Shihab S.Psi.", 
-            'pendidikan' => "Sarjana ITB", 
-            'avatar' => "alex.png", 
+            'user_id' => 4,
             'profile' => "Psikolog Spesialis Parenting Mentoring", 
             'deskripsi' => "test"
         ]);
 
         PsikologMentoring::create([
-            'nama' => "Maudy Ayunda S.Psi.", 
-            'pendidikan' => "Sarjana ITS", 
-            'avatar' => "alex.png", 
+            'user_id' => 5,
             'profile' => "Psikolog Spesialis Pre-Marriage Mentoring", 
             'deskripsi' => "test"
         ]);
 
         PsikologMentoring::create([
-            'nama' => "Billie Elish S.Psi.", 
-            'pendidikan' => "Sarjana UM", 
-            'avatar' => "alex.png", 
+            'user_id' => 9,
             'profile' => "Psikolog Spesialis Relationship Mentoring", 
             'deskripsi' => "test"
         ]);
         
         PsikologMentoring::create([
-            'nama' => "Taylor Swift S.Psi.", 
-            'pendidikan' => "Sarjana UNS", 
-            'avatar' => "alex.png", 
+            'user_id' => 10,
+            'profile' => "Psikolog Spesialis Relationship Mentoring", 
+            'deskripsi' => "test"
+        ]);
+        
+        PsikologMentoring::create([
+            'user_id' => 6,
             'profile' => "Psikolog Spesialis Pre-Marriage Mentoring", 
             'deskripsi' => "test"
         ]);
 
         PsikologMentoring::create([
-            'nama' => "Bunga Citra Ayunda S.Psi.", 
-            'pendidikan' => "Sarjana UI", 
-            'avatar' => "alex.png", 
+          'user_id' => 8,
             'profile' => "Psikolog Spesialis Relationship Mentoring", 
             'deskripsi' => "test"
         ]);
 
         PsikologMentoring::create([
-            'nama' => "Gayatri S.Psi.", 
-            'pendidikan' => "Sarjana ITS", 
-            'avatar' => "alex.png", 
+           'user_id' => 7,
             'profile' => "Psikolog Spesialis Parenting Mentoring", 
             'deskripsi' => "test"
         ]);

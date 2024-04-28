@@ -31,8 +31,8 @@ return new class extends Migration
             $table->foreign('voucher_id')->references('id')->on('vouchers')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('paket_professional_conseling_id')->references('id')->on('paket_profesional_conselings')->onDelete('cascade')->onUpdate('cascade');
             // $table->foreign('mentoring_id')->references('id_Mentoring')->on('mentorings')->onDelete('cascade');
-            $table->foreign('conseling_id')->references('id')->on('professional_conselings')->onDelete('cascade');
-            // $table->foreign('profesional_conseling_id')->references('id_profConseling')->on('profresional_conselings')->onDelete('cascade');
+            $table->foreign('conseling_id')->references('id')->on('profesional_konselings')->onDelete('cascade');
+            // $table->foreign('profesional_conseling_id')->references('id_profConseling')->on('profesional_konselings')->onDelete('cascade');
             $table->foreign('psikolog_id')->references('id')->on('psikolog_mentorings')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('konselor_id')->references('id')->on('konselors')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

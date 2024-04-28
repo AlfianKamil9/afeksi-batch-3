@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('harga');
             $table->timestamps();
 
-            $table->foreign('professional_conseling_id')->references('id')->on('professional_conselings')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('professional_conseling_id')->references('id')->on('profesional_konselings')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

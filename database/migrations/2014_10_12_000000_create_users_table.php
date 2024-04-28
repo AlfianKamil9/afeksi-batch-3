@@ -20,10 +20,13 @@ return new class extends Migration
             $table->string('email');
             $table->integer('umur')->nullable();
             $table->string('no_whatsapp')->nullable();
-            $table->string('institusi')->nullable();
+            // $table->string('institusi')->nullable();
+            $table->unsignedBigInteger('role_id');
             $table->string('domisili')->nullable();
             $table->string('pekerjaan')->nullable();
             $table->timestamps();
+
+            $table->foreign('role_id')->references('id')->on('roles_users')->onDelete('cascade');
         });
     }
     /**

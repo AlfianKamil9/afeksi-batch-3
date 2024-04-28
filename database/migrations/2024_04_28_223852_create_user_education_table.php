@@ -11,11 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('konselors', function (Blueprint $table) {
-            $table->id('id');
+        Schema::create('user_education', function (Blueprint $table) {
+            $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('profile')->nullable();
-            $table->text('deskripsi')->nullable();
+            $table->string('instansi');
+            $table->string('jurusan')->nullable();
+            $table->string('jenjang')->nullable();
+            $table->string('tahun')->nullable();
+            $table->string('ipk')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
@@ -27,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('konselors');
+        Schema::dropIfExists('user_education');
     }
 };

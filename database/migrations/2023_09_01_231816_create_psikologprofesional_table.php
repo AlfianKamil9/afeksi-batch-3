@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('konseling_id');
             $table->unsignedBigInteger('konselor_id');
             
-            $table->foreign('konseling_id')->references('id')->on('professional_conselings')->onDelete('restrict');
+            $table->foreign('konseling_id')->references('id')->on('profesional_konselings')->onDelete('restrict');
             $table->foreign('konselor_id')->references('id')->on('konselors')->onDelete('restrict');
             //$table->timestamps();
         });

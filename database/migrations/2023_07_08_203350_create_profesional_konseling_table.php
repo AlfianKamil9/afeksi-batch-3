@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('professional_conselings', function (Blueprint $table) {
+        Schema::create('profesional_konselings', function (Blueprint $table) {
             $table->id('id');
             $table->enum('jenis_layanan', ['PROFESSIONAL KONSELING','PEERS KONSELING']);
             $table->enum('namaPengalaman', ['Relationship Konseling', 'Quality Gender', 'Peers Konseling']);
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('profresional_conselings');
+        Schema::dropIfExists('profesional_konselings');
     }
 };

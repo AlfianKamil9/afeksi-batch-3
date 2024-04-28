@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\profresional_conseling;
+use App\Models\profesional_konseling;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -13,19 +13,19 @@ class ProfesionalKonselingSeeder extends Seeder
      */
     public function run(): void
     {
-            profresional_conseling::create([
+            profesional_konseling::create([
                 'jenis_layanan' => 'PROFESSIONAL KONSELING',
                 'namaPengalaman' => 'Relationship Konseling'
             ]);
-            profresional_conseling::create([
+            profesional_konseling::create([
                 'jenis_layanan' => 'PROFESSIONAL KONSELING',
                 'namaPengalaman' => 'Quality Gender'
             ]);
-            profresional_conseling::create([
+            profesional_konseling::create([
                 'jenis_layanan' => 'PEERS KONSELING',
                 'namaPengalaman' => 'Peers Konseling'
             ]);
-            // profresional_conseling::create([
+            // profesional_konseling::create([
             //     'jenis_layanan' => 'PEERS KONSELING',
             //     'namaPengalaman' => 'Quality Gender'
             // ]);

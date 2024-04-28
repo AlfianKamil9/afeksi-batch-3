@@ -39,10 +39,10 @@ class MentoringTransaksiController extends Controller
     public function submitFormDataDiri(Request $request, $ref_transaction_layanan)
     {
         $request->validate([
-            "namaLengkap" => "required",
-            "jenisKelamin" => "required",
-            "no_whatsapp" => "required",
-            "umur" => "required|numeric",
+            // "namaLengkap" => "required",
+            // "jenisKelamin" => "required",
+            // "no_whatsapp" => "required",
+            // "umur" => "required|numeric",
             "tgl_konsultasi" => "required",
             "jam_konsultasi" => "required",
             "detail_masalah" => "required",
@@ -57,7 +57,7 @@ class MentoringTransaksiController extends Controller
         $blnKonsultasi = date_create($request->tgl_konsultasi)->format("m");
         $thnKonsultasi = date_create($request->tgl_konsultasi)->format("Y");
         if ($tglSekarang > $tglKonsultasi && $blnSekarang == $blnKonsultasi && ($thnSekarang == $thnKonsultasi || $thnSekarang > $thnKonsultasi)) {
-            Alert::alert()->html('<h4 class="text-danger fw-bold">Error</h4>', '<p>Invalid data, Please Filled Correctly!</p>');
+            Alert::alert()->html('<h4 class="text-danger fw-bold">Gagal</h4>', '<p>Tanggal yang Anda masukkan tidak valid</p>');
             return back();
         } elseif ($tglSekarang < $tglKonsultasi && $blnSekarang > $blnKonsultasi && ($thnSekarang == $thnKonsultasi || $thnSekarang > $thnKonsultasi)) {
             Alert::alert()->html('<h4 class="text-danger fw-bold">Error</h4>', '<p>Invalid data, Please Filled Correctly!</p>');
@@ -65,16 +65,14 @@ class MentoringTransaksiController extends Controller
         } elseif ($tglSekarang == $tglKonsultasi && $blnSekarang > $blnKonsultasi && ($thnSekarang == $thnKonsultasi || $thnSekarang > $thnKonsultasi)) {
             Alert::alert()->html('<h4 class="text-danger fw-bold">Error</h4>', '<p>Invalid data, Please Filled Correctly!</p>');
             return back();
-        } elseif ($request->jenisKelamin == 0) {
-            Alert::alert()->html('<h4 class="text-danger fw-bold">Error</h4>', '<p>Invalid data, Mohon isi Jenis Kelamin Anda!</p>');
-            return back();
-        }
-        User::where('id', auth()->user()->id)->update([
-            'umur' => $request->umur,
-            'jenisKelamin' => $request->jenisKelamin,
-            'no_whatsapp' => $request->no_whatsapp
+        } 
+        
+        // User::where('id', auth()->user()->id)->update([
+        //     'umur' => $request->umur,
+        //     'jenisKelamin' => $request->jenisKelamin,
+        //     'no_whatsapp' => $request->no_whatsapp
 
-        ]);
+        // ]);
         DetailPembayaran::create([
             'pembayaran_layanan_id' => $layanan->id,
             'tgl_konsultasi' => $request->tgl_konsultasi,
@@ -82,16 +80,7 @@ class MentoringTransaksiController extends Controller
             'detail_masalah' => $request->detail_masalah,
         ]);
         $idMentoring = $layanan->paket_non_professionals->layanan_non_professionals->id;
-        // if($idMentoring == 1) {
-        //     $jenis = 'Psikolog Spesialis Parenting Mentoring';
-        // } else if($idMentoring == 2) {
-        //     $jenis = 'Psikolog Spesialis Pre-Marriage Mentoring';
-        // } else {
-        //     $jenis = 'Psikolog Spesialis Relationship Mentoring';
-        // }
 
-
-        //$randomPsikolog = PsikologMentoring::where('profile', $jenis)->inRandomOrder()->value('id');
         $randomPsikolog = PsikologMentoring::inRandomOrder()->whereHas('mentoring', function ($query) use ($idMentoring) {
             $query->where('mentoring_id', 'like', "%$idMentoring%");
         })->with('mentoring')->pluck('id')->first();
@@ -109,7 +98,7 @@ class MentoringTransaksiController extends Controller
         $data = PembayaranLayanan::with(
             'user',
             'paket_non_professionals.layanan_non_professionals',
-            'psikolog',
+            'psikolog.user',
             'detail_pembayarans'
         )->where('ref_transaction_layanan', $ref_transaction_layanan)->firstOrFail();
         //return response()->json($data);
@@ -156,7 +145,7 @@ class MentoringTransaksiController extends Controller
         //dd($response);
         if ($response["status_code"] != 201) {
             Alert::alert()->html('<h4 class="fw-bold text-danger">FAILED PAYMENT METHOD</h4>', '<p>There was some error in the system, Please try again later or change the Payment Method.<br><br>Error: <span class="pt-2 fw-bold ">500 Server Error</span></p>');
-            \Log::info($response);
+            // \Log::info($response);
             return back();
         }
         if ($voucher_id != null) {

@@ -4,37 +4,30 @@ namespace App\Models;
 
 use App\Models\Psikolog;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\PaketProfesionalConseling;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class profresional_conseling extends Model
+class profesional_konseling extends Model
 {
     use HasFactory;
 
-    protected $table = "professional_conselings";
+    protected $table = "profesional_konselings";
     protected $fillable = [
         'jenis_layanan',
         "namaPengalaman",
         'slug'
     ];
 
-    // public function pembayaran_layanan()
-    // {
-    //     return $this->hasMany(PembayaranLayanan::class);
-    // }
 
     public function paket_professional_conseling()
     {
-        return $this->hasMany(PaketProfessionalConseling::class, 'professional_conseling_id', 'id_profConseling');
+        return $this->hasMany(PaketProfesionalConseling::class, 'professional_conseling_id', 'id_profConseling');
     }
 
-    // public function psikologs()
-    // {
-    //     return $this->hasMany(Psikolog::class, 'professional_conseling_id', 'id');
-    // }
 
     /**
-     * The psikolog_professional that belong to the profresional_conseling
+     * The psikolog_professional that belong to the profesional_konseling
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */

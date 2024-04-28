@@ -13,8 +13,12 @@ class Konselor extends Model
     protected $guarded = ['id'];
 
     protected $fillable = [
-        'nama', 'pendidikan', 'avatar', 'profile', 'deskripsi'
+        'user_id', 'profile', 'deskripsi'
     ];
+
+    public function user() {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
 
     public function topic() {
         return $this->hasMany(konselorTopic::class);
@@ -22,6 +26,6 @@ class Konselor extends Model
     
     public function konseling(): BelongsToMany
     {
-        return $this->belongsToMany(profresional_conseling::class, 'konselor_konseling_pivot', 'konselor_id', 'konseling_id');
+        return $this->belongsToMany(profesional_konseling::class, 'konselor_konseling_pivot', 'konselor_id', 'konseling_id');
     }
 }

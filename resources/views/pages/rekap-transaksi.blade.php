@@ -137,7 +137,7 @@
                         </div>
                         <div class="card-bottom-content">
                             <span>Konselor</span>
-                            <p>{{ $item->konselor->nama }}</p>
+                            <p>{{ $item->konselor->user->nama }}</p>
                         </div>
                         <div class="card-bottom-content">
                             @if($item->status == 'PAID') 
@@ -145,7 +145,11 @@
                             @elseif($item->status == 'PENDING' || $item->status == 'UNPAID(BUTUH BAYAR)') 
                                 @if ($item->status == 'UNPAID(BUTUH BAYAR)')
                                     <a href="{{  route('professional.konseling.checkout', $item->ref_transaction_layanan) }}" class="btn btn-join me-2 py-2 px-3 rounded-3" style="background-color: #2139F9;">Lanjutkan</a>
-                                    <a href="#" class="btn btn-join me-2 py-2 px-3 rounded-3" style="background-color: #D60F27;">Batalkan</a>
+                                    <form action="{{ route('dashboard.cancel.order.transaksi') }}" method="post" class="d-inline">
+                                        @csrf
+                                        <input type="hidden" name="references" value="{{ $item->ref_transaction_layanan }}">
+                                        <button type="submit" class="btn btn-join me-2 py-2 px-3 rounded-3 " style="background-color: #D60F27;">Batalkan</button>
+                                    </form>
                                     <a href="https://wa.me/6282142625552" class="btn btn-admin bg-secondary py-2 px-3 rounded-3">Hubungi admin</a>
                                 @elseif($item->status == 'PENDING')
                                     <a href="#" class="btn btn-join me-2 py-2 px-3 rounded-3" style="background-color: #F9D770;">Pending</a>
@@ -199,7 +203,7 @@
                         </div>
                         <div class="card-bottom-content">
                             <span>Psikolog</span>
-                            <p>{{ $item->psikolog->nama }}</p>
+                            <p>{{ $item->psikolog->user->nama }}</p>
                         </div>
                         <div class="card-bottom-content">
                             @if($item->status == 'PAID')

@@ -39,7 +39,7 @@ class PembayaranLayanan extends Model
 
     public function konseling()
     {
-        return $this->belongsTo(profresional_conseling::class, 'conseling_id', 'id');
+        return $this->belongsTo(profesional_konseling::class, 'conseling_id', 'id');
     }
 
     public function psikolog()

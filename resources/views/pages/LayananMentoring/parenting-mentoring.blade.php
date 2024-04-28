@@ -26,7 +26,11 @@
                 dukungan untuk ibu, tetapi juga memberikan panduan tentang perawatan bayi dan perkembangannya.
               </p>
             </div>
-            <a href="/mentoring/{{ $slug }}/pilih-paket-yang-diinginkan" type="button" class="btn btn-join mt-3 fw-bold">Pilih Paket</a>
+            @if (auth()->user()->no_whatsapp)
+              <a href="/mentoring/{{ $slug }}/pilih-paket-yang-diinginkan" type="button" class="btn btn-join mt-3 fw-bold">Pilih Paket</a>
+            @else
+              <button class="btn btn-join mt-3 fw-bold" data-bs-toggle="modal" data-bs-target="#modalCompleteProfile">Pilih Paket</button>
+            @endif
           </div>
           <div class="col-lg-3 m-3">
             <img class="hero-image" src="assets/img/parenting-mentoring/hero-img.png" />
@@ -162,6 +166,25 @@
       </div>
     </div>
     <!-- slider end -->
+
+    <!-- Modal -->
+    <div class="modal fade"  data-bs-backdrop="static" id="modalCompleteProfile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Pemberitahuan</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p class="justify-content-center">Mohon lengkapi data profile Anda terlebih dahulu</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
+            <a type="button" class="btn btn-primary" href="{{ route('dashboard.profile.index') }}">Lengkapi Sekarang</a>
+          </div>
+        </div>
+      </div>
+    </div>
 
 @include('../partials/footer')
 
