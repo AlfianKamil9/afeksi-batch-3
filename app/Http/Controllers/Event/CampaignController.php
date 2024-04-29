@@ -20,6 +20,7 @@ class CampaignController extends Controller
     {
         $this->campaign = $queryCampaign;
     }
+
     public function index(Request $request)
     {
         $query = $this->campaign->getAllCampaign();
@@ -84,43 +85,4 @@ class CampaignController extends Controller
         ]);
     }
 
-    // DAFTAR CAMPAIGN
-    public function store(Request $request, $slug) {
-        $validatedData = $request->validate([
-            "nama" => "required",
-            "email" => "required",
-            "institusi" => "required",
-            "domisili" => "required",
-            "info" => "required",
-            "bukti_follow" => "required|mimes:jpeg,jfif,jpg,png|max:2048",
-            "bukti_linkedin" => "required|mimes:jpeg,jfif,jpg,png|max:2048",
-            "bukti_share" => "required|mimes:jpeg,jfif,jpg,png|max:2048",
-        ]);
-        
-        $user = auth()->user();
-        User::where('id', auth()->user()->id)->update([
-            'institusi' => $request->institusi,
-            'domisili' => $request->domisili,
-            'no_whatsapp' => $request->no_whatsapp
-        ]);
-        $buktiFollow = $validatedData['bukti_follow']->store('Campaign/bukti_follow', 'public');
-        $buktiLinkedin = $validatedData['bukti_linkedin']->store('Campaign/bukti_linkedin', 'public');
-        $buktiShare = $validatedData['bukti_share']->store('Campaign/bukti_share', 'public');
-
-        $event = Event::where('slug_event', $slug)->first();
-        $event_id = $event->id;
-        $konselorData = [
-            'user_id' => $user->id,
-            'status' => 'FREE',
-            'ref_transaction_event' => 'CAM-'.Carbon::now()->format('dmYHis'),
-            'event_id' => $event_id,
-            'info' => $validatedData['info'],
-            'bukti_follow' => $buktiFollow,
-            'bukti_linkedin' => $buktiLinkedin,
-            'bukti_share' => $buktiShare,
-        ];
-        EventTransaction::create($konselorData);
-        return redirect()->back()->with('success', 'Pendaftaran Campaign berhasil dikirimkan');
-    }
-   
 }

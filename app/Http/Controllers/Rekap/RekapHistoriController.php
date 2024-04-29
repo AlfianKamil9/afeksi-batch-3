@@ -6,17 +6,22 @@ use Carbon\Carbon;
 use App\Models\Event;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Services\EventService;
 use Illuminate\Support\Facades\Date;
 
 class RekapHistoriController extends Controller
 {
+
+    protected $recapEvent;
+    
+    public function __construct(EventService  $eventService)
+    {
+        $this->recapEvent = $eventService; 
+    }
+
     public function showRekapHistory(Request $request) {
         //MENAMPILKAN DAFTAR WEBINAR DISUSUN BERDASARKAN TANGGAL
-        $query = Event::with('webinar_session.pembicara')
-        ->where('activity_category_event', 'WEBINAR')
-        ->where('date_event', '<=' , Carbon::now()->format('Y-m-d'))
-        ->where('partisipan' ,'!=', null)
-        ->orderBy('date_event', 'desc');
+        $query = $this->recapEvent->getAllRecap();
 
         // Filter using input type text
         if ($request->has('input_search')) {
@@ -70,10 +75,7 @@ class RekapHistoriController extends Controller
     }
 
     public function showRekapHistoryDetail($slug) {
-         $data = Event::with('webinar_session.pembicara')
-        ->where('events.slug_event', $slug)
-        ->firstOrFail();
-
+        $data = $this->recapEvent->getDetailRecap($slug);
 
         $data->time_start = Carbon::parse($data->time_start)->format('H:i');
         $data->time_finish = Carbon::parse($data->time_finish)->format('H:i');
