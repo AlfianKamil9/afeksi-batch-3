@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('paket_non_professionals', function (Blueprint $table) {
+        Schema::create('paket_layanan_mentoring', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('layanan_nonProfessionals_id');
+            $table->unsignedBigInteger('layanan_mentoring_id');
             $table->string('nama_paket');
             $table->string('harga');
             $table->text('deskripsi_paket');
@@ -23,7 +23,7 @@ return new class extends Migration
             $table->text('deskripsi_singkat')->nullable();
             $table->timestamps();
 
-            $table->foreign('layanan_nonProfessionals_id')->references('id')->on('layanan_non_professionals')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('layanan_mentoring_id')->references('id')->on('layanan_mentoring')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('paket_layanan_non_professionals');
+        Schema::dropIfExists('paket_layanan_mentoring');
     }
 };

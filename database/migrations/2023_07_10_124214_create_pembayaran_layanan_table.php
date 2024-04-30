@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('ref_transaction_layanan')->nullable();
-            $table->unsignedBigInteger('paket_professional_conseling_id')->nullable();
-            $table->unsignedBigInteger('paket_layanan_non_professional_id')->nullable();
-            $table->unsignedBigInteger('conseling_id')->nullable();
+            $table->unsignedBigInteger('paket_layanan_konseling_id')->nullable();
+            $table->unsignedBigInteger('paket_layanan_mentoring_id')->nullable();
+            $table->unsignedBigInteger('konseling_id')->nullable();
             $table->unsignedBigInteger('voucher_id')->nullable();
             $table->string('payment_method')->nullable();
             $table->enum('status', ['UNPAID', 'UNPAID(BUTUH BAYAR)', 'PAID', 'PENDING', 'EXPIRED']);
@@ -29,14 +29,12 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign('voucher_id')->references('id')->on('vouchers')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('paket_professional_conseling_id')->references('id')->on('paket_profesional_conselings')->onDelete('cascade')->onUpdate('cascade');
-            // $table->foreign('mentoring_id')->references('id_Mentoring')->on('mentorings')->onDelete('cascade');
-            $table->foreign('conseling_id')->references('id')->on('profesional_konselings')->onDelete('cascade');
-            // $table->foreign('profesional_conseling_id')->references('id_profConseling')->on('profesional_konselings')->onDelete('cascade');
+            $table->foreign('paket_layanan_konseling_id')->references('id')->on('paket_layanan_konseling')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('konseling_id')->references('id')->on('layanan_konseling')->onDelete('cascade');
             $table->foreign('psikolog_id')->references('id')->on('psikolog_mentorings')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('konselor_id')->references('id')->on('konselors')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('paket_layanan_non_professional_id')->references('id')->on('paket_non_professionals')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('paket_layanan_mentoring_id')->references('id')->on('paket_layanan_mentoring')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

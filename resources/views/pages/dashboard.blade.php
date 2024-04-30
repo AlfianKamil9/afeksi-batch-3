@@ -54,7 +54,7 @@
       <!-- End of dashboard profile  ===================================-->
       <div class="col-md-9 p-4 mb-3">
         @forelse ($dataProfesionalKonseling as $item)
-              @if ($item->paket_profesional_conselings != null)
+              @if ($item->paket_layanan_konseling != null)
                 <div class="card position-relative shadow-sm mb-3">
 
                     <div class="card-top d-flex row align-items-center">
@@ -81,8 +81,8 @@
                     <div class="card-middle d-flex px-4 py-3 gap-3 ">
                         <img src="assets/img/dashboard-profile/cardpic.png" alt="">
                         <div class="texts">
-                            <p class="m-0">{{ $item->paket_profesional_conselings->nama_paket }}</p>
-                            <span>{{ $item->paket_profesional_conselings->jumlah_sesi }} sesi</span>
+                            <p class="m-0">{{ $item->paket_layanan_konseling->nama_paket }}</p>
+                            <span>{{ $item->paket_layanan_konseling->jumlah_sesi }} sesi</span>
                         </div>
                     </div>
 
@@ -103,7 +103,7 @@
                     
                 </div>
              
-              @elseif($item->paket_non_professionals != null)
+              @elseif($item->paket_layanan_mentoring != null)
                 <div class="card position-relative shadow-sm mb-3">
 
                     <div class="card-top d-flex row align-items-center">
@@ -130,8 +130,8 @@
                     <div class="card-middle d-flex px-4 py-3 gap-3 ">
                         <img src="assets/img/dashboard-profile/cardpic.png" alt="">
                         <div class="texts">
-                            <p class="m-0">{{ $item->paket_non_professionals->nama_paket }}</p>
-                            <span>{{ $item->paket_non_professionals->jumlah_sesi }} 1 sesi</span>
+                            <p class="m-0">{{ $item->paket_layanan_mentoring->nama_paket }}</p>
+                            <span>{{ $item->paket_layanan_mentoring->jumlah_sesi }} 1 sesi</span>
                         </div>
                     </div>
 

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('psikolog_mentoring_pivot', function (Blueprint $table) {
             //$table->id();
             $table->unsignedBigInteger('mentoring_id');
-            $table->foreign('mentoring_id')->references('id')->on('layanan_non_professionals')->onDelete('restrict');
+            $table->foreign('mentoring_id')->references('id')->on('layanan_mentoring')->onDelete('restrict');
             $table->unsignedBigInteger('psikolog_id');
             $table->foreign('psikolog_id')->references('id')->on('psikolog_mentorings')->onDelete('restrict');
             //$table->timestamps();

@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\PaketLayananNonProfessional;
+use App\Models\PaketLayananMentoring;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class PaketLayananNonProfessionalSeeder extends Seeder
+class PaketLayananMentoringSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,7 +15,7 @@ class PaketLayananNonProfessionalSeeder extends Seeder
     {
         $paket = [
             [
-                'layanan_nonProfessionals_id' => 1,
+                'layanan_mentoring_id' => 1,
                 'nama_paket' => 'Paket Dasar',
                 'harga' => '100000',
                 'deskripsi_paket' => 'Fokus terhadap permasalahan parenting',
@@ -25,7 +25,7 @@ class PaketLayananNonProfessionalSeeder extends Seeder
                 'deskripsi_durasi' => 'Durasi: 60 menit',
             ],
             [
-                'layanan_nonProfessionals_id' => 1,
+                'layanan_mentoring_id' => 1,
                 'nama_paket' => 'Paket Premium',
                 'harga' => '150000',
                 'deskripsi_paket' => 'Membantu peran orang tua dalam menghadapi tumbuh kembang anak',
@@ -35,7 +35,7 @@ class PaketLayananNonProfessionalSeeder extends Seeder
                 'deskripsi_durasi' => 'Durasi 75 menit',
             ],
             [
-                'layanan_nonProfessionals_id' => 1,
+                'layanan_mentoring_id' => 1,
                 'nama_paket' => 'Paket Platinum',
                 'harga' => '200000',
                 'deskripsi_paket' => 'Akses ke 4 sesi Parenting selama sebulan (satu sesi per minggu).',
@@ -45,7 +45,7 @@ class PaketLayananNonProfessionalSeeder extends Seeder
                 'deskripsi_durasi' => 'Durasi 90 menit',
             ],
             [
-                'layanan_nonProfessionals_id' => 2,
+                'layanan_mentoring_id' => 2,
                 'nama_paket' => 'Paket Dasar',
                 'harga' => '100000',
                 'deskripsi_paket' => 'Fokus terhadap permasalahan parenting',
@@ -55,7 +55,7 @@ class PaketLayananNonProfessionalSeeder extends Seeder
                 'deskripsi_durasi' => 'Durasi: 60 menit',
             ],
             [
-                'layanan_nonProfessionals_id' => 2,
+                'layanan_mentoring_id' => 2,
                 'nama_paket' => 'Paket Premium',
                 'harga' => '150000',
                 'deskripsi_paket' => 'Membantu peran orang tua dalam menghadapi tumbuh kembang anak',
@@ -65,7 +65,7 @@ class PaketLayananNonProfessionalSeeder extends Seeder
                 'deskripsi_durasi' => 'Durasi 75 menit',
             ],
             [
-                'layanan_nonProfessionals_id' => 2,
+                'layanan_mentoring_id' => 2,
                 'nama_paket' => 'Paket Platinum',
                 'harga' => '200000',
                 'deskripsi_paket' => 'Akses ke 4 sesi Parenting selama sebulan (satu sesi per minggu).',
@@ -75,7 +75,7 @@ class PaketLayananNonProfessionalSeeder extends Seeder
                 'deskripsi_durasi' => 'Durasi 90 menit',
             ],
             [
-                'layanan_nonProfessionals_id' => 3,
+                'layanan_mentoring_id' => 3,
                 'nama_paket' => 'Sesi Konseling Individu',
                 'harga' => '95000',
                 'deskripsi_singkat' => 'Sesi konseling individu dengan seorang konselor berlisensi.',
@@ -85,7 +85,7 @@ class PaketLayananNonProfessionalSeeder extends Seeder
                 'deskripsi_durasi' => 'Durasi: 60 menit',
             ],
             [
-                'layanan_nonProfessionals_id' => 3,
+                'layanan_mentoring_id' => 3,
                 'nama_paket' => 'Sesi Konseling Pasangan',
                 'harga' => '175000',
                 'deskripsi_singkat' => 'Sesi konseling pasangan dengan seorang konselor berlisensi.',
@@ -95,7 +95,7 @@ class PaketLayananNonProfessionalSeeder extends Seeder
                 'jumlah_sesi' => 1,
             ],
             [
-                'layanan_nonProfessionals_id' => 3,
+                'layanan_mentoring_id' => 3,
                 'nama_paket' => 'Sesi Kelompok Relationship Mahasiswa',
                 'harga' => '60000',
                 'deskripsi_singkat' => 'Sesi konseling dalam kelompok dengan mahasiswa lain yang menghadapi masalah hubungan serupa.',
@@ -105,7 +105,7 @@ class PaketLayananNonProfessionalSeeder extends Seeder
                 'deskripsi_durasi' => 'Durasi: 90 menit',
             ],
             [
-                'layanan_nonProfessionals_id' => 3,
+                'layanan_mentoring_id' => 3,
                 'nama_paket' => 'Paket Bulanan Relationship Mahasiswa',
                 'harga' => '350000',
                 'deskripsi_singkat' => 'Sesi konseling dengan mahasiswa yang menghadapi masalah dalam hubungan dengan konselor berlisensi.',
@@ -116,7 +116,7 @@ class PaketLayananNonProfessionalSeeder extends Seeder
             ],
         ];
         foreach ($paket as $data) {
-            PaketLayananNonProfessional::create($data);
+            PaketLayananMentoring::create($data);
         }
     }
 }

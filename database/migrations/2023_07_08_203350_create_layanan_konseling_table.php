@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('layanan_non_professionals', function (Blueprint $table) {
-            $table->id();
-            $table->enum('jenis_layanan', ['KONSELING', 'MENTORING']);
-            $table->string('nama_layanan');
-            $table->string('slug');
+        Schema::create('layanan_konseling', function (Blueprint $table) {
+            $table->id('id');
+            $table->enum('jenis_layanan', ['PROFESSIONAL KONSELING','PEERS KONSELING']);
+            $table->enum('namaPengalaman', ['Relationship Konseling', 'Quality Gender', 'Peers Konseling']);
             $table->timestamps();
         });
     }
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('layanan_non_professionals');
+        Schema::dropIfExists('layanan_konseling');
     }
 };

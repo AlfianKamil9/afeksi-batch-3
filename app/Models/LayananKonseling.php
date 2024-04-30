@@ -4,15 +4,15 @@ namespace App\Models;
 
 use App\Models\Psikolog;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\PaketProfesionalConseling;
+use App\Models\PaketLayananKonseling;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class profesional_konseling extends Model
+class LayananKonseling extends Model
 {
     use HasFactory;
 
-    protected $table = "profesional_konselings";
+    protected $table = "layanan_konseling";
     protected $fillable = [
         'jenis_layanan',
         "namaPengalaman",
@@ -20,14 +20,14 @@ class profesional_konseling extends Model
     ];
 
 
-    public function paket_professional_conseling()
+    public function paket_layanan_konseling()
     {
-        return $this->hasMany(PaketProfesionalConseling::class, 'professional_conseling_id', 'id_profConseling');
+        return $this->hasMany(PaketLayananKonseling::class, 'layanan_konseling_id', 'id');
     }
 
 
     /**
-     * The psikolog_professional that belong to the profesional_konseling
+     * The psikolog_professional that belong to the LayananKonseling
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */

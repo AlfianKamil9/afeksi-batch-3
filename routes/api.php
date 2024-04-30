@@ -19,7 +19,7 @@
 
 use App\Models\Event;
 use Illuminate\Support\Facades\Route;
-use App\Models\LayananNonProfessional;
+use App\Models\LayananMentoring;
 use App\Http\Controllers\API\KlaimCode;
 use App\Http\Controllers\API\HandleAfterPayment;
 use App\Http\Controllers\API\NotificationPaymentEventController;
@@ -34,6 +34,6 @@ Route::post('/midtrans/callback', [NotificationPaymentEventController::class, 'c
 // YANG HANYA TEST
 // Route::post('/checkout', [WebinarTransaksiController::class, 'checkout']);
 // Route::get('/cek-psikolog-layanan', function() {
-//     $t = LayananNonProfessional::with('paket_layanan_non_professionals', 'psikolog_non_profesional')->where('id', 4)->first();
+//     $t = LayananMentoring::with('paket_layanan_mentoring', 'psikolog_non_profesional')->where('id', 4)->first();
 //     return response($t);
 // });

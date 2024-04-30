@@ -101,7 +101,7 @@
                 <tbody>
                   <tr>
                     <td class="text-muted fw-bold">Sub Total</td>
-                    <td class="text-end fw-bold">Rp {{ number_format($data->paket_profesional_conselings->harga) }}</td>
+                    <td class="text-end fw-bold">Rp {{ number_format($data->paket_layanan_konseling->harga) }}</td>
                   </tr>
                   {{-- <tr>
                     <td class="text-muted fw-bold">Biaya Admin</td>
@@ -128,9 +128,9 @@
                     <td class="fs-5 fw-bold text-muted">Total Pembayaran</td>
                     <td class="text-end fw-bold fs-5">Rp. 
                       @if (session()->has('apply'))
-                          {{ number_format($data->paket_profesional_conselings->harga - session('apply')['diskon'], 0, ',', '.') }}
+                          {{ number_format($data->paket_layanan_konseling->harga - session('apply')['diskon'], 0, ',', '.') }}
                       @else
-                          {{ number_format($data->paket_profesional_conselings->harga, 0, ',', '.') }}
+                          {{ number_format($data->paket_layanan_konseling->harga, 0, ',', '.') }}
                       @endif
                     </td>
                   </tr>
@@ -147,9 +147,9 @@
                 <h5 class="text-muted">Total Pembayaran</h5>
                   <h5 class="fw-bold" style="color: #2139f9">Rp. 
                     @if(session()->has('apply'))  
-                      {{ number_format($data->paket_profesional_conselings->harga - session('apply')['diskon'], 0, ',', '.') }}
+                      {{ number_format($data->paket_layanan_konseling->harga - session('apply')['diskon'], 0, ',', '.') }}
                     @else
-                      {{ number_format($data->paket_profesional_conselings->harga, 0, ',', '.') }}
+                      {{ number_format($data->paket_layanan_konseling->harga, 0, ',', '.') }}
                     @endif
                   </h5>
               </div>
@@ -177,7 +177,7 @@
               </div>
               <div class="text-container px-2">
                 <h6 class="mt-3 mb-0 fw-bold" style="color: #2139f9">Peers Konseling</h6>
-                <p style="font-size: 10px">{{ $data->paket_profesional_conselings->professional_conseling->namaPengalaman }} <br>{{ $data->paket_profesional_conselings->nama_paket }}</p>
+                <p style="font-size: 10px">{{ $data->paket_layanan_konseling->layanan_konseling->namaPengalaman }} <br>{{ $data->paket_layanan_konseling->nama_paket }}</p>
               </div>
             </div>
           </div>
@@ -191,7 +191,7 @@
                   </div>
                   <div class="flex-grow-1 ms-1 m-3">
                     <h6 class="fw-bold" id='name'>{{ $data->konselor->user->nama }}</h6>
-                    <p class="text-muted">Konselor {{ $data->paket_profesional_conselings->professional_conseling->namaPengalaman }}</p>
+                    <p class="text-muted">Konselor {{ $data->paket_layanan_konseling->layanan_konseling->namaPengalaman }}</p>
                   </div>
                 </div>
               </div>
@@ -204,7 +204,7 @@
                     <tr>
                       <td>Topik</td>
                       <td>:</td>
-                      <td>{{ $data->paket_profesional_conselings->nama_paket }}</td>
+                      <td>{{ $data->paket_layanan_konseling->nama_paket }}</td>
                     </tr>
                     <tr>
                       <td>Tanggal</td>
@@ -214,12 +214,12 @@
                     <tr>
                       <td>Waktu</td>
                       <td>:</td>
-                      <td>{{ $data->detail_pembayarans->jam_konsultasi }} - {{  \Carbon\Carbon::parse($data->detail_pembayarans->jam_konsultasi)->addMinutes($data->paket_profesional_conselings->durasi)->format('H:i') }} WIB</td>
+                      <td>{{ $data->detail_pembayarans->jam_konsultasi }} - {{  \Carbon\Carbon::parse($data->detail_pembayarans->jam_konsultasi)->addMinutes($data->paket_layanan_konseling->durasi)->format('H:i') }} WIB</td>
                     </tr>
                     <tr>
                       <td>Durasi</td>
                       <td>:</td>
-                      <td>{{ $data->paket_profesional_conselings->durasi }} Menit</td>
+                      <td>{{ $data->paket_layanan_konseling->durasi }} Menit</td>
                     </tr>
                   </tbody>
                 </table>
@@ -233,7 +233,7 @@
                 <h5 class="fw-bold text-muted">Harga Paket</h5>
               </div>
               <div class="col-md-6 text-end">
-                <h5 class="fw-bold" style="color: #2139f9">Rp. {{ number_format($data->paket_profesional_conselings->harga, 0, ',', '.') }}</h5>
+                <h5 class="fw-bold" style="color: #2139f9">Rp. {{ number_format($data->paket_layanan_konseling->harga, 0, ',', '.') }}</h5>
               </div>
             </div>
           </div>

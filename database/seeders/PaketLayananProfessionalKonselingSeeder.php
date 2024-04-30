@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\PaketProfesionalConseling;
-use App\Models\profesional_konseling;
+use App\Models\PaketLayananKonseling;
+use App\Models\LayananKonseling;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -17,7 +17,7 @@ class PaketLayananProfessionalKonselingSeeder extends Seeder
         $paket = [
             [
                 'nama_paket' => 'Sesi Konseling Individu',
-                'professional_conseling_id' => 1,
+                'layanan_konseling_id' => 1,
                 'harga' => 95000,
                 'durasi' => 60,
                 'jumlah_sesi' => 1,
@@ -27,7 +27,7 @@ class PaketLayananProfessionalKonselingSeeder extends Seeder
             ],
             [
                 'nama_paket' => 'Sesi Konseling Pasangan',
-                'professional_conseling_id' => 1,
+                'layanan_konseling_id' => 1,
                 'harga' => 175000,
                 'jumlah_sesi' => 1,
                 'durasi' => 75,
@@ -37,7 +37,7 @@ class PaketLayananProfessionalKonselingSeeder extends Seeder
             ],
             [
                 'nama_paket' => 'Sesi Kelompok Relationship Mahasiswa',
-                'professional_conseling_id' => 1,
+                'layanan_konseling_id' => 1,
                 'harga' => 60000,
                 'jumlah_sesi' => 1,
                 'durasi' => 90,
@@ -47,7 +47,7 @@ class PaketLayananProfessionalKonselingSeeder extends Seeder
             ],
             [
                 'nama_paket' => 'Sesi Konseling Individu',
-                'professional_conseling_id' => 2,
+                'layanan_konseling_id' => 2,
                 'harga' => 150000,
                 'jumlah_sesi' => 1,
                 'durasi' => 60,
@@ -57,7 +57,7 @@ class PaketLayananProfessionalKonselingSeeder extends Seeder
             ],
             [
                 'nama_paket' => 'Sesi Konseling Pasangan',
-                'professional_conseling_id' => 2,
+                'layanan_konseling_id' => 2,
                 'harga' => 250000,
                 'jumlah_sesi' => 1,
                 'durasi' => 75,
@@ -67,7 +67,7 @@ class PaketLayananProfessionalKonselingSeeder extends Seeder
             ],
             [
                 'nama_paket' => 'Sesi Kelompok Kesetaraan Gender',
-                'professional_conseling_id' => 2,
+                'layanan_konseling_id' => 2,
                 'harga' => 75000,
                 'jumlah_sesi' => 1,
                 'durasi' => 90,
@@ -77,7 +77,7 @@ class PaketLayananProfessionalKonselingSeeder extends Seeder
             ],
             [
                 'nama_paket' => 'Paket Bulanan Kesetaraan Gender',
-                'professional_conseling_id' => 2,
+                'layanan_konseling_id' => 2,
                 'harga' => 400000,
                 'jumlah_sesi' => 4,
                 'durasi' => 60,
@@ -89,7 +89,7 @@ class PaketLayananProfessionalKonselingSeeder extends Seeder
             // PEERS
             [
                 'nama_paket' => 'Sesi Konseling Individu',
-                'professional_conseling_id' => 3,
+                'layanan_konseling_id' => 3,
                 'harga' => 95000,
                 'durasi' => 60,
                 'jumlah_sesi' => 1,
@@ -99,7 +99,7 @@ class PaketLayananProfessionalKonselingSeeder extends Seeder
             ],
             [
                 'nama_paket' => 'Sesi Konseling Pasangan',
-                'professional_conseling_id' => 3,
+                'layanan_konseling_id' => 3,
                 'harga' => 175000,
                 'jumlah_sesi' => 1,
                 'durasi' => 75,
@@ -109,7 +109,7 @@ class PaketLayananProfessionalKonselingSeeder extends Seeder
             ],
             [
                 'nama_paket' => 'Sesi Kelompok Relationship Mahasiswa',
-                'professional_conseling_id' => 3,
+                'layanan_konseling_id' => 3,
                 'harga' => 60000,
                 'jumlah_sesi' => 1,
                 'durasi' => 90,
@@ -119,7 +119,7 @@ class PaketLayananProfessionalKonselingSeeder extends Seeder
             ],
         //    [
         //         'nama_paket' => 'Sesi Konseling Individu',
-        //         'professional_conseling_id' => 4,
+        //         'layanan_konseling_id' => 4,
         //         'harga' => 150000,
         //         'jumlah_sesi' => 1,
         //         'durasi' => 60,
@@ -129,7 +129,7 @@ class PaketLayananProfessionalKonselingSeeder extends Seeder
         //     ],
         //     [
         //         'nama_paket' => 'Sesi Konseling Pasangan',
-        //         'professional_conseling_id' => 4,
+        //         'layanan_konseling_id' => 4,
         //         'harga' => 250000,
         //         'jumlah_sesi' => 1,
         //         'durasi' => 75,
@@ -139,7 +139,7 @@ class PaketLayananProfessionalKonselingSeeder extends Seeder
         //     ],
         //     [
         //         'nama_paket' => 'Sesi Kelompok Kesetaraan Gender',
-        //         'professional_conseling_id' => 4,
+        //         'layanan_konseling_id' => 4,
         //         'harga' => 75000,
         //         'jumlah_sesi' => 1,
         //         'durasi' => 90,
@@ -149,7 +149,7 @@ class PaketLayananProfessionalKonselingSeeder extends Seeder
         //     ],
         //     [
         //         'nama_paket' => 'Paket Bulanan Kesetaraan Gender',
-        //         'professional_conseling_id' => 4,
+        //         'layanan_konseling_id' => 4,
         //         'harga' => 400000,
         //         'jumlah_sesi' => 4,
         //         'durasi' => 60,
@@ -161,7 +161,7 @@ class PaketLayananProfessionalKonselingSeeder extends Seeder
 
         ];
         foreach ($paket as $data) {
-            PaketProfesionalConseling::create($data);
+            PaketLayananKonseling::create($data);
         }
     }
 }

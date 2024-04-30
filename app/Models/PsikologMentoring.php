@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Models\User;
-use App\Models\LayananNonProfessional;
+use App\Models\LayananMentoring;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -22,6 +22,6 @@ class PsikologMentoring extends Model
 
     public function mentoring(): BelongsToMany
     {
-        return $this->belongsToMany(LayananNonProfessional::class, 'psikolog_mentoring_pivot','psikolog_id', 'mentoring_id');
+        return $this->belongsToMany(LayananMentoring::class, 'psikolog_mentoring_pivot','psikolog_id', 'mentoring_id');
     }
 }

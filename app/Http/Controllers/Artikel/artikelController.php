@@ -3,14 +3,21 @@
 namespace App\Http\Controllers\Artikel;
 
 use Carbon\Carbon;
-use App\Models\Artikel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Services\ArtikelService;
 
 class artikelController extends Controller
 {
+
+    protected  $artikel;
+    public function __construct(ArtikelService $artikel)
+    {
+        $this->artikel = $artikel;
+    }
+
     public function index(Request $request) {
-        $query = Artikel::orderBy('id', 'desc');
+        $query = $this->artikel->getAllArtikel();
 
         // Filter using input type text
         if ($request->has('input_search')) {
@@ -39,9 +46,7 @@ class artikelController extends Controller
 
 
     public function show($slug) {
-        $data = Artikel::where('slug', $slug)
-            ->firstOrFail();
-
+        $data = $this->artikel->getDetailArtikel($slug);
         return view('pages.Artikel.artikel-detail',[
             'data' => $data
         ]);

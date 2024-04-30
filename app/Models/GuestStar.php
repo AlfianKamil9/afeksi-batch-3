@@ -13,8 +13,8 @@ class GuestStar extends Model
     protected $table = 'gueststar';
 
     protected $fillable = [
-        'layanan_non_professionals_id',
-        'professional_conseling_id',
+        'layanan_mentoring_id',
+        'layanan_konseling_id',
         'nama_psikolog',
         'rating',
         'profil',
@@ -29,14 +29,14 @@ class GuestStar extends Model
         return $this->belongsTo(EventMaterialSession::class, 'pembicara_id');
     }
 
-    public function layanan_non_professionals()
+    public function layanan_mentoring()
     {
-        return $this->belongsTo(LayananNonProfessional::class, 'layanan_non_professionals_id', 'id');
+        return $this->belongsTo(LayananMentoring::class, 'layanan_mentoring_id', 'id');
     }
 
-    public function profesional_konselings()
+    public function layanan_konseling()
     {
-        return $this->belongsTo(profesional_konseling::class, 'professional_conseling_id', 'id');
+        return $this->belongsTo(LayananKonseling::class, 'layanan_konseling_id', 'id');
     }
 
     public function pembayaran_layanans()

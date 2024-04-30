@@ -15,7 +15,7 @@ class NotificationPaymentEventController extends Controller
     public function callback(Request $request)
     {   
         //set konfigurasi midtrans
-        Config::$serverKey = 'SB-Mid-server-T8m4mFLUtVjzGgogR6vZyjXf';
+        Config::$serverKey = config('midtrans.server_key');
         Config::$isProduction = false;
         Config::$isSanitized = true;
         Config::$is3ds = true;

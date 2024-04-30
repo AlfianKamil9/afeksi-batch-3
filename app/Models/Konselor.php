@@ -26,6 +26,6 @@ class Konselor extends Model
     
     public function konseling(): BelongsToMany
     {
-        return $this->belongsToMany(profesional_konseling::class, 'konselor_konseling_pivot', 'konselor_id', 'konseling_id');
+        return $this->belongsToMany(LayananKonseling::class, 'konselor_konseling_pivot', 'konselor_id', 'konseling_id');
     }
 }

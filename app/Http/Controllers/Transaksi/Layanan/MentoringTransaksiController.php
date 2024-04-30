@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
-use App\Models\PaketLayananNonProfessional;
+use App\Models\PaketLayananMentoring;
 use App\Http\Controllers\Transaksi\PaymentMethod;
 use App\Services\Midtrans\PembayaranEvent\CstoreService;
 use App\Services\Midtrans\PembayaranEvent\EwalletService;
@@ -48,7 +48,7 @@ class MentoringTransaksiController extends Controller
             "detail_masalah" => "required",
         ]);
 
-        $layanan = PembayaranLayanan::with('paket_non_professionals.layanan_non_professionals')->where("ref_transaction_layanan", $ref_transaction_layanan)->first();
+        $layanan = PembayaranLayanan::with('paket_layanan_mentoring.layanan_mentoring')->where("ref_transaction_layanan", $ref_transaction_layanan)->first();
         date_default_timezone_set('Asia/Jakarta');
         $tglSekarang = date_create()->format("d");
         $blnSekarang = date_create()->format("m");
@@ -79,7 +79,7 @@ class MentoringTransaksiController extends Controller
             'jam_konsultasi' => $request->jam_konsultasi,
             'detail_masalah' => $request->detail_masalah,
         ]);
-        $idMentoring = $layanan->paket_non_professionals->layanan_non_professionals->id;
+        $idMentoring = $layanan->paket_layanan_mentoring->layanan_mentoring->id;
 
         $randomPsikolog = PsikologMentoring::inRandomOrder()->whereHas('mentoring', function ($query) use ($idMentoring) {
             $query->where('mentoring_id', 'like', "%$idMentoring%");
@@ -97,7 +97,7 @@ class MentoringTransaksiController extends Controller
     {
         $data = PembayaranLayanan::with(
             'user',
-            'paket_non_professionals.layanan_non_professionals',
+            'paket_layanan_mentoring.layanan_mentoring',
             'psikolog.user',
             'detail_pembayarans'
         )->where('ref_transaction_layanan', $ref_transaction_layanan)->firstOrFail();
@@ -107,7 +107,7 @@ class MentoringTransaksiController extends Controller
 
 
     // Checkout
-    public function checkoutLayananNonProfessional(Request $request, $ref_transaction_layanan)
+    public function checkoutLayananMentoring(Request $request, $ref_transaction_layanan)
     {
         $id = PembayaranLayanan::where('ref_transaction_layanan', $ref_transaction_layanan)->pluck('id')->first();
         if (isset($request->btnBatalVoucher)) {
@@ -194,12 +194,12 @@ class MentoringTransaksiController extends Controller
         $tabelPembayaran = PembayaranLayanan::where('ref_transaction_layanan', $ref)->pluck('id')->first();
         $diskon = Voucher::where('id', $voucher_id)->first();
         $voucher_id == null ? $potongan = 0 : $potongan = $diskon->jumlah_diskon;
-        $data = PembayaranLayanan::with('user', 'paket_non_professionals.layanan_non_professionals', 'psikolog', 'detail_pembayarans')->where('ref_transaction_layanan', $ref)->first();
+        $data = PembayaranLayanan::with('user', 'paket_layanan_mentoring.layanan_mentoring', 'psikolog', 'detail_pembayarans')->where('ref_transaction_layanan', $ref)->first();
         // -----------------BNI, BRI, BCA, CIMB----------------------- //
         if ($bank == 'bni' || $bank == 'bri' || $bank == 'bca' || $bank == 'cimb') {
             $data = [
                 "reference" => $ref,
-                "harga_event" => $data->paket_non_professionals->harga - $potongan,
+                "harga_event" => $data->paket_layanan_mentoring->harga - $potongan,
                 "nama"  => $data->user->nama,
                 "email"  => $data->user->email,
                 "no_tlpn" => $data->user->no_whatsapp
@@ -237,7 +237,7 @@ class MentoringTransaksiController extends Controller
         else if ($bank == "mandiri") {
             $data = [
                 "reference" => $ref,
-                "harga_event" => $data->paket_non_professionals->harga - $potongan,
+                "harga_event" => $data->paket_layanan_mentoring->harga - $potongan,
                 "nama"  => $data->user->nama,
                 "email"  => $data->user->email,
                 "no_tlpn" => $data->user->no_whatsapp
@@ -275,7 +275,7 @@ class MentoringTransaksiController extends Controller
         else if ($bank == "permata") {
             $data = [
                 "reference" => $ref,
-                "harga_event" => $data->paket_non_professionals->harga - $potongan,
+                "harga_event" => $data->paket_layanan_mentoring->harga - $potongan,
                 "nama"  => $data->user->nama,
                 "email"  => $data->user->email,
                 "no_tlpn" => $data->user->no_whatsapp
@@ -313,7 +313,7 @@ class MentoringTransaksiController extends Controller
         else if ($bank == "indomaret") {
             $data = [
                 "reference" => $ref,
-                "harga_event" => $data->paket_non_professionals->harga - $potongan,
+                "harga_event" => $data->paket_layanan_mentoring->harga - $potongan,
                 "nama"  => $data->user->nama,
                 "email"  => $data->user->email,
                 "no_tlpn" => $data->user->no_whatsapp,
@@ -352,7 +352,7 @@ class MentoringTransaksiController extends Controller
         else if ($bank == "alfamart") {
             $data = [
                 "reference" => $ref,
-                "harga_event" => $data->paket_non_professionals->harga - $potongan,
+                "harga_event" => $data->paket_layanan_mentoring->harga - $potongan,
                 "nama"  => $data->user->nama,
                 "email"  => $data->user->email,
                 "no_tlpn" => $data->user->no_whatsapp,
@@ -390,7 +390,7 @@ class MentoringTransaksiController extends Controller
         else if ($bank == "gopay") {
             $data = [
                 "reference" => $ref,
-                "harga_event" => $data->paket_non_professionals->harga - $potongan,
+                "harga_event" => $data->paket_layanan_mentoring->harga - $potongan,
                 "nama"  => $data->user->nama,
                 "email"  => $data->user->email,
                 "no_tlpn" => $data->user->no_whatsapp,
@@ -427,7 +427,7 @@ class MentoringTransaksiController extends Controller
         else if ($bank == "shopeepay") {
             $data = [
                 "reference" => $ref,
-                "harga_event" => $data->paket_non_professionals->harga - $potongan,
+                "harga_event" => $data->paket_layanan_mentoring->harga - $potongan,
                 "nama"  => $data->user->nama,
                 "email"  => $data->user->email,
                 "no_tlpn" => $data->user->no_whatsapp,

@@ -12,8 +12,7 @@ use Database\Seeders\RolesSeeder;
 use Database\Seeders\VoucherSeeder;
 use Database\Seeders\EducationUserSeeder;
 use Database\Seeders\EventCategorySeeder;
-use Database\Seeders\EventTransactionSeeder;
-use Database\Seeders\PaketLayananNonProfessionalSeeder;
+use Database\Seeders\PaketLayananMentoringSeeder;
 use Database\Seeders\PaketLayananProfessionalKonselingSeeder;
 
 class DatabaseSeeder extends Seeder
@@ -25,14 +24,13 @@ class DatabaseSeeder extends Seeder
     {
         //user
         $this->call(RolesSeeder::class);
-        $this->call(LayananNonProfessionalSeeder::class);
-        $this->call(ProfesionalKonselingSeeder::class);
-        $this->call(PaketLayananNonProfessionalSeeder::class);
+        $this->call(LayananMentoringSeeder::class);
+        $this->call(LayananKonselingSeeder::class);
+        $this->call(PaketLayananMentoringSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(GuestStarSeeder::class);
         $this->call(EventCategorySeeder::class);
         $this->call(EventSeeder::class);
-        $this->call(VolunteersSeeder::class);
         $this->call(KonselorsSeeder::class);
         $this->call(EventMaterialSessionSeeder::class);
         $this->call(categoryEbookSeeder::class);

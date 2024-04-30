@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\LayananNonProfessional;
+use App\Models\LayananMentoring;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class LayananNonProfessionalSeeder extends Seeder
+class LayananMentoringSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -36,7 +36,7 @@ class LayananNonProfessionalSeeder extends Seeder
             ]
         ];
         foreach ($layanan as $data) {
-            LayananNonProfessional::create($data);
+            LayananMentoring::create($data);
         }
     }
 }

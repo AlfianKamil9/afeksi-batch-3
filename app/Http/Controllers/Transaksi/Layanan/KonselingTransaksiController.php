@@ -85,7 +85,7 @@ class KonselingTransaksiController extends Controller
     // show halaman pembayaran professional konseling
     public function showPembayaran($ref_transaction_layanan)
     {
-        $data = PembayaranLayanan::with('voucher', 'konselor.user', 'detail_pembayarans', 'paket_profesional_conselings.professional_conseling')
+        $data = PembayaranLayanan::with('voucher', 'konselor.user', 'detail_pembayarans', 'paket_layanan_konseling.layanan_konseling')
             ->where('ref_transaction_layanan', $ref_transaction_layanan)->firstOrFail();
         //return response()->json($data);
         return view('pages.ProfessionalKonseling.pembayaran', compact('data'));
@@ -184,12 +184,12 @@ class KonselingTransaksiController extends Controller
         $tabelPembayaran = PembayaranLayanan::where('ref_transaction_layanan', $ref)->pluck('id')->first();
         $diskon = Voucher::where('id', $voucher_id)->first();
         $voucher_id == null ? $potongan = 0 : $potongan = $diskon->jumlah_diskon;
-        $data = PembayaranLayanan::with('user', 'paket_profesional_conselings', 'psikolog', 'detail_pembayarans', 'voucher')->where('ref_transaction_layanan', $ref)->first();
+        $data = PembayaranLayanan::with('user', 'paket_layanan_konseling', 'psikolog', 'detail_pembayarans', 'voucher')->where('ref_transaction_layanan', $ref)->first();
         // -----------------BNI, BRI, BCA, CIMB----------------------- //
         if ($bank == 'bni' || $bank == 'bri' || $bank == 'bca' || $bank == 'cimb') {
             $data = [
                 "reference" => $ref,
-                "harga_event" => $data->paket_profesional_conselings->harga - $potongan,
+                "harga_event" => $data->paket_layanan_konseling->harga - $potongan,
                 "nama"  => $data->user->nama,
                 "email"  => $data->user->email,
                 "no_tlpn" => $data->user->no_whatsapp
@@ -226,7 +226,7 @@ class KonselingTransaksiController extends Controller
         else if ($bank == "mandiri") {
             $data = [
                 "reference" => $ref,
-                "harga_event" => $data->paket_profesional_conselings->harga - $potongan,
+                "harga_event" => $data->paket_layanan_konseling->harga - $potongan,
                 "nama"  => $data->user->nama,
                 "email"  => $data->user->email,
                 "no_tlpn" => $data->user->no_whatsapp
@@ -263,7 +263,7 @@ class KonselingTransaksiController extends Controller
         else if ($bank == "permata") {
             $data = [
                 "reference" => $ref,
-                "harga_event" => $data->paket_profesional_conselings->harga - $potongan,
+                "harga_event" => $data->paket_layanan_konseling->harga - $potongan,
                 "nama"  => $data->user->nama,
                 "email"  => $data->user->email,
                 "no_tlpn" => $data->user->no_whatsapp
@@ -299,7 +299,7 @@ class KonselingTransaksiController extends Controller
         else if ($bank == "indomaret") {
             $data = [
                 "reference" => $ref,
-                "harga_event" => $data->paket_profesional_conselings->harga - $potongan,
+                "harga_event" => $data->paket_layanan_konseling->harga - $potongan,
                 "nama"  => $data->user->nama,
                 "email"  => $data->user->email,
                 "no_tlpn" => $data->user->no_whatsapp
@@ -336,7 +336,7 @@ class KonselingTransaksiController extends Controller
         else if ($bank == "alfamart") {
             $data = [
                 "reference" => $ref,
-                "harga_event" => $data->paket_profesional_conselings->harga,
+                "harga_event" => $data->paket_layanan_konseling->harga,
                 "nama"  => $data->user->nama,
                 "email"  => $data->user->email,
                 "no_tlpn" => $data->user->no_whatsapp,
@@ -373,7 +373,7 @@ class KonselingTransaksiController extends Controller
         else if ($bank == "gopay") {
             $data = [
                 "reference" => $ref,
-                "harga_event" => $data->paket_profesional_conselings->harga,
+                "harga_event" => $data->paket_layanan_konseling->harga,
                 "nama"  => $data->user->nama,
                 "email"  => $data->user->email,
                 "no_tlpn" => $data->user->no_whatsapp
@@ -410,7 +410,7 @@ class KonselingTransaksiController extends Controller
         else if ($bank == "shopeepay") {
             $data = [
                 "reference" => $ref,
-                "harga_event" => $data->paket_profesional_conselings->harga,
+                "harga_event" => $data->paket_layanan_konseling->harga,
                 "nama"  => $data->user->nama,
                 "email"  => $data->user->email,
                 "no_tlpn" => $data->user->no_whatsapp

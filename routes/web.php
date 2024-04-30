@@ -106,7 +106,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/mentoring/{ref_transaction_layanan}/submit-form-mentoring', [MentoringTransaksiController::class, 'submitFormDataDiri'])->name('submit.form.datadiri.mentoring');
     // CHECKOUT KHUSUS MENTORING
     Route::get('/mentoring/{ref_transaction_layanan}/pembayaran', [MentoringTransaksiController::class, 'layananNonProfesional'])->name('checkout.layanan.mentoring');
-    Route::post('/mentoring/{ref_transaction_layanan}/checkout', [MentoringTransaksiController::class, 'checkoutLayananNonProfessional']);
+    Route::post('/mentoring/{ref_transaction_layanan}/checkout', [MentoringTransaksiController::class, 'checkoutLayananMentoring']);
     // NOTIFICATION AFTER PEMBAYARAN MENTORING
     Route::get('/{ref_transaction_layanan}/notification-mentoring/success', [NotifikasiMentoring::class, 'index'])->name('notification.mentoring.success');
     //END LAYANAN MENTORING

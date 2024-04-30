@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class LayananNonProfessional extends Model
+class LayananMentoring extends Model
 {
     use HasFactory;
 
-    protected $table = 'layanan_non_professionals';
+    protected $table = 'layanan_mentoring';
     protected $guarded = ['id'];
     protected $fillable = [
         'jenis_layanan',
@@ -20,18 +20,18 @@ class LayananNonProfessional extends Model
         'slug'
     ];
 
-    public function paket_layanan_non_professionals()
+    public function paket_layanan_mentoring()
     {
-        return $this->hasMany(PaketLayananNonProfessional::class,'id');
+        return $this->hasMany(PaketLayananMentoring::class,'id');
     }
 
     // public function psikologs()
     // {
-    //     return $this->hasMany(Psikolog::class, 'layanan_non_professionals_id', 'id');
+    //     return $this->hasMany(Psikolog::class, 'layanan_mentoring_id', 'id');
     // }
 
     /**
-     * The psikolog_non_profesional that belong to the LayananNonProfessional
+     * The psikolog_non_profesional that belong to the LayananMentoring
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */

@@ -16,11 +16,11 @@ class PembayaranLayanan extends Model
         'user_id',
         'voucher_id',
         'ref_transaction_layanan',
-        'paket_professional_conseling_id',
-        'paket_layanan_non_professional_id',
+        'paket_layanan_konseling_id',
+        'paket_layanan_mentoring_id',
         'payment_method',
         'status',
-        'conseling_id',
+        'konseling_id',
         'psikolog_id',
         'sub_total',
         'total_payment',
@@ -39,7 +39,7 @@ class PembayaranLayanan extends Model
 
     public function konseling()
     {
-        return $this->belongsTo(profesional_konseling::class, 'conseling_id', 'id');
+        return $this->belongsTo(LayananKonseling::class, 'konseling_id', 'id');
     }
 
     public function psikolog()
@@ -62,13 +62,13 @@ class PembayaranLayanan extends Model
         return $this->hasOne(DetailPembayaran::class, 'pembayaran_layanan_id', 'id');
     }
 
-    public function paket_non_professionals()
+    public function paket_layanan_mentoring()
     {
-        return $this->belongsTo(PaketLayananNonProfessional::class, 'paket_layanan_non_professional_id', 'id');
+        return $this->belongsTo(PaketLayananMentoring::class, 'paket_layanan_mentoring_id', 'id');
     }
 
-    public function paket_profesional_conselings()
+    public function paket_layanan_konseling()
     {
-        return $this->belongsTo(PaketProfesionalConseling::class, 'paket_professional_conseling_id', 'id');
+        return $this->belongsTo(PaketLayananKonseling::class, 'paket_layanan_konseling_id', 'id');
     }
 }
