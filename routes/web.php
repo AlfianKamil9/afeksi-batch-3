@@ -186,8 +186,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 
 
-    // DASHBOARD USER
+    // DASHBOARD 
     Route::name('dashboard.')->prefix('/dashboard')->group(function() {
+    
+        // DASHBOARD USER
         //Dasboard Utama
         Route::get('', [IndexController::class, 'showDashboardIndex'])->name('index');
         // PROFILE
@@ -204,6 +206,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
         // Rekap Transaksi
         Route::get('/recap-transactions',[RekapTransaction::class, 'showRecapTransaction'])->name('show.rekap.transaksi');
         Route::post('/cancel-order', [RekapTransaction::class, 'cancelingOrder'])->name('cancel.order.transaksi');
+
+        // DASHBOARD ADMIN
+
+        // DASHBOARD KONSELOR
+
+        // DASHBOARD PSIKOLOG
+        
     });
 });
 

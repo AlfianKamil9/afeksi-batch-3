@@ -41,7 +41,7 @@ class GoogleController extends Controller
             $user = User::where('google_id', $googleUser->id)->first();
 
             
-            // LOGIN GOOLE
+            // LOGIN GOOGLE
 
             if($user){
                 Auth::login($user);
