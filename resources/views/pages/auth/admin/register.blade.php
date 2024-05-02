@@ -1,6 +1,6 @@
 @extends('../layout')
 
-@section('title', 'Masuk Admin | AFEKSI')
+@section('title', 'Daftar Admin | AFEKSI')
 
 @section('styles')
 <link rel="stylesheet" href="/assets/css/loginregis-admin.css">
@@ -27,7 +27,7 @@
         <div class="row">
             <div class="col-lg-6 d-none d-md-inline">
                 <div class="content d-flex flex-column justify-content-center align-items-center mt-4">
-                    <img class="img d-flex" src="{{ asset('assets/img/auth-admin/login.png') }}" alt="Img_login">
+                    <img class="img d-flex" src="{{ asset('assets/img/auth-admin/register.png') }}" alt="Img_register">
                     <p class="fw-bold mt-4 fs-7 mb-0" style="color: #232323;">Selamat Datang, Admin!</p>
                     <p class="font mt-2" style="color: #52525B;">Bercerita & berbagi rasa. Tenangkan hati & tenangkan diri.</p>
                 </div>
@@ -63,7 +63,7 @@
                                 </div>
                             </div>
                             <div class="mt-2">
-                                <p class="font-3 text-center" style="color: #667085;">Dengan membuat akun, saya setuju dengan <a href="#" class="redir">Persyaratan Layanan</a> dan <a href="#" class="redir">Kebijakan Privasi</a> AFEKSI.</p>
+                                <p class="font-3 text-center" style="color: #667085;">Dengan membuat akun, saya setuju dengan <a href="#" class="redir">Persyaratan Layanan</a> dan <a href="{{ route('kebijakan-privasi') }}" class="redir">Kebijakan Privasi</a> AFEKSI.</p>
                             </div>
                             <div class="mt-2 d-flex flex-column">
                                 <button class="btn fw-bold font-2">Daftar</button>
@@ -73,11 +73,11 @@
                                     <div class="line mb-3 me-4"></div>
                                 </div>
                                 <a type="button" href="{{ route('auth.google') }}" class="btn-transparent mb-2 fw-semibold d-flex align-items-center justify-content-center border p-1">
-                                    <img src="{{ asset('assets/img/login-register/Google.png') }}" alt="google_img" style="width: 20px;"><span class="font-3 mx-3 text-dark">Masuk dengan Google</span>
+                                    <img src="{{ asset('assets/img/login-register/Google.png') }}" alt="google_img" style="width: 20px;"><span class="font-3 mx-3 text-dark">Daftar dengan Google</span>
                                 </a>
                             </div>
                             <div>
-                                <p class="text-center font" style="color: #7B7B7B;">Sudah punya akun? <a class="redir" href="#">Masuk Sekarang</a></p>
+                                <p class="text-center font" style="color: #7B7B7B;">Sudah punya akun? <a class="redir" href="{{ route('login.admin') }}">Masuk Sekarang</a></p>
                             </div>
                         </form>
                     </div>

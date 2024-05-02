@@ -224,5 +224,5 @@ Route::fallback(function () {
 });
 
 
-Route::view('/login/admin', 'pages.auth.admin.login')->name('login.admin');
-Route::view('/register/admin', 'pages.auth.admin.register')->name('register.admin');
+Route::view('/admin/login', 'pages.auth.admin.login')->name('login.admin');
+Route::view('/admin/register', 'pages.auth.admin.register')->name('register.admin');

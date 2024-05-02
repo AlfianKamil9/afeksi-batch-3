@@ -25,6 +25,11 @@ body {
     height: auto;
 }
 
+.img-2 {
+    width: 60%;
+    height: auto;
+}
+
 .font {
     font-size: small;
 }
@@ -116,4 +121,11 @@ a {
     -moz-border-radius: 8px;
     -ms-border-radius: 8px;
     -o-border-radius: 8px;
+}
+
+/* page login */
+.box-2 {
+    background-color: #D3DAFF;
+    width: 70%;
+    height: auto;
 }
