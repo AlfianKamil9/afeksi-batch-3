@@ -28,7 +28,7 @@
   </style>
 </head>
 <body>
-    @if (Route::currentRouteName() != 'password.request' &&  Route::currentRouteName() != 'password.reset' )     
+    @if (Route::currentRouteName() != 'password.request' &&  Route::currentRouteName() != 'password.reset' && Route::currentRouteName() != 'login.admin' && Route::currentRouteName() != 'register.admin')     
         @include('partials/navbar')
     @endif
   
