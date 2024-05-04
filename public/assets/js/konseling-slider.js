@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const num = 6;
+    const num = 5 || '{{ count($services) }}';
     let swiper = new Swiper(".slide-contents", {
         slidesPerView: 3,
         spaceBetween: 20,
@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
         fade: "true",
         grabCursor: "true",
         autoplay: {
-            delay: 1000,
+            delay: 500,
             disableOnInteraction: false,
         },
         pagination: {
@@ -21,7 +21,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
                 return "";
             },
-
         },
 
         breakpoints: {
