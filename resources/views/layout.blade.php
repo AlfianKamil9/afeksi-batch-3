@@ -19,7 +19,7 @@
   <!-- swipper for slider -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
   <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-  
+
 
   <style>
     * {
@@ -28,18 +28,21 @@
   </style>
 </head>
 <body>
-    @if (Route::currentRouteName() != 'password.request' &&  Route::currentRouteName() != 'password.reset' && Route::currentRouteName() != 'login.admin' && Route::currentRouteName() != 'register.admin')     
-        @include('partials/navbar')
-    @endif
-  
+
+@if (Route::currentRouteName() != 'password.request' &&  Route::currentRouteName() != 'password.reset' && Route::currentRouteName() != 'login.admin' && Route::currentRouteName() != 'register.admin')     
+
+@if (Route::currentRouteName() == 'admin-dashboard')
+    @include('partials.admin-sidebar', ['sidebarContent' => $sidebarContent])
+@endif
+
     <div class="">
-      @yield('content') 
+      @yield('content')
     </div>
 
     <script type="text/javascript" src="https://unpkg.com/external-svg-loader@1.0.0/svg-loader.min.js" async></script>
   <!-- Tambahkan file JavaScript Flatpickr -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     @yield('script')
 </body>
 </html>
