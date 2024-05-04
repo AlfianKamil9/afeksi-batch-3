@@ -65,7 +65,7 @@ Route::get('/kegiatan-campaign', [CampaignController::class, 'index'])->name('ca
 Route::get('/kegiatan-campaign/{slug}', [CampaignController::class, 'show'])->name('campaign.detail');
 Route::get('/rekap-history',[RekapHistoriController::class, 'showRekapHistory'])->name('recap.history');
 Route::get('/rekaphistory/{slug}',[RekapHistoriController::class, 'showRekapHistoryDetail'])->name('recap.history.detail');
-    
+
 
 
 // KARIER
@@ -128,8 +128,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     //CHECKOUT
     Route::get('/professional-konseling/{ref_transaction_layanan}/pembayaran', [KonselingTransaksiController::class, 'showPembayaran'])->name('professional.konseling.checkout');
     Route::post('/professional-konseling/{ref_transaction_layanan}/checkout', [KonselingTransaksiController::class, 'checkoutProfessionalKonseling'])->name('professional.konseling.process.checkout');
-    
-//PEERS KONSELING 
+
+//PEERS KONSELING
     Route::post('/peers-konseling/pilih-sub-topic', [PeersConselingController::class, 'processFirstPeers'])->name('peers.konseling.create.first');
     // PILIHAN KONSELOR
     // Route::get('/peers-konseling/{ref_transaction_layanan}/peers-konseling',[peersConselingController::class, 'showKonselorPeers'])->name('peers.konseling.konselor');
@@ -143,12 +143,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
     //CHECKOUT
     Route::get('/peers-konseling/{ref_transaction_layanan}/pembayaran', [PeersConselingTransaksiController::class, 'showPembayaran'])->name('peers.konseling.checkout');
     Route::post('/peers-konseling/{ref_transaction_layanan}/checkout', [PeersConselingTransaksiController::class, 'checkoutProfessionalKonseling'])->name('peers.konseling.process.checkout');
-    
-    
+
+
     // NOTIFICATION AFTER PEMBAYARAN PROFESIONAL KONSELING---
     Route::get('/{ref_transaction_layanan}/notification-konseling/success', [NotifikasiKonseling::class, 'index'])->name('notification.konseling.success');
 
-    
+
 // ----------------------------------------------------------------------------------------
 
 
@@ -165,8 +165,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/pendaftaran-brand-ambassador', [BrandAmbasador::class, 'index'])->name('volunteer.brand-ambassador');
     Route::post('/pendaftaran-brand-ambassador/create', [BrandAmbasador::class, 'store'])->name('volunteer.register-brand-ambassador');
     // PENDAFTARAN RELATIONSHIP HEROES (VOLUNTEER)
-    Route::get('/pendaftaran-relationship-heroes', [RelationshipHeroes::class, 'index'])->name('volunteer.relationship-heroes'); 
-    Route::post('/pendaftaran-relationship-heroes', [RelationshipHeroes::class, 'store'])->name('volunteer.store-relationship-heroes'); 
+    Route::get('/pendaftaran-relationship-heroes', [RelationshipHeroes::class, 'index'])->name('volunteer.relationship-heroes');
+    Route::post('/pendaftaran-relationship-heroes', [RelationshipHeroes::class, 'store'])->name('volunteer.store-relationship-heroes');
 
 //--------------------------------------------------------------------------------------
 
@@ -179,10 +179,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/{ref_transaction_event}/notification-webinar/success', [NotificationWebinar::class, 'index'])->name('notification.success.webinar');
     // PENDAFTARAN CAMPAIGN
     Route::post('/kegitan-campaign/{slug}', [CampaignController::class, 'store'])->name('daftar-campaign');
-  
 
-   
-  
+
+
+
 
 
 
@@ -223,5 +223,5 @@ Route::fallback(function () {
     return view('errors.404'); // Menampilkan halaman 404
 });
 
-
+Route::view('/admin/dashboard', 'pages.admin-dashboard')->name('admin-dashboard');
 
