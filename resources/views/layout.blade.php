@@ -29,8 +29,10 @@
 </head>
 <body>
 
-@if (Route::currentRouteName() != 'password.request' &&  Route::currentRouteName() != 'password.reset' && Route::currentRouteName() != 'login.admin' && Route::currentRouteName() != 'register.admin')     
-
+@if (Route::currentRouteName() != 'password.request' && Route::currentRouteName() != 'admin-dashboard' &&  Route::currentRouteName() != 'password.reset' && Route::currentRouteName() != 'login.admin' && Route::currentRouteName() != 'register.admin')     
+        @include('partials/navbar')
+@endif
+  
 @if (Route::currentRouteName() == 'admin-dashboard')
     @include('partials.admin-sidebar', ['sidebarContent' => $sidebarContent])
 @endif

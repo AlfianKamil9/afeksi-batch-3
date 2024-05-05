@@ -12,7 +12,7 @@
         <div class="main-content container d-flex flex-column mt-3" style="padding-left:  5dvh; padding-right: 5dvh;">
             <div style="font-size: 24px; font-weight: 500;">
                 <p style="margin: 0;">Afeksi Dashboard</p>
-                <p style="font-size: 14px; font-weight: 400;">Anda login menggunakan username <span style="color: #233DFF;"><a href="#"> {{ Auth::user()->username }}</a></span></p>
+                <p style="font-size: 14px; font-weight: 400;">Anda login menggunakan username <span style="color: #233DFF;"> admin</span></p>
             </div>
 
             <div class="container" style="padding-left:  5dvh; padding-right: 5dvh;">
