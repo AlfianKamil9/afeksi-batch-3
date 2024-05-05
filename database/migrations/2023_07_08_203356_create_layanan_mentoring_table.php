@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('layanan_mentoring', function (Blueprint $table) {
             $table->id();
-            $table->enum('jenis_layanan', ['KONSELING', 'MENTORING']);
+            $table->enum('tipe_layanan', ['KONSELING', 'MENTORING']);
             $table->string('nama_layanan');
             $table->string('slug');
             $table->timestamps();

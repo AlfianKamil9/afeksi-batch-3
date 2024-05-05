@@ -46,7 +46,7 @@
 <div class="contents row">
       <h1 style="color: #233dff">Konselor</h1>
       <div class="side col-lg-3 col-md-4 mb-5">
-        <form method="get" action="{{ route('professional.konseling.konselor', $slug) }}">
+        <form method="get" action="{{ route('professional.konseling.konselor') }}">
         <div class="form-group">
           <p class="side-heading fw-semibold">Filter</p>
           <div class="password-container">
@@ -69,26 +69,18 @@
 
         <div class="form-group">
           <p class="side-heading fw-semibold">Topik</p>
+          @foreach ($topic as $item)     
           <div class="form-check">
-            <input class="form-check-input" name="topic" type="radio" @if ( request('topic') == "Relationship") checked @endif  value="Relationship" id="relationshipCheckbox" />
-            <label class="form-check-label" for="relationshipCheckbox"> Relationship </label>
+            {{-- {{ request('topic') }} --}}
+            @if (!request('topic'))
+              <input class="form-check-input" name="topic" type="radio" @if($item->nama_layanan == 'Relationship' ) checked  @endif  value="{{ $item->nama_layanan }}" id="relationshipCheckbox" />
+            <label class="form-check-label" for="relationshipCheckbox"> {{ $item->nama_layanan }} </label>
+            @else
+              <input class="form-check-input" name="topic" type="radio" @if(request('topic') ==  $item->nama_layanan  ) checked  @endif  value="{{ $item->nama_layanan }}" id="relationshipCheckbox" />
+              <label class="form-check-label" for="relationshipCheckbox"> {{ $item->nama_layanan }} </label>
+            @endif
           </div>
-          <div class="form-check">
-            <input class="form-check-input" name="topic" type="radio" @if ( request('topic') == "Pendidikan") checked @endif  value="Pendidikan" id="selfLoveCheckbox" />
-            <label class="form-check-label" for="selfLoveCheckbox"> Pendidikan </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" name="topic" type="radio" @if ( request('topic') == "Kesetaraan") checked @endif  value="Kesetaraan" id="selfLoveCheckbox" />
-            <label class="form-check-label" for="selfLoveCheckbox"> Kesetaraan Gender</label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" name="topic" type="radio" @if ( request('topic') == "Kesehatan") checked @endif value="Kesehatan" id="selfLoveCheckbox" />
-            <label class="form-check-label" for="selfLoveCheckbox"> Kesehatan </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" name="topic" type="radio"@if ( request('topic') == "Family Issue") checked @endif  value="Family Issue" id="selfLoveCheckbox" />
-            <label class="form-check-label" for="selfLoveCheckbox"> Family Issue </label>
-          </div>
+          @endforeach
         </div>
         
 
@@ -96,7 +88,7 @@
 
         <div class="d-flex flex-column mt-4">
           <button type="submit" class="btn side-btn">Terapkan Filter</button>
-          <a href="{{ route('professional.konseling.konselor', $slug) }}" class="btn side-btn btn-outline">Hapus Filter</a>
+          <a href="{{ route('professional.konseling.konselor') }}" class="btn side-btn btn-outline">Hapus Filter</a>
         </div>
         </form>
       </div>
@@ -104,9 +96,10 @@
 
       <div class="content col-lg-9 col-md-8">
         <div class="row d-flex ps-3">
+          {{-- {{ request('topic') }} --}}
           @forelse ($data as $item)
               <div class="col-lg-6 p-2">
-                <form action="{{ route('professional.konseling.process.pilih-konselor', $slug)}}" method="POST">
+                <form action="{{ route('professional.konseling.process.pilih-konselor') }}" method="POST">
                   @csrf
                 <div class="card border-0">
                   <div class="card-top d-flex align-items-center justify-content-between">
@@ -121,12 +114,13 @@
                     <span>(500)</span>
                   </div>
                   <div class="person">
-                    <h5 class="m-0">{{ $item->user->nama }}</h5>
+                    <h5 class="m-0">{{ $item->user->nama }} </h5>
                     <span>
                      
-                      {{ $item->user->education[$item->user->education->count() - 1]->jenjang }} {{ $item->user->education[$item->user->education->count() - 1]->instansi }}</span>
+                     {{ $item->user->education[$item->user->education->count() - 1]->jenjang}}  {{ $item->user->education[$item->user->education->count() - 1]->instansi }} </span>
                   </div>
                   <img src="/assets/img/psikolog-konselor/Rectangle 816.png" alt="" class="main-img">
+                  <input type="hidden" name="konseling_id" value="{{ $p }}">
                   <button type="submit" class="btn side-btn" name="value_id" value="{{ $item->id }}">Jadwalkan Sesi Sekarang</button>
                 </div>
                 </form>

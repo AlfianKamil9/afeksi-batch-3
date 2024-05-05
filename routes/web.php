@@ -27,7 +27,7 @@ use App\Http\Controllers\Transaksi\Event\WebinarTransaksiController;
 use App\Http\Controllers\Transaksi\Layanan\KonselingTransaksiController;
 use App\Http\Controllers\Transaksi\Layanan\MentoringTransaksiController;
 use App\Http\Controllers\Transaksi\Layanan\PeersConselingTransaksiController;
-
+use App\Models\LayananKonseling;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,7 +65,7 @@ Route::get('/kegiatan-campaign', [CampaignController::class, 'index'])->name('ca
 Route::get('/kegiatan-campaign/{slug}', [CampaignController::class, 'show'])->name('campaign.detail');
 Route::get('/rekap-history',[RekapHistoriController::class, 'showRekapHistory'])->name('recap.history');
 Route::get('/rekaphistory/{slug}',[RekapHistoriController::class, 'showRekapHistoryDetail'])->name('recap.history.detail');
-    
+
 
 
 // KARIER
@@ -83,7 +83,8 @@ Route::get('/mentoring', function () {
 })->name('mentoring');
 // KONSELING
 Route::get('/konseling', function () {
-    return view('pages.page-konseling');
+    $data = LayananKonseling::where('tipe_layanan', 'PROFESSIONAL KONSELING')->get();
+    return view('pages.page-konseling', compact('data'));
 })->name('konseling');
 
 // ARTIKEL
@@ -117,8 +118,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
   // PILIHAN SUB PROFESSIONAL KONSELING
     Route::post('/professional-konseling/pilih-sub-topic', [ProfessionalController::class, 'createProfessional'])->name('professional.konseling.create.first');
   // PILIHAN KONSELOR
-    Route::get('/professional-konseling/{ref_transaction_layanan}/pilihan-konselor-professional-konseling',[ProfessionalController::class, 'showAllKonselor'])->name('professional.konseling.konselor');
-    Route::post('/professional-konseling/{ref_transaction_layanan}/pilihan-konselor-professional-konseling',[ProfessionalController::class, 'processPilihKonselor'])->name('professional.konseling.process.pilih-konselor');
+    Route::get('/professional-konseling/pilihan-konselor-professional-konseling',[ProfessionalController::class, 'showAllKonselor'])->name('professional.konseling.konselor');
+    Route::post('/professional-konseling/proses/pilihan-konselor-professional-konseling',[ProfessionalController::class, 'processPilihKonselor'])->name('professional.konseling.process.pilih-konselor');
     // PAKET PROFESSIONAL KONSELING
     Route::get('/professional-konseling/{ref_transaction_layanan}/pilihan-paket-professional-konseling', [ProfessionalController::class, 'showPaketKonseling'])->name('professional.konseling.pilihan.paket');
     Route::post('/professional-konseling/{ref_transaction_layanan}/pilihan-paket-professional-konseling', [ProfessionalController::class, 'processPaketKonseling'])->name('professional.konseling.process.paket');
@@ -128,8 +129,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     //CHECKOUT
     Route::get('/professional-konseling/{ref_transaction_layanan}/pembayaran', [KonselingTransaksiController::class, 'showPembayaran'])->name('professional.konseling.checkout');
     Route::post('/professional-konseling/{ref_transaction_layanan}/checkout', [KonselingTransaksiController::class, 'checkoutProfessionalKonseling'])->name('professional.konseling.process.checkout');
-    
-//PEERS KONSELING 
+
+//PEERS KONSELING
     Route::post('/peers-konseling/pilih-sub-topic', [PeersConselingController::class, 'processFirstPeers'])->name('peers.konseling.create.first');
     // PILIHAN KONSELOR
     // Route::get('/peers-konseling/{ref_transaction_layanan}/peers-konseling',[peersConselingController::class, 'showKonselorPeers'])->name('peers.konseling.konselor');
@@ -143,12 +144,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
     //CHECKOUT
     Route::get('/peers-konseling/{ref_transaction_layanan}/pembayaran', [PeersConselingTransaksiController::class, 'showPembayaran'])->name('peers.konseling.checkout');
     Route::post('/peers-konseling/{ref_transaction_layanan}/checkout', [PeersConselingTransaksiController::class, 'checkoutProfessionalKonseling'])->name('peers.konseling.process.checkout');
-    
-    
+
+
     // NOTIFICATION AFTER PEMBAYARAN PROFESIONAL KONSELING---
     Route::get('/{ref_transaction_layanan}/notification-konseling/success', [NotifikasiKonseling::class, 'index'])->name('notification.konseling.success');
 
-    
+
 // ----------------------------------------------------------------------------------------
 
 
@@ -165,8 +166,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/pendaftaran-brand-ambassador', [BrandAmbasador::class, 'index'])->name('volunteer.brand-ambassador');
     Route::post('/pendaftaran-brand-ambassador/create', [BrandAmbasador::class, 'store'])->name('volunteer.register-brand-ambassador');
     // PENDAFTARAN RELATIONSHIP HEROES (VOLUNTEER)
-    Route::get('/pendaftaran-relationship-heroes', [RelationshipHeroes::class, 'index'])->name('volunteer.relationship-heroes'); 
-    Route::post('/pendaftaran-relationship-heroes', [RelationshipHeroes::class, 'store'])->name('volunteer.store-relationship-heroes'); 
+    Route::get('/pendaftaran-relationship-heroes', [RelationshipHeroes::class, 'index'])->name('volunteer.relationship-heroes');
+    Route::post('/pendaftaran-relationship-heroes', [RelationshipHeroes::class, 'store'])->name('volunteer.store-relationship-heroes');
 
 //--------------------------------------------------------------------------------------
 
@@ -179,10 +180,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/{ref_transaction_event}/notification-webinar/success', [NotificationWebinar::class, 'index'])->name('notification.success.webinar');
     // PENDAFTARAN CAMPAIGN
     Route::post('/kegitan-campaign/{slug}', [CampaignController::class, 'store'])->name('daftar-campaign');
-  
 
-   
-  
+
+
+
 
 
 
@@ -234,4 +235,7 @@ Route::fallback(function () {
 });
 
 
+Route::view('/admin/login', 'pages.auth.admin.login')->name('login.admin');
+Route::view('/admin/register', 'pages.auth.admin.register')->name('register.admin');
+Route::view('/admin/dashboard', 'pages.admin-dashboard')->name('admin-dashboard');
 

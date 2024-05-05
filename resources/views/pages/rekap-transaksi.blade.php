@@ -125,7 +125,7 @@
                     <div class="card-middle d-flex px-4 py-3 gap-3 ">
                         <img src="assets/img/dashboard-profile/cardpic.png" alt="">
                         <div class="texts">
-                            <p class="m-0">[{{ $item->paket_layanan_konseling->layanan_konseling->jenis_layanan }}] Paket - {{ $item->paket_layanan_konseling->nama_paket }} - {{ $item->paket_layanan_konseling->layanan_konseling->namaPengalaman }}</p>
+                            <p class="m-0">[{{ $item->paket_layanan_konseling->layanan_konseling->tipe_layanan }}] Paket - {{ $item->paket_layanan_konseling->nama_paket }} - {{ $item->paket_layanan_konseling->layanan_konseling->nama_layanan }}</p>
                             <span>{{ $item->paket_layanan_konseling->jumlah_sesi }} sesi</span>
                         </div>
                     </div>
@@ -191,7 +191,7 @@
                     <div class="card-middle d-flex px-4 py-3 gap-3 ">
                         <img src="assets/img/dashboard-profile/cardpic.png" alt="">
                         <div class="texts">
-                            <p class="m-0">[{{ $item->paket_layanan_mentoring->layanan_mentoring->jenis_layanan }}] {{ $item->paket_layanan_mentoring->nama_paket }} - {{ $item->paket_layanan_mentoring->layanan_mentoring->nama_layanan  }} </p>
+                            <p class="m-0">[{{ $item->paket_layanan_mentoring->layanan_mentoring->tipe_layanan }}] {{ $item->paket_layanan_mentoring->nama_paket }} - {{ $item->paket_layanan_mentoring->layanan_mentoring->nama_layanan  }} </p>
                             <span>{{ $item->paket_layanan_mentoring->jumlah_sesi }} 1 sesi</span>
                         </div>
                     </div>

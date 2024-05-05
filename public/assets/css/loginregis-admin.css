@@ -1,0 +1,131 @@
+* {
+    font-family: "Rubik", sans-serif;
+}
+
+body {
+    background-color: #f4f4f4 !important;
+}
+
+.row {
+    height: 100%;
+}
+
+.box {
+    background-color: #D3DAFF;
+    width: 70%;
+    height: auto;
+}
+
+.content {
+    height: 100%;
+}
+
+.img {
+    width: 75%;
+    height: auto;
+}
+
+.img-2 {
+    width: 60%;
+    height: auto;
+}
+
+.font {
+    font-size: small;
+}
+
+.font-2 {
+    font-weight: bold;
+    font-size: small !important;
+}
+
+.font-3 {
+    font-size: small;
+}
+
+.form-card {
+    background-color: #FFFFFF;
+    height: 90%;
+    border-radius: 16px;
+    -webkit-border-radius: 16px;
+    -moz-border-radius: 16px;
+    -ms-border-radius: 16px;
+    -o-border-radius: 16px;
+}
+
+.content-form {
+    height: 100%;
+}
+
+.form-control::placeholder {
+    font-size: smaller;
+}
+
+.password-container {
+    position: relative;
+}
+
+.password-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px; 
+    cursor: pointer;
+    height: 19px;
+}
+
+.password-icon-2 {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px; 
+    cursor: pointer;
+    height: 19px;
+}
+
+.redir {
+    text-decoration: none;
+    color: #233DFF;
+}
+
+.redir:hover {
+    color: #5468fd;
+}
+
+.btn {
+    width: 100%;
+    background-color: #233DFF !important;
+    color: white !important;
+}
+
+.btn:hover {
+    background-color: #475dff !important;
+}
+
+.line {
+    flex: 1;
+    border-bottom: 2px solid #9aa2b1;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+.button {
+    border-color: 1px solid #9aa2b1 !important;
+}
+
+.border {
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+}
+
+/* page login */
+.box-2 {
+    background-color: #D3DAFF;
+    width: 70%;
+    height: auto;
+}

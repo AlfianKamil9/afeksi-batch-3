@@ -15,22 +15,22 @@ class LayananMentoringSeeder extends Seeder
     {
         $layanan = [
             // [
-            //     'jenis_layanan' => 'KONSELING',
+            //     'tipe_layanan' => 'KONSELING',
             //     'nama_layanan' => 'Peers Counseling',
             //     'slug' => 'peers-counseling'
             // ],
             [
-                'jenis_layanan' => 'MENTORING',
+                'tipe_layanan' => 'MENTORING',
                 'nama_layanan' => 'Parenting Mentoring',
                 'slug' => 'parenting-mentoring'
             ],
             [
-                'jenis_layanan' => 'MENTORING',
+                'tipe_layanan' => 'MENTORING',
                 'nama_layanan' => 'Pre Marriage Mentoring',
                 'slug' => 'pre-marriage-mentoring'
             ],
             [
-                'jenis_layanan' => 'MENTORING',
+                'tipe_layanan' => 'MENTORING',
                 'nama_layanan' => 'Relationship Mentoring',
                 'slug' => 'relationship-mentoring'
             ]

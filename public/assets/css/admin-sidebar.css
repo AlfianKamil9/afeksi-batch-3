@@ -1,0 +1,116 @@
+    #wrapper {
+        overflow-x: hidden;
+        background-color: #F6F8FB;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    #sidebar-wrapper {
+        min-height: 100vh;
+        margin-left: -18rem;
+        transition: margin 0.25s ease-out;
+        padding: 10px 20px;
+    }
+
+    #sidebar-wrapper .sidebar-heading {
+        font-size: 20px;
+        background-color: #ffffff;
+    }
+
+    .sidebar-heading {
+        color: #233DFF;
+
+    }
+
+    #sidebar-wrapper .list-side-item {
+        width: 15rem;
+    }
+
+    .list-side-item {
+        justify-content: space-around;
+    }
+
+    .side-item {
+        color: #94a8be;
+        transition: background-color 0.3s ease;
+        text-decoration: none;
+        gap: 10px;
+
+    }
+
+    .side-item:hover,
+    .side-item.active {
+        color: white;
+        background: #233DFF;
+        border-radius: 10px;
+    }
+
+    .side-item:hover svg path {
+        fill: white;
+    }
+
+    #page-content-wrapper {
+        min-width: 100vw;
+    }
+
+    body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
+        margin-left: 0;
+    }
+
+    .button-menu {
+        background-color: #233dff;
+        color: #fff;
+        border: 2px solid transparent;
+        width: 93px;
+        transition: transform 0.3s ease, background-color 0.3s ease;
+        font-size: 14px;
+        align-items: center;
+    }
+
+    .button-notify,
+    .button-profile {
+        transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .button-menu:hover {
+        transform: scale(1.1);
+        color: #fff;
+        background: #233dff;
+    }
+
+    .button-notify:hover,
+    .button-profile:hover {
+        transform: scale(1.1);
+    }
+
+    .button-menu:focus,
+    .button-notify:focus,
+    .button-profile:focus {
+        outline: #233dff;
+
+    }
+
+    .button-container {
+        padding-left: 3rem;
+    }
+
+    .navbar {
+        background-color: #ffffff;
+    }
+
+@media (min-width: 768px) {
+    #sidebar-wrapper {
+        margin-left: -17.5rem;
+    }
+
+    #page-content-wrapper {
+        min-width: 0;
+        width: 100%;
+    }
+
+    body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
+        margin-left: 0;
+    }
+}

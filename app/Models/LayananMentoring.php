@@ -15,7 +15,7 @@ class LayananMentoring extends Model
     protected $table = 'layanan_mentoring';
     protected $guarded = ['id'];
     protected $fillable = [
-        'jenis_layanan',
+        'tipe_layanan',
         'nama_layanan',
         'slug'
     ];

@@ -25,10 +25,10 @@ class PeersConselingController extends Controller
 
     public function showKonselorPeers(Request $request, $ref_transaction_layanan) {
         $t = PembayaranLayanan::with('konseling')->where('ref_transaction_layanan', $ref_transaction_layanan)->firstOrFail();
-        $t = $t->konseling->namaPengalaman;
+        $t = $t->konseling->nama_layanan;
         $slug = $ref_transaction_layanan;
         $kueri = Konselor::with('topic', 'konseling')->whereHas('konseling', function($query) use ($t) {
-            $query->where('namaPengalaman', $t);
+            $query->where('nama_layanan', $t);
         })->orderBy('id', 'desc');
         
         // Filter using input type text
@@ -52,7 +52,7 @@ class PeersConselingController extends Controller
                             $query->where('jenis_topic', 'like', "%$kategori%");
                         })
                         ->whereHas('konseling', function($query) use ($t) {
-                            $query->where('namaPengalaman', $t);
+                            $query->where('nama_layanan', $t);
                         })
                         ->get();
         }
