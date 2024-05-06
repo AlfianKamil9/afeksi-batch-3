@@ -24,19 +24,19 @@
 <div class="d-flex justify-content-center align-items-center" style="min-height: 100vh;">
     <div class="box-2 mt-5 mb-5">
         <div class="row">
-            <div class="col-lg-6 d-none d-md-inline">
+            <div class="col-lg-6 d-md-inline">
                 <div class="content d-flex flex-column justify-content-center align-items-center mt-1">
                     <img class="img-2 d-flex" src="{{ asset('assets/img/auth-admin/login.png') }}" alt="Img_login">
                     <p class="fw-bold mt-4 fs-7 mb-0" style="color: #232323;">Selamat Datang, Admin!</p>
-                    <p class="font mt-2" style="color: #52525B;">Bercerita & berbagi rasa. Tenangkan hati & tenangkan diri.</p>
+                    <p class="font mt-2 text-center fr" style="color: #52525B;">Bercerita & berbagi rasa. Tenangkan hati & tenangkan diri.</p>
                 </div>
             </div>
-            <div class="col-lg-6 d-none d-md-inline">
+            <div class="col-lg-6 d-md-inline">
                 <div class="form-card my-4 mx-4 d-flex flex-column">
                     <div class="px-2 py-3">
                         <div class="d-flex flex-column justify-content-center align-items-center mt-1">
                             <p class="fw-bold mb-0">Masuk ke Akun</p>
-                            <p class="font mt-2">Silahkan masukkan informasi akun anda.</p>
+                            <p class="font mt-2 text-center">Silahkan masukkan informasi akun anda.</p>
                         </div>
                         <form class="form justify-content-start px-1 d-flex flex-column" method="POST" action="">
                             <div class="input-group-sm mt-2">
