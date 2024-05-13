@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('rating_konselors', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('konselor_id');
+            $table->unsignedBigInteger('konselor_id');
             $table->date('tanggal_rating');
             $table->string('rating');
             $table->string('review');
@@ -22,7 +22,7 @@ return new class extends Migration
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
 
-            // $table->foreign('konselor_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('konselor_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
 
         });
     }

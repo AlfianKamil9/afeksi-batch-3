@@ -14,20 +14,20 @@ class MyEbookSeeder extends Seeder
     public function run(): void
     {
         MyEbook::create([
-            'user_id' => '13',
-            'book_id' => '50'
+            'user_id' => '1',
+            'book_id' => '1'
         ]);
         MyEbook::create([
-            'user_id' => '11',
-            'book_id' => '55'
+            'user_id' => '1',
+            'book_id' => '1'
         ]);
         MyEbook::create([
-            'user_id' => '14',
-            'book_id' => '60'
+            'user_id' => '1',
+            'book_id' => '2'
         ]);
         MyEbook::create([
-            'user_id' => '12',
-            'book_id' => '65'
+            'user_id' => '1',
+            'book_id' => '2'
         ]);
     }
 }
