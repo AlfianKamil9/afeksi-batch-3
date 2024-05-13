@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\UserEducation;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -15,11 +16,14 @@ use Illuminate\Validation\Rules\Password;
 class ProfileController extends Controller
 {
     public function showDashboardProfile() {
-        return view('pages.dashboard-profile');
+        $userEducation = UserEducation::where('user_id', auth()->user()->id)->first();
+        $instansi = $userEducation ? $userEducation->instansi : null;
+        return view('pages.dashboard-profile', compact('instansi'));
     }
+    
 
     public function processChanges(Request $request) {
-        $validate = Validator::make($request->all(), [
+        $validator = Validator::make($request->all(), [
             "nama" => "required",
             "email" => "required|email:dns",
             "tgl_lahir" => "required",
@@ -28,10 +32,22 @@ class ProfileController extends Controller
             "jenisKelamin" => "required",
             "domisili" => "required",
             "institusi" => "required"
+        ], [
+            "nama.required" => "nama harus diisi.",
+            "email.required" => "email harus diisi.",
+            "email.email" => "Format email tidak valid.",
+            "tgl_lahir.required" => "tanggal lahir harus diisi.",
+            "no_whatsapp.required" => "nomor WhatsApp harus diisi.",
+            "pekerjaan.required" => "pekerjaan harus diisi.",
+            "jenisKelamin.required" => "jenis kelamin harus diisi.",
+            "domisili.required" => "domisili harus diisi.",
+            "institusi.required" => "institusi harus diisi."
         ]);
-        if ($validate -> fails()) {
-            return back()->with('error', $validate->messages());
+        
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
         }
+        
         User::where('id', auth()->user()->id)->update([
             'nama' => $request->nama,
             'email' =>$request->email,
@@ -40,8 +56,23 @@ class ProfileController extends Controller
             'domisili' => $request->domisili,
             'pekerjaan' => $request->pekerjaan,
             'jenisKelamin' => $request->jenisKelamin,
-            'institusi' => $request->institusi, 
         ]);
+        
+        // mencari apakah instansi user sudah ada atau belum
+
+        $instansi = UserEducation::where('user_id', auth()->user()->id)->first();
+
+        if($instansi){
+            UserEducation::where('user_id',auth()->user()->id)->update([
+                'user_id' => auth()->user()->id,
+                'instansi' => $request->institusi
+            ]);
+        }else{
+            UserEducation::create([
+                'user_id' => auth()->user()->id,
+                'instansi' => $request->institusi
+            ]);
+        }
         return back()->with('success', "Sukses Update Profile");
     }
 

@@ -190,6 +190,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::name('dashboard.')->prefix('/dashboard')->group(function() {
     
         // DASHBOARD USER
+        Route::middleware(['auth','only-user'])->group(function(){
+
+        });
         //Dasboard Utama
         Route::get('', [IndexController::class, 'showDashboardIndex'])->name('index');
         // PROFILE
@@ -208,10 +211,21 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::post('/cancel-order', [RekapTransaction::class, 'cancelingOrder'])->name('cancel.order.transaksi');
 
         // DASHBOARD ADMIN
-
+        Route::middleware(['auth','only-admin'])->group(function(){
+           
+        });
         // DASHBOARD KONSELOR
+        Route::middleware(['auth','only-konselor'])->group(function(){
 
+        });
         // DASHBOARD PSIKOLOG
+        Route::middleware(['auth','only-psikolog'])->group(function(){
+
+        });
+        //DASHBOARD WRITTER
+        Route::middleware(['auth','only-writter'])->group(function(){
+
+        });
         
     });
 });

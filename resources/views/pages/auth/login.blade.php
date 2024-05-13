@@ -16,12 +16,12 @@
  {{ session('success') }}
 </div>
 @endif
-
+--}}
 @if (session('error'))
 <div class="alert alert-danger">
  {{ session('error') }}
 </div>
-@endif --}}
+@endif 
 
 
 <div class="container-lg mt-5 px-4" style="padding-top:94px;">
