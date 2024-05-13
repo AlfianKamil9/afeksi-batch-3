@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\GuestStar;
+use App\Models\MyMentoring;
 use Illuminate\Database\Seeder;
 use Database\Seeders\UserSeeder;
 use Database\Seeders\EventSeeder;
@@ -14,6 +15,9 @@ use Database\Seeders\EducationUserSeeder;
 use Database\Seeders\EventCategorySeeder;
 use Database\Seeders\PaketLayananMentoringSeeder;
 use Database\Seeders\PaketLayananProfessionalKonselingSeeder;
+use Database\Seeders\RatingKonselorSeeder;
+use Database\Seeders\MyEbookSeeder;
+use Database\Seeders\MyMentoringSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -46,5 +50,8 @@ class DatabaseSeeder extends Seeder
         $this->call(konselingKonselorSeeder::class);
         $this->call(EducationUserSeeder::class);
         $this->call(TestimonialInternshipSeeder::class);
+        $this->call(RatingKonselorSeeder::class);
+        $this->call(MyEbookSeeder::class);
+        $this->call(MyMentoringSeeder::class);
     }
 }
