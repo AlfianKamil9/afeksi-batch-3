@@ -230,8 +230,7 @@
 
             </div>
         </nav>
-        {!! $sidebarContent !!}
-
+            {!! $sidebarContent !!}
     </div>
 </div>
 
