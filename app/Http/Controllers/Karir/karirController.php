@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Karir;
 
 use App\Http\Controllers\Controller;
 use App\Models\internshipPosition;
+use App\Models\testimonial_internship;
 use Illuminate\Http\Request;
 
 class karirController extends Controller
@@ -45,6 +46,7 @@ class karirController extends Controller
                 ->Where('tipe_kerja', 'LIKE', '%' . $request->tipe_kerja . '%')
                 ->get();
         }
-        return view('pages.Karir.karir', compact('result'));
+        $testimonialInternship = testimonial_internship::all()->toArray();
+        return view('pages.Karir.karir', ['testimonials' => $testimonialInternship], compact('result'));
     }
 }
