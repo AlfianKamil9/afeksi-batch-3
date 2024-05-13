@@ -3,14 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\RolesUser;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Validator;
 use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\Validator;
 
 class GoogleController extends Controller
 {   
@@ -45,7 +46,18 @@ class GoogleController extends Controller
 
             if($user){
                 Auth::login($user);
-                return redirect()->intended(RouteServiceProvider::HOME);
+                $roles = auth()->user()->roles->roles;
+            if($roles == 'user'){
+                return redirect('/dashboard');
+            }elseif($roles == 'admin'){
+                dd('ini halaman admin');
+            }elseif($roles == 'superadmin'){
+                dd('ini halaman superadmin');
+            }elseif($roles == 'psikolog'){
+                dd('ini halaman psikolog');
+            }elseif($roles == 'konselor'){
+                dd('ini halaman konselor');
+            }
             }else{
 
                 //  VALIDASI JIKA GAGAL 
@@ -53,13 +65,17 @@ class GoogleController extends Controller
                     return redirect()->route('register')-> withErrors($validator)->withInput();
                 }
                 
+                // mencari role id dengan roles user
+                $roleId = RolesUser::where('roles','user')->first()->id;
+
                  // REGISTER GOOGLE 
-                
+             
                 $newUser= User::create([
                     'nama' => $googleUser->name,
                     'email' => $googleUser->email,
                     'password' => Hash::make('afeksiUserGoogle123'),
                     'google_id' => $googleUser->id,
+                    'role_id' => $roleId,
                     // 'email_verified_at' => now()
                 ]);
 

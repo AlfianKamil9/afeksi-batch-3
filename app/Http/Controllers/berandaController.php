@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\testimonial_internship;
 use App\Models\User;
 use App\Models\Konselor;
 use Illuminate\Http\Request;
@@ -14,7 +15,10 @@ class berandaController extends Controller
         $konselor = Konselor::with('user.roles')->get();
         $sa = $psikolog->concat($konselor)->toArray();
         shuffle($sa);
+
+        // ambil data testimonial
+        $testimonialInternship = testimonial_internship::all()->toArray();
         //return response()->json($sa);
-        return view('pages.landing-page-new', ['sa' => $sa]);
+        return view('pages.landing-page-new', ['sa' => $sa, 'testimonials' => $testimonialInternship]);
     }
 }

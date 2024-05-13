@@ -116,36 +116,16 @@
         <p>Afeksi telah dipercaya para pengguna dari berbagai kalangan.</p>
         <div class="slide-content">
           <div class="card-wrapper swiper-wrapper">
-            <div class="swiper-slide">
-              <img src="../assets/img/landingpage/Ellipse.svg" alt="" style="width: 50px" />
-              <h4>Nama Client</h4>
-              <p>Mahasiswa</p>
-              <span>Sangat Rekomendasi Psikolog di Afeksi ini, karena masalah saya cepat teratasi dengan konsultasi dengan psikolog dari afeksi</span>
-            </div>
-            <div class="swiper-slide">
-              <img src="../assets/img/landingpage/Ellipse.svg" alt="" style="width: 50px" />
-              <h4>Nama Client</h4>
-              <p>Mahasiswa</p>
-              <span>Sangat Rekomendasi Psikolog di Afeksi ini, karena masalah saya cepat teratasi dengan konsultasi dengan psikolog dari afeksi</span>
-            </div>
-            <div class="swiper-slide">
-              <img src="../assets/img/landingpage/Ellipse.svg" alt="" style="width: 50px" />
-              <h4>Nama Client</h4>
-              <p>Mahasiswa</p>
-              <span>Sangat Rekomendasi Psikolog di Afeksi ini, karena masalah saya cepat teratasi dengan konsultasi dengan psikolog dari afeksi</span>
-            </div>
-            <div class="swiper-slide">
-              <img src="../assets/img/landingpage/Ellipse.svg" alt="" style="width: 50px" />
-              <h4>Nama Client</h4>
-              <p>Mahasiswa</p>
-              <span>Sangat Rekomendasi Psikolog di Afeksi ini, karena masalah saya cepat teratasi dengan konsultasi dengan psikolog dari afeksi</span>
-            </div>
-            <div class="swiper-slide">
-              <img src="../assets/img/landingpage/Ellipse.svg" alt="" style="width: 50px" />
-              <h4>Nama Client</h4>
-              <p>Mahasiswa</p>
-              <span>Sangat Rekomendasi Psikolog di Afeksi ini, karena masalah saya cepat teratasi dengan konsultasi dengan psikolog dari afeksi</span>
-            </div>
+              @foreach ($testimonials as $data)
+                <div class="swiper-slide">
+                    <img src="assets/img/about-us/{{ $data['foto'] }}" class="rounded-circle border shadow-sm" alt="" style="width: 50px; margin-bottom: 10px; height:50px; object-fit:cover" />
+                    <h4>{{ $data['nama'] }}</h4>
+                    <p>{{ $data['posisi'] }}</p>
+                    <span
+                      >{{ $data['testimoni'] }}</span
+                    >
+                </div>
+              @endforeach
           </div>
         </div>
 

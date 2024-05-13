@@ -6,6 +6,7 @@ use App\Http\Controllers\berandaController;
 use App\Http\Controllers\Karir\PeerKonselor;
 use App\Http\Controllers\Karir\BrandAmbasador;
 use App\Http\Controllers\Karir\karirController;
+use App\Http\Controllers\Karir\Volunteer;
 use App\Http\Controllers\Event\WebinarController;
 use App\Http\Controllers\Event\CampaignController;
 use App\Http\Controllers\Karir\RelationshipHeroes;
@@ -73,9 +74,7 @@ Route::get('/karir', [karirController::class, 'index'])->name('karir');
 Route::get('/join-konselor', function () {
     return view('pages.Karir.pendaftaran-konselor');
 })->name('pendaftaran.konselor');
-Route::get('/join-volunteer', function () {
-    return view('pages.Karir.volunteer');
-})->name('join.volunteer');
+Route::get('/join-volunteer', [Volunteer::class, 'index'])->name('join.volunteer');
 
 // MENTORING
 Route::get('/mentoring', function () {
@@ -191,28 +190,41 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::name('dashboard.')->prefix('/dashboard')->group(function() {
     
         // DASHBOARD USER
-        //Dasboard Utama
-        Route::get('', [IndexController::class, 'showDashboardIndex'])->name('index');
-        // PROFILE
-        Route::name('profile.')->prefix('/profile')->group(function() {
-            Route::get('', [ProfileController::class, 'showDashboardProfile'])->name('index');
-            Route::post('/changes-data', [ProfileController::class, 'processChanges'])->name('changes.data');
-            Route::get('/ubah-password',[ ProfileController::class, 'showUbahPassword'])->name('show.changePassword');
-            Route::post('/change-password', [ProfileController::class, 'processChangePassword'])->name('changes.password');
-            Route::get('/ubah-foto-profile', [ProfileController::class, 'showUbahFoto'])->name('show.changeFoto');
-            Route::post('/ubah-foto-profile', [ProfileController::class, 'processChangeFoto'])->name('process.changeFoto');
+        Route::middleware(['auth','only-user'])->group(function(){
+            //Dasboard Utama
+            Route::get('', [IndexController::class, 'showDashboardIndex'])->name('index');
+            // PROFILE
+            Route::name('profile.')->prefix('/profile')->group(function() {
+                Route::get('', [ProfileController::class, 'showDashboardProfile'])->name('index');
+                Route::post('/changes-data', [ProfileController::class, 'processChanges'])->name('changes.data');
+                Route::get('/ubah-password',[ ProfileController::class, 'showUbahPassword'])->name('show.changePassword');
+                Route::post('/change-password', [ProfileController::class, 'processChangePassword'])->name('changes.password');
+                Route::get('/ubah-foto-profile', [ProfileController::class, 'showUbahFoto'])->name('show.changeFoto');
+                Route::post('/ubah-foto-profile', [ProfileController::class, 'processChangeFoto'])->name('process.changeFoto');
+            });
+            // E-Book
+            Route::get('/e-book', [MyBookController::class, 'showMyBook'])->name('show.e-book');
+            // Rekap Transaksi
+            Route::get('/recap-transactions',[RekapTransaction::class, 'showRecapTransaction'])->name('show.rekap.transaksi');
+            Route::post('/cancel-order', [RekapTransaction::class, 'cancelingOrder'])->name('cancel.order.transaksi');
         });
-        // E-Book
-        Route::get('/e-book', [MyBookController::class, 'showMyBook'])->name('show.e-book');
-        // Rekap Transaksi
-        Route::get('/recap-transactions',[RekapTransaction::class, 'showRecapTransaction'])->name('show.rekap.transaksi');
-        Route::post('/cancel-order', [RekapTransaction::class, 'cancelingOrder'])->name('cancel.order.transaksi');
 
         // DASHBOARD ADMIN
-
+        Route::middleware(['auth','only-admin'])->group(function(){
+           
+        });
         // DASHBOARD KONSELOR
+        Route::middleware(['auth','only-konselor'])->group(function(){
 
+        });
         // DASHBOARD PSIKOLOG
+        Route::middleware(['auth','only-psikolog'])->group(function(){
+
+        });
+        //DASHBOARD WRITTER
+        Route::middleware(['auth','only-writter'])->group(function(){
+
+        });
         
     });
 });

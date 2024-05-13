@@ -159,36 +159,16 @@
     <h2 class="fw-bold text-white">Apa Kata Mereka Tentang Afeksi</h2>
     <div class="slide-content">
       <div class="card-wrapper swiper-wrapper">
-        <div class="swiper-slide">
-          <img src="assets/img/about-us/bimo-transformed.png" class="rounded-circle border shadow-sm"  alt="" style="width: 50px; height:50px; object-fit:cover" />
-          <h4>Bimo Setyo</h4>
-          <p>IT Intern</p>
-          <span class="text-justify">Banyak insight yang saya dapat selama intern sebagai Staff IT di Afeksi dengan belajar berkordinasi dengan beberapa diisi dan belajar membangun startup dari nol.</span>
-        </div>
-        <div class="swiper-slide">
-          <img src="assets/img/about-us/octi-transformed.png" class="rounded-circle border shadow-sm"  alt="" style="width: 50px; height:50px; object-fit:cover" />
-          <h4>Octavia Syeira</h4>
-          <p>Innovator Program Intern</p>
-          <span class="text-justify">Magang di Afeksi telah membuka berbagai kesempatan bagi saya untuk terjun langsung dalam mengeksekusi suatu program/event.</span>
-        </div>
-        <div class="swiper-slide">
-          <img src="assets/img/about-us/santi-transformed.png" class="rounded-circle border shadow-sm"  alt="" style="width: 50px; height:50px; object-fit:cover" />
-          <h4>Elisabeth Desanti</h4>
-          <p>IT Intern</p>
-          <span class="text-justify">Internship di Afeksi seruu bgt. Kita sering banget brainstroming bareng & dapat ilmu baru. Sebelumnya belum pernah pakai figma, sekarang jadi paham dan seneng bisa nambah portofolio. Thank u Afeksi</span>
-        </div>
-        <div class="swiper-slide">
-          <img src="assets/img/about-us/bimo-transformed.png" class="rounded-circle border shadow-sm"  alt="" style="width: 50px; height:50px; object-fit:cover" />
-          <h4>Bimo Setyo</h4>
-          <p>IT Intern</p>
-          <span class="text-justify">Banyak insight yang saya dapat selama intern sebagai Staff IT di Afeksi dengan belajar berkordinasi dengan beberapa diisi dan belajar membangun startup dari nol.</span>
-        </div>
-        <div class="swiper-slide">
-          <img src="assets/img/about-us/octi-transformed.png" class="rounded-circle border shadow-sm"  alt="" style="width: 50px; height:50px; object-fit:cover" />
-          <h4>Octavia Syeira</h4>
-          <p>Innovator Program Intern</p>
-          <span class="text-justify">Magang di Afeksi telah membuka berbagai kesempatan bagi saya untuk terjun langsung dalam mengeksekusi suatu program/event.</span>
-        </div>
+          @foreach ($testimonials as $data)
+            <div class="swiper-slide" id="swipper-slide">
+                <img src="assets/img/about-us/{{ $data['foto'] }}" class="rounded-circle border shadow-sm" alt="" style="width: 50px; margin-bottom: 10px; height:50px; object-fit:cover" />
+                <h4>{{ $data['nama'] }}</h4>
+                <p>{{ $data['posisi'] }}</p>
+                <span
+                  >{{ $data['testimoni'] }}</span
+                >
+            </div>
+          @endforeach
       </div>
     </div>
 

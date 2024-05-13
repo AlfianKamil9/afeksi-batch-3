@@ -273,12 +273,19 @@
               <strong>Success</strong> {{ session('success') }}.
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
-        @elseif(session()->has('error'))
+            @endif
+            @if ($errors->any())
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
-              <strong>Gagal</strong> {{ session('error') }}.
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                <strong>Gagal</strong>
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
+        
         <form class="mx-3" method="POST" action="{{ route('dashboard.profile.changes.data') }}">
           @csrf
               <div class="row">
@@ -341,7 +348,7 @@
                   </div>
                   <div class="mb-3">
                       <label for="instansi" class="form-label">Instansi</label>
-                      <input type="text" class="form-control" id="instansi" name="institusi" placeholder="Instansi Kamu" value="{{ Auth::user()->institusi }}">
+                      <input type="text" class="form-control" id="instansi" name="institusi" placeholder="Instansi Kamu" value="{{ $instansi }}">
                   </div>
                   <div class="my-5 pb-5">
                       <button type="submit" class="btn btn-primary w-100">Simpan Perubahan</button>
