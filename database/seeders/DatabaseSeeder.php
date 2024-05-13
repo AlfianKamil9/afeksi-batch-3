@@ -45,5 +45,6 @@ class DatabaseSeeder extends Seeder
         $this->call(mentoringPsikologPivotSeeder::class);
         $this->call(konselingKonselorSeeder::class);
         $this->call(EducationUserSeeder::class);
+        $this->call(TestimonialInternshipSeeder::class);
     }
 }

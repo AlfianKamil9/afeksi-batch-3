@@ -6,6 +6,7 @@ use App\Http\Controllers\berandaController;
 use App\Http\Controllers\Karir\PeerKonselor;
 use App\Http\Controllers\Karir\BrandAmbasador;
 use App\Http\Controllers\Karir\karirController;
+use App\Http\Controllers\Karir\Volunteer;
 use App\Http\Controllers\Event\WebinarController;
 use App\Http\Controllers\Event\CampaignController;
 use App\Http\Controllers\Karir\RelationshipHeroes;
@@ -73,9 +74,7 @@ Route::get('/karir', [karirController::class, 'index'])->name('karir');
 Route::get('/join-konselor', function () {
     return view('pages.Karir.pendaftaran-konselor');
 })->name('pendaftaran.konselor');
-Route::get('/join-volunteer', function () {
-    return view('pages.Karir.volunteer');
-})->name('join.volunteer');
+Route::get('/join-volunteer', [Volunteer::class, 'index'])->name('join.volunteer');
 
 // MENTORING
 Route::get('/mentoring', function () {
