@@ -177,7 +177,7 @@
               </div>
               <div class="text-container px-2">
                 <h6 class="mt-3 mb-0 fw-bold" style="color: #2139f9">Professional Konseling</h6>
-                <p style="font-size: 10px">{{ $data->paket_layanan_konseling->layanan_konseling->namaPengalaman }} <br>{{ $data->paket_layanan_konseling->nama_paket }}</p>
+                <p style="font-size: 10px">{{ $data->paket_layanan_konseling->layanan_konseling->nama_layanan }} <br>{{ $data->paket_layanan_konseling->nama_paket }}</p>
               </div>
             </div>
           </div>
@@ -191,7 +191,7 @@
                   </div>
                   <div class="flex-grow-1 ms-1 m-3">
                     <h6 class="fw-bold" id='name'>{{ $data->konselor->user->nama }}</h6>
-                    <p class="text-muted">Konselor {{ $data->paket_layanan_konseling->layanan_konseling->namaPengalaman }}</p>
+                    <p class="text-muted">Konselor {{ $data->paket_layanan_konseling->layanan_konseling->nama_layanan }}</p>
                   </div>
                 </div>
               </div>

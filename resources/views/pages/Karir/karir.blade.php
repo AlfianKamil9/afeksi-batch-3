@@ -126,6 +126,7 @@
                     >
                 </div>
               @endforeach
+<<<<<<< HEAD
             {{-- <div class="swiper-slide">
               <img src="../assets/img/landingpage/Ellipse.svg" alt="" style="width: 50px" />
               <h4>Nama Client</h4>
@@ -156,6 +157,8 @@
               <p>Mahasiswa</p>
               <span>Sangat Rekomendasi Psikolog di Afeksi ini, karena masalah saya cepat teratasi dengan konsultasi dengan psikolog dari afeksi</span>
             </div> --}}
+=======
+>>>>>>> thimoty
           </div>
         </div>
 

@@ -21,6 +21,7 @@ class PembayaranLayanan extends Model
         'payment_method',
         'status',
         'konseling_id',
+        'konselor_id',
         'psikolog_id',
         'sub_total',
         'total_payment',

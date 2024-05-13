@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::create('layanan_konseling', function (Blueprint $table) {
             $table->id('id');
-            $table->enum('jenis_layanan', ['PROFESSIONAL KONSELING','PEERS KONSELING']);
-            $table->enum('namaPengalaman', ['Relationship Konseling', 'Quality Gender', 'Peers Konseling']);
+            $table->enum('tipe_layanan', ['PROFESSIONAL KONSELING','PEERS KONSELING']);
+            $table->string('nama_layanan')->nullable();
+            $table->string('image')->nullable();
+            $table->text('details')->nullable();
             $table->timestamps();
         });
     }

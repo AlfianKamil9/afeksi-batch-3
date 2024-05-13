@@ -169,6 +169,7 @@
                 >
             </div>
           @endforeach
+<<<<<<< HEAD
         {{-- <div class="swiper-slide">
           <img src="assets/img/about-us/bimo-transformed.png" class="rounded-circle border shadow-sm"  alt="" style="width: 50px; height:50px; object-fit:cover" />
           <h4>Bimo Setyo</h4>
@@ -199,6 +200,8 @@
           <p>Innovator Program Intern</p>
           <span class="text-justify">Magang di Afeksi telah membuka berbagai kesempatan bagi saya untuk terjun langsung dalam mengeksekusi suatu program/event.</span>
         </div> --}}
+=======
+>>>>>>> thimoty
       </div>
     </div>
 

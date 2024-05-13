@@ -14,9 +14,9 @@ class LayananKonseling extends Model
 
     protected $table = "layanan_konseling";
     protected $fillable = [
-        'jenis_layanan',
-        "namaPengalaman",
-        'slug'
+        'tipe_layanan',
+        "nama_layanan",
+        "image", "details"
     ];
 
 

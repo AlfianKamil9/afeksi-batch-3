@@ -35,6 +35,69 @@ div .container-fluid img {
     z-index: -1;
 }
 
+#swiper-slide {
+    margin-top: 50px;
+    overflow: visible;
+    border-radius: 0.5rem;
+    width: 100%;
+    height: 30rem;
+    margin-bottom: 50px;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat;
+}
+.bg-btn {
+    background-color: #ffe17a;
+    color: #180b7a;
+    font-weight: bold;
+    border: none;
+}
+.bg-btn:hover {
+    background-color: #233dff;
+    color: white;
+    transition: 0.3s ease-in-out;
+}
+
+/* .konseling-img {
+    max-width: 100%;
+    width: auto !important;
+    max-height: 100%;
+    height: auto;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat;
+    background: linear-gradient(200deg, rgba(255, 255, 255, 0) 0%, #233dff 100%),
+        url("/assets/img/konseling/popup/layanan-konseling1.jpeg");
+} */
+.ellipse {
+    width: 20px;
+    height: 20px;
+    background-color: #233dff;
+    border-radius: 100%; /* Membuat elips horizontal */
+}
+.text-konseling {
+    font-size: 12px;
+    font-weight: light;
+    color: #ffe17a !important;
+}
+.bg-konseling {
+    background: rgba(35, 61, 255, 0.2);
+}
+.bg-cardkonseling {
+    background: rgba(255, 225, 122, 1);
+}
+.bg-cardkonseling p {
+    color: #060e7a !important;
+}
+/* .img-layananKonseling {
+    flex: 1;
+    object-fit: contain;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    height: 70%;
+    color: rgb(235, 224, 14);
+    background: linear-gradient(rgba(255, 255, 255, 0) rgba(35, 61, 255, 1));
+} */
 @media (min-width: 1600px) {
     div .container-fluid {
         padding: 5rem 15rem;
@@ -118,6 +181,14 @@ span {
         width: 150%;
         top: 73%;
     }
+    .text-konseling {
+        font-size: 14px;
+        font-weight: light;
+    }
+    .col-md-6 .img-konseling {
+        height: 100%;
+        width: 100%;
+    }
 }
 
 /* caurosel */
@@ -147,10 +218,8 @@ span {
     margin-top: 50px;
     background: var(--secondary);
     overflow: visible;
-    border-radius: 20px;
     padding: 15px;
-    margin-bottom: 100px;
-    border: 1px solid rgb(214, 213, 213);
+    margin-bottom: 50px;
 }
 
 .swiper-slide span {
@@ -159,15 +228,16 @@ span {
 }
 
 .slide-container .swiper-pagination-bullet {
+    width: 50px;
     height: 5px;
-    background-color: rgb(251, 223, 13);
+    background-color: #233dff;
     opacity: 1;
+    border-radius: 0px;
+    margin: 0 !important;
 }
 
 .slide-container .swiper-pagination-bullet-active {
-    width: 25px;
-    height: 5px;
-    border-radius: 5px;
+    background-color: #ffe17a;
 }
 
 .s-btn {
@@ -203,15 +273,37 @@ span {
     .swiper-button-prev {
         display: none !important;
     }
+    .col-md-6 .img-konseling {
+        height: 18rem;
+        width: 100%;
+    }
 }
 
 @media (min-width: 1000px) {
     .card .card-text {
         font-size: 1.5em;
     }
+    .col-md-6 .img-konseling {
+        height: 100%;
+        width: 100%;
+    }
+}
+@media (min-width: 567px) {
+    .modal-dialog {
+        max-width: 80% !important;
+    }
 }
 
 .bg-card-custom {
+    background: linear-gradient(0deg, #354399 0%, #a6b4ff 100%);
+    position: relative;
+}
+.bg-body-custom {
+    background-color: #ffe17a;
+    width: 100%;
+}
+
+/* .bg-card-custom {
     background: rgb(89, 111, 255);
     background: linear-gradient(
         135deg,
@@ -221,9 +313,9 @@ span {
         rgba(254, 225, 121, 1) 32%
     );
     position: relative;
-}
+} */
 
-.bg-card-custom::after {
+/* .bg-card-custom::after {
     content: "";
     background-image: url("../assets/img/konseling/bg-macam-konseling.png");
     background-repeat: no-repeat;
@@ -233,7 +325,7 @@ span {
     position: absolute;
     top: 0;
     left: 80%;
-}
+} */
 
 @media (max-width: 767px) {
     .bg-card-custom::after {
@@ -245,6 +337,10 @@ span {
     .bg-card-custom img {
         position: relative;
         z-index: 1;
+    }
+    .col-md-6 .img-konseling {
+        height: 18rem;
+        width: 100%;
     }
 }
 
