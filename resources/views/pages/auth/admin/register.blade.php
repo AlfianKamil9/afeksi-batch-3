@@ -25,19 +25,19 @@
 <div class="d-flex justify-content-center align-items-center" style="min-height: 100vh;">
     <div class="box mt-5 mb-5">
         <div class="row">
-            <div class="col-lg-6 d-none d-md-inline">
+            <div class="col-lg-6 d-md-inline">
                 <div class="content d-flex flex-column justify-content-center align-items-center mt-4">
                     <img class="img d-flex" src="{{ asset('assets/img/auth-admin/register.png') }}" alt="Img_register">
                     <p class="fw-bold mt-4 fs-7 mb-0" style="color: #232323;">Selamat Datang, Admin!</p>
-                    <p class="font mt-2" style="color: #52525B;">Bercerita & berbagi rasa. Tenangkan hati & tenangkan diri.</p>
+                    <p class="font mt-2 text-center px-2" style="color: #52525B;">Bercerita & berbagi rasa. Tenangkan hati & tenangkan diri.</p>
                 </div>
             </div>
-            <div class="col-lg-6 d-none d-md-inline">
+            <div class="col-lg-6 d-md-inline">
                 <div class="form-card my-4 mx-4 d-flex flex-column">
                     <div class="px-2 py-3">
                         <div class="d-flex flex-column justify-content-center align-items-center mt-1">
                             <p class="fw-bold mb-0">Buat Akun Baru</p>
-                            <p class="font mt-2">Silahkan isi data berikut untuk melanjutkan.</p>
+                            <p class="font fr mt-2 text-center">Silahkan isi data berikut untuk melanjutkan.</p>
                         </div>
                         <form class="form justify-content-start px-1 d-flex flex-column" method="POST" action="">
                             <div class="input-group-sm">
@@ -62,14 +62,14 @@
                                     <img class="password-icon-2" src="{{ asset('assets/img/login-register/mdi_eye.png') }}" alt="" style="width: 18px ;">
                                 </div>
                             </div>
-                            <div class="mt-2">
+                            <!-- <div class="mt-2">
                                 <p class="font-3 text-center" style="color: #667085;">Dengan membuat akun, saya setuju dengan <a href="#" class="redir">Persyaratan Layanan</a> dan <a href="{{ route('kebijakan-privasi') }}" class="redir">Kebijakan Privasi</a> AFEKSI.</p>
-                            </div>
-                            <div class="mt-2 d-flex flex-column">
+                            </div> -->
+                            <div class="mt-4 d-flex flex-column">
                                 <button class="btn fw-bold font-2">Daftar</button>
-                                <div class="other align-items-center justify-content-center d-flex align-content-center mt-3 mb-0">
+                                <div class="align-items-center justify-content-center d-flex align-content-center mt-3 mb-0">
                                     <div class="line mb-3 ms-4"></div>
-                                    <p class="font mx-3" style="color: #7B7B7B;">Atau Daftar Dengan</p>
+                                    <p class="font mx-3 text-center" style="color: #7B7B7B;">Atau Daftar Dengan</p>
                                     <div class="line mb-3 me-4"></div>
                                 </div>
                                 <a type="button" href="{{ route('auth.google') }}" class="btn-transparent mb-2 fw-semibold d-flex align-items-center justify-content-center border p-1">
