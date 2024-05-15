@@ -229,3 +229,7 @@ Route::view('/admin/register', 'pages.auth.admin.register')->name('register.admi
 Route::view('/admin/dashboard', 'pages.admin-dashboard')->name('admin-dashboard');
 Route::view('/admin/event', 'pages.admin-event')->name('admin.event');
 
+
+// Admin Tambah Data Pengelolaan Event
+Route::view('/admin/event/tambahdata', 'pages.Dashboard.Event.tambah-data-event')->name('tambah-data-event');
+
