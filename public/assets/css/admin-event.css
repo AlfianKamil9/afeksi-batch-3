@@ -1,0 +1,116 @@
+.box {
+    background-color: #FFFFFF;
+    width: 95%;
+    border: 1.8px solid #D8D8D8;
+    height: 10vh;
+}
+
+.box-2 {
+    background-color: #FFFFFF;
+    width: 95%;
+    border: 1.8px solid #D8D8D8;
+}
+
+.jdl {
+    font-weight: bold;
+}
+
+.nav {
+    border: none !important;
+}
+
+.text-tab {
+    color: #242424 !important;
+    cursor: pointer;
+    position: relative !important;
+}
+
+.text-tab:hover {
+    color: #DBAE39 !important;
+}
+
+.nav-link:hover::after, .nav-link.active::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #DBAE39;
+    position: relative;
+    top: 10px;
+}
+
+.text-tab.active {
+    color: #DBAE39 !important;
+}
+
+.inp-search {
+    border-radius: 10px;
+    width: 20rem;
+    border: 1.8px solid #D8D8D8;
+    padding-left: 35px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.inp-search::placeholder {
+    color: black;
+    opacity: 1;
+    font-size: 14px;
+}
+
+.btn-1 {
+    border-radius: 10px !important;
+    -webkit-border-radius: 10px !important;
+    -moz-border-radius: 10px !important;
+    -ms-border-radius: 10px !important;
+    -o-border-radius: 10px !important;
+    font-size: 14px !important;
+}
+
+.btn-filter {
+    border: 1.8px solid #D8D8D8 !important;
+    color: #242424 !important;
+    padding-right: 40px !important;
+}
+
+.btn-filter:hover {
+    background-color: #ededed !important;
+}
+
+.search-container {
+    position: relative;
+}
+
+.search-icon {
+    position: absolute;
+    margin-left: 10px;
+    margin-top: 7.5px;
+}
+
+.filter-container {
+    position: relative;
+}
+
+.filter-icon {
+    position: absolute;
+    margin-top: 10px;
+    right: 15px;
+    cursor: pointer;
+}
+
+.count {
+    border: 2.5px solid #233DFF !important;
+    color: #233DFF !important;
+    font-size: 14px !important;
+    border-radius: 20px !important;
+    -webkit-border-radius: 20px !important;
+    -moz-border-radius: 20px !important;
+    -ms-border-radius: 20px !important;
+    -o-border-radius: 20px !important;
+}
+
+.font-small {
+    font-size: 14px;
+}
