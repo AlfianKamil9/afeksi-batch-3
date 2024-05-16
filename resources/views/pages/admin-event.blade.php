@@ -7,6 +7,20 @@
 @endsection
 
 @section('content')
+
+{{--
+@if (session('success'))
+<div class="alert alert-success">
+    {{ session('success') }}
+</div>
+@endif
+
+@if (session('error'))
+<div class="alert alert-danger">
+    {{ session('error') }}
+</div>
+@endif --}}
+
 @php
 $sidebarContent = '
 <div class="m-4">
@@ -34,15 +48,257 @@ $sidebarContent = '
         </div>
         <div class="box-2 tab-content" id="tab-content">
             <div class="tab-pane fade show active" id="nav-webinar" role="tabpanel" aria-labelledby="content-event-tab">
-                <div class="mt-1 ms-3 mb-3">
-                    <button class="count btn fw-bold px-4 py-0 font-small my-1">12 Webinar</button>
+                <div class="mt-1 ms-3">
+                    <button class="count btn fw-bold px-4 py-0 font-small my-1">4 Webinar</button>
                     <p class="mb-1 font-small">Ini adalah Webinar yang telah dibuat</p>
+                </div>
+                <div class="mt-1 w-100">
+                    <table class="w-100">
+                        <tr class="fw-semibold text-center font-small" style="background-color: #1121B7; color: #FFFFFF; height: 47px;">
+                            <th class="id">ID</th>
+                            <th class="title">Title</th>
+                            <th class="date">Date</th>
+                            <th class="ts">Time Start</th>
+                            <th class="category">Category</th>
+                            <th class="part">Participant</th>
+                            <th class="status">Status</th>
+                            <th class="action">Aksi</th>
+                            <th class="detail">
+                                <img class="m-0 p-0" src="/assets/img/admin/detail.png" alt="img_detail" style="width: 18px; height: 18px ;">
+                            </th>
+                        </tr>
+                        <tr class="dataTab text-center font-small">
+                            <td>1</td>
+                            <td class="text text-start ps-2">lorem ipsum</td>
+                            <td>Sabtu, 24/09/23</td>
+                            <td>09:30 WIB</td>
+                            <td>Online Zoom</td>
+                            <td>500</td>
+                            <td class="text-center align-items-center px-2" style="height: 47px;">
+                                <button id="status" class="status-event p-0 w-100 fw-semibold">Selesai</button>
+                            </td>
+                            <td>
+                                <div class="inline d-flex justify-content-center align-items-center">
+                                    <div class="edit-container d-flex align-items-center w-75">
+                                        <img class="edit-icon" src="/assets/img/admin/pencil.png" alt="edit_img">
+                                        <button class="btn btn-edit fw-bold p-0 m-0 ps-3 ms-1">Edit</button>
+                                    </div>
+                                    <div class="d-flex align-items-center w-75 position-relative">
+                                        <img class="trash-icon" src="/assets/img/admin/trash.png" alt="trash_img">
+                                        <button class="btn btn-delete fw-bold p-0 m-0 w-100 me-1 ps-3">Hapus</button>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <img class="m-0 p-0" src="/assets/img/admin/detail-2.png" alt="img_detail" style="width: 18px; height: 18px ; cursor:pointer;">
+                            </td>
+                        </tr>
+                        <tr class="dataTab text-center font-small">
+                            <td>2</td>
+                            <td class="text text-start ps-2">lorem ipsum</td>
+                            <td>Sabtu, 24/09/23</td>
+                            <td>09:30 WIB</td>
+                            <td>Online Zoom</td>
+                            <td>500</td>
+                            <td class="text-center align-items-center px-2" style="height: 47px;">
+                                <button id="status" class="status-event p-0 w-100 fw-semibold">Pending</button>
+                            </td>
+                            <td>
+                                <div class="inline d-flex justify-content-center align-items-center">
+                                    <div class="edit-container d-flex align-items-center w-75">
+                                        <img class="edit-icon" src="/assets/img/admin/pencil.png" alt="edit_img">
+                                        <button class="btn btn-edit fw-bold p-0 m-0 ps-3 ms-1">Edit</button>
+                                    </div>
+                                    <div class="d-flex align-items-center w-75 position-relative">
+                                        <img class="trash-icon" src="/assets/img/admin/trash.png" alt="trash_img">
+                                        <button class="btn btn-delete fw-bold p-0 m-0 w-100 me-1 ps-3">Hapus</button>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <img class="m-0 p-0" src="/assets/img/admin/detail-2.png" alt="img_detail" style="width: 18px; height: 18px ; cursor:pointer;">
+                            </td>
+                        </tr>
+                        <tr class="dataTab text-center font-small">
+                            <td>3</td>
+                            <td class="text text-start ps-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</td>
+                            <td>Sabtu, 24/09/23</td>
+                            <td>09:30 WIB</td>
+                            <td>Online Zoom</td>
+                            <td>500</td>
+                            <td class="text-center align-items-center px-2" style="height: 47px;">
+                                <button id="status" class="status-event p-0 w-100 fw-semibold">Pending</button>
+                            </td>
+                            <td>
+                                <div class="inline d-flex justify-content-center align-items-center">
+                                    <div class="edit-container d-flex align-items-center w-75">
+                                        <img class="edit-icon" src="/assets/img/admin/pencil.png" alt="edit_img">
+                                        <button class="btn btn-edit fw-bold p-0 m-0 ps-3 ms-1">Edit</button>
+                                    </div>
+                                    <div class="d-flex align-items-center w-75 position-relative">
+                                        <img class="trash-icon" src="/assets/img/admin/trash.png" alt="trash_img">
+                                        <button class="btn btn-delete fw-bold p-0 m-0 w-100 me-1 ps-3">Hapus</button>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <img class="m-0 p-0" src="/assets/img/admin/detail-2.png" alt="img_detail" style="width: 18px; height: 18px ; cursor:pointer;">
+                            </td>
+                        </tr>
+                        <tr class="dataTab text-center font-small">
+                            <td>4</td>
+                            <td class="text text-start ps-2">Lorem ipsum dolor sit amet, salto dulu</td>
+                            <td>Sabtu, 24/09/23</td>
+                            <td>09:30 WIB</td>
+                            <td>Online Zoom</td>
+                            <td>500</td>
+                            <td class="text-center align-items-center px-2" style="height: 47px;">
+                                <button id="status" class="status-event p-0 w-100 fw-semibold">Selesai</button>
+                            </td>
+                            <td>
+                                <div class="inline d-flex justify-content-center align-items-center">
+                                    <div class="edit-container d-flex align-items-center w-75">
+                                        <img class="edit-icon" src="/assets/img/admin/pencil.png" alt="edit_img">
+                                        <button class="btn btn-edit fw-bold p-0 m-0 ps-3 ms-1">Edit</button>
+                                    </div>
+                                    <div class="d-flex align-items-center w-75 position-relative">
+                                        <img class="trash-icon" src="/assets/img/admin/trash.png" alt="trash_img">
+                                        <button class="btn btn-delete fw-bold p-0 m-0 w-100 me-1 ps-3">Hapus</button>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <img class="m-0 p-0" src="/assets/img/admin/detail-2.png" alt="img_detail" style="width: 18px; height: 18px ; cursor:pointer;">
+                            </td>
+                        </tr>
+                    </table>
                 </div>
             </div>
             <div class="tab-pane fade" id="nav-campaign" role="tabpanel" aria-labelledby="content-campaign-tab">
-                <div class="mt-1 ms-3 mb-3">
-                    <button class="count btn fw-bold px-4 py-0 font-small my-1">12 Campaign</button>
+                <div class="mt-1 ms-3">
+                    <button class="count btn fw-bold px-4 py-0 font-small my-1">4 Campaign</button>
                     <p class="mb-1 font-small">Ini adalah Campaign yang telah dibuat</p>
+                </div>
+                <div class="mt-1 w-100">
+                    <table class="w-100">
+                        <tr class="fw-semibold text-center font-small" style="background-color: #1121B7; color: #FFFFFF; height: 47px;">
+                            <th class="id">ID</th>
+                            <th class="title">Title</th>
+                            <th class="date">Date</th>
+                            <th class="ts">Time Start</th>
+                            <th class="category">Category</th>
+                            <th class="part">Participant</th>
+                            <th class="status">Status</th>
+                            <th class="action">Aksi</th>
+                            <th class="detail">
+                                <img class="m-0 p-0" src="/assets/img/admin/detail.png" alt="img_detail" style="width: 18px; height: 18px ;">
+                            </th>
+                        </tr>
+                        <tr class="dataTab text-center font-small">
+                            <td>1</td>
+                            <td class="text text-start ps-2">lorem ipsum</td>
+                            <td>Sabtu, 24/09/23</td>
+                            <td>09:30 WIB</td>
+                            <td>Online Zoom</td>
+                            <td>500</td>
+                            <td class="text-center align-items-center px-2" style="height: 47px;">
+                                <button id="status" class="status-event p-0 w-100 fw-semibold">Selesai</button>
+                            </td>
+                            <td>
+                                <div class="inline d-flex justify-content-center align-items-center">
+                                    <div class="edit-container d-flex align-items-center w-75">
+                                        <img class="edit-icon" src="/assets/img/admin/pencil.png" alt="edit_img">
+                                        <button class="btn btn-edit fw-bold p-0 m-0 ps-3 ms-1">Edit</button>
+                                    </div>
+                                    <div class="d-flex align-items-center w-75 position-relative">
+                                        <img class="trash-icon" src="/assets/img/admin/trash.png" alt="trash_img">
+                                        <button class="btn btn-delete fw-bold p-0 m-0 w-100 me-1 ps-3">Hapus</button>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <img class="m-0 p-0" src="/assets/img/admin/detail-2.png" alt="img_detail" style="width: 18px; height: 18px ; cursor:pointer;">
+                            </td>
+                        </tr>
+                        <tr class="dataTab text-center font-small">
+                            <td>2</td>
+                            <td class="text text-start ps-2">lorem ipsum</td>
+                            <td>Sabtu, 24/09/23</td>
+                            <td>09:30 WIB</td>
+                            <td>Online Zoom</td>
+                            <td>500</td>
+                            <td class="text-center align-items-center px-2" style="height: 47px;">
+                                <button id="status" class="status-event p-0 w-100 fw-semibold">Pending</button>
+                            </td>
+                            <td>
+                                <div class="inline d-flex justify-content-center align-items-center">
+                                    <div class="edit-container d-flex align-items-center w-75">
+                                        <img class="edit-icon" src="/assets/img/admin/pencil.png" alt="edit_img">
+                                        <button class="btn btn-edit fw-bold p-0 m-0 ps-3 ms-1">Edit</button>
+                                    </div>
+                                    <div class="d-flex align-items-center w-75 position-relative">
+                                        <img class="trash-icon" src="/assets/img/admin/trash.png" alt="trash_img">
+                                        <button class="btn btn-delete fw-bold p-0 m-0 w-100 me-1 ps-3">Hapus</button>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <img class="m-0 p-0" src="/assets/img/admin/detail-2.png" alt="img_detail" style="width: 18px; height: 18px ; cursor:pointer;">
+                            </td>
+                        </tr>
+                        <tr class="dataTab text-center font-small">
+                            <td>3</td>
+                            <td class="text text-start ps-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</td>
+                            <td>Sabtu, 24/09/23</td>
+                            <td>09:30 WIB</td>
+                            <td>Online Zoom</td>
+                            <td>500</td>
+                            <td class="text-center align-items-center px-2" style="height: 47px;">
+                                <button id="status" class="status-event p-0 w-100 fw-semibold">Pending</button>
+                            </td>
+                            <td>
+                                <div class="inline d-flex justify-content-center align-items-center">
+                                    <div class="edit-container d-flex align-items-center w-75">
+                                        <img class="edit-icon" src="/assets/img/admin/pencil.png" alt="edit_img">
+                                        <button class="btn btn-edit fw-bold p-0 m-0 ps-3 ms-1">Edit</button>
+                                    </div>
+                                    <div class="d-flex align-items-center w-75 position-relative">
+                                        <img class="trash-icon" src="/assets/img/admin/trash.png" alt="trash_img">
+                                        <button class="btn btn-delete fw-bold p-0 m-0 w-100 me-1 ps-3">Hapus</button>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <img class="m-0 p-0" src="/assets/img/admin/detail-2.png" alt="img_detail" style="width: 18px; height: 18px ; cursor:pointer;">
+                            </td>
+                        </tr>
+                        <tr class="dataTab text-center font-small">
+                            <td>4</td>
+                            <td class="text text-start ps-2">Lorem ipsum dolor sit amet, salto dulu</td>
+                            <td>Sabtu, 24/09/23</td>
+                            <td>09:30 WIB</td>
+                            <td>Online Zoom</td>
+                            <td>500</td>
+                            <td class="text-center align-items-center px-2" style="height: 47px;">
+                                <button id="status" class="status-event p-0 w-100 fw-semibold">Selesai</button>
+                            </td>
+                            <td>
+                                <div class="inline d-flex justify-content-center align-items-center">
+                                    <div class="edit-container d-flex align-items-center w-75">
+                                        <img class="edit-icon" src="/assets/img/admin/pencil.png" alt="edit_img">
+                                        <button class="btn btn-edit fw-bold p-0 m-0 ps-3 ms-1">Edit</button>
+                                    </div>
+                                    <div class="d-flex align-items-center w-75 position-relative">
+                                        <img class="trash-icon" src="/assets/img/admin/trash.png" alt="trash_img">
+                                        <button class="btn btn-delete fw-bold p-0 m-0 w-100 me-1 ps-3">Hapus</button>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <img class="m-0 p-0" src="/assets/img/admin/detail-2.png" alt="img_detail" style="width: 18px; height: 18px ; cursor:pointer;">
+                            </td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
@@ -50,4 +306,19 @@ $sidebarContent = '
 </div>
 ';
 @endphp
+@section('script')
+<script>
+    const statusTags = document.querySelectorAll('.status-event');
+    statusTags.forEach((statusTag) => {
+        const status = statusTag.textContent.trim()
+        if (status === 'Selesai') {
+            statusTag.style.backgroundColor = '#B4FAA5';
+            statusTag.style.color = '#056331';
+        } else if (status === 'Pending') {
+            statusTag.style.backgroundColor = '#FFF2B8';
+            statusTag.style.color = '#772B03';
+        }
+    })
+</script>
+@endsection
 @endsection

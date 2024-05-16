@@ -100,6 +100,49 @@
     cursor: pointer;
 }
 
+.edit-container {
+    position: relative;
+}
+
+.edit-icon {
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    left: 9px;
+    cursor: pointer;
+}
+
+.trash-icon {
+    width: 15px;
+    height: 15px;
+    left: 5px;
+    position: absolute;
+    cursor: pointer;
+
+}
+
+.btn-edit {
+    width: 90% !important;
+    background-color: #A6B4FF !important;
+    color: #060E7A !important;
+    border-radius: 10px !important;
+    -webkit-border-radius: 10px !important;
+    -moz-border-radius: 10px !important;
+    -ms-border-radius: 10px !important;
+    -o-border-radius: 10px !important;
+}
+
+.btn-delete {
+    width: 95% !important;
+    background-color: #F07B62 !important;
+    color: #FFFFFF !important;
+    border-radius: 10px !important;
+    -webkit-border-radius: 10px !important;
+    -moz-border-radius: 10px !important;
+    -ms-border-radius: 10px !important;
+    -o-border-radius: 10px !important;
+}
+
 .count {
     border: 2.5px solid #233DFF !important;
     color: #233DFF !important;
@@ -114,3 +157,64 @@
 .font-small {
     font-size: 14px;
 }
+
+table {
+    border-radius: 10px !important;
+    overflow: hidden;
+    -webkit-border-radius: 10px !important;
+    -moz-border-radius: 10px !important;
+    -ms-border-radius: 10px !important;
+    -o-border-radius: 10px !important;
+}
+
+table, th, td {
+    border: 1.5px solid #7B7B7B !important;
+}
+
+table tr:nth-child(odd) {
+    background-color: #D3DAFF;
+}
+
+table tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
+.id {
+    width: 70px;
+}
+
+.title {
+    width: 200px;
+}
+
+.date {
+    width: 120px;
+}
+
+.ts, .category, .part, .status {
+    width: 105px;
+}
+
+.action {
+    width: 170px;
+}
+
+.detail {
+    width: 40px;
+}
+
+.dataTab {
+    color: #000000;
+    height: 47px !important;
+}
+
+.status-event {
+    cursor: text !important;
+    border: none !important;
+    border-radius: 10px !important;
+    -webkit-border-radius: 10px !important;
+    -moz-border-radius: 10px !important;
+    -ms-border-radius: 10px !important;
+    -o-border-radius: 10px !important;
+}
+
