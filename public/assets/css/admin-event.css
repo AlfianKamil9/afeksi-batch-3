@@ -218,3 +218,171 @@ table tr:nth-child(even) {
     -o-border-radius: 10px !important;
 }
 
+.form-action {
+    margin-left: auto !important;
+}
+
+
+@media screen and (max-width: 900px) {
+    .form-action {
+        margin-left: 1em !important;
+        padding-top: 0.1em !important;
+        padding-bottom: 0.1em !important;
+        margin-right: 0 !important;
+    }
+
+    #nav-campaign-tab, #nav-webinar-tab {
+        font-size: 1rem !important;
+    }
+
+    .box-2, .box {
+        width: 100% !important;
+    }
+
+    .inp-search {
+        width: 20rem;
+    }
+}
+
+@media screen and (max-width: 680px) {
+    .font-small {
+        font-size: 12px !important;
+    }
+
+    .inp-search::placeholder {
+        color: black;
+        opacity: 1;
+        font-size: 12px;
+    }
+
+    .form-action {
+        margin-left: 1em !important;
+        margin-right: 0 !important;
+    }
+
+    .inp-search {
+        width: 15rem;
+    }
+
+    .filter-icon {
+        width: 15px !important;
+        height: 15px !important;
+    }
+}
+
+@media screen and (max-width : 560px) {
+    .table-responsive {
+        overflow-x: auto;
+    }
+
+    .inp-search {
+        width: 10rem;
+    }
+
+    .btn-1 {
+        font-size: 12px !important;
+    }
+
+    .filter-icon {
+        width: 13px !important;
+        height: 13px !important;
+    }
+
+    .edit-icon {
+        width: 15px;
+        height: 15px;
+    }
+
+    .trash-icon {
+        width: 12px;
+        height: 12px;
+    }
+
+    .btn-edit, .btn-delete {
+        font-size: 12px !important;
+    }
+}
+
+@media screen and (max-width : 460px) {
+    .btn-1 {
+        font-size: 10px !important;
+    }
+
+    .search-icon {
+        width: 15px !important;
+        height: 15px !important;
+    }
+}
+
+@media screen and (max-width : 433px) {
+    .edit-icon {
+        width: 10px;
+        height: 10px;
+    }
+
+    .trash-icon {
+        width: 8px;
+        height: 8px;
+    }
+
+    .filter-icon {
+        width: 10px !important;
+        height: 10px !important;
+    }
+
+    .search-icon {
+        width: 12px !important;
+        height: 12px !important;
+        margin-top: 8px;
+    }
+
+    .inp-search::placeholder {
+        color: black;
+        opacity: 1;
+        font-size: 10px;
+    }
+
+    .inp-search {
+        width: 8rem;
+    }
+
+    #nav-campaign-tab, #nav-webinar-tab {
+        font-size: 0.8rem !important;
+    }
+
+    .btn-1 {
+        padding: 5px !important;
+    }
+
+    .btn-filter {
+        padding-right: 30px !important;
+    }
+}
+
+
+@media screen and (max-width : 411px) {
+    .filter-icon {
+        width: 10px !important;
+        height: 10px !important;
+    }
+
+    .btn-1 {
+        padding: 3px !important;
+        font-size: 9px !important;
+    }
+
+    .btn-filter {
+        padding-right: 30px !important;
+    }
+}
+
+@media screen and (max-width : 376px) {
+    #nav-campaign-tab, #nav-webinar-tab {
+        font-size: 0.7rem !important;
+        margin-top: 0.1rem !important;
+    }
+
+    .box {
+        height: 11vh;
+    }
+}

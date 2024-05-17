@@ -32,7 +32,7 @@ $sidebarContent = '
                 <div class="nav" id="nav-tab" role="tab">
                     <p class="text-tab m-0 fs-5 fw-semibold nav-link active mt-1" id="nav-webinar-tab" data-bs-toggle="tab" data-bs-target="#nav-webinar" role="tab" aria-controls="nav-webinar" aria-selected="true">Webinar</p>
                     <p class="text-tab m-0 fs-5 fw-semibold nav-link mt-1" id="nav-campaign-tab" data-bs-toggle="tab" data-bs-target="#nav-campaign" role="tab" aria-controls="nav-campaign" aria-selected="false">Campaign</p>
-                    <form class="form-inline d-flex align-content-center my-2 ms-auto gap-2 me-3">
+                    <form class="form-inline d-flex align-content-center my-2 gap-2 me-3 form-action">
                         <div class="search-container">
                             <img class="search-icon" src="/assets/img/admin/search.png" alt="search img" style="width: 20px; height:20px;">
                             <input class="inp-search h-100" type="text" placeholder="Search...">
@@ -49,10 +49,10 @@ $sidebarContent = '
         <div class="box-2 tab-content" id="tab-content">
             <div class="tab-pane fade show active" id="nav-webinar" role="tabpanel" aria-labelledby="content-event-tab">
                 <div class="mt-1 ms-3">
-                    <button class="count btn fw-bold px-4 py-0 font-small my-1">4 Webinar</button>
+                    <button class="count btn fw-bold px-4 py-0 font-small my-1">2 Webinar</button>
                     <p class="mb-1 font-small">Ini adalah Webinar yang telah dibuat</p>
                 </div>
-                <div class="mt-1 w-100">
+                <div class="mt-1 w-100 table-responsive mb-1">
                     <table class="w-100">
                         <tr class="fw-semibold text-center font-small" style="background-color: #1121B7; color: #FFFFFF; height: 47px;">
                             <th class="id">ID</th>
@@ -81,16 +81,22 @@ $sidebarContent = '
                                 <div class="inline d-flex justify-content-center align-items-center">
                                     <div class="edit-container d-flex align-items-center w-75">
                                         <img class="edit-icon" src="/assets/img/admin/pencil.png" alt="edit_img">
-                                        <button class="btn btn-edit fw-bold p-0 m-0 ps-3 ms-1">Edit</button>
+                                        <button class="btn btn-edit fw-bold p-0 m-0 ps-3 ms-1 pe-1">
+                                            <p class="m-0 p-0 ps-1">Edit</p>
+                                        </button>
                                     </div>
                                     <div class="d-flex align-items-center w-75 position-relative">
                                         <img class="trash-icon" src="/assets/img/admin/trash.png" alt="trash_img">
-                                        <button class="btn btn-delete fw-bold p-0 m-0 w-100 me-1 ps-3">Hapus</button>
+                                        <button class="btn btn-delete fw-bold p-0 m-0 w-100 me-1 ps-3 pe-1">
+                                            <p class="m-0 p-0 ps-1">Hapus</p>
+                                        </button>
                                     </div>
                                 </div>
                             </td>
                             <td>
-                                <img class="m-0 p-0" src="/assets/img/admin/detail-2.png" alt="img_detail" style="width: 18px; height: 18px ; cursor:pointer;">
+                                <button class="btn">
+                                    <img class="m-0 p-0" src="/assets/img/admin/detail-2.png" alt="img_detail" style="width: 18px; height: 18px ; cursor:pointer;">
+                                </button>
                             </td>
                         </tr>
                         <tr class="dataTab text-center font-small">
@@ -101,74 +107,28 @@ $sidebarContent = '
                             <td>Online Zoom</td>
                             <td>500</td>
                             <td class="text-center align-items-center px-2" style="height: 47px;">
-                                <button id="status" class="status-event p-0 w-100 fw-semibold">Pending</button>
+                                <button id="status" class="status-event w-100 fw-semibold">Pending</button>
                             </td>
                             <td>
                                 <div class="inline d-flex justify-content-center align-items-center">
                                     <div class="edit-container d-flex align-items-center w-75">
                                         <img class="edit-icon" src="/assets/img/admin/pencil.png" alt="edit_img">
-                                        <button class="btn btn-edit fw-bold p-0 m-0 ps-3 ms-1">Edit</button>
+                                        <button class="btn btn-edit fw-bold p-0 m-0 ps-3 ms-1 pe-1">
+                                            <p class="m-0 p-0 ps-1">Edit</p>
+                                        </button>
                                     </div>
                                     <div class="d-flex align-items-center w-75 position-relative">
                                         <img class="trash-icon" src="/assets/img/admin/trash.png" alt="trash_img">
-                                        <button class="btn btn-delete fw-bold p-0 m-0 w-100 me-1 ps-3">Hapus</button>
+                                        <button class="btn btn-delete fw-bold p-0 m-0 w-100 me-1 ps-3 pe-1">
+                                            <p class="m-0 p-0 ps-1">Hapus</p>
+                                        </button>
                                     </div>
                                 </div>
                             </td>
                             <td>
-                                <img class="m-0 p-0" src="/assets/img/admin/detail-2.png" alt="img_detail" style="width: 18px; height: 18px ; cursor:pointer;">
-                            </td>
-                        </tr>
-                        <tr class="dataTab text-center font-small">
-                            <td>3</td>
-                            <td class="text text-start ps-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</td>
-                            <td>Sabtu, 24/09/23</td>
-                            <td>09:30 WIB</td>
-                            <td>Online Zoom</td>
-                            <td>500</td>
-                            <td class="text-center align-items-center px-2" style="height: 47px;">
-                                <button id="status" class="status-event p-0 w-100 fw-semibold">Pending</button>
-                            </td>
-                            <td>
-                                <div class="inline d-flex justify-content-center align-items-center">
-                                    <div class="edit-container d-flex align-items-center w-75">
-                                        <img class="edit-icon" src="/assets/img/admin/pencil.png" alt="edit_img">
-                                        <button class="btn btn-edit fw-bold p-0 m-0 ps-3 ms-1">Edit</button>
-                                    </div>
-                                    <div class="d-flex align-items-center w-75 position-relative">
-                                        <img class="trash-icon" src="/assets/img/admin/trash.png" alt="trash_img">
-                                        <button class="btn btn-delete fw-bold p-0 m-0 w-100 me-1 ps-3">Hapus</button>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <img class="m-0 p-0" src="/assets/img/admin/detail-2.png" alt="img_detail" style="width: 18px; height: 18px ; cursor:pointer;">
-                            </td>
-                        </tr>
-                        <tr class="dataTab text-center font-small">
-                            <td>4</td>
-                            <td class="text text-start ps-2">Lorem ipsum dolor sit amet, salto dulu</td>
-                            <td>Sabtu, 24/09/23</td>
-                            <td>09:30 WIB</td>
-                            <td>Online Zoom</td>
-                            <td>500</td>
-                            <td class="text-center align-items-center px-2" style="height: 47px;">
-                                <button id="status" class="status-event p-0 w-100 fw-semibold">Selesai</button>
-                            </td>
-                            <td>
-                                <div class="inline d-flex justify-content-center align-items-center">
-                                    <div class="edit-container d-flex align-items-center w-75">
-                                        <img class="edit-icon" src="/assets/img/admin/pencil.png" alt="edit_img">
-                                        <button class="btn btn-edit fw-bold p-0 m-0 ps-3 ms-1">Edit</button>
-                                    </div>
-                                    <div class="d-flex align-items-center w-75 position-relative">
-                                        <img class="trash-icon" src="/assets/img/admin/trash.png" alt="trash_img">
-                                        <button class="btn btn-delete fw-bold p-0 m-0 w-100 me-1 ps-3">Hapus</button>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <img class="m-0 p-0" src="/assets/img/admin/detail-2.png" alt="img_detail" style="width: 18px; height: 18px ; cursor:pointer;">
+                                <button class="btn">
+                                    <img class="m-0 p-0" src="/assets/img/admin/detail-2.png" alt="img_detail" style="width: 18px; height: 18px ; cursor:pointer;">
+                                </button>
                             </td>
                         </tr>
                     </table>
@@ -176,10 +136,10 @@ $sidebarContent = '
             </div>
             <div class="tab-pane fade" id="nav-campaign" role="tabpanel" aria-labelledby="content-campaign-tab">
                 <div class="mt-1 ms-3">
-                    <button class="count btn fw-bold px-4 py-0 font-small my-1">4 Campaign</button>
+                    <button class="count btn fw-bold px-4 py-0 font-small my-1">2 Campaign</button>
                     <p class="mb-1 font-small">Ini adalah Campaign yang telah dibuat</p>
                 </div>
-                <div class="mt-1 w-100">
+                <div class="mt-1 w-100 table-responsive mb-1">
                     <table class="w-100">
                         <tr class="fw-semibold text-center font-small" style="background-color: #1121B7; color: #FFFFFF; height: 47px;">
                             <th class="id">ID</th>
@@ -208,16 +168,22 @@ $sidebarContent = '
                                 <div class="inline d-flex justify-content-center align-items-center">
                                     <div class="edit-container d-flex align-items-center w-75">
                                         <img class="edit-icon" src="/assets/img/admin/pencil.png" alt="edit_img">
-                                        <button class="btn btn-edit fw-bold p-0 m-0 ps-3 ms-1">Edit</button>
+                                        <button class="btn btn-edit fw-bold p-0 m-0 ps-3 ms-1 pe-1">
+                                            <p class="m-0 p-0 ps-1">Edit</p>
+                                        </button>
                                     </div>
                                     <div class="d-flex align-items-center w-75 position-relative">
                                         <img class="trash-icon" src="/assets/img/admin/trash.png" alt="trash_img">
-                                        <button class="btn btn-delete fw-bold p-0 m-0 w-100 me-1 ps-3">Hapus</button>
+                                        <button class="btn btn-delete fw-bold p-0 m-0 w-100 me-1 ps-3 pe-1">
+                                            <p class="m-0 p-0 ps-1">Hapus</p>
+                                        </button>
                                     </div>
                                 </div>
                             </td>
                             <td>
-                                <img class="m-0 p-0" src="/assets/img/admin/detail-2.png" alt="img_detail" style="width: 18px; height: 18px ; cursor:pointer;">
+                                <button class="btn">
+                                    <img class="m-0 p-0" src="/assets/img/admin/detail-2.png" alt="img_detail" style="width: 18px; height: 18px ; cursor:pointer;">
+                                </button>
                             </td>
                         </tr>
                         <tr class="dataTab text-center font-small">
@@ -228,74 +194,28 @@ $sidebarContent = '
                             <td>Online Zoom</td>
                             <td>500</td>
                             <td class="text-center align-items-center px-2" style="height: 47px;">
-                                <button id="status" class="status-event p-0 w-100 fw-semibold">Pending</button>
+                                <button id="status" class="status-event w-100 fw-semibold">Pending</button>
                             </td>
                             <td>
                                 <div class="inline d-flex justify-content-center align-items-center">
                                     <div class="edit-container d-flex align-items-center w-75">
                                         <img class="edit-icon" src="/assets/img/admin/pencil.png" alt="edit_img">
-                                        <button class="btn btn-edit fw-bold p-0 m-0 ps-3 ms-1">Edit</button>
+                                        <button class="btn btn-edit fw-bold p-0 m-0 ps-3 ms-1 pe-1">
+                                            <p class="m-0 p-0 ps-1">Edit</p>
+                                        </button>
                                     </div>
                                     <div class="d-flex align-items-center w-75 position-relative">
                                         <img class="trash-icon" src="/assets/img/admin/trash.png" alt="trash_img">
-                                        <button class="btn btn-delete fw-bold p-0 m-0 w-100 me-1 ps-3">Hapus</button>
+                                        <button class="btn btn-delete fw-bold p-0 m-0 w-100 me-1 ps-3 pe-1">
+                                            <p class="m-0 p-0 ps-1">Hapus</p>
+                                        </button>
                                     </div>
                                 </div>
                             </td>
                             <td>
-                                <img class="m-0 p-0" src="/assets/img/admin/detail-2.png" alt="img_detail" style="width: 18px; height: 18px ; cursor:pointer;">
-                            </td>
-                        </tr>
-                        <tr class="dataTab text-center font-small">
-                            <td>3</td>
-                            <td class="text text-start ps-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</td>
-                            <td>Sabtu, 24/09/23</td>
-                            <td>09:30 WIB</td>
-                            <td>Online Zoom</td>
-                            <td>500</td>
-                            <td class="text-center align-items-center px-2" style="height: 47px;">
-                                <button id="status" class="status-event p-0 w-100 fw-semibold">Pending</button>
-                            </td>
-                            <td>
-                                <div class="inline d-flex justify-content-center align-items-center">
-                                    <div class="edit-container d-flex align-items-center w-75">
-                                        <img class="edit-icon" src="/assets/img/admin/pencil.png" alt="edit_img">
-                                        <button class="btn btn-edit fw-bold p-0 m-0 ps-3 ms-1">Edit</button>
-                                    </div>
-                                    <div class="d-flex align-items-center w-75 position-relative">
-                                        <img class="trash-icon" src="/assets/img/admin/trash.png" alt="trash_img">
-                                        <button class="btn btn-delete fw-bold p-0 m-0 w-100 me-1 ps-3">Hapus</button>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <img class="m-0 p-0" src="/assets/img/admin/detail-2.png" alt="img_detail" style="width: 18px; height: 18px ; cursor:pointer;">
-                            </td>
-                        </tr>
-                        <tr class="dataTab text-center font-small">
-                            <td>4</td>
-                            <td class="text text-start ps-2">Lorem ipsum dolor sit amet, salto dulu</td>
-                            <td>Sabtu, 24/09/23</td>
-                            <td>09:30 WIB</td>
-                            <td>Online Zoom</td>
-                            <td>500</td>
-                            <td class="text-center align-items-center px-2" style="height: 47px;">
-                                <button id="status" class="status-event p-0 w-100 fw-semibold">Selesai</button>
-                            </td>
-                            <td>
-                                <div class="inline d-flex justify-content-center align-items-center">
-                                    <div class="edit-container d-flex align-items-center w-75">
-                                        <img class="edit-icon" src="/assets/img/admin/pencil.png" alt="edit_img">
-                                        <button class="btn btn-edit fw-bold p-0 m-0 ps-3 ms-1">Edit</button>
-                                    </div>
-                                    <div class="d-flex align-items-center w-75 position-relative">
-                                        <img class="trash-icon" src="/assets/img/admin/trash.png" alt="trash_img">
-                                        <button class="btn btn-delete fw-bold p-0 m-0 w-100 me-1 ps-3">Hapus</button>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <img class="m-0 p-0" src="/assets/img/admin/detail-2.png" alt="img_detail" style="width: 18px; height: 18px ; cursor:pointer;">
+                                <button class="btn">
+                                    <img class="m-0 p-0" src="/assets/img/admin/detail-2.png" alt="img_detail" style="width: 18px; height: 18px ; cursor:pointer;">
+                                </button>
                             </td>
                         </tr>
                     </table>
