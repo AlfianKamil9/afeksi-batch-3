@@ -1,0 +1,37 @@
+.bg-event {
+    background-color: #f4f4f4;
+}
+
+.bg-event h1 {
+    color: #dbae39;
+}
+
+.bg-event hr {
+    border: 1px solid #7b7b7b4d;
+    margin: 0;
+}
+.row .col-6 .mb-4 label {
+    color: #7b7b7b;
+    width: 100%;
+}
+.row .col-6 .mb-4 input,
+.row .col-6 .mb-4 .form-select,
+.row .col-6 .mb-4 textarea {
+    border: 1px solid #bdbdbd;
+    background-color: transparent;
+    color: #7b7b7b;
+}
+.form-select option {
+    border: 1px solid #bdbdbd;
+    background-color: transparent;
+    color: #7b7b7b;
+    padding: 10px;
+}
+button {
+    background: #1121b7;
+    color: white;
+    padding: 5px 20px 5px 20px;
+}
+button:hover {
+    background: black;
+}
