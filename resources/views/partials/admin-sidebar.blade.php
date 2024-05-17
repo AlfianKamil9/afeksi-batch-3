@@ -8,13 +8,13 @@
                     style="width:60px;">
             </a>
             <div class="ms-3">
-                <p class="mb-0">Backend</p>
+                <p class="mb-0">Administrator</p>
                 <p class="mb-0">System</p>
             </div>
         </div>
         <div class="list-side-item d-flex flex-column justify-content-between mt-4">
             <div class="mb-5">
-                <a class="side-item p-2 d-flex align-items-center" href="#!">
+                <a class="side-item p-2 d-flex align-items-center" href="@if (Str::startsWith(Route::currentRouteName(), 'admin.')) {{ route('admin.dashboard.index') }} @else #! @endif">
                     <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_4712_8474)">
                             <path
@@ -28,7 +28,7 @@
                         </defs>
                     </svg> Dashboard
                 </a>
-                <a class="side-item p-2 d-flex align-items-center" href="#!">
+                <a class="side-item p-2 d-flex align-items-center" href="@if (Str::startsWith(Route::currentRouteName(), 'admin.')) {{ route('admin.events') }} @else #! @endif">
                     <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_4712_8477)">
                             <path
@@ -47,7 +47,7 @@
                             </clipPath>
                         </defs>
                     </svg>
-                    Categories
+                    Kelola Event
                 </a>
                 <a class=" side-item p-2 d-flex align-items-center" href="#!">
                     <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -61,7 +61,7 @@
                                 <rect width="28" height="28" fill="white" />
                             </clipPath>
                         </defs>
-                    </svg> Shortlink
+                    </svg> Kelola Artikel
                 </a>
                 <a class=" side-item p-2 d-flex align-items-center" href="#!">
                     <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">

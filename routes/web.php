@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AF_Admin_Web\adminDashboardController;
+use App\Http\Controllers\AF_Admin_Web\eventDashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Karir\Internship;
 use App\Http\Controllers\berandaController;
@@ -213,7 +214,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         // DASHBOARD ADMIN
                  // DASHBOARD ADMIN
                 Route::get('/dashboard', [adminDashboardController::class, 'index'])->name('dashboard.index');
-                // KELOLA EVENT (WEBINAR & CAMPAIGN) 
+                // KELOLA EVENT (WEBINAR & CAMPAIGN)
+                Route::get('/events', [eventDashboardController::class, 'index'])->name('events'); 
         });
     });
     
@@ -255,5 +257,5 @@ Route::fallback(function () {
 Route::view('/admin/login', 'pages.auth.admin.login')->name('login.admin');
 Route::view('/admin/register', 'pages.auth.admin.register')->name('register.admin');
 Route::view('/admin/dashboardsss', 'pages.admin-dashboard')->name('admin-dashboard');
-Route::view('/admin/event', 'pages.admin-event')->name('admin.event');
+Route::view('/admin/eventsddd', 'pages.admin-event')->name('admin.event');
 

@@ -1,4 +1,4 @@
-@extends('../layout')
+@extends('../layout-admin')
 
 @section('title', 'Dashboard Admin | AFEKSI')
 
