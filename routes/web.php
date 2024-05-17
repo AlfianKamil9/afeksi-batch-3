@@ -212,7 +212,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::middleware(['auth','only-admin'])->group(function(){
         Route::name('admin.')->prefix('/admin')->group(function() {
         // DASHBOARD ADMIN
-                 // DASHBOARD ADMIN
+                // DASHBOARD ADMIN
                 Route::get('/dashboard', [adminDashboardController::class, 'index'])->name('dashboard.index');
                 // KELOLA EVENT (WEBINAR & CAMPAIGN)
                 Route::get('/events', [eventDashboardController::class, 'index'])->name('events'); 
