@@ -33,8 +33,10 @@
         @include('partials/navbar')
 @endif
   
-@if (Route::currentRouteName() == 'admin-dashboard')
-    @include('partials.admin-sidebar', ['sidebarContent' => $sidebarContent])
+@if (Str::startsWith(Route::currentRouteName(), 'admin.'))
+    <div class="pb-3">
+      @include('partials.admin-sidebar', ['sidebarContent' => $sidebarContent])
+    </div>
 @endif
 
     <div class="">

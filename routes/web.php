@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AF_Admin_Web\adminDashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Karir\Internship;
 use App\Http\Controllers\berandaController;
@@ -182,56 +183,55 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 
 
-
-
-
-
-    // DASHBOARD 
-    Route::name('dashboard.')->prefix('/dashboard')->group(function() {
-    
+    Route::middleware(['auth','only-user'])->group(function(){
+        Route::name('dashboard.')->prefix('/dashboard')->group(function() {
         // DASHBOARD USER
-        Route::middleware(['auth','only-user'])->group(function(){
-
-
+                //Dasboard Utama
+                Route::get('', [IndexController::class, 'showDashboardIndex'])->name('index');
+                // PROFILE
+                Route::name('profile.')->prefix('/profile')->group(function() {
+                    Route::get('', [ProfileController::class, 'showDashboardProfile'])->name('index');
+                    Route::post('/changes-data', [ProfileController::class, 'processChanges'])->name('changes.data');
+                    Route::get('/ubah-password',[ ProfileController::class, 'showUbahPassword'])->name('show.changePassword');
+                    Route::post('/change-password', [ProfileController::class, 'processChangePassword'])->name('changes.password');
+                    Route::get('/ubah-foto-profile', [ProfileController::class, 'showUbahFoto'])->name('show.changeFoto');
+                    Route::post('/ubah-foto-profile', [ProfileController::class, 'processChangeFoto'])->name('process.changeFoto');
+                });
+                // E-Book
+                Route::get('/e-book', [MyBookController::class, 'showMyBook'])->name('show.e-book');
+                // Rekap Transaksi
+                Route::get('/recap-transactions',[RekapTransaction::class, 'showRecapTransaction'])->name('show.rekap.transaksi');
+                Route::post('/cancel-order', [RekapTransaction::class, 'cancelingOrder'])->name('cancel.order.transaksi');
         });
-        //Dasboard Utama
-        Route::get('', [IndexController::class, 'showDashboardIndex'])->name('index');
-        // PROFILE
-        Route::name('profile.')->prefix('/profile')->group(function() {
-            Route::get('', [ProfileController::class, 'showDashboardProfile'])->name('index');
-            Route::post('/changes-data', [ProfileController::class, 'processChanges'])->name('changes.data');
-            Route::get('/ubah-password',[ ProfileController::class, 'showUbahPassword'])->name('show.changePassword');
-            Route::post('/change-password', [ProfileController::class, 'processChangePassword'])->name('changes.password');
-            Route::get('/ubah-foto-profile', [ProfileController::class, 'showUbahFoto'])->name('show.changeFoto');
-            Route::post('/ubah-foto-profile', [ProfileController::class, 'processChangeFoto'])->name('process.changeFoto');
-
-         
-            // E-Book
-            Route::get('/e-book', [MyBookController::class, 'showMyBook'])->name('show.e-book');
-            // Rekap Transaksi
-            Route::get('/recap-transactions',[RekapTransaction::class, 'showRecapTransaction'])->name('show.rekap.transaksi');
-            Route::post('/cancel-order', [RekapTransaction::class, 'cancelingOrder'])->name('cancel.order.transaksi');
-
-        });
-
-        // DASHBOARD ADMIN
-        Route::middleware(['auth','only-admin'])->group(function(){
-           
-        });
-        // DASHBOARD KONSELOR
-        Route::middleware(['auth','only-konselor'])->group(function(){
-
-        });
-        // DASHBOARD PSIKOLOG
-        Route::middleware(['auth','only-psikolog'])->group(function(){
-
-        });
-        //DASHBOARD WRITTER
-        Route::middleware(['auth','only-writter'])->group(function(){
-
-        });
-        
     });
+
+
+
+    // DASHBOARD ADMIN
+    Route::middleware(['auth','only-admin'])->group(function(){
+        Route::name('admin.')->prefix('/admin')->group(function() {
+        // DASHBOARD ADMIN
+                 // DASHBOARD ADMIN
+                Route::get('/dashboard', [adminDashboardController::class, 'index'])->name('dashboard.index');
+                // KELOLA EVENT (WEBINAR & CAMPAIGN) 
+        });
+    });
+    
+    // DASHBOARD KONSELOR
+    Route::middleware(['auth','only-konselor'])->group(function(){
+
+    });
+    // DASHBOARD PSIKOLOG
+    Route::middleware(['auth','only-psikolog'])->group(function(){
+
+    });
+
+    //DASHBOARD WRITTER
+    Route::middleware(['auth','only-writter'])->group(function(){
+
+    });
+        
+   
 });
 
 
@@ -254,6 +254,6 @@ Route::fallback(function () {
 
 Route::view('/admin/login', 'pages.auth.admin.login')->name('login.admin');
 Route::view('/admin/register', 'pages.auth.admin.register')->name('register.admin');
-Route::view('/admin/dashboard', 'pages.admin-dashboard')->name('admin-dashboard');
+Route::view('/admin/dashboardsss', 'pages.admin-dashboard')->name('admin-dashboard');
 Route::view('/admin/event', 'pages.admin-event')->name('admin.event');
 
