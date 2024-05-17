@@ -112,7 +112,7 @@
                                 <rect width="28" height="28" fill="white" />
                             </clipPath>
                         </defs>
-                    </svg> Kelola Layanan
+                    </svg> Kelola Testimonial
                 </a>
                 <a class=" side-item p-2 d-flex align-items-center" href="#!">
                     <svg width="28" height="28" viewBox="0 0 28 28" fill="none"
@@ -230,7 +230,8 @@
 
             </div>
         </nav>
-            {!! $sidebarContent !!}
+            {{-- {!! $sidebarContent !!} --}}
+            @yield('sidebarContent')
     </div>
 </div>
 

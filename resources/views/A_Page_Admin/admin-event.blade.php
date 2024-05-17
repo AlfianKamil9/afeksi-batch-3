@@ -1,15 +1,12 @@
 @extends('../layout-admin')
 
-@section('title', 'Event Admin | AFEKSI')
+@section('title', 'Kelola Event | AFEKSI')
 
 @section('styles')
 <link rel="stylesheet" href="/assets/css/admin-event.css">
 @endsection
 
-@section('content')
-
-@php
-$sidebarContent = '
+@section('sidebarContent')
 <div class="m-4">
     <p class="jdl fs-4 mb-0">Pengelolaan Event</p>
     <p class="fs-6 mb-0">Kelola dan atur semua acara dan kegiatan terkait.</p>
@@ -211,8 +208,7 @@ $sidebarContent = '
         </div>
     </div>
 </div>
-';
-@endphp
+
 @section('script')
 <script>
     const statusTags = document.querySelectorAll('.status-event');

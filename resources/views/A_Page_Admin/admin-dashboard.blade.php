@@ -4,11 +4,9 @@
 
 @section('styles')
     <link rel="stylesheet" href="/assets/css/admin-dashboard.css">
-
 @endsection
-@section('content')
-    @php
-        $sidebarContent = '
+
+@section('sidebarContent')
         <div class="main-content container d-flex flex-column mt-3" style="padding-left:  5dvh; padding-right: 5dvh;">
             <div style="font-size: 24px; font-weight: 500;">
                 <p style="margin: 0;">Afeksi Dashboard</p>
@@ -98,8 +96,5 @@
                 </div>
             </div>
         </div>
-
-                                ';
-    @endphp
 
 @endsection
