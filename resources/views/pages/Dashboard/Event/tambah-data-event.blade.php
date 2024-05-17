@@ -14,7 +14,7 @@
                 <h4 class="fw-bold">Tambah Data Event</h4>
                 <p>Tambahkan data acara dan kegiatan terkait</p>
             </div>
-            <div class="mt-3 bg-event">
+            <div class="mt-3 bg-event shadow-sm">
                 <div class="p-3">
                     <h1 class="fw-bold fs-5 m-0">Data Formulir</h1>
                 </div>
@@ -92,10 +92,28 @@
 
                     </div>
                     <div class="col-6 ms-auto">
-                        <div class="mb-4 d-flex align-items-center">
-                            <label for="formFile" class="form-label">Cover Event</label>
-                            <input class="form-control" type="file" id="formFile">
+                        <div>
+                            <div class="mb-4 d-flex align-items-center">
+                                <label for="formFile" class="form-label">Cover Event</label>
+                                <input class="form-control" type="file" id="formFile" accept="image/*">
+                            </div>
+                            <div class="mb-4">
+                                <img id="preview" alt="Preview Gambar" class="img-preview">
+                            </div>
+                            <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="imageModalLabel">Preview Gambar</h5>
+                                        </div>
+                                        <div class="modal-body">
+                                            <img id="modalImage" src="#" class="img-fluid" alt="Gambar Preview">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+
                         <div class="mb-4 d-flex align-items-center">
                             <label class="form-label">Title Event</label>
                             <textarea class="form-control" rows="3"></textarea>
@@ -108,9 +126,27 @@
                             <label class="form-label mb-0">Link</label>
                             <input type="text" class="form-control"/>
                         </div>
-                        <div class="mb-4 d-flex align-items-center">
-                            <label for="formFile" class="form-label">Foto Acara</label>
-                            <input class="form-control" type="file" id="formFile">
+                        <div>
+                            <div class="mb-4 d-flex align-items-center">
+                                <label for="formFile" class="form-label">Foto Acara</label>
+                                <input class="form-control" type="file" id="previewFoto" accept="image/*">
+                            </div>
+                            <div class="mb-4">
+                                <img id="previewimg" alt="Preview Gambar" class="img-preview">
+                            </div>
+                            <div class="modal fade" id="previewModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="imageModalLabel">Preview Gambar</h5>
+                                        </div>
+                                        <div class="modal-body">
+                                            <img id="modalImg" src="#" class="img-fluid" alt="Gambar Preview">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -123,7 +159,7 @@
     @endphp
 
 @section('script')
-    <script></script>
-
+    <script src="/assets/js/tambah-event.js"></script>
 @endsection
+
 @endsection

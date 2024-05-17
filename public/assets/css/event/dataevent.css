@@ -21,12 +21,6 @@
     background-color: transparent;
     color: #7b7b7b;
 }
-.form-select option {
-    border: 1px solid #bdbdbd;
-    background-color: transparent;
-    color: #7b7b7b;
-    padding: 10px;
-}
 button {
     background: #1121b7;
     color: white;
@@ -34,4 +28,19 @@ button {
 }
 button:hover {
     background: black;
+}
+
+.custom-option {
+    border: 1px solid #bdbdbd;
+    background-color: transparent !important;
+    color: #7b7b7b;
+    padding: 10px !important;
+    box-shadow: 0;
+}
+
+.img-preview {
+    width: 50%;
+    height: 50%;
+    display: none;
+    cursor: pointer;
 }
