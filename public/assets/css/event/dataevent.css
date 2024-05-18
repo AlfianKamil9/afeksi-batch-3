@@ -32,10 +32,10 @@ button:hover {
 
 .custom-option {
     border: 1px solid #bdbdbd;
-    background-color: transparent !important;
     color: #7b7b7b;
     padding: 10px !important;
-    box-shadow: 0;
+    background: #f4f4f4;
+    border-radius: 0.375rem !important;
 }
 
 .img-preview {

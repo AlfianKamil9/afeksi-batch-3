@@ -1,6 +1,6 @@
 // Mengatur Option
-const CustomSelect = document.getElementById("customSelect");
-const customOption = CustomSelect.querySelectorAll("option");
+const CustomSelect = document.querySelectorAll(".form-select");
+console.log(CustomSelect)
 
 // Untuk Form Cover Event
 const previewImage = document.getElementById('formFile');
@@ -15,10 +15,12 @@ const modalpreview = new bootstrap.Modal(document.getElementById('previewModal')
 const modalImg = document.getElementById('modalImg');
 
 // Mengatur Option
-customOption.forEach(element => {
-    element.classList.add("custom-option");
-})
-console.log(CustomSelect);
+CustomSelect.forEach(select => {
+    const customOption = select.querySelectorAll("option");
+    customOption.forEach(element => {
+        element.classList.add("custom-option");
+    })
+});
 
 // Form Cover Event
 previewImage.addEventListener('change', (event) => {
