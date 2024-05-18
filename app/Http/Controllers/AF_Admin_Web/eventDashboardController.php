@@ -15,7 +15,9 @@ class eventDashboardController extends Controller
 
     public function showAdd() {
         $g = GuestStar::all();
+        $l = GuestStar::all();
         $e = EventCategory::all();
-        return view('A_Page_Admin.K_Event.tambah-data-event', compact('e', 'g'));
+        //return $g;
+        return view('A_Page_Admin.K_Event.tambah-data-event', compact('e', 'g', 'l'));
     }
 }
