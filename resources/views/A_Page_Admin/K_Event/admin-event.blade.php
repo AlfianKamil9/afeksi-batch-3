@@ -1,4 +1,4 @@
-@extends('../layout-admin')
+@extends('.../layout-admin')
 
 @section('title', 'Kelola Event | AFEKSI')
 
@@ -25,7 +25,7 @@
                             <button class="btn btn-1 btn-filter fw-semibold h-100">Filter</button>
                             <img class="filter-icon" src="/assets/img/admin/filter.png" alt="filter img" style="width: 17px; height:17px;">
                         </div>
-                        <button class="btn btn-1 btn-warning fw-bold" style="color: #060E7A;">Tambahkan Data</button>
+                        <a href="{{ route('admin.event.add') }}"  type="button" class="btn btn-1 btn-warning fw-bold" style="color: #060E7A;">Tambahkan Data</a>
                     </form>
                 </div>
             </nav>

@@ -55,7 +55,7 @@ class LoginRequest extends FormRequest
         if($roles == 'user'){
             return redirect()->intended(RouteServiceProvider::HOME);
         }elseif($roles == 'admin'){
-            dd('ini halaman admin');
+            return redirect()->to('admin.dashboard.index');
         }elseif($roles == 'superadmin'){
             dd('ini halaman superadmin');
         }elseif($roles == 'psikolog'){

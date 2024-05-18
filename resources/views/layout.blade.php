@@ -32,12 +32,13 @@
 @if (Route::currentRouteName() != 'password.request' && Route::currentRouteName() != 'admin-dashboard' &&  Route::currentRouteName() != 'password.reset' && Route::currentRouteName() != 'login.admin' && Route::currentRouteName() != 'register.admin')     
         @include('partials/navbar')
 @endif
-  
+
 @if (Str::startsWith(Route::currentRouteName(), 'admin.'))
     <div class="pb-3">
       @include('partials.admin-sidebar', ['sidebarContent' => $sidebarContent])
     </div>
 @endif
+
 
     <div class="">
       @yield('content')

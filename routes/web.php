@@ -216,6 +216,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
                 Route::get('/dashboard', [adminDashboardController::class, 'index'])->name('dashboard.index');
                 // KELOLA EVENT (WEBINAR & CAMPAIGN)
                 Route::get('/events', [eventDashboardController::class, 'index'])->name('events'); 
+                Route::get('/events/add', [eventDashboardController::class, 'showAdd'])->name(('event.add'));
         });
     });
     
@@ -258,4 +259,8 @@ Route::view('/admin/login', 'pages.auth.admin.login')->name('login.admin');
 Route::view('/admin/register', 'pages.auth.admin.register')->name('register.admin');
 Route::view('/admin/dashboardsss', 'pages.admin-dashboard')->name('admin-dashboard');
 Route::view('/admin/eventsddd', 'pages.admin-event')->name('admin.event');
+
+
+// Admin Tambah Data Pengelolaan Event
+Route::view('/admin/event/tambahdata', 'pages.Dashboard.Event.tambah-data-event')->name('tambah-data-event');
 
