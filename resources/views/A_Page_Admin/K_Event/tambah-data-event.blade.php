@@ -40,10 +40,10 @@
                         <label class="form-label">Title Event</label>
                         <textarea class="form-control" rows="3"></textarea>
                     </div>
-                    <div class="mb-4 d-md-flex align-items-center">
+                    {{-- <div class="mb-4 d-md-flex align-items-center">
                         <label class="form-label mb-0">Slug Event</label>
                         <input type="text" class="form-control" />
-                    </div>
+                    </div> --}}
                     <div class="mb-4 d-md-flex align-items-center">
                         <label class="form-label mb-0">Time Categori Event</label>
                         <select id="customSelect" class="form-select">
