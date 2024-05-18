@@ -32,12 +32,13 @@
 <body>
 
     @if (Route::currentRouteName() != 'login.admin' && Route::currentRouteName() != 'register.admin')
-    @include('partials.admin-sidebar', ['sidebarContent' => $sidebarContent])
+    <!-- {{-- @include('partials.admin-sidebar', ['sidebarContent' => $sidebarContent]) --}} -->
+    @include('partials.admin-sidebar')
     @endif
 
-    <div class="content">
+    <!-- {{-- <div class="content">
         @yield('content')
-    </div>
+    </div> --}} -->
 
     <script type="text/javascript" src="https://unpkg.com/external-svg-loader@1.0.0/svg-loader.min.js" async></script>
     <!-- Tambahkan file JavaScript Flatpickr -->
