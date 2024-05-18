@@ -230,7 +230,8 @@
 
             </div>
         </nav>
-            {!! $sidebarContent !!}
+        <!-- {{-- {!! $sidebarContent !!} --}} -->
+            @yield('sidebarContent')
     </div>
 </div>
 

@@ -33,9 +33,6 @@
         @include('partials/navbar')
 @endif
   
-@if (Route::currentRouteName() == 'admin-dashboard')
-    @include('partials.admin-sidebar', ['sidebarContent' => $sidebarContent])
-@endif
 
     <div class="">
       @yield('content')
