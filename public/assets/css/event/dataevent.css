@@ -10,13 +10,13 @@
     border: 1px solid #7b7b7b4d;
     margin: 0;
 }
-.row .col-sm-6 .mb-4 label {
+.row .col-md-6 .mb-4 label {
     color: #7b7b7b;
     width: 100%;
 }
-.row .col-sm-6 .mb-4 input,
-.row .col-sm-6 .mb-4 .form-select,
-.row .col-sm-6 .mb-4 textarea {
+.row .col-md-6 .mb-4 input,
+.row .col-md-6 .mb-4 .form-select,
+.row .col-md-6 .mb-4 textarea {
     border: 1px solid #bdbdbd;
     background-color: transparent;
     color: #7b7b7b;
