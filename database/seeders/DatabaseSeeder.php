@@ -53,5 +53,6 @@ class DatabaseSeeder extends Seeder
         $this->call(RatingKonselorSeeder::class);
         $this->call(MyEbookSeeder::class);
         $this->call(MyMentoringSeeder::class);
+
     }
 }

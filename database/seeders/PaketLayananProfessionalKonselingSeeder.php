@@ -127,38 +127,6 @@ class PaketLayananProfessionalKonselingSeeder extends Seeder
                 'deskripsi_paket' => 'Diskusi mendalam tentang peran gender dalam kehidupan individu.',
                 'deskripsi_durasi' => 'Durasi: 60 menit',
             ],
-        //     [
-        //         'nama_paket' => 'Sesi Konseling Pasangan',
-        //         'layanan_konseling_id' => 4,
-        //         'harga' => 250000,
-        //         'jumlah_sesi' => 1,
-        //         'durasi' => 75,
-        //         'deskripsi_singkat' => 'Sesi konseling pasangan dengan seorang konselor berlisensi yang berpengalaman dalam mendukung hubungan yang seimbang dan setara.',
-        //         'deskripsi_paket' => 'Fokus pada pemahaman dan penerapan kesetaraan gender dalam hubungan.',
-        //         'deskripsi_durasi' => 'Durasi: 75 menit',
-        //     ],
-        //     [
-        //         'nama_paket' => 'Sesi Kelompok Kesetaraan Gender',
-        //         'layanan_konseling_id' => 4,
-        //         'harga' => 75000,
-        //         'jumlah_sesi' => 1,
-        //         'durasi' => 90,
-        //         'deskripsi_singkat' => 'Sesi konseling dalam kelompok dengan peserta lain yang memiliki minat dalam isu kesetaraan gender.',
-        //         'deskripsi_paket' => 'Diskusi terbuka dan pembelajaran kolaboratif tentang kesetaraan gender.',
-        //         'deskripsi_durasi' => 'Durasi: 90 menit',
-        //     ],
-        //     [
-        //         'nama_paket' => 'Paket Bulanan Kesetaraan Gender',
-        //         'layanan_konseling_id' => 4,
-        //         'harga' => 400000,
-        //         'jumlah_sesi' => 4,
-        //         'durasi' => 60,
-        //         'deskripsi_singkat' => 'Sesi konseling dengan seorang konselor berlisensi yang berpengalaman dalam mendukung hubungan yang seimbang dan setara.',
-        //         'deskripsi_paket' => 'Fleksibilitas untuk memilih sesi individu, sesi pasangan, atau sesi kelompok.',
-        //         'deskripsi_durasi' => 'Akses ke 4 sesi Konseling Kesetaraan Gender selama sebulan (satu sesi per minggu).'
-
-
-//            ],
              [
                 'nama_paket' => 'Sesi Konseling Individu',
                 'layanan_konseling_id' => 5,

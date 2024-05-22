@@ -1,6 +1,6 @@
 @extends('../layout')
 
-@section('title', 'Dashboard Admin | AFEKSI')
+@section('title', 'Dashboard Konselor | AFEKSI')
 
 @section('styles')
     <link rel="stylesheet" href="/assets/css/admin-dashboard.css">

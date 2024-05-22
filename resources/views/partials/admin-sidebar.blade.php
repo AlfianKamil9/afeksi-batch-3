@@ -8,13 +8,13 @@
                     style="width:60px;">
             </a>
             <div class="ms-3">
-                <p class="mb-0">Backend</p>
+                <p class="mb-0">Administrator</p>
                 <p class="mb-0">System</p>
             </div>
         </div>
         <div class="list-side-item d-flex flex-column justify-content-between mt-4">
             <div class="mb-5">
-                <a class="side-item p-2 d-flex align-items-center" href="#!">
+                <a class="side-item p-2 d-flex align-items-center" href="@if (Str::startsWith(Route::currentRouteName(), 'admin.')) {{ route('admin.dashboard.index') }} @else #! @endif">
                     <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_4712_8474)">
                             <path
@@ -28,7 +28,7 @@
                         </defs>
                     </svg> Dashboard
                 </a>
-                <a class="side-item p-2 d-flex align-items-center" href="#!">
+                <a class="side-item p-2 d-flex align-items-center" href="@if (Str::startsWith(Route::currentRouteName(), 'admin.')) {{ route('admin.events') }} @else #! @endif">
                     <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_4712_8477)">
                             <path
@@ -47,7 +47,7 @@
                             </clipPath>
                         </defs>
                     </svg>
-                    Categories
+                    Kelola Event
                 </a>
                 <a class=" side-item p-2 d-flex align-items-center" href="#!">
                     <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -61,7 +61,7 @@
                                 <rect width="28" height="28" fill="white" />
                             </clipPath>
                         </defs>
-                    </svg> Shortlink
+                    </svg> Kelola Artikel
                 </a>
                 <a class=" side-item p-2 d-flex align-items-center" href="#!">
                     <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -112,7 +112,7 @@
                                 <rect width="28" height="28" fill="white" />
                             </clipPath>
                         </defs>
-                    </svg> Kelola Layanan
+                    </svg> Kelola Testimonial
                 </a>
                 <a class=" side-item p-2 d-flex align-items-center" href="#!">
                     <svg width="28" height="28" viewBox="0 0 28 28" fill="none"
@@ -129,7 +129,7 @@
                         </defs>
                     </svg> Kelola Pengguna
                 </a>
-                <a class=" side-item p-2 d-flex align-items-center" href="#!">
+                <a class=" side-item p-2 d-flex align-items-center" href="{{ route('homepage') }}">
                     <svg width="28" height="28" viewBox="0 0 28 28" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_4722_7652)">
@@ -147,7 +147,7 @@
                 </a>
             </div>
             <div class="d-flex flex-column justify-content-end">
-                <a class=" side-item p-2 d-flex align-items-center" style="border-bottom: 1px solid #ccc; border-top: 1px solid #ccc;" href="#!">
+                <a class=" side-item p-2 d-flex align-items-center" style="border-bottom: 1px solid #ccc; border-top: 1px solid #ccc;" href="{{ route('logout') }}">
                     <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_4722_7623)">
                         <path d="M12.5883 19.005C13.0433 19.46 13.7783 19.46 14.2333 19.005L18.4217 14.8167C18.8767 14.3617 18.8767 13.6267 18.4217 13.1717L14.2333 8.98333C13.7783 8.52833 13.0433 8.52833 12.5883 8.98333C12.1333 9.43833 12.1333 10.1733 12.5883 10.6283L14.7817 12.8333H4.66667C4.025 12.8333 3.5 13.3583 3.5 14C3.5 14.6417 4.025 15.1667 4.66667 15.1667H14.7817L12.5883 17.36C12.1333 17.815 12.145 18.5617 12.5883 19.005ZM22.1667 3.5H5.83333C4.53833 3.5 3.5 4.55 3.5 5.83333V9.33333C3.5 9.975 4.025 10.5 4.66667 10.5C5.30833 10.5 5.83333 9.975 5.83333 9.33333V7C5.83333 6.35833 6.35833 5.83333 7 5.83333H21C21.6417 5.83333 22.1667 6.35833 22.1667 7V21C22.1667 21.6417 21.6417 22.1667 21 22.1667H7C6.35833 22.1667 5.83333 21.6417 5.83333 21V18.6667C5.83333 18.025 5.30833 17.5 4.66667 17.5C4.025 17.5 3.5 18.025 3.5 18.6667V22.1667C3.5 23.45 4.55 24.5 5.83333 24.5H22.1667C23.45 24.5 24.5 23.45 24.5 22.1667V5.83333C24.5 4.55 23.45 3.5 22.1667 3.5Z" fill="#94A8BE"/>
@@ -230,8 +230,8 @@
 
             </div>
         </nav>
-        {!! $sidebarContent !!}
 
+            @yield('sidebarContent')
     </div>
 </div>
 
