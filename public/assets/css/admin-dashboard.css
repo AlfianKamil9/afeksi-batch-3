@@ -1,0 +1,13 @@
+.custom-btn {
+    border: none;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.custom-btn.active {
+    background-color: #A6B4FF;
+    box-shadow: 0px 1px 3px 0px #00000025;
+}
