@@ -215,8 +215,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         // DASHBOARD ADMIN
                 // DASHBOARD ADMIN
                 Route::get('/dashboard', [adminDashboardController::class, 'index'])->name('dashboard.index');
-                Route::get('/admin-event', [AdminWebinarController::class, 'showWebinar'])->name('events.index');
-                // KELOLA EVENT (WEBINAR & CAMPAIGN)
+                // KELOLA EVENT (WEBINAR & CAMPAIGN) 
                 Route::get('/events', [eventDashboardController::class, 'index'])->name('events'); 
                 Route::get('/events/add', [eventDashboardController::class, 'showAdd'])->name(('event.add'));
         });
