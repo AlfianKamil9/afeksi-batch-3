@@ -58,13 +58,22 @@
                                
                            <tr class="dataTab text-center font-small">
                                <td>{{$item->id}}</td>
-                               <td class="text text-start ps-2">{{$item->title}}</td>
-                               <td>{{$item->date}}</td>
-                               <td>{{$item->ts}}</td>
-                               <td>{{$item->category}}</td>
-                               <td>{{$item->part}}</td>
+                               <td class="text text-start ps-2">{{$item->title_event}}</td>
+                               <td>{{$item->date_event}}</td>
+                               <td>{{$item->time_start}}</td>
+                               <td>{{$item->event_categories->category_event_name}}</td>
+                               <td>{{$item->partisipan == null ? '-' : $item->partisipan}}</td>
                                <td class="text-center align-items-center px-2" style="height: 47px;">
                                    <button id="status" class="status-event p-0 w-100 fw-semibold">Selesai</button>
+                                   <button id="status" class="status-event
+                                   @if ($item->status_event == 'ONGOING')
+                                       bg-primary text-light
+                                    @elseif ($item->status_event == 'FINISH')
+                                    bg-success text-light
+                                    @else
+                                    bg-dark text-light
+                                   @endif
+                                   p-0 w-100 fw-semibold">{{ $item->status_event }}</button>
                                </td>
                                <td>
                                    <div class="inline d-flex justify-content-center align-items-center">
