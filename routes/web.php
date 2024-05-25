@@ -215,8 +215,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
                 // DASHBOARD ADMIN
                 Route::get('/dashboard', [adminDashboardController::class, 'index'])->name('dashboard.index');
                 // KELOLA EVENT (WEBINAR & CAMPAIGN)
-                Route::get('/events', [eventDashboardController::class, 'index'])->name('events'); 
-                Route::get('/events/add', [eventDashboardController::class, 'showAdd'])->name(('event.add'));
+                Route::name('events.')->prefix('/event')->group(function() {
+                    Route::get('', [eventDashboardController::class, 'index'])->name('index'); 
+                    Route::get('/add', [eventDashboardController::class, 'showAdd'])->name('events.add');
+                });
         });
     });
     
@@ -257,10 +259,17 @@ Route::fallback(function () {
 
 Route::view('/admin/login', 'pages.auth.admin.login')->name('login.admin');
 Route::view('/admin/register', 'pages.auth.admin.register')->name('register.admin');
-Route::view('/admin/dashboardsss', 'pages.admin-dashboard')->name('admin-dashboard');
-Route::view('/admin/eventsddd', 'pages.admin-event')->name('admin.event');
+
+// Route::view('/admin/dashboardsss', 'pages.admin-dashboard')->name('admin-dashboard');
+// Route::view('/admin/eventsddd', 'pages.admin-event')->name('admin.event');
+
+Route::view('/admin/dashboards', 'pages.admin-dashboard')->name('admin-dashboard');
+Route::view('/admin/events', 'pages.admin-event')->name('admin.events');
+Route::view('/admin/orderss', 'pages.admin-orders')->name('admin.orders');
 
 
-// Admin Tambah Data Pengelolaan Event
-Route::view('/admin/event/tambahdata', 'pages.Dashboard.Event.tambah-data-event')->name('tambah-data-event');
 
+// Admin Tambah, Edit dan Detail Pengelolaan Event
+// Route::view('/admin/event/tambahdatas', 'pages.Dashboard.Event.tambah-data-event')->name('tambah-data-event');
+Route::view('/admin/event/detaildatas', 'pages.Dashboard.Event.detail-data-event')->name('detail-data-event');
+Route::view('/admin/event/editdatas', 'pages.Dashboard.Event.edit-data-event')->name('edit-data-event');

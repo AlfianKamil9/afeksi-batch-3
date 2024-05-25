@@ -1,0 +1,68 @@
+.bg-event {
+    background-color: #233dff;
+    border-radius: 20px;
+}
+
+.bg-event h1 {
+    color: white;
+}
+
+.bg-event hr {
+    border: 1px solid #233dff;
+    margin: 0;
+}
+.row .col-md-6 .mb-4 label {
+    color: white;
+    width: 100%;
+}
+.row .col-md-6 .mb-4 input,
+.row .col-md-6 .mb-4 .form-select,
+.row .col-md-6 .mb-4 textarea {
+    border: 1px solid #bdbdbd;
+    background-color: white;
+    color: #233dff;
+}
+.d-flex .btn-keluar {
+    background: #7b7b7b;
+    color: white;
+    padding: 5px 20px 5px 20px;
+}
+.d-flex .btn-keluar:hover {
+    background: black;
+}
+
+.d-flex .btn-simpan {
+    background: #51e252;
+    color: white;
+    padding: 5px 20px 5px 20px;
+}
+.d-flex .btn-simpan:hover {
+    background: black;
+}
+
+.d-flex .btn-hapus {
+    background: #ce0404;
+    color: white;
+    padding: 5px 20px 5px 20px;
+}
+.d-flex .btn-hapus:hover {
+    background: black;
+}
+.custom-option {
+    border: 1px solid #bdbdbd;
+    color: #7b7b7b;
+    padding: 10px !important;
+    background: #f4f4f4;
+    border-radius: 0.375rem !important;
+}
+
+.img-preview {
+    width: 50%;
+    height: 50%;
+    display: none;
+    cursor: pointer;
+}
+/* .p-4 .blur {
+    color: transparent;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+} */
