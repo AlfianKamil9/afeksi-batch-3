@@ -20,4 +20,12 @@ class eventDashboardController extends Controller
         //return $g;
         return view('A_Page_Admin.K_Event.tambah-data-event', compact('e', 'g', 'l'));
     }
+
+    public function showDetail() {
+        return view('A_Page_Admin.K_Event.detail-data-event');
+    }
+
+    public function showEdit() {
+        return view('A_Page_Admin.K_Event.edit-data-event');
+    }
 }

@@ -218,6 +218,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
                 Route::name('events.')->prefix('/event')->group(function() {
                     Route::get('', [eventDashboardController::class, 'index'])->name('index'); 
                     Route::get('/add', [eventDashboardController::class, 'showAdd'])->name('events.add');
+                    Route::get('/{slug_event}/edit', [eventDashboardController::class, 'showEdit'])->name('events.edit');
+                    Route::get('/{slug_event}/detail', [eventDashboardController::class, 'showDetail'])->name('events.detail');
                 });
         });
     });
