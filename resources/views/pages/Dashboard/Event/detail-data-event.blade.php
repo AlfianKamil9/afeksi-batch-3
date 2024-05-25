@@ -69,7 +69,7 @@
                     </div>
                     <div class="mb-4 d-md-flex align-items-center">
                         <label class="form-label mb-0" for="timeStart">Time Start</label>
-                        <input type="time" class="form-control" placeholder="Masukkan Jam" id="timeStart" data-timezone="WIB" />
+                        <input type="time" class="form-control" placeholder="Masukkan Jam" />
                     </div>                    
                     <div class="mb-4 d-md-flex align-items-center">
                         <label class="form-label mb-0">Time Finish</label>
