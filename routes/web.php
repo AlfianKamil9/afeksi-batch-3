@@ -231,6 +231,7 @@ Route::view('/admin/event', 'pages.admin-event')->name('admin.event');
 Route::view('/admin/orders', 'pages.admin-orders')->name('admin.orders');
 
 
-// Admin Tambah Data Pengelolaan Event
+// Admin Tambah, Edit dan Detail Pengelolaan Event
 Route::view('/admin/event/tambahdata', 'pages.Dashboard.Event.tambah-data-event')->name('tambah-data-event');
-
+Route::view('/admin/event/detaildata', 'pages.Dashboard.Event.detail-data-event')->name('detail-data-event');
+Route::view('/admin/event/editdata', 'pages.Dashboard.Event.edit-data-event')->name('edit-data-event');
