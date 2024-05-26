@@ -26,14 +26,5 @@ use App\Http\Controllers\API\NotificationPaymentEventController;
 use App\Http\Controllers\Transaksi\Event\WebinarTransaksiController;
 
 //MIDTRANS NOTIFICATION
-//Route::post('/midtrans/notification-hooks', HandleAfterPayment::class);
 Route::post('/midtrans/callback', [NotificationPaymentEventController::class, 'callback']);
 
-
-
-// YANG HANYA TEST
-// Route::post('/checkout', [WebinarTransaksiController::class, 'checkout']);
-// Route::get('/cek-psikolog-layanan', function() {
-//     $t = LayananMentoring::with('paket_layanan_mentoring', 'psikolog_non_profesional')->where('id', 4)->first();
-//     return response($t);
-// });

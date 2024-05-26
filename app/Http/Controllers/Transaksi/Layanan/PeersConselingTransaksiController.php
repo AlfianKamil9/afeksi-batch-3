@@ -86,98 +86,76 @@ class PeersConselingTransaksiController extends Controller
 
 
     // show halaman pembayaran professional konseling
-    public function showPembayaran($ref_transaction_layanan)
+    public function showPembayaran($ref_transaction_layanan, Request $request)
     {
+        $now = Carbon::now();
         $data = PembayaranLayanan::with('voucher', 'konselor.user', 'detail_pembayarans', 'paket_layanan_konseling.layanan_konseling')
             ->where('ref_transaction_layanan', $ref_transaction_layanan)->firstOrFail();
-        //return response()->json($data);
-        return view('pages.LayananKonseling.pembayaran', compact('data'));
-    }
 
-
-    // checkout proses pembayaran professional konseling
-    public function checkoutProfessionalKonseling(Request $request, $ref_transaction_layanan)
-    {
-        $id = PembayaranLayanan::where('ref_transaction_layanan', $ref_transaction_layanan)->pluck('id')->first();
-        if (isset($request->btnBatalVoucher)) {
+        // VOUCHER APPLY
+         if (isset($request->cancel)) {
             session()->forget('apply');
             return back();
-        } else if (isset($request->btnApplyVoucher)) {
-            if (isset($request->input_code)) {
+        } else if (isset($request->apply)) {
+            if (isset($request->voucher)) {
                 $now = Carbon::now();
-                $kode = Voucher::where('kode', $request->input_code)->where('expired_date', '>=', $now)->where('stok_voucher', '>', 0)->first();
+                $kode = Voucher::where('kode', $request->voucher)->where('expired_date', '>=', $now)->where('stok_voucher', '>', 0)->first();
                 if (!$kode) {
-                    return back()->with('error', 'Code Voucher is Invalid');
+                    return back()->with('error', 'Kode Voucher tidak Valid ');
                 }
                 session()->put('apply', [
                     'kode' => $kode->kode,
                     'diskon' => $kode->jumlah_diskon,
                     'pesan' => "Berhasil Menerapkan Voucher",
-                    'bank' => $request->bank
                 ]);
                 return back();
             }
             return back()->with('error', 'Code Voucher is Null');
         }
+        
+        return view('pages.LayananKonseling.pembayaran', compact('data'));
+    }
 
-        $validate = Validator::make($request->all(), [
-            "bank" => 'required',
-            "ref" => 'required'
-        ]);
-        if ($validate->fails()) {
-            return back()->with('message', 'Bank Harus Diisi');
+
+    // checkout
+    public function checkoutPeersKonseling(Request $request, $ref_transaction_layanan)
+    {
+        $ref = $ref_transaction_layanan;
+        // cek ada voucher atau tidak
+        if(isset($request->voucher)) {
+            //dd($request->all());
+            $request->validate([
+                'voucher' => 'required',
+                'total' => 'required'
+            ]);
+
+            \Midtrans\Config::$serverKey = config('midtrans.midtrans.server_key');
+            // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+            \Midtrans\Config::$isProduction = false;
+            // Set sanitization on (default)
+            \Midtrans\Config::$isSanitized = true;
+            // Set 3DS transaction for credit card to true
+            \Midtrans\Config::$is3ds = true;
+
+            $params = array(
+                'transaction_details' => array(
+                    'order_id' => $ref,
+                    'gross_amount' => $request->total,
+                ),
+                'customer_details' => array(
+                    'first_name' => auth()->user()->nama,
+                    'email' =>  auth()->user()->email,
+                    'phone' =>  auth()->user()->no_whatsapp,
+                ),
+            );
+
+            $snapToken = \Midtrans\Snap::getSnapToken($params);
+            // return view('pages.checkout', compact('snapToken'));
+            dd('testing');
         }
-        $voucher_id = Voucher::where('kode', $request->input_code)->pluck('id')->first();
-        $bank = bank::where('id', $request->bank)->pluck('bank')->first();
-        // panggil fungsi klasifikasi payment method untuk cek klasifikasinya
-        $response = $this->klasifikasiPaymentMethod($bank, $ref_transaction_layanan, $voucher_id);
+        
+        // tidak pakai voucher
         // 
-        // response -------------------
-        if ($response["status_code"] != 201) {
-            Alert::alert()->html('<h4 class="fw-bold text-danger">FAILED PAYMENT METHOD</h4>', '<p>There was some error in the system, Please try again later or change the Payment Method.<br><br>Error: <span class="pt-2 fw-bold ">500 Server Error</span></p>');
-            return back();
-        }
-        if ($request->input_code != null) {
-            $stok = Voucher::where('kode', $request->input_code)->pluck('stok_voucher')->first();
-            Voucher::where('id', $voucher_id)->update([
-                'stok_voucher' => $stok - 1
-            ]);
-            PembayaranLayanan::where('id', $id)->update([
-                'voucher_id' => $voucher_id
-            ]);
-        }
-        $getData = DetailPembayaran::where('pembayaran_layanan_id', $id)->first();
-        $getData2 = PembayaranLayanan::where('ref_transaction_layanan', $ref_transaction_layanan)->first();
-        if ($bank == 'bni' || $bank == 'bri' || $bank == 'bca' || $bank == 'cimb' || $bank == 'permata') {
-            $va = '<h6 style="text-transform:uppercase;">' . $bank . ' VA = ' . $getData->kode_bayar_1 . '</h6>';
-            $pesan = "Silahkan Lengkapi Pembayaran Sebelum <br><strong>" . $getData2->updated_at->addDay(1)->format('l, d M Y') . "</strong> pukul </strong>" . $getData->updated_at->format('H:i') . "</strong>";
-        } else if ($bank == 'mandiri') {
-            $va =   '<h6 style="text-transform:uppercase;">' . $bank . ' Bill Key = ' . $getData->kode_bayar_1 . '</h6>
-                    <h6 style="text-transform:uppercase;">' . $bank . ' Bill Code = ' . $getData->kode_bayar_2 . '</h6>';
-            $pesan = "Silahkan Lengkapi Pembayaran Sebelum <br><strong>" . $getData2->updated_at->addDay(1)->format('l, d M Y') . "</strong> pukul </strong>" . $getData->updated_at->format('H:i') . "</strong>";
-        } else if ($bank == 'indomaret') {
-            $va =   '<h6 style="text-transform:uppercase;">' . $bank . ' Kode Pembayaran = ' . $getData->kode_bayar_1 . '</h6>
-                    <h6 style="text-transform:uppercase;">Kode Merchant = ' . $getData->kode_bayar_2 . '</h6>
-                    ';
-            $pesan = "Silahkan Lengkapi Pembayaran Sebelum <br><strong>" . $getData2->updated_at->addDay(1)->format('l, d M Y') . "</strong> pukul </strong>" . $getData->updated_at->format('H:i') . "</strong>";
-        } else if ($bank == 'alfamart') {
-            $va =   '<h6 style="text-transform:uppercase;">' . $bank . ' Kode Pembayaran = ' . $getData->kode_bayar_1 . '</h6>';
-            $pesan = "Silahkan Lengkapi Pembayaran Sebelum <br><strong>" . $getData2->updated_at->addDay(1)->format('l, d M Y') . "</strong> pukul </strong>" . $getData->updated_at->format('H:i') . "</strong>";
-        } else if ($bank == 'shopeepay') {
-            $va =   '<center><a style="text-transform:uppercase;" href="' . $getData->kode_bayar_1 . '" class="btn btn-primary">Bayar Sekarang</a></center>';
-            $pesan = "Silahkan Lengkapi Pembayaran Sebelum <br><strong>" . $getData2->updated_at->format('l, d M Y') . "</strong> pukul </strong>" . $getData->updated_at->addMinutes(15)->format('H:i') . "</strong>";
-        } else if ($bank == 'gopay') {
-            $va =   '<center>
-                        <a style="text-transform:uppercase;" href="' . $getData->kode_bayar_1 . '"  class="btn btn-primary">Bayar Sekarang</a>
-                    </center>';
-            $pesan = "Silahkan Lengkapi Pembayaran Sebelum <br><strong>" . $getData2->updated_at->format('l, d M Y') . "</strong> pukul </strong>" . $getData->updated_at->addMinutes(15)->format('H:i') . "</strong>";
-        }
-        session()->forget('apply');
-        Session::flash('popupAfterProfKonseling', [
-            'kode' => $va,
-            'pesan' => $pesan
-        ]);
-        return Redirect::to('/' . $ref_transaction_layanan . '/notification-konseling/success');
     }
 
 

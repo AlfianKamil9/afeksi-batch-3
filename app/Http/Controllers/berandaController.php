@@ -18,7 +18,6 @@ class berandaController extends Controller
 
         // ambil data testimonial
         $testimonialInternship = testimonial_internship::all()->toArray();
-        //return response()->json($sa);
         return view('pages.landing-page-new', ['sa' => $sa, 'testimonials' => $testimonialInternship]);
     }
 }

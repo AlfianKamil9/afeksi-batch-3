@@ -133,12 +133,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/professional-konseling/{ref_transaction_layanan}/pembayaran', [KonselingTransaksiController::class, 'showPembayaran'])->name('professional.konseling.checkout');
     Route::post('/professional-konseling/{ref_transaction_layanan}/checkout', [KonselingTransaksiController::class, 'checkoutProfessionalKonseling'])->name('professional.konseling.process.checkout');
 
-//PEERS KONSELING
+//------------PEERS KONSELING
     Route::post('/peers-konseling/pilih-sub-topic', [PeersConselingController::class, 'processFirstPeers'])->name('peers.konseling.create.first');
-    // PILIHAN KONSELOR
-    // Route::get('/peers-konseling/{ref_transaction_layanan}/peers-konseling',[peersConselingController::class, 'showKonselorPeers'])->name('peers.konseling.konselor');
-    // Route::post('/peers-konseling/{ref_transaction_layanan}/peers-konseling',[peersConselingController::class, 'processPilihKonselor'])->name('peers.konseling.process.pilih-konselor');
-    // PAKET PEERS KONSELING
+    // GET PAKET
     Route::get('/peers-konseling/{ref_transaction_layanan}/pilihan-paket-peers-konseling', [peersConselingController::class, 'showPaketKonseling'])->name('peers.konseling.pilihan.paket');
     Route::post('/peers-konseling/{ref_transaction_layanan}/pilihan-paket-peers-konseling', [peersConselingController::class, 'processPaketKonseling'])->name('peers.konseling.process.paket');
     // FORM PEERS KONSELING
@@ -146,7 +143,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/peers-konseling/{ref_transaction_layanan}/submit-form-konseling', [PeersConselingTransaksiController::class, 'submitDataDiri'])->name('peers.konseling.process.form');
     //CHECKOUT
     Route::get('/peers-konseling/{ref_transaction_layanan}/pembayaran', [PeersConselingTransaksiController::class, 'showPembayaran'])->name('peers.konseling.checkout');
-    Route::post('/peers-konseling/{ref_transaction_layanan}/checkout', [PeersConselingTransaksiController::class, 'checkoutProfessionalKonseling'])->name('peers.konseling.process.checkout');
+    Route::post('/peers-konseling/{ref_transaction_layanan}/checkout', [PeersConselingTransaksiController::class, 'checkoutPeersKonseling'])->name('peers.konseling.process.checkout');
 
 
     // NOTIFICATION AFTER PEMBAYARAN PROFESIONAL KONSELING---

@@ -8,7 +8,11 @@
 @endsection
 
 
-{{-- @include('../partials/navbar')  --}}
+@section('headForPayment')
+  <script type="text/javascript"
+		src="https://app.stg.midtrans.com/snap/snap.js"
+    data-client-key="{{ config('midtrans.midtrans.client_key') }}"></script>
+@endsection
 
 @section('content')
 
@@ -60,40 +64,41 @@
     <div class="col-lg-7">
       <div class="card mb-4" style="border-color: #2139f9; z-index: 0">
         <div class="card-body">
-          <form action="{{ route('professional.konseling.process.checkout', request('ref_transaction_layanan')) }}" method="post">
-            @csrf
           <h5 class="fw-bolder" style="color: #2139f9">Pembayaran</h5>
-
+          
           <!-- Metode Pembayaran -->
-          <p class="fw-medium">Pilih Metode Pembayaran yang bisa anda pilih</p>
-          @if (session()->has('message'))
-              <span class="text-danger fst-italic">{{ session('message') }}</span>
+          <p class="fw-medium">Lengkapi Pembayaran Anda</p>
+          {{-- @if (session()->has('message'))
+          <span class="text-danger fst-italic">{{ session('message') }}</span>
           @endif
           <select id="myDropdown" class="form-select" name="bank" style="width: 100%">
             <!-- option on Pembayaran.js -->
             <option value="" selected>Pilih Metode Pembayaran</option>
-          </select>
+          </select> --}}
           
-
+          
           <!-- Voucher -->
           <h6 class="fw-bold">Voucher
             @if (session()->has('error'))
-              <span class="text-danger fst-italic">({{ session('error') }})</span>
+            <span class="text-danger fst-italic">({{ session('error') }})</span>
             @elseif(session()->has('apply'))
-              <span class="text-success fst-italic">({{ session('apply')['pesan'] }})</span>
+            <span class="text-success fst-italic">({{ session('apply')['pesan'] }})</span>
             @endif
           </h6>
+          <form method="get" style="">
           <div class="input-group mb-3">
             @if (session()->has('apply'))
-              <input type="text" id="input_code"  class="form-control p-3" placeholder="Masukkan Kode" name="input_code" aria-label="Masukkan Kode" value="{{ session('apply')['kode'] }}" aria-describedby="button-addon2" readonly/>
-              <input class="btn bg-danger btn-voucher btnBatalVoucher" type="submit" id="button-addon2" name="btnBatalVoucher" value="Batal">
+              <input type="text" id="input_code"  class="form-control p-3" placeholder="Masukkan Kode" name="voucher" aria-label="Masukkan Kode" value="{{ session('apply')['kode'] }}" aria-describedby="button-addon2" readonly/>
+              <input class="btn bg-danger btn-voucher btnBatalVoucher" type="submit" id="button-addon2" name="cancel" value="Batal">
             @else
-              <input type="text" id="input_code"  class="form-control p-3" placeholder="Masukkan Kode" name="input_code" aria-label="Masukkan Kode" aria-describedby="button-addon2" />
-              <input class="btn btn-voucher btnApplyVoucher" type="submit" id="button-addon2" name="btnApplyVoucher" value="Pilih">
+              <input type="text" id="voucher"  class="form-control p-3" placeholder="Masukkan Kode" name="voucher" aria-label="Masukkan Kode" aria-describedby="button-addon2" />
+              <input class="btn btn-voucher btnApplyVoucher" type="submit" id="button-addon2" name="apply">
             @endif
           </div>
-
-          <!-- Rincian Pembayaran -->
+        </form>
+          
+        <form action="{{ route('peers.konseling.process.checkout', request('ref_transaction_layanan')) }}" method="post">
+          @csrf
           <h6 class="fw-bold">Rincian Pembayaran</h6>
           <div class="card p-1 mb-5">
             <div class="container mt-4">
@@ -103,10 +108,6 @@
                     <td class="text-muted fw-bold">Sub Total</td>
                     <td class="text-end fw-bold">Rp {{ number_format($data->paket_layanan_konseling->harga) }}</td>
                   </tr>
-                  {{-- <tr>
-                    <td class="text-muted fw-bold">Biaya Admin</td>
-                    <td class="text-end fw-bold">Rp. {{ number_format(4000, 0 ,',' ,'.') }}</td>
-                  </tr> --}}
                   <tr>
                     <td class="text-muted fw-bold">Voucher Diskon</td>
                     <td class="text-end fw-bold">- Rp. 
@@ -153,7 +154,13 @@
                     @endif
                   </h5>
               </div>
-              <input type="hidden" name="ref" value="{{ request('ref_transaction_layanan') }}">
+              {{-- <input type="hidden" name="ref" value="{{ request('ref_transaction_layanan') }}"> --}}
+              @if (session()->has('apply'))
+                <input type="hidden" name="total" value="{{ $data->paket_layanan_konseling->harga - session('apply')['diskon']}}">
+                <input type="hidden" name="voucher" value="{{ session('apply')['kode']}}">
+              @else
+                <input type="hidden" name="total" value="{{ $data->paket_layanan_konseling->harga }}">
+              @endif
               <div class="col text-end">
                 <button type="submit" id="btn-selanjutnya" class="btn button-next" style="background-color: #2139f9; color: #fff; width: 10rem">Selanjutnya</button>
               </div>
@@ -243,12 +250,39 @@
   </div>
 </div>
 
-@include('sweetalert::alert')
+{{-- @include('sweetalert::alert') --}}
 @include('../partials/footer') 
 
 
 @section('script')
   <script src="/assets/js/pembayaran.js"></script>
+  <script type="text/javascript">
+    // For example trigger on button clicked, or any time you need
+    var payButton = document.getElementById('pay-button');
+    payButton.addEventListener('click', function () {
+      // Trigger snap popup. @TODO: Replace TRANSACTION_TOKEN_HERE with your transaction token.
+      // Also, use the embedId that you defined in the div above, here.
+      window.snap.embed('YOUR_SNAP_TOKEN', {
+        embedId: 'snap-container',
+        onSuccess: function (result) {
+          /* You may add your own implementation here */
+          alert("payment success!"); console.log(result);
+        },
+        onPending: function (result) {
+          /* You may add your own implementation here */
+          alert("wating your payment!"); console.log(result);
+        },
+        onError: function (result) {
+          /* You may add your own implementation here */
+          alert("payment failed!"); console.log(result);
+        },
+        onClose: function () {
+          /* You may add your own implementation here */
+          alert('you closed the popup without finishing the payment');
+        }
+      });
+    });
+  </script>
 @endsection
 
 
