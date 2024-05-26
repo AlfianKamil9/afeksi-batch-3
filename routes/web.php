@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\LayananKonseling;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Karir\Volunteer;
 use App\Http\Controllers\Karir\Internship;
