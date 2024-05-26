@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AF_Admin_Web\adminDashboardController;
 use App\Http\Controllers\AF_Admin_Web\eventDashboardController;
+use App\Http\Controllers\AF_Admin_Web\campaignDashboard;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Karir\Internship;
 use App\Http\Controllers\berandaController;
@@ -66,8 +67,8 @@ Route::get('/kegiatan-webinar', [WebinarController::class, 'index'])->name('webi
 Route::get('/kegiatan-webinar/{slug}', [WebinarController::class, 'show'])->name('webinar.detail');
 Route::get('/kegiatan-campaign', [CampaignController::class, 'index'])->name('campaign');
 Route::get('/kegiatan-campaign/{slug}', [CampaignController::class, 'show'])->name('campaign.detail');
-Route::get('/rekap-history',[RekapHistoriController::class, 'showRekapHistory'])->name('recap.history');
-Route::get('/rekaphistory/{slug}',[RekapHistoriController::class, 'showRekapHistoryDetail'])->name('recap.history.detail');
+Route::get('/rekap-history', [RekapHistoriController::class, 'showRekapHistory'])->name('recap.history');
+Route::get('/rekaphistory/{slug}', [RekapHistoriController::class, 'showRekapHistoryDetail'])->name('recap.history.detail');
 
 
 
@@ -96,10 +97,10 @@ Route::get('/artikel/detail/{slug}', [artikelController::class, 'show'])->name('
 
 // MIDLLEWARE HALAMAN YANG PERLU LOGIN
 Route::middleware(['auth', 'verified'])->group(function () {
-//--------------------------------------MENTORING---------------------------------------------------
+    //--------------------------------------MENTORING---------------------------------------------------
     Route::get('/pre-marriage', [MentoringController::class, 'showPreMarriage'])->name('mentoring.pre-marriage');
     Route::get('/parenting-mentoring', [MentoringController::class, 'showParenting'])->name('mentoring.parenting');
-    Route::get('/relationship-mentoring',[MentoringController::class, 'showRelationship'])->name('mentoring.relationship');
+    Route::get('/relationship-mentoring', [MentoringController::class, 'showRelationship'])->name('mentoring.relationship');
     // PILIH PAKET MENTORING
     Route::get('/mentoring/{slug_item_mentoring}/pilih-paket-yang-diinginkan', [MentoringController::class, 'showPaketMentoring']);
     Route::post('/save-pilih-paket-mentoring', [MentoringController::class, 'savePaketYangDipilih']);
@@ -114,13 +115,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
     //END LAYANAN MENTORING
 
 
-//--------------------------------------KONSELING---------------------------------------------------
-//PROFESSIONAL KONSELING
-  // PILIHAN SUB PROFESSIONAL KONSELING
+    //--------------------------------------KONSELING---------------------------------------------------
+    //PROFESSIONAL KONSELING
+    // PILIHAN SUB PROFESSIONAL KONSELING
     Route::post('/professional-konseling/pilih-sub-topic', [ProfessionalController::class, 'createProfessional'])->name('professional.konseling.create.first');
-  // PILIHAN KONSELOR
-    Route::get('/professional-konseling/pilihan-konselor-professional-konseling',[ProfessionalController::class, 'showAllKonselor'])->name('professional.konseling.konselor');
-    Route::post('/professional-konseling/proses/pilihan-konselor-professional-konseling',[ProfessionalController::class, 'processPilihKonselor'])->name('professional.konseling.process.pilih-konselor');
+    // PILIHAN KONSELOR
+    Route::get('/professional-konseling/pilihan-konselor-professional-konseling', [ProfessionalController::class, 'showAllKonselor'])->name('professional.konseling.konselor');
+    Route::post('/professional-konseling/proses/pilihan-konselor-professional-konseling', [ProfessionalController::class, 'processPilihKonselor'])->name('professional.konseling.process.pilih-konselor');
     // PAKET PROFESSIONAL KONSELING
     Route::get('/professional-konseling/{ref_transaction_layanan}/pilihan-paket-professional-konseling', [ProfessionalController::class, 'showPaketKonseling'])->name('professional.konseling.pilihan.paket');
     Route::post('/professional-konseling/{ref_transaction_layanan}/pilihan-paket-professional-konseling', [ProfessionalController::class, 'processPaketKonseling'])->name('professional.konseling.process.paket');
@@ -131,7 +132,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/professional-konseling/{ref_transaction_layanan}/pembayaran', [KonselingTransaksiController::class, 'showPembayaran'])->name('professional.konseling.checkout');
     Route::post('/professional-konseling/{ref_transaction_layanan}/checkout', [KonselingTransaksiController::class, 'checkoutProfessionalKonseling'])->name('professional.konseling.process.checkout');
 
-//PEERS KONSELING
+    //PEERS KONSELING
     Route::post('/peers-konseling/pilih-sub-topic', [PeersConselingController::class, 'processFirstPeers'])->name('peers.konseling.create.first');
     // PILIHAN KONSELOR
     // Route::get('/peers-konseling/{ref_transaction_layanan}/peers-konseling',[peersConselingController::class, 'showKonselorPeers'])->name('peers.konseling.konselor');
@@ -151,7 +152,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/{ref_transaction_layanan}/notification-konseling/success', [NotifikasiKonseling::class, 'index'])->name('notification.konseling.success');
 
 
-// ----------------------------------------------------------------------------------------
+    // ----------------------------------------------------------------------------------------
 
 
     // PENDAFTARAN RELATIONSHIP KONSELOR
@@ -170,7 +171,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/pendaftaran-relationship-heroes', [RelationshipHeroes::class, 'index'])->name('volunteer.relationship-heroes');
     Route::post('/pendaftaran-relationship-heroes', [RelationshipHeroes::class, 'store'])->name('volunteer.store-relationship-heroes');
 
-//--------------------------------------------------------------------------------------
+    //--------------------------------------------------------------------------------------
 
     // PENDAFTARAN KEGIATAN
     //PENDAFTARAN WEBINAR
@@ -184,57 +185,53 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 
 
-    Route::middleware(['auth','only-user'])->group(function(){
-        Route::name('dashboard.')->prefix('/dashboard')->group(function() {
-        // DASHBOARD USER
-                //Dasboard Utama
-                Route::get('', [IndexController::class, 'showDashboardIndex'])->name('index');
-                // PROFILE
-                Route::name('profile.')->prefix('/profile')->group(function() {
-                    Route::get('', [ProfileController::class, 'showDashboardProfile'])->name('index');
-                    Route::post('/changes-data', [ProfileController::class, 'processChanges'])->name('changes.data');
-                    Route::get('/ubah-password',[ ProfileController::class, 'showUbahPassword'])->name('show.changePassword');
-                    Route::post('/change-password', [ProfileController::class, 'processChangePassword'])->name('changes.password');
-                    Route::get('/ubah-foto-profile', [ProfileController::class, 'showUbahFoto'])->name('show.changeFoto');
-                    Route::post('/ubah-foto-profile', [ProfileController::class, 'processChangeFoto'])->name('process.changeFoto');
-                });
-                // E-Book
-                Route::get('/e-book', [MyBookController::class, 'showMyBook'])->name('show.e-book');
-                // Rekap Transaksi
-                Route::get('/recap-transactions',[RekapTransaction::class, 'showRecapTransaction'])->name('show.rekap.transaksi');
-                Route::post('/cancel-order', [RekapTransaction::class, 'cancelingOrder'])->name('cancel.order.transaksi');
+    Route::middleware(['auth', 'only-user'])->group(function () {
+        Route::name('dashboard.')->prefix('/dashboard')->group(function () {
+            // DASHBOARD USER
+            //Dasboard Utama
+            Route::get('', [IndexController::class, 'showDashboardIndex'])->name('index');
+            // PROFILE
+            Route::name('profile.')->prefix('/profile')->group(function () {
+                Route::get('', [ProfileController::class, 'showDashboardProfile'])->name('index');
+                Route::post('/changes-data', [ProfileController::class, 'processChanges'])->name('changes.data');
+                Route::get('/ubah-password', [ProfileController::class, 'showUbahPassword'])->name('show.changePassword');
+                Route::post('/change-password', [ProfileController::class, 'processChangePassword'])->name('changes.password');
+                Route::get('/ubah-foto-profile', [ProfileController::class, 'showUbahFoto'])->name('show.changeFoto');
+                Route::post('/ubah-foto-profile', [ProfileController::class, 'processChangeFoto'])->name('process.changeFoto');
+            });
+            // E-Book
+            Route::get('/e-book', [MyBookController::class, 'showMyBook'])->name('show.e-book');
+            // Rekap Transaksi
+            Route::get('/recap-transactions', [RekapTransaction::class, 'showRecapTransaction'])->name('show.rekap.transaksi');
+            Route::post('/cancel-order', [RekapTransaction::class, 'cancelingOrder'])->name('cancel.order.transaksi');
         });
     });
 
 
-
-    // DASHBOARD ADMIN
-    Route::middleware(['auth','only-admin'])->group(function(){
-        Route::name('admin.')->prefix('/admin')->group(function() {
-        // DASHBOARD ADMIN
-                // DASHBOARD ADMIN
-                Route::get('/dashboard', [adminDashboardController::class, 'index'])->name('dashboard.index');
-                // KELOLA EVENT (WEBINAR & CAMPAIGN)
-                Route::get('/events', [eventDashboardController::class, 'index'])->name('events'); 
-                Route::get('/events/add', [eventDashboardController::class, 'showAdd'])->name(('event.add'));
-        });
-    });
     
-    // DASHBOARD KONSELOR
-    Route::middleware(['auth','only-konselor'])->group(function(){
+    // DASHBOARD ADMIN
+    Route::middleware(['auth', 'only-admin'])->group(function () {
+        Route::name('admin.')->prefix('/admin')->group(function () {
+            // DASHBOARD ADMIN
+            // DASHBOARD ADMIN
+            Route::get('/dashboard', [adminDashboardController::class, 'index'])->name('dashboard.index');
+            // KELOLA EVENT (WEBINAR & CAMPAIGN)
+            Route::get('/events', [eventDashboardController::class, 'index'])->name('events');
+            Route::get('/delete/{id}', [eventDashboardController::class, 'destroy'])->name('event.destroy');
+            Route::get('/events/add', [eventDashboardController::class, 'showAdd'])->name(('event.add'));
+        });
+    });
 
+    // DASHBOARD KONSELOR
+    Route::middleware(['auth', 'only-konselor'])->group(function () {
     });
     // DASHBOARD PSIKOLOG
-    Route::middleware(['auth','only-psikolog'])->group(function(){
-
+    Route::middleware(['auth', 'only-psikolog'])->group(function () {
     });
 
     //DASHBOARD WRITTER
-    Route::middleware(['auth','only-writter'])->group(function(){
-
+    Route::middleware(['auth', 'only-writter'])->group(function () {
     });
-        
-   
 });
 
 
@@ -263,4 +260,3 @@ Route::view('/admin/eventsddd', 'pages.admin-event')->name('admin.event');
 
 // Admin Tambah Data Pengelolaan Event
 Route::view('/admin/event/tambahdata', 'pages.Dashboard.Event.tambah-data-event')->name('tambah-data-event');
-
