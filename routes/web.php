@@ -1,15 +1,13 @@
 <?php
 
-use App\Http\Controllers\AF_Admin_Web\adminDashboardController;
-use App\Http\Controllers\AF_Admin_Web\eventDashboardController;
-use App\Http\Controllers\AF_Admin_Web\AdminWebinarController;
+use App\Models\LayananKonseling;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Karir\Volunteer;
 use App\Http\Controllers\Karir\Internship;
 use App\Http\Controllers\berandaController;
 use App\Http\Controllers\Karir\PeerKonselor;
 use App\Http\Controllers\Karir\BrandAmbasador;
 use App\Http\Controllers\Karir\karirController;
-use App\Http\Controllers\Karir\Volunteer;
 use App\Http\Controllers\Event\WebinarController;
 use App\Http\Controllers\Event\CampaignController;
 use App\Http\Controllers\Karir\RelationshipHeroes;
@@ -26,12 +24,15 @@ use App\Http\Controllers\Transaksi\NotifikasiKonseling;
 use App\Http\Controllers\Transaksi\NotifikasiMentoring;
 use App\Http\Controllers\Konseling\ProfessionalController;
 use App\Http\Controllers\Konseling\PeersConselingController;
+use App\Http\Controllers\AF_Admin_Web\AdminWebinarController;
+use App\Http\Controllers\AF_Admin_Web\adminDashboardController;
+use App\Http\Controllers\AF_Admin_Web\eventDashboardController;
 use App\Http\Controllers\API\NotificationPaymentEventController;
 use App\Http\Controllers\Transaksi\Event\WebinarTransaksiController;
+use App\Http\Controllers\AF_Admin_Web\transactionDashboardController;
 use App\Http\Controllers\Transaksi\Layanan\KonselingTransaksiController;
 use App\Http\Controllers\Transaksi\Layanan\MentoringTransaksiController;
 use App\Http\Controllers\Transaksi\Layanan\PeersConselingTransaksiController;
-use App\Models\LayananKonseling;
 
 /*
 |--------------------------------------------------------------------------
@@ -222,6 +223,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
                     Route::get('/{activity_category_event}/edit/{id}', [eventDashboardController::class, 'showEdit'])->name('edit');
                     Route::get('/{activity_category_event}/detail/{id}', [eventDashboardController::class, 'showDetail'])->name('detail');
                 });
+                // KELOLA PEMEESANAN 
+                Route::name('transactions.')->prefix('/transaction')->group(function() {
+                    Route::get('', [transactionDashboardController::class, 'index'])->name('index');
+                    Route::get('/{ref_transaction_event}', [transactionDashboardController::class, 'showDetail'])->name('detail');
+                    Route::post('/{ref_transaction_event}/delete', [transactionDashboardController::class, 'delete'])->name('delete');
+                });
 
         });
     });
@@ -259,21 +266,3 @@ require __DIR__ . '/auth.php';
 Route::fallback(function () {
     return view('errors.404'); // Menampilkan halaman 404
 });
-
-
-Route::view('/admin/login', 'pages.auth.admin.login')->name('login.admin');
-Route::view('/admin/register', 'pages.auth.admin.register')->name('register.admin');
-
-// Route::view('/admin/dashboardsss', 'pages.admin-dashboard')->name('admin-dashboard');
-// Route::view('/admin/eventsddd', 'pages.admin-event')->name('admin.event');
-
-// Route::view('/admin/dashboards', 'pages.admin-dashboard')->name('admin-dashboard');
-// Route::view('/admin/events', 'pages.admin-event')->name('admin.events');
-// Route::view('/admin/orderss', 'pages.admin-orders')->name('admin.orders');
-
-
-
-// Admin Tambah, Edit dan Detail Pengelolaan Event
-// Route::view('/admin/event/tambahdatas', 'pages.Dashboard.Event.tambah-data-event')->name('tambah-data-event');
-Route::view('/admin/event/detaildatas', 'pages.Dashboard.Event.detail-data-event')->name('detail-data-event');
-Route::view('/admin/event/editdatas', 'pages.Dashboard.Event.edit-data-event')->name('edit-data-event');
