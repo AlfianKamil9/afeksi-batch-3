@@ -8,10 +8,13 @@ use App\Models\EventTransaction;
 use App\Models\EventMaterialSession;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\DB;
+
 
 class Event extends Model
 {
     use HasFactory;
+
 
      protected $fillable = [
         'category_event_id',
@@ -46,6 +49,11 @@ class Event extends Model
     protected $guarded = [
         'id'
     ];
+
+    public function allData(){
+        return DB::tabel('events')->get();
+    }
+
 
     protected $table = 'events';
 

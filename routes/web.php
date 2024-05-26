@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AF_Admin_Web\adminDashboardController;
 use App\Http\Controllers\AF_Admin_Web\eventDashboardController;
+use App\Http\Controllers\AF_Admin_Web\AdminWebinarController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Karir\Internship;
 use App\Http\Controllers\berandaController;
@@ -217,10 +218,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
                 // KELOLA EVENT (WEBINAR & CAMPAIGN)
                 Route::name('events.')->prefix('/event')->group(function() {
                     Route::get('', [eventDashboardController::class, 'index'])->name('index'); 
-                    Route::get('/add', [eventDashboardController::class, 'showAdd'])->name('events.add');
-                    Route::get('/{slug_event}/edit', [eventDashboardController::class, 'showEdit'])->name('events.edit');
-                    Route::get('/{slug_event}/detail', [eventDashboardController::class, 'showDetail'])->name('events.detail');
+                    Route::get('/add', [eventDashboardController::class, 'showAdd'])->name('add');
+                    Route::get('/{activity_category_event}/edit/{id}', [eventDashboardController::class, 'showEdit'])->name('edit');
+                    Route::get('/{activity_category_event}/detail/{id}', [eventDashboardController::class, 'showDetail'])->name('detail');
                 });
+
         });
     });
     
@@ -265,9 +267,9 @@ Route::view('/admin/register', 'pages.auth.admin.register')->name('register.admi
 // Route::view('/admin/dashboardsss', 'pages.admin-dashboard')->name('admin-dashboard');
 // Route::view('/admin/eventsddd', 'pages.admin-event')->name('admin.event');
 
-Route::view('/admin/dashboards', 'pages.admin-dashboard')->name('admin-dashboard');
-Route::view('/admin/events', 'pages.admin-event')->name('admin.events');
-Route::view('/admin/orderss', 'pages.admin-orders')->name('admin.orders');
+// Route::view('/admin/dashboards', 'pages.admin-dashboard')->name('admin-dashboard');
+// Route::view('/admin/events', 'pages.admin-event')->name('admin.events');
+// Route::view('/admin/orderss', 'pages.admin-orders')->name('admin.orders');
 
 
 

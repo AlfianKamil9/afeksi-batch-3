@@ -1,4 +1,4 @@
-@extends('.../layout-admin')
+@extends('layout-admin')
 
 @section('title', 'Kelola Event | AFEKSI')
 
@@ -25,7 +25,7 @@
                             <button class="btn btn-1 btn-filter fw-semibold h-100">Filter</button>
                             <img class="filter-icon" src="/assets/img/admin/filter.png" alt="filter img" style="width: 17px; height:17px;">
                         </div>
-                        <a href="{{ route('admin.event.add') }}"  type="button" class="btn btn-1 btn-warning fw-bold" style="color: #060E7A;">Tambahkan Data</a>
+                        <a href="{{ route('admin.events.add') }}"  type="button" class="btn btn-1 btn-warning fw-bold" style="color: #060E7A;">Tambahkan Data</a>
                     </form>
                 </div>
             </nav>
@@ -33,13 +33,13 @@
         <div class="box-2 tab-content" id="tab-content">
             <div class="tab-pane fade show active" id="nav-webinar" role="tabpanel" aria-labelledby="content-event-tab">
                 <div class="mt-1 ms-3">
-                    <button class="count btn fw-bold px-4 py-0 font-small my-1">2 Webinar</button>
+                    {{-- <button class="count btn fw-bold px-4 py-0 font-small my-1">2 Webinar</button> --}}
                     <p class="mb-1 font-small">Ini adalah Webinar yang telah dibuat</p>
                 </div>
                 <div class="mt-1 w-100 table-responsive mb-1">
                     <table class="w-100">
                         <tr class="fw-semibold text-center font-small" style="background-color: #1121B7; color: #FFFFFF; height: 47px;">
-                            <th class="id">ID</th>
+                            <th class="id">NO</th>
                             <th class="title">Title</th>
                             <th class="date">Date</th>
                             <th class="ts">Time Start</th>
@@ -51,73 +51,53 @@
                                 <img class="m-0 p-0" src="/assets/img/admin/detail.png" alt="img_detail" style="width: 18px; height: 18px ;">
                             </th>
                         </tr>
-                        <tr class="dataTab text-center font-small">
-                            <td>1</td>
-                            <td class="text text-start ps-2">lorem ipsum</td>
-                            <td>Sabtu, 24/09/23</td>
-                            <td>09:30 WIB</td>
-                            <td>Online Zoom</td>
-                            <td>500</td>
-                            <td class="text-center align-items-center px-2" style="height: 47px;">
-                                <button id="status" class="status-event p-0 w-100 fw-semibold">Selesai</button>
-                            </td>
-                            <td>
-                                <div class="inline d-flex justify-content-center align-items-center">
-                                    <div class="edit-container d-flex align-items-center w-75">
-                                        <img class="edit-icon" src="/assets/img/admin/pencil.png" alt="edit_img">
-                                        <button class="btn btn-edit fw-bold p-0 m-0 ps-3 ms-1 pe-1">
-                                            <p class="m-0 p-0 ps-1">Edit</p>
-                                        </button>
+                        
+                            @php $i= 1 @endphp
+                           @foreach ($dataWebinar as $item)
+                           <tr class="dataTab text-center font-small">
+                               <td>{{$i++}}</td>
+                               <td class="text text-start ps-2">{{$item->title_event}}</td>
+                               <td>{{$item->date_event}}</td>
+                               <td>{{$item->time_start}}</td>
+                               <td>{{$item->event_categories->category_event_name}}</td>
+                               <td>{{$item->partisipan == null ? '-' : $item->partisipan}}</td>
+                               <td class="text-center align-items-center px-2" style="height: 47px;">
+                                   <button id="status" class="status-event 
+                                   @if($item->status_event ==  'ONGOING') 
+                                    bg-primary text-light
+                                   @elseif($item->status_event == 'FINISH')
+                                   bg-success text-light
+                                   @else
+                                   bg-dark text-light
+                                   @endif
+                                   p-0 w-100 fw-semibold">{{ $item->status_event }}</button>
+                                </td>
+                                <td>
+                                    <div class="inline d-flex justify-content-center align-items-center">
+                                        <div class="edit-container d-flex align-items-center w-75">
+                                            <img class="edit-icon" src="/assets/img/admin/pencil.png" alt="edit_img">
+                                            <a href="{{ route('admin.events.edit', ['activity_category_event' => $item->activity_category_event, 'id' => $item->id]) }}" class="btn btn-edit fw-bold p-0 m-0 ps-3 ms-1 pe-1">
+                                                <p class="m-0 p-0 ps-1">Edit</p>
+                                            </a>
+                                        </div>
+                                        <div class="d-flex align-items-center w-75 position-relative">
+                                            <img class="trash-icon" src="/assets/img/admin/trash.png" alt="trash_img">
+                                            <button class="btn btn-delete fw-bold p-0 m-0 w-100 me-1 ps-3 pe-1">
+                                                <p class="m-0 p-0 ps-1">Hapus</p>
+                                            </button>
+                                        </div>
                                     </div>
-                                    <div class="d-flex align-items-center w-75 position-relative">
-                                        <img class="trash-icon" src="/assets/img/admin/trash.png" alt="trash_img">
-                                        <button class="btn btn-delete fw-bold p-0 m-0 w-100 me-1 ps-3 pe-1">
-                                            <p class="m-0 p-0 ps-1">Hapus</p>
-                                        </button>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <button class="btn">
-                                    <img class="m-0 p-0" src="/assets/img/admin/detail-2.png" alt="img_detail" style="width: 18px; height: 18px ; cursor:pointer;">
-                                </button>
-                            </td>
-                        </tr>
-                        <tr class="dataTab text-center font-small">
-                            <td>2</td>
-                            <td class="text text-start ps-2">lorem ipsum</td>
-                            <td>Sabtu, 24/09/23</td>
-                            <td>09:30 WIB</td>
-                            <td>Online Zoom</td>
-                            <td>500</td>
-                            <td class="text-center align-items-center px-2" style="height: 47px;">
-                                <button id="status" class="status-event w-100 fw-semibold">Pending</button>
-                            </td>
-                            <td>
-                                <div class="inline d-flex justify-content-center align-items-center">
-                                    <div class="edit-container d-flex align-items-center w-75">
-                                        <img class="edit-icon" src="/assets/img/admin/pencil.png" alt="edit_img">
-                                        <button class="btn btn-edit fw-bold p-0 m-0 ps-3 ms-1 pe-1">
-                                            <p class="m-0 p-0 ps-1">Edit</p>
-                                        </button>
-                                    </div>
-                                    <div class="d-flex align-items-center w-75 position-relative">
-                                        <img class="trash-icon" src="/assets/img/admin/trash.png" alt="trash_img">
-                                        <button class="btn btn-delete fw-bold p-0 m-0 w-100 me-1 ps-3 pe-1">
-                                            <p class="m-0 p-0 ps-1">Hapus</p>
-                                        </button>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <button class="btn">
-                                    <img class="m-0 p-0" src="/assets/img/admin/detail-2.png" alt="img_detail" style="width: 18px; height: 18px ; cursor:pointer;">
-                                </button>
-                            </td>
-                        </tr>
+                                </td>
+                                <td>
+                                    <a href="{{ route('admin.events.detail',  ['activity_category_event' => $item->activity_category_event, 'id' => $item->id]) }}">
+                                        <img class="m-0 p-0" src="/assets/img/admin/detail-2.png" alt="img_detail" style="width: 18px; height: 18px ; cursor:pointer;">
+                                    </a>
+                                </td>
+                            </tr> 
+                            @endforeach
                     </table>
                 </div>
-            </div>
+            </div> 
             <div class="tab-pane fade" id="nav-campaign" role="tabpanel" aria-labelledby="content-campaign-tab">
                 <div class="mt-1 ms-3">
                     <button class="count btn fw-bold px-4 py-0 font-small my-1">2 Campaign</button>
@@ -126,7 +106,7 @@
                 <div class="mt-1 w-100 table-responsive mb-1">
                     <table class="w-100">
                         <tr class="fw-semibold text-center font-small" style="background-color: #1121B7; color: #FFFFFF; height: 47px;">
-                            <th class="id">ID</th>
+                            <th class="id">NO</th>
                             <th class="title">Title</th>
                             <th class="date">Date</th>
                             <th class="ts">Time Start</th>
@@ -138,76 +118,60 @@
                                 <img class="m-0 p-0" src="/assets/img/admin/detail.png" alt="img_detail" style="width: 18px; height: 18px ;">
                             </th>
                         </tr>
-                        <tr class="dataTab text-center font-small">
-                            <td>1</td>
-                            <td class="text text-start ps-2">lorem ipsum</td>
-                            <td>Sabtu, 24/09/23</td>
-                            <td>09:30 WIB</td>
-                            <td>Online Zoom</td>
-                            <td>500</td>
-                            <td class="text-center align-items-center px-2" style="height: 47px;">
-                                <button id="status" class="status-event p-0 w-100 fw-semibold">Selesai</button>
-                            </td>
-                            <td>
-                                <div class="inline d-flex justify-content-center align-items-center">
-                                    <div class="edit-container d-flex align-items-center w-75">
-                                        <img class="edit-icon" src="/assets/img/admin/pencil.png" alt="edit_img">
-                                        <button class="btn btn-edit fw-bold p-0 m-0 ps-3 ms-1 pe-1">
-                                            <p class="m-0 p-0 ps-1">Edit</p>
-                                        </button>
+                        @php
+                            $no = 1;
+                        @endphp
+                         @foreach ($dataCampaign as $items)
+                           <tr class="dataTab text-center font-small">
+                               <td>{{$no++}}</td>
+                               <td class="text text-start ps-2">{{$items->title_event}}</td>
+                               <td>{{$items->date_event}}</td>
+                               <td>{{$items->time_start}}</td>
+                               <td>{{$items->event_categories->category_event_name}}</td>
+                               <td>{{$items->partisipan == null ? '-' : $items->partisipan}}</td>
+                               <td class="text-center align-items-center px-2" style="height: 47px;">
+                                   <button id="status" class="status-event 
+                                   @if($items->status_event ==  'ONGOING') 
+                                    bg-primary text-light
+                                   @elseif($items->status_event == 'FINISH')
+                                   bg-success text-light
+                                   @else
+                                   bg-dark text-light
+                                   @endif
+                                   p-0 w-100 fw-semibold">{{ $items->status_event }}</button>
+                                </td>
+                                <td>
+                                    <div class="inline d-flex justify-content-center align-items-center">
+                                        <div class="edit-container d-flex align-items-center w-75">
+                                            <img class="edit-icon" src="/assets/img/admin/pencil.png" alt="edit_img">
+                                            <a href="{{ route('admin.events.edit', ['activity_category_event' => $items->activity_category_event, 'id' => $items->id]) }}" class="btn btn-edit fw-bold p-0 m-0 ps-3 ms-1 pe-1">
+                                                <p class="m-0 p-0 ps-1">Edit</p>
+                                            </a>
+                                        </div>
+                                        <div class="d-flex align-items-center w-75 position-relative">
+                                            <img class="trash-icon" src="/assets/img/admin/trash.png" alt="trash_img">
+                                            <button class="btn btn-delete fw-bold p-0 m-0 w-100 me-1 ps-3 pe-1">
+                                                <p class="m-0 p-0 ps-1">Hapus</p>
+                                            </button>
+                                        </div>
                                     </div>
-                                    <div class="d-flex align-items-center w-75 position-relative">
-                                        <img class="trash-icon" src="/assets/img/admin/trash.png" alt="trash_img">
-                                        <button class="btn btn-delete fw-bold p-0 m-0 w-100 me-1 ps-3 pe-1">
-                                            <p class="m-0 p-0 ps-1">Hapus</p>
-                                        </button>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <button class="btn">
-                                    <img class="m-0 p-0" src="/assets/img/admin/detail-2.png" alt="img_detail" style="width: 18px; height: 18px ; cursor:pointer;">
-                                </button>
-                            </td>
-                        </tr>
-                        <tr class="dataTab text-center font-small">
-                            <td>2</td>
-                            <td class="text text-start ps-2">lorem ipsum</td>
-                            <td>Sabtu, 24/09/23</td>
-                            <td>09:30 WIB</td>
-                            <td>Online Zoom</td>
-                            <td>500</td>
-                            <td class="text-center align-items-center px-2" style="height: 47px;">
-                                <button id="status" class="status-event w-100 fw-semibold">Pending</button>
-                            </td>
-                            <td>
-                                <div class="inline d-flex justify-content-center align-items-center">
-                                    <div class="edit-container d-flex align-items-center w-75">
-                                        <img class="edit-icon" src="/assets/img/admin/pencil.png" alt="edit_img">
-                                        <button class="btn btn-edit fw-bold p-0 m-0 ps-3 ms-1 pe-1">
-                                            <p class="m-0 p-0 ps-1">Edit</p>
-                                        </button>
-                                    </div>
-                                    <div class="d-flex align-items-center w-75 position-relative">
-                                        <img class="trash-icon" src="/assets/img/admin/trash.png" alt="trash_img">
-                                        <button class="btn btn-delete fw-bold p-0 m-0 w-100 me-1 ps-3 pe-1">
-                                            <p class="m-0 p-0 ps-1">Hapus</p>
-                                        </button>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <button class="btn">
-                                    <img class="m-0 p-0" src="/assets/img/admin/detail-2.png" alt="img_detail" style="width: 18px; height: 18px ; cursor:pointer;">
-                                </button>
-                            </td>
-                        </tr>
+                                </td>
+                                <td>
+                                    <a href="{{ route('admin.events.detail',  ['activity_category_event' => $items->activity_category_event, 'id' => $items->id]) }}">
+                                        <img class="m-0 p-0" src="/assets/img/admin/detail-2.png" alt="img_detail" style="width: 18px; height: 18px ; cursor:pointer;">
+                                    </a>
+                                </td>
+                            </tr> 
+                            @endforeach
+                       
                     </table>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+@endsection
 
 @section('script')
 <script>
@@ -223,5 +187,4 @@
         }
     })
 </script>
-@endsection
 @endsection
