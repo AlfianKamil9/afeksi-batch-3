@@ -13,10 +13,29 @@ use App\Http\Controllers\Controller;
 class eventDashboardController extends Controller
 {
 
-    public function index(){
-        $eventWebinar = Event::where('activity_category_event','WEBINAR')->get();
-        $eventCampaign = Event::where('activity_category_event','CAMPAIGN')->get();
-    return view('A_Page_Admin.K_Event.admin-event', compact(['eventWebinar','eventCampaign']));
+    public function index (Request $request) {
+        $event = new Event();
+
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $event = $event->where('title_event', 'LIKE', '%' .$search .'%');
+        }
+
+
+        //filter data terlama terbaru
+        $dataFilter = $request->input('sort_data');
+        if ($dataFilter == 'latest') {
+            $event->orderBy('id', 'desc');
+        }
+        $event = $event->paginate(10);
+        return view('A_Page_Admin.K_Event.admin-event', compact('event'));
+
+    }
+
+    public function delete($id){
+        $dataWebinar = Event::find($id);
+        $dataWebinar->delete();
+        return redirect()->route('admin.events.index')->with('success','Data Berhasil Dihapus');
     }
 
     public function showAdd() {

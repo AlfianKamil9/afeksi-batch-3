@@ -220,13 +220,20 @@ Route::middleware(['auth', 'verified'])->group(function () {
                     Route::post('/add', [eventDashboardController::class, 'createEvent'])->name('create');
                     Route::get('/{activity_category_event}/edit/{id}', [eventDashboardController::class, 'showEdit'])->name('edit');
                     Route::get('/{activity_category_event}/detail/{id}', [eventDashboardController::class, 'showDetail'])->name('detail');
+                    Route::get('/delete/{id}', [eventDashboardController::class, 'delete'])->name('delete');
                 });
-                // KELOLA PEMEESANAN 
+                // KELOLA PEMESANAN 
                 Route::name('transactions.')->prefix('/transaction')->group(function() {
                     Route::get('', [transactionDashboardController::class, 'index'])->name('index');
                     Route::get('/{ref_transaction_event}', [transactionDashboardController::class, 'showDetail'])->name('detail');
                     Route::post('/{ref_transaction_event}/delete', [transactionDashboardController::class, 'delete'])->name('delete');
                 });
+
+
+
+                Route::get('/events/{id}', [eventDashboardController::class, 'Update'])->name(('event.update'));
+
+
 
         });
     });

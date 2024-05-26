@@ -14,8 +14,8 @@
         <div class="box d-flex">
             <nav class="py-2 align-content-center w-100">
                 <div class="nav" id="nav-tab" role="tab">
-                    <p class="text-tab m-0 fs-5 fw-semibold nav-link active mt-1" id="nav-webinar-tab" data-bs-toggle="tab" data-bs-target="#nav-webinar" role="tab" aria-controls="nav-webinar" aria-selected="true">Webinar & Campaign</p>
-                    {{-- <p class="text-tab m-0 fs-5 fw-semibold nav-link mt-1" id="nav-campaign-tab" data-bs-toggle="tab" data-bs-target="#nav-campaign" role="tab" aria-controls="nav-campaign" aria-selected="false">Campaign</p> --}}
+                    <a href="/admin/events/?webinar=true" class="text-tab m-0 fs-5 fw-semibold nav-link active mt-1" id="nav-webinar-tab" data-bs-toggle="tab" data-bs-target="#nav-webinar" role="tab" aria-controls="nav-webinar" aria-selected="true">Webinar</a>
+                    <p class="text-tab m-0 fs-5 fw-semibold nav-link mt-1" id="nav-campaign-tab" data-bs-toggle="tab" data-bs-target="#nav-campaign" role="tab" aria-controls="nav-campaign" aria-selected="false">Campaign</p>
                     <form class="form-inline d-flex align-content-center my-2 gap-2 me-3 form-action">
                         <form action="{{route('admin.events.index')}}" method="GET">
                         <div class="search-container">
@@ -38,9 +38,9 @@
         <div class="box-2 tab-content" id="tab-content">
             <div class="tab-pane fade show active" id="nav-webinar" role="tabpanel" aria-labelledby="content-event-tab">
                 <div class="mt-1 ms-3">
-                    <button class="count btn fw-bold px-4 py-0 font-small my-1">{{ $event->where('activity_category_event', 'WEBINAR')->count() }} Webinar</button>
-                    <button class="count btn fw-bold px-4 py-0 font-small my-1">{{ $event->where('activity_category_event', 'CAMPAIGN')->count() }} Campaign</button>
-                    
+                    <button class="count btn fw-bold px-4 py-0 font-small my-1">{{ $event->count() }} Webinar</button>
+
+                    <p class="mb-1 font-small">Ini adalah Webinar yang telah dibuat</p>
                 </div>
                 <div class="mt-1 w-100 table-responsive mb-1">
                     <table class="w-100">
@@ -49,7 +49,6 @@
                             <th class="title">Title</th>
                             <th class="date">Date</th>
                             <th class="ts">Time Start</th>
-                            <th class="category">Activity</th>
                             <th class="category">Category</th>
                             <th class="part">Participant</th>
                             <th class="status">Status</th>
@@ -64,7 +63,6 @@
                             <td class="text text-start ps-2">{{ $webinar->title_event}}</td>
                             <td>{{ \Carbon\Carbon::parse($webinar->date_event)->locale('id')->translatedFormat('l, d-m-Y') }}</td>
                             <td>{{ $webinar->time_start }}</td>
-                             <td><span class="badge {{ $webinar->activity_category_event == 'CAMPAIGN' ? 'bg-primary' : 'bg-success' }}">{{ $webinar->activity_category_event }}</span></td>
                             <td>{{ $webinar->time_category_event }}</td>
                             <td>{{ $webinar->partisipan ? $webinar->partisipan : '-' }}</td>
                             <td class="text-center align-items-center px-2" style="height: 47px;">
@@ -97,7 +95,7 @@
 
                 </div>
             </div> 
-            {{-- <div class="tab-pane fade" id="nav-campaign" role="tabpanel" aria-labelledby="content-campaign-tab">
+            <div class="tab-pane fade" id="nav-campaign" role="tabpanel" aria-labelledby="content-campaign-tab">
                 <div class="mt-1 ms-3">
                     <button class="count btn fw-bold px-4 py-0 font-small my-1">{{ $eventCampaign->count() }} Campaign</button>
                     <p class="mb-1 font-small">Ini adalah Campaign yang telah dibuat</p>
@@ -153,7 +151,7 @@
                         @endforeach
                     </table>
                 </div>
-            </div> --}}
+            </div>
         </div>
     </div>
 </div>
