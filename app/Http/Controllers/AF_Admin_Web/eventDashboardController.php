@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\AF_Admin_Web;
 
-
 use App\Models\Event;
 use App\Models\EventCategory;
 use App\Models\EventMaterialSession;
@@ -38,7 +37,9 @@ class eventDashboardController extends Controller
         return redirect()->route('admin.events.index')->with('success','Data Berhasil Dihapus');
     }
 
-    public function showAdd() {
+
+    public function showAdd()
+    {
         $g = GuestStar::all();
         $l = GuestStar::all();
         $e = EventCategory::all();
