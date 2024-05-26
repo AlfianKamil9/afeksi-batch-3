@@ -228,9 +228,9 @@ Route::view('/admin/login', 'pages.auth.admin.login')->name('login.admin');
 Route::view('/admin/register', 'pages.auth.admin.register')->name('register.admin');
 // main dashboard
 Route::view('/admin/dashboard', 'pages.admin-dashboard')->name('admin-dashboard');
-// event
+// events
 Route::view('/admin/events', 'pages.admin-event')->name('admin.event');
-Route::view('/admin/events/tambah', 'pages.Dashboard.Event.tambah-data-event')->name('tambah-data-event');
+Route::view('/admin/events/add', 'pages.Dashboard.Event.tambah-data-event')->name('tambah-data-event');
 Route::view('/admin/events/detail', 'pages.Dashboard.Event.detail-data-event')->name('detail-data-event');
 Route::view('/admin/events/edit', 'pages.Dashboard.Event.edit-data-event')->name('edit-data-event');
 // orders
