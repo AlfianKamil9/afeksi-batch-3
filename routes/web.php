@@ -217,6 +217,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
                 // KELOLA EVENT (WEBINAR & CAMPAIGN)
                 Route::get('/events', [eventDashboardController::class, 'index'])->name('events'); 
                 Route::get('/events/add', [eventDashboardController::class, 'showAdd'])->name(('event.add'));
+                Route::post('/events/add', [eventDashboardController::class, 'createEvent'])->name(('event.create'));
         });
     });
     
