@@ -217,6 +217,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
                 Route::name('events.')->prefix('/event')->group(function() {
                     Route::get('', [eventDashboardController::class, 'index'])->name('index'); 
                     Route::get('/add', [eventDashboardController::class, 'showAdd'])->name('add');
+                    Route::post('/add', [eventDashboardController::class, 'createEvent'])->name('create');
                     Route::get('/{activity_category_event}/edit/{id}', [eventDashboardController::class, 'showEdit'])->name('edit');
                     Route::get('/{activity_category_event}/detail/{id}', [eventDashboardController::class, 'showDetail'])->name('detail');
                 });
@@ -250,12 +251,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 
 
-// API CALLBACK
-Route::post('/midtrans/callback', [NotificationPaymentEventController::class, 'callback']);
-Route::get('/midtrans/finish', [NotificationPaymentEventController::class, 'finishRedirect']);
-Route::get('/midtrans/unfinish', [NotificationPaymentEventController::class, 'unfinishRedirect']);
-Route::get('/midtrans/error', [NotificationPaymentEventController::class, 'errorRedirect']);
-// Route::post('/midtrans/notification-hooks', HandleAfterPayment::class);
+// // API CALLBACK
+// Route::post('/midtrans/callback', [NotificationPaymentEventController::class, 'callback']);
+// Route::get('/midtrans/finish', [NotificationPaymentEventController::class, 'finishRedirect']);
+// Route::get('/midtrans/unfinish', [NotificationPaymentEventController::class, 'unfinishRedirect']);
+// Route::get('/midtrans/error', [NotificationPaymentEventController::class, 'errorRedirect']);
+// // Route::post('/midtrans/notification-hooks', HandleAfterPayment::class);
 
 
 

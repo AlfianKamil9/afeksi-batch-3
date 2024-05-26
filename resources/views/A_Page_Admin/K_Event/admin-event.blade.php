@@ -33,7 +33,8 @@
         <div class="box-2 tab-content" id="tab-content">
             <div class="tab-pane fade show active" id="nav-webinar" role="tabpanel" aria-labelledby="content-event-tab">
                 <div class="mt-1 ms-3">
-                    {{-- <button class="count btn fw-bold px-4 py-0 font-small my-1">2 Webinar</button> --}}
+                    <button class="count btn fw-bold px-4 py-0 font-small my-1">{{ $eventWebinar->count() }} Webinar</button>
+
                     <p class="mb-1 font-small">Ini adalah Webinar yang telah dibuat</p>
                 </div>
                 <div class="mt-1 w-100 table-responsive mb-1">
@@ -51,56 +52,46 @@
                                 <img class="m-0 p-0" src="/assets/img/admin/detail.png" alt="img_detail" style="width: 18px; height: 18px ;">
                             </th>
                         </tr>
-                        
-                            @php $i= 1 @endphp
-                           @foreach ($dataWebinar as $item)
-                           <tr class="dataTab text-center font-small">
-                               <td>{{$i++}}</td>
-                               <td class="text text-start ps-2">{{$item->title_event}}</td>
-                               <td>{{$item->date_event}}</td>
-                               <td>{{$item->time_start}}</td>
-                               <td>{{$item->event_categories->category_event_name}}</td>
-                               <td>{{$item->partisipan == null ? '-' : $item->partisipan}}</td>
-                               <td class="text-center align-items-center px-2" style="height: 47px;">
-                                   <button id="status" class="status-event 
-                                   @if($item->status_event ==  'ONGOING') 
-                                    bg-primary text-light
-                                   @elseif($item->status_event == 'FINISH')
-                                   bg-success text-light
-                                   @else
-                                   bg-dark text-light
-                                   @endif
-                                   p-0 w-100 fw-semibold">{{ $item->status_event }}</button>
-                                </td>
-                                <td>
-                                    <div class="inline d-flex justify-content-center align-items-center">
-                                        <div class="edit-container d-flex align-items-center w-75">
-                                            <img class="edit-icon" src="/assets/img/admin/pencil.png" alt="edit_img">
-                                            <a href="{{ route('admin.events.edit', ['activity_category_event' => $item->activity_category_event, 'id' => $item->id]) }}" class="btn btn-edit fw-bold p-0 m-0 ps-3 ms-1 pe-1">
-                                                <p class="m-0 p-0 ps-1">Edit</p>
-                                            </a>
-                                        </div>
-                                        <div class="d-flex align-items-center w-75 position-relative">
-                                            <img class="trash-icon" src="/assets/img/admin/trash.png" alt="trash_img">
-                                            <button class="btn btn-delete fw-bold p-0 m-0 w-100 me-1 ps-3 pe-1">
-                                                <p class="m-0 p-0 ps-1">Hapus</p>
-                                            </button>
-                                        </div>
+                        @foreach ($eventWebinar as $webinar)
+                        <tr class="dataTab text-center font-small">
+                            <td>{{ $loop->iteration }}</td>
+                            <td class="text text-start ps-2">{{ $webinar->title_event}}</td>
+                            <td>{{ \Carbon\Carbon::parse($webinar->date_event)->locale('id')->translatedFormat('l, d-m-Y') }}</td>
+                            <td>{{ $webinar->time_start }}</td>
+                            <td>{{ $webinar->time_category_event }}</td>
+                            <td>{{ $webinar->partisipan ? $webinar->partisipan : '-' }}</td>
+                            <td class="text-center align-items-center px-2" style="height: 47px;">
+                                <button id="status" class="status-event p-0 w-100 fw-semibold">{{ $webinar->status_event }}</button>
+                            </td>
+                            <td>
+                                <div class="inline d-flex justify-content-center align-items-center">
+                                    <div class="edit-container d-flex align-items-center w-75">
+                                        <img class="edit-icon" src="/assets/img/admin/pencil.png" alt="edit_img">
+                                        <a href="{{ route('admin.events.edit', ['activity_category_event' => $webinar->activity_category_event, 'id' => $webinar->id]) }}" class="btn btn-edit fw-bold p-0 m-0 ps-3 ms-1 pe-1">
+                                            <p class="m-0 p-0 ps-1">Edit</p>
+                                        </a>
                                     </div>
-                                </td>
-                                <td>
-                                    <a href="{{ route('admin.events.detail',  ['activity_category_event' => $item->activity_category_event, 'id' => $item->id]) }}">
-                                        <img class="m-0 p-0" src="/assets/img/admin/detail-2.png" alt="img_detail" style="width: 18px; height: 18px ; cursor:pointer;">
-                                    </a>
-                                </td>
-                            </tr> 
-                            @endforeach
+                                    <div class="d-flex align-items-center w-75 position-relative">
+                                        <img class="trash-icon" src="/assets/img/admin/trash.png" alt="trash_img">
+                                        <button class="btn btn-delete fw-bold p-0 m-0 w-100 me-1 ps-3 pe-1">
+                                            <p class="m-0 p-0 ps-1">Hapus</p>
+                                        </button>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <a class="btn" href="{{ route('admin.events.detail', ['activity_category_event' => $webinar->activity_category_event, 'id' => $webinar->id]) }}">
+                                    <img class="m-0 p-0" src="/assets/img/admin/detail-2.png" alt="img_detail" style="width: 18px; height: 18px ; cursor:pointer;">
+                                </a>
+                            </td>
+                        </tr>
+                        @endforeach
                     </table>
                 </div>
             </div> 
             <div class="tab-pane fade" id="nav-campaign" role="tabpanel" aria-labelledby="content-campaign-tab">
                 <div class="mt-1 ms-3">
-                    <button class="count btn fw-bold px-4 py-0 font-small my-1">2 Campaign</button>
+                    <button class="count btn fw-bold px-4 py-0 font-small my-1">{{ $eventCampaign->count() }} Campaign</button>
                     <p class="mb-1 font-small">Ini adalah Campaign yang telah dibuat</p>
                 </div>
                 <div class="mt-1 w-100 table-responsive mb-1">
@@ -118,52 +109,40 @@
                                 <img class="m-0 p-0" src="/assets/img/admin/detail.png" alt="img_detail" style="width: 18px; height: 18px ;">
                             </th>
                         </tr>
-                        @php
-                            $no = 1;
-                        @endphp
-                         @foreach ($dataCampaign as $items)
-                           <tr class="dataTab text-center font-small">
-                               <td>{{$no++}}</td>
-                               <td class="text text-start ps-2">{{$items->title_event}}</td>
-                               <td>{{$items->date_event}}</td>
-                               <td>{{$items->time_start}}</td>
-                               <td>{{$items->event_categories->category_event_name}}</td>
-                               <td>{{$items->partisipan == null ? '-' : $items->partisipan}}</td>
-                               <td class="text-center align-items-center px-2" style="height: 47px;">
-                                   <button id="status" class="status-event 
-                                   @if($items->status_event ==  'ONGOING') 
-                                    bg-primary text-light
-                                   @elseif($items->status_event == 'FINISH')
-                                   bg-success text-light
-                                   @else
-                                   bg-dark text-light
-                                   @endif
-                                   p-0 w-100 fw-semibold">{{ $items->status_event }}</button>
-                                </td>
-                                <td>
-                                    <div class="inline d-flex justify-content-center align-items-center">
-                                        <div class="edit-container d-flex align-items-center w-75">
-                                            <img class="edit-icon" src="/assets/img/admin/pencil.png" alt="edit_img">
-                                            <a href="{{ route('admin.events.edit', ['activity_category_event' => $items->activity_category_event, 'id' => $items->id]) }}" class="btn btn-edit fw-bold p-0 m-0 ps-3 ms-1 pe-1">
-                                                <p class="m-0 p-0 ps-1">Edit</p>
-                                            </a>
-                                        </div>
-                                        <div class="d-flex align-items-center w-75 position-relative">
-                                            <img class="trash-icon" src="/assets/img/admin/trash.png" alt="trash_img">
-                                            <button class="btn btn-delete fw-bold p-0 m-0 w-100 me-1 ps-3 pe-1">
-                                                <p class="m-0 p-0 ps-1">Hapus</p>
-                                            </button>
-                                        </div>
+                        @foreach ($eventCampaign as $campaign)
+                        <tr class="dataTab text-center font-small">
+                            <td>{{ $loop->iteration }}</td>
+                            <td class="text text-start ps-2">{{ $campaign->title_event}}</td>
+                            <td>{{ \Carbon\Carbon::parse($campaign->date_event)->locale('id')->translatedFormat('l, d-m-Y') }}</td>
+                            <td>{{ $campaign->time_start }}</td>
+                            <td>{{ $campaign->time_category_event }}</td>
+                            <td>{{ $campaign->partisipan ?  $campaign->partisipan : '-' }}</td>
+                            <td class="text-center align-items-center px-2" style="height: 47px;">
+                                <button id="status" class="status-event p-0 w-100 fw-semibold">{{ $campaign->status_event }}</button>
+                            </td>
+                            <td>
+                                <div class="inline d-flex justify-content-center align-items-center">
+                                    <div class="edit-container d-flex align-items-center w-75">
+                                        <img class="edit-icon" src="/assets/img/admin/pencil.png" alt="edit_img">
+                                        <button class="btn btn-edit fw-bold p-0 m-0 ps-3 ms-1 pe-1">
+                                            <p class="m-0 p-0 ps-1">Edit</p>
+                                        </button>
                                     </div>
-                                </td>
-                                <td>
-                                    <a href="{{ route('admin.events.detail',  ['activity_category_event' => $items->activity_category_event, 'id' => $items->id]) }}">
-                                        <img class="m-0 p-0" src="/assets/img/admin/detail-2.png" alt="img_detail" style="width: 18px; height: 18px ; cursor:pointer;">
-                                    </a>
-                                </td>
-                            </tr> 
-                            @endforeach
-                       
+                                    <div class="d-flex align-items-center w-75 position-relative">
+                                        <img class="trash-icon" src="/assets/img/admin/trash.png" alt="trash_img">
+                                        <button class="btn btn-delete fw-bold p-0 m-0 w-100 me-1 ps-3 pe-1">
+                                            <p class="m-0 p-0 ps-1">Hapus</p>
+                                        </button>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <button class="btn">
+                                    <img class="m-0 p-0" src="/assets/img/admin/detail-2.png" alt="img_detail" style="width: 18px; height: 18px ; cursor:pointer;">
+                                </button>
+                            </td>
+                        </tr>
+                        @endforeach
                     </table>
                 </div>
             </div>
@@ -178,10 +157,10 @@
     const statusTags = document.querySelectorAll('.status-event');
     statusTags.forEach((statusTag) => {
         const status = statusTag.textContent.trim()
-        if (status === 'Selesai') {
+        if (status === 'FINISH') {
             statusTag.style.backgroundColor = '#B4FAA5';
             statusTag.style.color = '#056331';
-        } else if (status === 'Pending') {
+        } else if (status === 'ONGOING') {
             statusTag.style.backgroundColor = '#FFF2B8';
             statusTag.style.color = '#772B03';
         }
