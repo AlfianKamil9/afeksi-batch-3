@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\MyEbook;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class MyEbookSeeder extends Seeder
@@ -15,19 +14,19 @@ class MyEbookSeeder extends Seeder
     {
         MyEbook::create([
             'user_id' => '1',
-            'book_id' => '1'
+            'book_id' => '1',
         ]);
         MyEbook::create([
             'user_id' => '1',
-            'book_id' => '1'
+            'book_id' => '1',
         ]);
         MyEbook::create([
             'user_id' => '1',
-            'book_id' => '2'
+            'book_id' => '2',
         ]);
         MyEbook::create([
             'user_id' => '1',
-            'book_id' => '2'
+            'book_id' => '2',
         ]);
     }
 }

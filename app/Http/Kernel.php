@@ -22,7 +22,6 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
 
-
     ];
 
     /**
@@ -67,10 +66,10 @@ class Kernel extends HttpKernel
         'signed' => \App\Http\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'only-user' =>  \App\Http\Middleware\UserMiddleware::class,
-        'only-admin' =>  \App\Http\Middleware\AdminMiddleware::class,
-        'only-superadmin' =>  \App\Http\Middleware\SuperadminMiddleware::class,
-        'only-psikolog' =>  \App\Http\Middleware\PsikologMiddleware::class,
-        'only-konselor' =>  \App\Http\Middleware\KonselorMiddleware::class,
+        'only-user' => \App\Http\Middleware\UserMiddleware::class,
+        'only-admin' => \App\Http\Middleware\AdminMiddleware::class,
+        'only-superadmin' => \App\Http\Middleware\SuperadminMiddleware::class,
+        'only-psikolog' => \App\Http\Middleware\PsikologMiddleware::class,
+        'only-konselor' => \App\Http\Middleware\KonselorMiddleware::class,
     ];
 }

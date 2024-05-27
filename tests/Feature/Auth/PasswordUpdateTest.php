@@ -13,7 +13,7 @@ class PasswordUpdateTest extends TestCase
 
     public function test_password_can_be_updated(): void
     {
-         $user = User::create([
+        $user = User::create([
             'nama' => 'Alana R',
             'email' => 'alana@gmail.com',
             'email_verified_at' => null,

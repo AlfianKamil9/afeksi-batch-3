@@ -2,24 +2,25 @@
 
 namespace App\Http\Controllers\AF_Admin_Web;
 
+use App\Http\Controllers\Controller;
 use App\Models\Event;
 use App\Models\EventCategory;
 use App\Models\EventMaterialSession;
 use App\Models\GuestStar;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class eventDashboardController extends Controller
 {
-
-    public function index (Request $request) {
+    /*
+     * MENAMPILKAN HALAMAN EVENT
+     */
+    public function index(Request $request)
+    {
         $event = new Event();
-
         if ($request->has('search')) {
             $search = $request->input('search');
-            $event = $event->where('title_event', 'LIKE', '%' .$search .'%');
+            $event = $event->where('title_event', 'LIKE', '%'.$search.'%');
         }
-
 
         //filter data terlama terbaru
         $dataFilter = $request->input('sort_data');
@@ -27,46 +28,68 @@ class eventDashboardController extends Controller
             $event->orderBy('id', 'desc');
         }
         $event = $event->paginate(10);
+
         return view('A_Page_Admin.K_Event.admin-event', compact('event'));
 
     }
 
-    public function delete($id){
+    /*
+     * MENGHAPUS DATA EVENT
+     */
+    public function delete($id)
+    {
         $dataWebinar = Event::find($id);
         $dataWebinar->delete();
-        return redirect()->route('admin.events.index')->with('success','Data Berhasil Dihapus');
+
+        return redirect()->route('admin.events.index')->with('success', 'Data Berhasil Dihapus');
     }
 
-
+    /*
+     * MENAMPILKAN HALAMAN  HALAMAN MEMBUAT DATA EVENT
+     */
     public function showAdd()
     {
         $g = GuestStar::all();
         $l = GuestStar::all();
         $e = EventCategory::all();
+
         //return $g;
         return view('A_Page_Admin.K_Event.tambah-data-event', compact('e', 'g', 'l'));
     }
 
-
-    public function showDetail($activity_category_event, $id) {
+    /*
+    * MENAMPILKAN HALAMAN DETAIL EVENT
+    */
+    public function showDetail($activity_category_event, $id)
+    {
         $e = EventCategory::all();
         if ($activity_category_event == 'CAMPAIGN') {
             $data = Event::with('event_categories')->where('activity_category_event', 'CAMPAIGN');
-        } else if ($activity_category_event == 'WEBINAR') {
+        } elseif ($activity_category_event == 'WEBINAR') {
             $data = Event::with('event_categories')->where('activity_category_event', 'WEBINAR');
         }
-        
+
         $data = $data->findOrFail($id);
+
         return view('A_Page_Admin.K_Event.detail-data-event', compact('data', 'e'));
     }
 
-    public function showEdit($id) {
+    /*
+     * MENAMPILKAN HALAMAN EDIT EVENT
+     */
+    public function showEdit($id)
+    {
         $e = EventCategory::all();
-        $dataWebinar = Event::with('event_categories')->where('activity_category_event', 'WEBINAR')->findOrFail($id);
-        return view('A_Page_Admin.K_Event.edit-data-event', compact('dataWebinar', 'e'));
+        $event = Event::with('event_categories')->findOrFail($id);
+
+        return view('A_Page_Admin.K_Event.edit-data-event', compact('event', 'e'));
     }
 
-    public function createEvent(Request $request){
+    /*
+     *  MELAKUKAN PROSES CREATE EVENT
+     */
+    public function createEvent(Request $request)
+    {
         //validasi
         $messages = [
             'category_event_id.required' => 'Category Event wajib diisi.',
@@ -88,7 +111,7 @@ class eventDashboardController extends Controller
             'description_event.string' => 'Description event harus berupa teks.',
             'status_event.required' => 'Status event wajib diisi.',
         ];
-    
+
         $request->validate([
             'category_event_id' => 'required',
             'activity_category_event' => 'required',
@@ -110,36 +133,36 @@ class eventDashboardController extends Controller
 
         // mengupload file gambar
         $extension = $request->file('cover_event')->getClientOriginalExtension();
-        $photoName = $request->title_event . now()->timestamp . '.' . $extension;
-        $request->file('cover_event')->storeAs('assets/img/event/',$photoName);
+        $photoName = $request->title_event.now()->timestamp.'.'.$extension;
+        $request->file('cover_event')->storeAs('assets/img/event/', $photoName);
 
         //pembuatan event
         $event = Event::create([
-        'category_event_id' => $request->category_event_id,
-        'activity_category_event' => $request->activity_category_event,
-        'title_event' => $request->title_event,
-        'slug_event'=> $Eventslug,
-        'time_category_event' => $request->time_category_event,
-        'pay_category_event' => $request->pay_category_event,
-        'registration_start' => $request->registration_start,
-        'registration_end' => $request->registration_end,
-        'date_event'=> $request->date_event,
-        'time_start'=> $request->time_start,
-        'time_finish'=> $request->time_finish,
-        'cover_event'=> $photoName,
-        'price_event' => $request->price_event,
-        'description_event'=> $request->description_event,
-        'status_event'=> $request->status_event,
-        'is_place'=> $request->is_place,
-        'isLink'=> $request->isLink,
+            'category_event_id' => $request->category_event_id,
+            'activity_category_event' => $request->activity_category_event,
+            'title_event' => $request->title_event,
+            'slug_event' => $Eventslug,
+            'time_category_event' => $request->time_category_event,
+            'pay_category_event' => $request->pay_category_event,
+            'registration_start' => $request->registration_start,
+            'registration_end' => $request->registration_end,
+            'date_event' => $request->date_event,
+            'time_start' => $request->time_start,
+            'time_finish' => $request->time_finish,
+            'cover_event' => $photoName,
+            'price_event' => $request->price_event,
+            'description_event' => $request->description_event,
+            'status_event' => $request->status_event,
+            'is_place' => $request->is_place,
+            'isLink' => $request->isLink,
         ]);
 
         // pembuatan sesi event
         foreach ($request->all() as $key => $value) {
             if (strpos($key, 'title_sesi') === 0 && $value !== null) {
-                $sesiNumber = substr($key, 10); 
+                $sesiNumber = substr($key, 10);
                 $pembicaraId = "pembicara_id$sesiNumber";
-                if ($request->has($pembicaraId) && !empty($request->$pembicaraId)) {
+                if ($request->has($pembicaraId) && ! empty($request->$pembicaraId)) {
                     EventMaterialSession::create([
                         'title_sesi' => $value,
                         'event_id' => $event->id,
@@ -148,8 +171,15 @@ class eventDashboardController extends Controller
                 }
             }
         }
-        
+
         return redirect()->route('admin.events.index');
     }
-}
 
+    /*
+     * MELAKUKAN PROSES UPDATE EVENT
+     */
+    public function update(Request $request, $id)
+    {
+        // KODENYA DISINI
+    }
+}

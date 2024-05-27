@@ -2,11 +2,8 @@
 
 namespace App\Models;
 
-use App\Models\User;
-use App\Models\Event;
-use App\Models\Voucher;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class EventTransaction extends Model
 {
@@ -31,7 +28,7 @@ class EventTransaction extends Model
     ];
 
     protected $guarded = [
-        'id'
+        'id',
     ];
 
     public function voucher()
@@ -39,11 +36,13 @@ class EventTransaction extends Model
         return $this->belongsTo(Voucher::class, 'voucher_id');
     }
 
-    public function user () {
+    public function user()
+    {
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function event () {
+    public function event()
+    {
         return $this->belongsTo(Event::class, 'event_id');
     }
 }

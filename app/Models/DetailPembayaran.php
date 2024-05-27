@@ -18,7 +18,7 @@ class DetailPembayaran extends Model
         'detail_masalah',
         'kode_bayar_1',
         'kode_bayar_2',
-        'expired_date'
+        'expired_date',
     ];
 
     public function pembayaran_layanan()

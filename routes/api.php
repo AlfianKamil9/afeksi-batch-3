@@ -17,14 +17,8 @@
 //     Route::post('/logout', [LoginController::class, 'logout']);
 // });
 
-use App\Models\Event;
-use Illuminate\Support\Facades\Route;
-use App\Models\LayananMentoring;
-use App\Http\Controllers\API\KlaimCode;
-use App\Http\Controllers\API\HandleAfterPayment;
 use App\Http\Controllers\API\NotificationPaymentEventController;
-use App\Http\Controllers\Transaksi\Event\WebinarTransaksiController;
+use Illuminate\Support\Facades\Route;
 
 //MIDTRANS NOTIFICATION
 Route::post('/midtrans/callback', [NotificationPaymentEventController::class, 'callback']);
-

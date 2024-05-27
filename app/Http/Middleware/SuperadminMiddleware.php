@@ -16,9 +16,10 @@ class SuperadminMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         $role = auth()->user()->roles->roles;
-        if($role != 'superadmin'){
+        if ($role != 'superadmin') {
             abort(404);
         }
+
         return $next($request);
     }
 }

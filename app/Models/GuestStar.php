@@ -2,9 +2,8 @@
 
 namespace App\Models;
 
-use App\Models\EventMaterialSession;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class GuestStar extends Model
 {
@@ -21,7 +20,7 @@ class GuestStar extends Model
         'deskripsi',
         'keahlian',
         'avatar',
-        'pendidikan'
+        'pendidikan',
     ];
 
     public function webinar_session()

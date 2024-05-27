@@ -2,30 +2,30 @@
 
 namespace App\Http\Controllers\Rekap;
 
-use Carbon\Carbon;
-use App\Models\Event;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Event;
 use App\Services\EventService;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Date;
 
 class RekapHistoriController extends Controller
 {
-
     protected $recapEvent;
-    
-    public function __construct(EventService  $eventService)
+
+    public function __construct(EventService $eventService)
     {
-        $this->recapEvent = $eventService; 
+        $this->recapEvent = $eventService;
     }
 
-    public function showRekapHistory(Request $request) {
+    public function showRekapHistory(Request $request)
+    {
         //MENAMPILKAN DAFTAR WEBINAR DISUSUN BERDASARKAN TANGGAL
         $query = $this->recapEvent->getAllRecap();
 
         // Filter using input type text
         if ($request->has('input_search')) {
-            $query->where('title_event', 'like', '%' . $request->input('input_search') . '%');
+            $query->where('title_event', 'like', '%'.$request->input('input_search').'%');
         }
 
         // Filter by date using dropdown
@@ -71,15 +71,17 @@ class RekapHistoriController extends Controller
         }
 
         //return response()->json($data);
-        return view('pages.rekaphistory', ['data' => $data,]);
+        return view('pages.rekaphistory', ['data' => $data]);
     }
 
-    public function showRekapHistoryDetail($slug) {
+    public function showRekapHistoryDetail($slug)
+    {
         $data = $this->recapEvent->getDetailRecap($slug);
 
         $data->time_start = Carbon::parse($data->time_start)->format('H:i');
         $data->time_finish = Carbon::parse($data->time_finish)->format('H:i');
         $data->date_event = Carbon::parse($data->date_event)->format('d F Y');
+
         return view('pages.rekaphistory-detail', ['data' => $data]);
     }
 }

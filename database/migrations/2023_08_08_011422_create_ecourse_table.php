@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('ecourse', function (Blueprint $table) {
             $table->id();
-            $table->string("nama_course");
-            $table->string("instruktur");
-            $table->string("deskripsi");
-            $table->string("durasi");
-            $table->string("level");
-            $table->string("harga");
-            $table->string("link_akses");
+            $table->string('nama_course');
+            $table->string('instruktur');
+            $table->string('deskripsi');
+            $table->string('durasi');
+            $table->string('level');
+            $table->string('harga');
+            $table->string('link_akses');
             $table->string('cover_ecourse');
             $table->timestamps();
         });

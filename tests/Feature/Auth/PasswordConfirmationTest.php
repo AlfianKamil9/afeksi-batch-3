@@ -26,7 +26,7 @@ class PasswordConfirmationTest extends TestCase
 
     public function test_password_can_be_confirmed(): void
     {
-         $user = User::create([
+        $user = User::create([
             'nama' => 'Alana R',
             'email' => 'alana@gmail.com',
             'password' => 'Password123',
@@ -43,7 +43,7 @@ class PasswordConfirmationTest extends TestCase
 
     public function test_password_is_not_confirmed_with_invalid_password(): void
     {
-         $user = User::create([
+        $user = User::create([
             'nama' => 'Alana R',
             'email' => 'alana@gmail.com',
             'password' => 'Password123',

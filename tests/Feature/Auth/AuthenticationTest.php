@@ -2,11 +2,10 @@
 
 namespace Tests\Feature\Auth;
 
-use Tests\TestCase;
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class AuthenticationTest extends TestCase
 {
@@ -21,7 +20,7 @@ class AuthenticationTest extends TestCase
 
     public function test_users_can_authenticate_using_the_login_screen(): void
     {
-        
+
         // Buat user baru
         $user = User::create([
             'nama' => 'testings',

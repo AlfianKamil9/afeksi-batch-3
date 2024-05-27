@@ -58,36 +58,36 @@
                                 <img class="m-0 p-0" src="/assets/img/admin/detail.png" alt="img_detail" style="width: 18px; height: 18px ;">
                             </th>
                         </tr>
-                        @foreach ($event as $webinar)
+                        @foreach ($event as $event)
                         <tr class="dataTab text-center font-small">
                             <td>{{ $loop->iteration }}</td>
-                            <td class="text text-start ps-2">{{ $webinar->title_event}}</td>
-                            <td>{{ \Carbon\Carbon::parse($webinar->date_event)->locale('id')->translatedFormat('l, d-m-Y') }}</td>
-                            <td>{{ $webinar->time_start }}</td>
-                             <td><span class="badge {{ $webinar->activity_category_event == 'CAMPAIGN' ? 'bg-primary' : 'bg-success' }}">{{ $webinar->activity_category_event }}</span></td>
-                            <td>{{ $webinar->time_category_event }}</td>
-                            <td>{{ $webinar->partisipan ? $webinar->partisipan : '-' }}</td>
+                            <td class="text text-start ps-2">{{ $event->title_event}}</td>
+                            <td>{{ \Carbon\Carbon::parse($event->date_event)->locale('id')->translatedFormat('l, d-m-Y') }}</td>
+                            <td>{{ $event->time_start }}</td>
+                             <td><span class="badge {{ $event->activity_category_event == 'CAMPAIGN' ? 'bg-primary' : 'bg-success' }}">{{ $event->activity_category_event }}</span></td>
+                            <td>{{ $event->time_category_event }}</td>
+                            <td>{{ $event->partisipan ? $event->partisipan : '-' }}</td>
                             <td class="text-center align-items-center px-2" style="height: 47px;">
-                                <button id="status" class="status-event p-0 w-100 fw-semibold">{{ $webinar->status_event }}</button>
+                                <button id="status" class="status-event p-0 w-100 fw-semibold">{{ $event->status_event }}</button>
                             </td>
                             <td>
                                 <div class="inline d-flex justify-content-center align-items-center">
                                     <div class="edit-container d-flex align-items-center w-75">
                                         <img class="edit-icon" src="/assets/img/admin/pencil.png" alt="edit_img">
-                                        <a href="{{ route('admin.events.edit', ['activity_category_event' => $webinar->activity_category_event, 'id' => $webinar->id]) }}" class="btn btn-edit fw-bold p-0 m-0 ps-3 ms-1 pe-1">
+                                        <a href="{{ route('admin.events.edit',  $event->id) }}" class="btn btn-edit fw-bold p-0 m-0 ps-3 ms-1 pe-1">
                                             <p class="m-0 p-0 ps-1">Edit</p>
                                         </a>
                                     </div>
                                     <div class="d-flex align-items-center w-75 position-relative">
                                         <img class="trash-icon" src="/assets/img/admin/trash.png" alt="trash_img">
-                                        <a href="{{ route('admin.events.delete', $webinar->id) }}" class="btn btn-delete fw-bold p-0 m-0 w-100 me-1 ps-3 pe-1">
+                                        <a href="{{ route('admin.events.delete', $event->id) }}" class="btn btn-delete fw-bold p-0 m-0 w-100 me-1 ps-3 pe-1">
                                             <p class="m-0 p-0 ps-1">Hapus</p>
                                         </a>
                                     </div>
                                 </div>
                             </td>
                             <td>
-                                <a class="btn" href="{{ route('admin.events.detail', ['activity_category_event' => $webinar->activity_category_event, 'id' => $webinar->id]) }}">
+                                <a class="btn" href="{{ route('admin.events.detail', ['activity_category_event' => $event->activity_category_event, $event->id]) }}">
                                     <img class="m-0 p-0" src="/assets/img/admin/detail-2.png" alt="img_detail" style="width: 18px; height: 18px ; cursor:pointer;">
                                 </a>
                             </td>

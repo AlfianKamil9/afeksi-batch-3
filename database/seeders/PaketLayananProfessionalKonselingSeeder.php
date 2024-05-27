@@ -3,8 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\PaketLayananKonseling;
-use App\Models\LayananKonseling;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class PaketLayananProfessionalKonselingSeeder extends Seeder
@@ -83,7 +81,7 @@ class PaketLayananProfessionalKonselingSeeder extends Seeder
                 'durasi' => 60,
                 'deskripsi_singkat' => 'Sesi konseling dengan seorang konselor berlisensi yang berpengalaman dalam mendukung hubungan yang seimbang dan setara.',
                 'deskripsi_paket' => 'Fleksibilitas untuk memilih sesi individu, sesi pasangan, atau sesi kelompok.',
-                'deskripsi_durasi' => 'Akses ke 4 sesi Konseling Kesetaraan Gender selama sebulan (satu sesi per minggu).'
+                'deskripsi_durasi' => 'Akses ke 4 sesi Konseling Kesetaraan Gender selama sebulan (satu sesi per minggu).',
 
             ],
             // PEERS
@@ -117,7 +115,7 @@ class PaketLayananProfessionalKonselingSeeder extends Seeder
                 'deskripsi_paket' => 'Diskusi terbuka dan berbagi pengalaman.',
                 'deskripsi_durasi' => 'Durasi: 90 menit',
             ],
-           [
+            [
                 'nama_paket' => 'Sesi Konseling Individu',
                 'layanan_konseling_id' => 4,
                 'harga' => 150000,
@@ -127,7 +125,7 @@ class PaketLayananProfessionalKonselingSeeder extends Seeder
                 'deskripsi_paket' => 'Diskusi mendalam tentang peran gender dalam kehidupan individu.',
                 'deskripsi_durasi' => 'Durasi: 60 menit',
             ],
-             [
+            [
                 'nama_paket' => 'Sesi Konseling Individu',
                 'layanan_konseling_id' => 5,
                 'harga' => 150000,
@@ -165,9 +163,9 @@ class PaketLayananProfessionalKonselingSeeder extends Seeder
                 'durasi' => 60,
                 'deskripsi_singkat' => 'Sesi konseling dengan seorang konselor berlisensi yang berpengalaman dalam mendukung hubungan yang seimbang dan setara.',
                 'deskripsi_paket' => 'Fleksibilitas untuk memilih sesi individu, sesi pasangan, atau sesi kelompok.',
-                'deskripsi_durasi' => 'Akses ke 4 sesi Konseling Kesetaraan Gender selama sebulan (satu sesi per minggu).'
+                'deskripsi_durasi' => 'Akses ke 4 sesi Konseling Kesetaraan Gender selama sebulan (satu sesi per minggu).',
             ],
-             [
+            [
                 'nama_paket' => 'Sesi Konseling Individu',
                 'layanan_konseling_id' => 6,
                 'harga' => 150000,
@@ -205,7 +203,7 @@ class PaketLayananProfessionalKonselingSeeder extends Seeder
                 'durasi' => 60,
                 'deskripsi_singkat' => 'Sesi konseling dengan seorang konselor berlisensi yang berpengalaman dalam mendukung hubungan yang seimbang dan setara.',
                 'deskripsi_paket' => 'Fleksibilitas untuk memilih sesi individu, sesi pasangan, atau sesi kelompok.',
-                'deskripsi_durasi' => 'Akses ke 4 sesi Konseling Kesetaraan Gender selama sebulan (satu sesi per minggu).'
+                'deskripsi_durasi' => 'Akses ke 4 sesi Konseling Kesetaraan Gender selama sebulan (satu sesi per minggu).',
 
             ],
 

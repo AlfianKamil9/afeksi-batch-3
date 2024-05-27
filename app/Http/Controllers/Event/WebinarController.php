@@ -1,23 +1,26 @@
 <?php
+
 namespace App\Http\Controllers\Event;
-use Carbon\Carbon;
-use App\Models\User;
-use App\Models\Event;
-use Illuminate\Support\Str;
-use Illuminate\Http\Request;
-use App\Models\EventTransaction;
+
 use App\Http\Controllers\Controller;
+use App\Models\Event;
+use App\Models\EventTransaction;
+use App\Models\User;
 use App\Services\EventService;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class WebinarController extends Controller
 {
     protected $webinar;
+
     public function __construct(EventService $queryWebinar)
     {
         $this->webinar = $queryWebinar;
     }
 
-     // MENAMPILKAN DAFTAR WEBINAR
+    // MENAMPILKAN DAFTAR WEBINAR
     public function index(Request $request)
     {
         //MENAMPILKAN DAFTAR WEBINAR DISUSUN BERDASARKAN TANGGAL
@@ -25,17 +28,16 @@ class WebinarController extends Controller
 
         // Filter using input type text
         if ($request->has('input_search')) {
-            $query->where('title_event', 'like', '%' . $request->input('input_search') . '%');
+            $query->where('title_event', 'like', '%'.$request->input('input_search').'%');
         }
 
         // Filter by date using dropdown
         $dateFilter = $request->input('sort_date');
         if ($dateFilter == 'oldest') {
             $query->orderBy('id', 'asc');
-        }
-        else  {
+        } else {
             $query->orderBy('id', 'desc');
-        } 
+        }
 
         // Filter by minimum and maximum price using input fields
         $minPrice = $request->input('min_price');
@@ -77,8 +79,8 @@ class WebinarController extends Controller
         $data->time_finish = Carbon::parse($data->time_finish)->format('H:i');
         $data->date_event = Carbon::parse($data->date_event)->format('d F Y');
 
-        return view('pages.Kegiatan.detail-webinar',[
-            'data' => $data
+        return view('pages.Kegiatan.detail-webinar', [
+            'data' => $data,
         ]);
     }
 
@@ -103,7 +105,7 @@ class WebinarController extends Controller
         User::where('id', auth()->user()->id)->update([
             'institusi' => $request->institusi,
             'domisili' => $request->domisili,
-            'no_whatsapp' => $request->no_whatsapp
+            'no_whatsapp' => $request->no_whatsapp,
         ]);
 
         // MEYIMPAN DATA KE FOLDER PUBLIC

@@ -144,7 +144,11 @@
                                 <a href="#" class="btn btn-join me-2 py-2 px-3 rounded-3" style="background-color: #2139F9;">Detail Produk</a>
                             @elseif($item->status == 'PENDING' || $item->status == 'UNPAID(BUTUH BAYAR)') 
                                 @if ($item->status == 'UNPAID(BUTUH BAYAR)')
-                                    <a href="{{  route('professional.konseling.checkout', $item->ref_transaction_layanan) }}" class="btn btn-join me-2 py-2 px-3 rounded-3" style="background-color: #2139F9;">Lanjutkan</a>
+                                    @if (Str::substr($item->ref_transaction_layanan, 0, 5 == 'PEERS'))
+                                        <a href="{{  route('peers.konseling.checkout', $item->ref_transaction_layanan) }}" class="btn btn-join me-2 py-2 px-3 rounded-3" style="background-color: #2139F9;">Lanjutkan</a>
+                                    @else
+                                         <a href="{{  route('professional.konseling.checkout', $item->ref_transaction_layanan) }}" class="btn btn-join me-2 py-2 px-3 rounded-3" style="background-color: #2139F9;">Lanjutkan</a>
+                                    @endif
                                     <form action="{{ route('dashboard.cancel.order.transaksi') }}" method="post" class="d-inline">
                                         @csrf
                                         <input type="hidden" name="references" value="{{ $item->ref_transaction_layanan }}">

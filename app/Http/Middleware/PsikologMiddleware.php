@@ -16,9 +16,10 @@ class PsikologMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         $role = auth()->user()->roles->roles;
-        if($role != 'psikolog'){
+        if ($role != 'psikolog') {
             abort(404);
         }
+
         return $next($request);
     }
 }

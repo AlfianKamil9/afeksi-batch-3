@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Illuminate\View\View;
-use Illuminate\Support\Str;
-use Illuminate\Http\Request;
-use Illuminate\Validation\Rules;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Password;
 use Illuminate\Auth\Events\PasswordReset;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Str;
+use Illuminate\Validation\Rules;
+use Illuminate\View\View;
 
 class NewPasswordController extends Controller
 {
@@ -33,7 +32,7 @@ class NewPasswordController extends Controller
         $request->validate([
             'token' => ['required'],
             'email' => ['required', 'email:dns'],
-            'password' => ['required','min:8', 'max:32', 'password_no_number_first' ,'confirmed', Rules\Password::defaults()],
+            'password' => ['required', 'min:8', 'max:32', 'password_no_number_first', 'confirmed', Rules\Password::defaults()],
         ]);
         // dd($url);
         // Here we will attempt to reset the user's password. If it is successful we
@@ -57,7 +56,7 @@ class NewPasswordController extends Controller
         return $status == Password::PASSWORD_RESET
                     ? back()->with('status', 'Password anda telah diperbarui, Anda dapat mencoba masuk sekarang')
                     : back()->withInput($request->only('email'))
-                            ->withErrors(
-                        ['email' => __($status)]);
+                        ->withErrors(
+                            ['email' => __($status)]);
     }
 }

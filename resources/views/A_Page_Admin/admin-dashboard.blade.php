@@ -28,7 +28,7 @@
                         <div class="card-body d-flex flex-row justify-content-around align-items-center">
                             <div class="d-flex flex-column">
                                 <p style="font-size: 24px; font-weight: 600; margin: 0;">0</p>
-                                <p style="font-size: 16px; font-weight: 400; margin: 0;">Kursus Selesai</p>
+                                <p style="font-size: 16px; font-weight: 400; margin: 0;">Total Transaksi</p>
                             </div>
                             <div
                                 style="background-color: #FFD34E; width: 40px; height: 40px; border-radius: 20%; display: flex; justify-content: center; align-items: center;">
@@ -48,7 +48,7 @@
                         <div class="card-body d-flex flex-row justify-content-around align-items-center">
                             <div class="d-flex flex-column">
                                 <p style="font-size: 24px; font-weight: 600; margin: 0;">0</p>
-                                <p style="font-size: 16px; font-weight: 400; margin: 0;">Kursus Terdaftar</p>
+                                <p style="font-size: 16px; font-weight: 400; margin: 0;">Jumlah Pengguna</p>
                             </div>
                             <div
                                 style="background-color: #233DFF; width: 40px; height: 40px; border-radius: 20%; display: flex; justify-content: center; align-items: center;">
@@ -76,7 +76,7 @@
                         <div class="card-body d-flex flex-row justify-content-around align-items-center">
                             <div class="d-flex flex-column">
                                 <p style="font-size: 24px; font-weight: 600; margin: 0;">0</p>
-                                <p style="font-size: 16px; font-weight: 400; margin: 0;">Kursus Berlangsung</p>
+                                <p style="font-size: 16px; font-weight: 400; margin: 0;">Acara Event</p>
                             </div>
                             <div
                                 style="background-color: #8D6CFF; width: 40px; height: 40px; border-radius: 20%; display: flex; justify-content: center; align-items: center;">
@@ -103,7 +103,7 @@
                         <div class="card-body d-flex flex-row justify-content-around align-items-center">
                             <div class="d-flex flex-column">
                                 <p style="font-size: 24px; font-weight: 600; margin: 0;">0</p>
-                                <p style="font-size: 16px; font-weight: 400; margin: 0;">Total Waktu</p>
+                                <p style="font-size: 16px; font-weight: 400; margin: 0;">Artikel Terbuat</p>
                             </div>
                             <div
                                 style="background-color: #51E252; width: 40px; height: 40px; border-radius: 20%; display: flex; justify-content: center; align-items: center;">

@@ -13,16 +13,15 @@ return new class extends Migration
     {
         Schema::create('ebook', function (Blueprint $table) {
             $table->id();
-            $table->string("judul");
-            $table->string("penulis");
-            $table->year("tahun_terbit");
+            $table->string('judul');
+            $table->string('penulis');
+            $table->year('tahun_terbit');
             $table->unsignedBigInteger('kategori_ebook_id');
-            $table->string("deskripsi");
-            $table->string("harga");
-            $table->string("format-File");
+            $table->string('deskripsi');
+            $table->string('harga');
+            $table->string('format-File');
             $table->string('cover_ebook');
             $table->foreign('kategori_ebook_id')->references('id')->on('category_ebook')->onDelete('cascade');
-
 
             $table->timestamps();
         });

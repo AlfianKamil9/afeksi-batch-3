@@ -2,12 +2,12 @@
 
 namespace App\Http\Requests\Auth;
 
-use Illuminate\Support\Str;
-use Illuminate\Auth\Events\Lockout;
-use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Auth\Events\Lockout;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 
 class LoginRequest extends FormRequest
@@ -44,23 +44,23 @@ class LoginRequest extends FormRequest
 
         if (! Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey());
-            
+
             throw ValidationException::withMessages([
                 'email' => trans('auth.failed'),
             ]);
         }
         RateLimiter::clear($this->throttleKey());
-        
+
         $roles = auth()->user()->roles->roles;
-        if($roles == 'user'){
+        if ($roles == 'user') {
             return redirect()->intended(RouteServiceProvider::HOME);
-        }elseif($roles == 'admin'){
+        } elseif ($roles == 'admin') {
             return redirect()->route('admin.dashboard.index');
-        }elseif($roles == 'superadmin'){
+        } elseif ($roles == 'superadmin') {
             dd('ini halaman superadmin');
-        }elseif($roles == 'psikolog'){
+        } elseif ($roles == 'psikolog') {
             dd('ini halaman psikolog');
-        }elseif($roles == 'konselor'){
+        } elseif ($roles == 'konselor') {
             dd('ini halaman konselor');
         }
     }

@@ -10,7 +10,7 @@ class internshipPosition extends Model
     use HasFactory;
 
     protected $guarded = [
-        'id'
+        'id',
     ];
 
     protected $fillable = [
@@ -20,8 +20,6 @@ class internshipPosition extends Model
         'tempat',
         'jobdesc',
         'status',
-        'kualifikasi'
+        'kualifikasi',
     ];
-
-
 }

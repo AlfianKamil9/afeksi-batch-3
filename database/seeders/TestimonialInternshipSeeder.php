@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\testimonial_internship;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class TestimonialInternshipSeeder extends Seeder

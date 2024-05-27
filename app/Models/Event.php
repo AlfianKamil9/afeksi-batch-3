@@ -2,21 +2,15 @@
 
 namespace App\Models;
 
-use App\Models\Psikolog;
-use App\Models\EventCategory;
-use App\Models\EventTransaction;
-use App\Models\EventMaterialSession;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
-
 
 class Event extends Model
 {
     use HasFactory;
 
-
-     protected $fillable = [
+    protected $fillable = [
         'category_event_id',
         'activity_category_event',
         'title_event',
@@ -35,37 +29,41 @@ class Event extends Model
         'is_place',
         'isLink',
         'partisipan',
-        'foto_acara'
+        'foto_acara',
     ];
 
     public function sluggable()
     {
         return [
             'slug_event' => [
-                'source' => 'title_event'
-            ]
+                'source' => 'title_event',
+            ],
         ];
     }
+
     protected $guarded = [
-        'id'
+        'id',
     ];
 
-    public function allData(){
+    public function allData()
+    {
         return DB::tabel('events')->get();
     }
 
-
     protected $table = 'events';
 
-    public function event_categories () {
+    public function event_categories()
+    {
         return $this->belongsTo(EventCategory::class, 'category_event_id');
     }
 
-    public function event_transaction () {
+    public function event_transaction()
+    {
         return $this->hasMany(EventTransaction::class);
     }
 
-     public function webinar_session() {
+    public function webinar_session()
+    {
         return $this->hasMany(EventMaterialSession::class);
     }
 }

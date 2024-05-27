@@ -9,8 +9,9 @@ class categoryEbook extends Model
 {
     use HasFactory;
 
-    protected $table = "category_ebook";
-    protected $fillable = ["nama_kategori_ebook"];
+    protected $table = 'category_ebook';
+
+    protected $fillable = ['nama_kategori_ebook'];
 
     public function ebook()
     {

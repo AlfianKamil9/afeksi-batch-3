@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Voucher;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class VoucherSeeder extends Seeder
@@ -18,7 +17,7 @@ class VoucherSeeder extends Seeder
             'nama_voucher' => 'AFEKSI AKHIR TAHUN',
             'jumlah_diskon' => 5000,
             'stok_voucher' => 5,
-            'expired_date' =>  '2023-12-31'
+            'expired_date' => '2023-12-31',
         ]);
     }
 }

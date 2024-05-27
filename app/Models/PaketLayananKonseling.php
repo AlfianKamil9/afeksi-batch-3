@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class PaketLayananKonseling extends Model
 {
     use HasFactory;
+
     protected $table = 'paket_layanan_konseling';
+
     protected $fillable = [
         'nama_paket',
         'layanan_konseling_id',
@@ -28,5 +30,4 @@ class PaketLayananKonseling extends Model
     {
         return $this->hasMany(PembayaranLayanan::class, 'paket_layanan_konseling_id', 'id');
     }
-    
 }

@@ -3,8 +3,8 @@
 namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Validator;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -23,9 +23,9 @@ class AuthServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Validator::extend('password_no_number_first', function ($attribute, $value, $parameters, $validator) {
-            return !preg_match('/^\d/', $value);
+            return ! preg_match('/^\d/', $value);
         });
-         Validator::replacer('password_no_number_first', function ($message, $attribute, $rule, $parameters) {
+        Validator::replacer('password_no_number_first', function ($message, $attribute, $rule, $parameters) {
             return str_replace(':attribute', $attribute, 'The :attribute must not start with a number.');
         });
     }

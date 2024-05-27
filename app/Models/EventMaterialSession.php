@@ -2,19 +2,17 @@
 
 namespace App\Models;
 
-use App\Models\Event;
-use App\Models\GuestStar;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class EventMaterialSession extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        "title_sesi",
-        "event_id",
-        "pembicara_id",
+        'title_sesi',
+        'event_id',
+        'pembicara_id',
     ];
 
     public function event()

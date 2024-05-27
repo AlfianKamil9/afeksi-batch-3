@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\PaketLayananMentoring;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class PaketLayananMentoringSeeder extends Seeder
@@ -21,7 +20,7 @@ class PaketLayananMentoringSeeder extends Seeder
                 'deskripsi_paket' => 'Fokus terhadap permasalahan parenting',
                 'deskripsi_singkat' => 'Sesi konseling individu dengan seorang konselor berlisensi yang berspesialisasi dalam parenting.',
                 'durasi' => 60,
-                'jumlah_sesi' =>1,
+                'jumlah_sesi' => 1,
                 'deskripsi_durasi' => 'Durasi: 60 menit',
             ],
             [
@@ -31,7 +30,7 @@ class PaketLayananMentoringSeeder extends Seeder
                 'deskripsi_paket' => 'Membantu peran orang tua dalam menghadapi tumbuh kembang anak',
                 'deskripsi_singkat' => 'Sesi Mentoring dalam kelompok dengan peserta lain yang memiliki minat dalam isu Parenting..',
                 'durasi' => 75,
-                'jumlah_sesi' =>1,
+                'jumlah_sesi' => 1,
                 'deskripsi_durasi' => 'Durasi 75 menit',
             ],
             [
@@ -61,7 +60,7 @@ class PaketLayananMentoringSeeder extends Seeder
                 'deskripsi_paket' => 'Membantu peran orang tua dalam menghadapi tumbuh kembang anak',
                 'deskripsi_singkat' => 'Sesi Mentoring dalam kelompok dengan peserta lain yang memiliki minat dalam isu Premarriage..',
                 'durasi' => 75,
-                'jumlah_sesi' =>1,
+                'jumlah_sesi' => 1,
                 'deskripsi_durasi' => 'Durasi 75 menit',
             ],
             [

@@ -31,7 +31,7 @@ return new class extends Migration
             $table->string('isLink')->nullable();
             $table->string('partisipan')->nullable();
             $table->string('foto_acara')->nullable();
-            $table->enum('status_event', ['ONGOING','DRAFT','FINISH']);
+            $table->enum('status_event', ['ONGOING', 'DRAFT', 'FINISH']);
             $table->timestamps();
 
             $table->foreign('category_event_id')->references('id')->on('event_categories')->onDelete('cascade');

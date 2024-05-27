@@ -2,35 +2,35 @@
 
 namespace App\Http\Controllers\Artikel;
 
-use Carbon\Carbon;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\ArtikelService;
+use Illuminate\Http\Request;
 
 class artikelController extends Controller
 {
+    protected $artikel;
 
-    protected  $artikel;
     public function __construct(ArtikelService $artikel)
     {
         $this->artikel = $artikel;
     }
 
-    public function index(Request $request) {
+    public function index(Request $request)
+    {
         $query = $this->artikel->getAllArtikel();
 
         // Filter using input type text
         if ($request->has('input_search')) {
-            $query->where('judul_artikel', 'like', '%' . $request->input('input_search') . '%');
+            $query->where('judul_artikel', 'like', '%'.$request->input('input_search').'%');
         }
 
         // Filter by date using dropdown
         $dateFilter = $request->input('sort_date');
         if ($dateFilter === 'oldest') {
             $query->orderBy('created_at', 'asc');
-        } else  {
+        } else {
             $query->orderBy('created_at', 'desc');
-        } 
+        }
 
         // filter by topik using checkbox
         if ($request->has('topik')) {
@@ -40,15 +40,16 @@ class artikelController extends Controller
         $data = $query->get();
 
         return view('pages.Artikel.artikel', [
-            'data' => $data
+            'data' => $data,
         ]);
     }
 
-
-    public function show($slug) {
+    public function show($slug)
+    {
         $data = $this->artikel->getDetailArtikel($slug);
-        return view('pages.Artikel.artikel-detail',[
-            'data' => $data
+
+        return view('pages.Artikel.artikel-detail', [
+            'data' => $data,
         ]);
     }
 }

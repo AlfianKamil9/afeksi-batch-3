@@ -16,9 +16,10 @@ class KonselorMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         $role = auth()->user()->roles->roles;
-        if($role != 'konselor'){
+        if ($role != 'konselor') {
             abort(404);
         }
+
         return $next($request);
     }
 }

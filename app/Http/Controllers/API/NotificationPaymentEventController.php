@@ -2,18 +2,17 @@
 
 namespace App\Http\Controllers\API;
 
-use Midtrans\Config;
-use Midtrans\Notification;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Models\EventTransaction;
 use App\Models\PembayaranLayanan;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Mail;
+use Illuminate\Http\Request;
+use Midtrans\Config;
+use Midtrans\Notification;
 
 class NotificationPaymentEventController extends Controller
 {
     public function callback(Request $request)
-    {   
+    {
         //set konfigurasi midtrans
         Config::$serverKey = config('midtrans.server_key');
         Config::$isProduction = false;
@@ -25,20 +24,20 @@ class NotificationPaymentEventController extends Controller
 
         //buat instance midtrans notification
         $notification = new Notification();
-        $order = explode('-',  $notification->order_id);
+        $order = explode('-', $notification->order_id);
 
         // cek kesesuaian
         $orderID = $notification->order_id;
-        $statusCode =  $notification->status_code;
-        $grossAmount =  $notification->gross_amount;
+        $statusCode = $notification->status_code;
+        $grossAmount = $notification->gross_amount;
 
-        $reqSignature =  $notification->signature_key;
+        $reqSignature = $notification->signature_key;
 
         $signature = hash('sha512', $orderID.$statusCode.$grossAmount.config('midtrans.midtrans.server_key'));
 
         if ($signature != $reqSignature) {
             return response()->json([
-                "message" => "Invalid Signature"], 401);
+                'message' => 'Invalid Signature'], 401);
         }
 
         //assign ke variabel untuk memudahkan coding
@@ -50,72 +49,64 @@ class NotificationPaymentEventController extends Controller
         //cari transaksi berdasarkan id
         if (substr($notification->order_id, 0, 3) == 'WEB') {
             $transaction = EventTransaction::where('ref_transaction_event', $notification->order_id)->firstOrFail();
-        } else if (substr($notification->order_id, 0, 4) == 'PROF' || substr($notification->order_id, 0, 3) == 'DEV') {
+        } elseif (substr($notification->order_id, 0, 4) == 'PROF' || substr($notification->order_id, 0, 3) == 'DEV') {
             $transaction = PembayaranLayanan::where('ref_transaction_layanan', $notification->order_id)->firstOrFail();
         }
-        // 
+        //
 
-        if (!$order) {
-            return response()->json(["message" => "Invalid Order"], 400);        
+        if (! $order) {
+            return response()->json(['message' => 'Invalid Order'], 400);
         }
         //$transaction = EventTransaction::where('ref_transaction_event', $notification->order_id)->firstOrFail();
         //handle notification status midtrans
-        if($status == 'capture'){
+        if ($status == 'capture') {
             if ($type == 'credit_card') {
                 if ($fraud == 'challenge') {
                     $transaction->status = 'CHALLENGE';
-                }else{
+                } else {
                     $transaction->status = 'SUCCESS';
                 }
             }
-        }
-        else if($status == 'settlement') {
+        } elseif ($status == 'settlement') {
             $transaction->status = 'PAID';
-        }
-        else if($status == 'pending') {
+        } elseif ($status == 'pending') {
             $transaction->status = 'PENDING';
-        }
-        else if($status == 'deny') {
+        } elseif ($status == 'deny') {
             $transaction->status = 'UNPAID';
-        }
-        else if($status == 'expire') {
+        } elseif ($status == 'expire') {
             $transaction->status = 'EXPIRED';
-        }
-        else if($status == 'cancel') {
+        } elseif ($status == 'cancel') {
             $transaction->status = 'FAILED';
         }
 
         //simpan transaksi
         $transaction->update([
-            'status' => $transaction->status
+            'status' => $transaction->status,
         ]);
-
 
         if ($transaction) {
             if ($status == 'capture' && $fraud == 'challenge') {
                 return response()->json([
                     'meta' => [
-                    'code' => 200,
-                    'message' => 'Midtrans Payment Challenge'
-                    ]
+                        'code' => 200,
+                        'message' => 'Midtrans Payment Challenge',
+                    ],
                 ]);
-            }
-            else if ($transaction) {
+            } elseif ($transaction) {
                 if ($status == 'capture' && $fraud == 'challenge') {
                     return response()->json([
                         'meta' => [
-                        'code' => 200,
-                        'message' => 'Midtrans Payment Challenge'
-                        ]
+                            'code' => 200,
+                            'message' => 'Midtrans Payment Challenge',
+                        ],
                     ]);
                 }
-        }
-        else {
+            } else {
                 return response()->json([
                     'meta' => [
-                    'code' => 200,
-                    'message' => 'Midtrans Payment not Settlement'
-                    ]
+                        'code' => 200,
+                        'message' => 'Midtrans Payment not Settlement',
+                    ],
                 ]);
             }
         }

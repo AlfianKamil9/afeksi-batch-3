@@ -15,10 +15,11 @@ class UserMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-       $role = auth()->user()->roles->roles;
-        if($role != 'user'){
+        $role = auth()->user()->roles->roles;
+        if ($role != 'user') {
             abort(404);
         }
+
         return $next($request);
     }
 }

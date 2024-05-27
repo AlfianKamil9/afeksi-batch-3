@@ -1,38 +1,36 @@
 <?php
 
-use App\Models\LayananKonseling;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Karir\Volunteer;
-use App\Http\Controllers\Karir\Internship;
-use App\Http\Controllers\berandaController;
-use App\Http\Controllers\Karir\PeerKonselor;
-use App\Http\Controllers\Karir\BrandAmbasador;
-use App\Http\Controllers\Karir\karirController;
-use App\Http\Controllers\Event\WebinarController;
-use App\Http\Controllers\Event\CampaignController;
-use App\Http\Controllers\Karir\RelationshipHeroes;
-use App\Http\Controllers\Artikel\artikelController;
-use App\Http\Controllers\Dashboard\IndexController;
-use App\Http\Controllers\Event\NotificationWebinar;
-use App\Http\Controllers\Dashboard\MyBookController;
-use App\Http\Controllers\Dashboard\RekapTransaction;
-use App\Http\Controllers\Karir\RelationshipKonselor;
-use App\Http\Controllers\Dashboard\ProfileController;
-use App\Http\Controllers\Rekap\RekapHistoriController;
-use App\Http\Controllers\Mentoring\MentoringController;
-use App\Http\Controllers\Transaksi\NotifikasiKonseling;
-use App\Http\Controllers\Transaksi\NotifikasiMentoring;
-use App\Http\Controllers\Konseling\ProfessionalController;
-use App\Http\Controllers\Konseling\PeersConselingController;
-use App\Http\Controllers\AF_Admin_Web\AdminWebinarController;
 use App\Http\Controllers\AF_Admin_Web\adminDashboardController;
 use App\Http\Controllers\AF_Admin_Web\eventDashboardController;
-use App\Http\Controllers\API\NotificationPaymentEventController;
-use App\Http\Controllers\Transaksi\Event\WebinarTransaksiController;
 use App\Http\Controllers\AF_Admin_Web\transactionDashboardController;
+use App\Http\Controllers\API\NotificationPaymentEventController;
+use App\Http\Controllers\Artikel\artikelController;
+use App\Http\Controllers\berandaController;
+use App\Http\Controllers\Dashboard\IndexController;
+use App\Http\Controllers\Dashboard\MyBookController;
+use App\Http\Controllers\Dashboard\ProfileController;
+use App\Http\Controllers\Dashboard\RekapTransaction;
+use App\Http\Controllers\Event\CampaignController;
+use App\Http\Controllers\Event\NotificationWebinar;
+use App\Http\Controllers\Event\WebinarController;
+use App\Http\Controllers\Karir\BrandAmbasador;
+use App\Http\Controllers\Karir\Internship;
+use App\Http\Controllers\Karir\karirController;
+use App\Http\Controllers\Karir\PeerKonselor;
+use App\Http\Controllers\Karir\RelationshipHeroes;
+use App\Http\Controllers\Karir\RelationshipKonselor;
+use App\Http\Controllers\Karir\Volunteer;
+use App\Http\Controllers\Konseling\PeersConselingController;
+use App\Http\Controllers\Konseling\ProfessionalController;
+use App\Http\Controllers\Mentoring\MentoringController;
+use App\Http\Controllers\Rekap\RekapHistoriController;
+use App\Http\Controllers\Transaksi\Event\WebinarTransaksiController;
 use App\Http\Controllers\Transaksi\Layanan\KonselingTransaksiController;
 use App\Http\Controllers\Transaksi\Layanan\MentoringTransaksiController;
-use App\Http\Controllers\Transaksi\Layanan\PeersConselingTransaksiController;
+use App\Http\Controllers\Transaksi\NotifikasiKonseling;
+use App\Http\Controllers\Transaksi\NotifikasiMentoring;
+use App\Models\LayananKonseling;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,12 +49,12 @@ Route::get('/', [berandaController::class, 'showBeranda'])->name('homepage');
 // TENTANG KAMI
 Route::get('/tentang-kami', function () {
     return view('pages.tentang-kami');
-})->name("tentang-kami");
+})->name('tentang-kami');
 
 // KEBIJAKAN PRIVASI
 Route::get('/kebijakan-privasi', function () {
     return view('pages.kebijakan-privasi');
-})->name("kebijakan-privasi");
+})->name('kebijakan-privasi');
 
 // FAQ
 Route::get('/FAQ', function () {
@@ -70,8 +68,6 @@ Route::get('/kegiatan-campaign', [CampaignController::class, 'index'])->name('ca
 Route::get('/kegiatan-campaign/{slug}', [CampaignController::class, 'show'])->name('campaign.detail');
 Route::get('/rekap-history', [RekapHistoriController::class, 'showRekapHistory'])->name('recap.history');
 Route::get('/rekaphistory/{slug}', [RekapHistoriController::class, 'showRekapHistoryDetail'])->name('recap.history.detail');
-
-
 
 // KARIER
 Route::get('/karir', [karirController::class, 'index'])->name('karir');
@@ -87,14 +83,13 @@ Route::get('/mentoring', function () {
 // KONSELING
 Route::get('/konseling', function () {
     $data = LayananKonseling::where('tipe_layanan', 'PROFESSIONAL KONSELING')->get();
+
     return view('pages.page-konseling', compact('data'));
 })->name('konseling');
 
 // ARTIKEL
 Route::get('/artikel', [artikelController::class, 'index'])->name('artikel');
 Route::get('/artikel/detail/{slug}', [artikelController::class, 'show'])->name('artikel.detail');
-
-
 
 // MIDLLEWARE HALAMAN YANG PERLU LOGIN
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -115,7 +110,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/{ref_transaction_layanan}/notification-mentoring/success', [NotifikasiMentoring::class, 'index'])->name('notification.mentoring.success');
     //END LAYANAN MENTORING
 
-
     //--------------------------------------KONSELING---------------------------------------------------
     //PROFESSIONAL KONSELING
     // PILIHAN SUB PROFESSIONAL KONSELING
@@ -133,32 +127,30 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/professional-konseling/{ref_transaction_layanan}/pembayaran', [KonselingTransaksiController::class, 'showPembayaran'])->name('professional.konseling.checkout');
     Route::post('/professional-konseling/{ref_transaction_layanan}/checkout', [KonselingTransaksiController::class, 'checkoutProfessionalKonseling'])->name('professional.konseling.process.checkout');
 
-
     //PEERS KONSELING
-    Route::post('/peers-konseling/pilih-sub-topic', [PeersConselingController::class, 'processFirstPeers'])->name('peers.konseling.create.first');
-    // GET PAKET
-    Route::get('/peers-konseling/{ref_transaction_layanan}/pilihan-paket-peers-konseling', [peersConselingController::class, 'showPaketKonseling'])->name('peers.konseling.pilihan.paket');
-    Route::post('/peers-konseling/{ref_transaction_layanan}/pilihan-paket-peers-konseling', [peersConselingController::class, 'processPaketKonseling'])->name('peers.konseling.process.paket');
-    // FORM PEERS KONSELING
-    Route::get('/peers-konseling/{ref_transaction_layanan}/data-diri', [PeersConselingTransaksiController::class, 'showFormDataDiri'])->name('peers.konseling.show.form');
-    Route::post('/peers-konseling/{ref_transaction_layanan}/submit-form-konseling', [PeersConselingTransaksiController::class, 'submitDataDiri'])->name('peers.konseling.process.form');
-    //CHECKOUT
-    Route::get('/peers-konseling/{ref_transaction_layanan}/pembayaran', [PeersConselingTransaksiController::class, 'showPembayaran'])->name('peers.konseling.checkout');
-    Route::post('/peers-konseling/{ref_transaction_layanan}/checkout', [PeersConselingTransaksiController::class, 'checkoutPeersKonseling'])->name('peers.konseling.process.checkout');
-
+    Route::name('peers.')->prefix('/peers-konseling')->group(function () {
+        Route::post('/pilih-sub-topic', [PeersConselingController::class, 'processFirstPeers'])->name('konseling.create.first');
+        // GET PAKET
+        Route::get('/{ref_transaction_layanan}/pilihan-paket-peers-konseling', [peersConselingController::class, 'showPaketKonseling'])->name('konseling.pilihan.paket');
+        Route::post('/{ref_transaction_layanan}/pilihan-paket-peers-konseling', [peersConselingController::class, 'processPaketKonseling'])->name('konseling.process.paket');
+        // FORM PEERS KONSELING
+        Route::get('/{ref_transaction_layanan}/data-diri', [peersConselingController::class, 'showFormDataDiri'])->name('konseling.show.form');
+        Route::post('/{ref_transaction_layanan}/submit-form-peers-konseling', [peersConselingController::class, 'submitDataDiri'])->name('konseling.process.form');
+        //CHECKOUT
+        Route::get('/{ref_transaction_layanan}/pembayaran', [peersConselingController::class, 'showPembayaran'])->name('konseling.checkout');
+        Route::post('/{ref_transaction_layanan}/checkout', [peersConselingController::class, 'checkoutPeersKonseling'])->name('konseling.process.checkout');
+    });
 
     // NOTIFICATION AFTER PEMBAYARAN PROFESIONAL KONSELING---
     Route::get('/{ref_transaction_layanan}/notification-konseling/success', [NotifikasiKonseling::class, 'index'])->name('notification.konseling.success');
 
-
     // ----------------------------------------------------------------------------------------
-
 
     // PENDAFTARAN RELATIONSHIP KONSELOR
     Route::get('/pendaftaran-relationship-konselor', [RelationshipKonselor::class, 'index'])->name('pendaftaran-relationship-konselor');
     Route::post('/pendaftaran-relationship-konselor/create', [RelationshipKonselor::class, 'store']);
     // PENDAFTARAN PEER KONSELOR
-    Route::get('/pendaftaran-peer-konselor',  [PeerKonselor::class, 'index'])->name('pendaftaran-peer-konselor');
+    Route::get('/pendaftaran-peer-konselor', [PeerKonselor::class, 'index'])->name('pendaftaran-peer-konselor');
     Route::post('/pendaftaran-peer-konselor', [PeerKonselor::class, 'store'])->name('store-peer-konselor');
     // PENDAFTARAN INTERNSHIP
     Route::get('/internship/{slug}', [Internship::class, 'show'])->name('internship.detail');
@@ -182,8 +174,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // PENDAFTARAN CAMPAIGN
     Route::post('/kegitan-campaign/{slug}', [CampaignController::class, 'store'])->name('daftar-campaign');
 
-
-
     Route::middleware(['auth', 'only-user'])->group(function () {
         Route::name('dashboard.')->prefix('/dashboard')->group(function () {
             // DASHBOARD USER
@@ -206,39 +196,34 @@ Route::middleware(['auth', 'verified'])->group(function () {
         });
     });
 
-
     // DASHBOARD ADMIN
-    Route::middleware(['auth','only-admin'])->group(function(){
-        Route::name('admin.')->prefix('/admin')->group(function() {
-        // DASHBOARD ADMIN
-                // DASHBOARD ADMIN
-                Route::get('/dashboard', [adminDashboardController::class, 'index'])->name('dashboard.index');
-                // KELOLA EVENT (WEBINAR & CAMPAIGN)
-                Route::name('events.')->prefix('/event')->group(function() {
-                    Route::get('', [eventDashboardController::class, 'index'])->name('index'); 
-                    Route::get('/add', [eventDashboardController::class, 'showAdd'])->name('add');
-                    Route::post('/add', [eventDashboardController::class, 'createEvent'])->name('create');
-                    Route::get('/{activity_category_event}/edit/{id}', [eventDashboardController::class, 'showEdit'])->name('edit');
-                    Route::get('/{activity_category_event}/detail/{id}', [eventDashboardController::class, 'showDetail'])->name('detail');
-                    Route::get('/delete/{id}', [eventDashboardController::class, 'delete'])->name('delete');
-                });
-                // KELOLA PEMESANAN 
-                Route::name('transactions.')->prefix('/transaction')->group(function() {
-                    Route::get('', [transactionDashboardController::class, 'index'])->name('index');
-                    Route::get('/{ref_transaction_event}', [transactionDashboardController::class, 'showDetail'])->name('detail');
-                    Route::post('/{ref_transaction_event}/delete', [transactionDashboardController::class, 'delete'])->name('delete');
-                });
+    Route::middleware(['auth', 'only-admin'])->group(function () {
+        Route::name('admin.')->prefix('/admin')->group(function () {
+            // DASHBOARD ADMIN
+            // DASHBOARD ADMIN
+            Route::get('/dashboard', [adminDashboardController::class, 'index'])->name('dashboard.index');
+            // KELOLA EVENT (WEBINAR & CAMPAIGN)
+            Route::name('events.')->prefix('/event')->group(function () {
+                Route::get('', [eventDashboardController::class, 'index'])->name('index');
+                Route::get('/add', [eventDashboardController::class, 'showAdd'])->name('add');
+                Route::post('/add', [eventDashboardController::class, 'createEvent'])->name('create');
+                Route::get('/{activity_category_event}/detail/{id}', [eventDashboardController::class, 'showDetail'])->name('detail');
+                Route::get('/edit/{id}', [eventDashboardController::class, 'showEdit'])->name('edit');
+                Route::post('/update/{id}', [eventDashboardController::class, 'update'])->name('update');
+                Route::get('/delete/{id}', [eventDashboardController::class, 'delete'])->name('delete');
+            });
+            // KELOLA PEMESANAN
+            Route::name('transactions.')->prefix('/transaction')->group(function () {
+                Route::get('', [transactionDashboardController::class, 'index'])->name('index');
+                Route::get('/{ref_transaction_event}', [transactionDashboardController::class, 'showDetail'])->name('detail');
+                Route::post('/{ref_transaction_event}/delete', [transactionDashboardController::class, 'delete'])->name('delete');
+            });
 
-
-
-                Route::get('/events/{id}', [eventDashboardController::class, 'Update'])->name(('event.update'));
-
-
+            Route::get('/events/{id}', [eventDashboardController::class, 'Update'])->name(('event.update'));
 
         });
     });
 
-    
     // DASHBOARD ADMIN
     Route::middleware(['auth', 'only-admin'])->group(function () {
         Route::name('admin.')->prefix('/admin')->group(function () {
@@ -264,9 +249,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     });
 });
 
-
-
-
 // // API CALLBACK
 // Route::post('/midtrans/callback', [NotificationPaymentEventController::class, 'callback']);
 // Route::get('/midtrans/finish', [NotificationPaymentEventController::class, 'finishRedirect']);
@@ -274,10 +256,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 // Route::get('/midtrans/error', [NotificationPaymentEventController::class, 'errorRedirect']);
 // // Route::post('/midtrans/notification-hooks', HandleAfterPayment::class);
 
-
-
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';
 Route::fallback(function () {
     return view('errors.404'); // Menampilkan halaman 404
 });
-

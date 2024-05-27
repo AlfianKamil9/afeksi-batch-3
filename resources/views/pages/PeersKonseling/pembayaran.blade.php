@@ -8,17 +8,11 @@
 @endsection
 
 
-@section('headForPayment')
-  <script type="text/javascript"
-		src="https://app.stg.midtrans.com/snap/snap.js"
-    data-client-key="{{ config('midtrans.midtrans.client_key') }}"></script>
-@endsection
-
 @section('content')
 
  <!-- Select2 CSS -->
 <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></scri>
 <!-- Select2 Library JS -->
 <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
 
@@ -67,16 +61,7 @@
           <h5 class="fw-bolder" style="color: #2139f9">Pembayaran</h5>
           
           <!-- Metode Pembayaran -->
-          <p class="fw-medium">Lengkapi Pembayaran Anda</p>
-          {{-- @if (session()->has('message'))
-          <span class="text-danger fst-italic">{{ session('message') }}</span>
-          @endif
-          <select id="myDropdown" class="form-select" name="bank" style="width: 100%">
-            <!-- option on Pembayaran.js -->
-            <option value="" selected>Pilih Metode Pembayaran</option>
-          </select> --}}
-          
-          
+          <p class="fw-medium">Lengkapi Pembayaran Anda</p>          
           <!-- Voucher -->
           <h6 class="fw-bold">Voucher
             @if (session()->has('error'))
@@ -256,33 +241,6 @@
 
 @section('script')
   <script src="/assets/js/pembayaran.js"></script>
-  <script type="text/javascript">
-    // For example trigger on button clicked, or any time you need
-    var payButton = document.getElementById('pay-button');
-    payButton.addEventListener('click', function () {
-      // Trigger snap popup. @TODO: Replace TRANSACTION_TOKEN_HERE with your transaction token.
-      // Also, use the embedId that you defined in the div above, here.
-      window.snap.embed('YOUR_SNAP_TOKEN', {
-        embedId: 'snap-container',
-        onSuccess: function (result) {
-          /* You may add your own implementation here */
-          alert("payment success!"); console.log(result);
-        },
-        onPending: function (result) {
-          /* You may add your own implementation here */
-          alert("wating your payment!"); console.log(result);
-        },
-        onError: function (result) {
-          /* You may add your own implementation here */
-          alert("payment failed!"); console.log(result);
-        },
-        onClose: function () {
-          /* You may add your own implementation here */
-          alert('you closed the popup without finishing the payment');
-        }
-      });
-    });
-  </script>
 @endsection
 
 

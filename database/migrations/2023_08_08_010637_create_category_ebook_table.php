@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('category_ebook', function (Blueprint $table) {
             $table->id();
-            $table->string("nama_kategori_ebook");
+            $table->string('nama_kategori_ebook');
             $table->timestamps();
         });
     }

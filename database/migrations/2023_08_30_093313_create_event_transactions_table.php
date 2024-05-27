@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('total_payment')->nullable();
             $table->string('fee_transaction')->nullable();
             $table->date('date_order')->nullable();
-            $table->enum('status', ['PAID', 'UNPAID', "PENDING", 'FREE', 'EXPIRE', 'DENIED']);
+            $table->enum('status', ['PAID', 'UNPAID', 'PENDING', 'FREE', 'EXPIRE', 'DENIED']);
             $table->string('info')->nullable();
             $table->string('bukti_follow')->nullable();
             $table->string('bukti_linkedin')->nullable();

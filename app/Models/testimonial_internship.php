@@ -9,7 +9,7 @@ class testimonial_internship extends Model
 {
     use HasFactory;
 
-    protected $table = "testimonial_internship";
+    protected $table = 'testimonial_internship';
 
     protected $fillable = ['nama', 'posisi', 'foto', 'testimoni'];
 }

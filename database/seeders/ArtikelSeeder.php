@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Artikel;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class ArtikelSeeder extends Seeder
@@ -20,8 +19,7 @@ class ArtikelSeeder extends Seeder
                 'slug' => 'Awas-Tanpa-Sadar-Orangtua-Ajari-Stereotype-Sejak-Kecil',
                 'topik' => 'PENDIDIKAN',
                 'tanggal_rilis' => '2023-08-08',
-                'isi_artikel' => 
-                '
+                'isi_artikel' => '
                     <p> Jakarta - Dalam Kamus Besar Bahasa Indonesia (KBBI), stereotip merupakan konsepsi mengenai sifat suatu golongan berdasarkan prasangka yang subjektif dan tidak tepat. Dalam hal ini, bisa dicontohkan melalui jenis kelamin, yang disebut dengan stereotip gender. Hal ini yang kerap diajarkan orangtua pada anak sedari kecil. Tanpa sadar, anak-anak tumbuh sesuai dengan stereotip yang ditetapkan orang tua.</p>
 
                     <p> Dalam hal ini, pengenalan gender pada anak dibutuhkan. Belajar dapat dilakukan dengan menjelaskan jenis kelamin yang telah terbentuk secara biologis melalui hormon, kromosom, dan organ reproduksi. Stereotip tipe ini biasanya mengacu pada perbedaan perempuan dan laki-laki yang dibentuk oleh lingkungan, budaya, dan adat istiadat. Tak hanya jenis kelamin, stereotip gender juga meliputi perilaku, tanggung jawab, peran, dan pembagian tugas antara perempuan dan laki-laki.</p>
@@ -41,7 +39,7 @@ class ArtikelSeeder extends Seeder
                     <h3>Mengapa Hal Tersebut Sangat Penting Dilakukan?</h3>
                     <p>Pengenalan gender sejak dini merupakan hal penting dilakukan, agar anak tidak terjebak dalam stigma yang salah. Seperti halnya dengan warna, masyarakat umum telah terpaku dengan beberapa warna tertentu dikhususkan untuk gender tertentu. Hal yang perlu ibu tanamkan adalah, gender lebih mengajarkan anak mengenai peran yang harus dilakukan saat dewasa nanti dan tanggung jawab yang akan mereka emban.<br><br>
                     Tak hanya warna, orangtua juga kerap melarang anak perempuan atau laki-laki untuk bermain mainan tertentu. Anak perempuan dan laki-laki perlu bermain boneka, hanya saja bentuknya yang berbeda. Anak perempuan akan menganggap boneka sebagai anak mereka, sedangkan anak laki-laki cenderung menyukai boneka binatang atau action figure. Penting bagi orangtua untuk mengenalkan hal-hal yang baik mengenai gender, agar anak tidak terlanjur merasa nyaman pada kondisi yang salah.</p>
-                '
+                ',
             ],
             [
                 'judul_artikel' => 'Cara Menerapkan Self Love untuk Jaga Kesehatan Mental',
@@ -49,8 +47,7 @@ class ArtikelSeeder extends Seeder
                 'slug' => 'Cara-Menerapkan-Self-Love-untuk-Jaga-Kesehatan-Mental',
                 'topik' => 'KESEHATAN',
                 'tanggal_rilis' => '2023-08-28',
-                'isi_artikel' => 
-                '<p>Jakarta – Self Love alias mencintai diri sendiri adalah konsep yang tengah banyak dibicarakan dan dikampanyekan. Katanya, menerapkan self-love bisa membantu menjaga kesehatan mental dan menurunkan risiko gangguan pada kondisi psikologis. Secara umum, konsep ini membicarakan tentang bagaimana cara untuk bisa mencintai diri sendiri.<br><br> 
+                'isi_artikel' => '<p>Jakarta – Self Love alias mencintai diri sendiri adalah konsep yang tengah banyak dibicarakan dan dikampanyekan. Katanya, menerapkan self-love bisa membantu menjaga kesehatan mental dan menurunkan risiko gangguan pada kondisi psikologis. Secara umum, konsep ini membicarakan tentang bagaimana cara untuk bisa mencintai diri sendiri.<br><br> 
                 Mencintai diri sendiri tidak diartikan sebagai pemenuhan semua hal yang diinginkan, apalagi jika tidak terlalu berguna. Sebaliknya, konsep ini lebih mendorong seseorang untuk bisa mengenali dan menerima diri sendiri kemudian bisa memperlakukan diri dengan baik dan apa adanya. Lantas, bagaimana cara menerapkan self love untuk menjaga kesehatan mental? </p>
                 <h2> Menerapkan Self Love dalam Kehidupan Sehari-hari</h2> 
                 <p>Secara harfiah, self love diartikan sebagai mencintai diri sendiri. Menerapkan konsep ini disebut baik untuk menjaga kesehatan mental, karena membuat seseorang menjadi lebih mudah untuk berpikir positif. Jadi, kehidupan sehari-hari akan terasa lebih mudah dijalani dan menyenangkan. Selain baik untuk mental, nyatanya konsep ini juga bisa membantu menjaga kesehatan fisik.<br><br> 
@@ -128,7 +125,7 @@ class ArtikelSeeder extends Seeder
                     <p>
                     Bentuk self love selanjutnya adalah menjaga kesehatan. Untuk itu, pastikan memberi tubuh makanan yang enak dan bergizi, cukup beristirahat, serta rutin berolahraga. Pastikan juga untuk mencukupi kebutuhan cairan setiap hari. </p>
                 </section>  
-                '
+                ',
             ],
             [
                 'judul_artikel' => 'Pentingnya Membangun Hubungan yang Sehat dalam Kehidupan ',
@@ -136,8 +133,7 @@ class ArtikelSeeder extends Seeder
                 'slug' => 'Pentingnya-Membangun-Hubungan-yang-Sehat-dalam-Kehidupan ',
                 'topik' => 'RELATIONSHIP',
                 'tanggal_rilis' => '2023-09-17',
-                'isi_artikel' => 
-                '
+                'isi_artikel' => '
                     <p>Kehidupan manusia tidak bisa lepas dari interaksi dengan orang lain. Hubungan sosial adalah bagian integral dari kehidupan kita, dan salah satu bentuk hubungan yang paling penting adalah hubungan yang sehat. Hubungan yang sehat memainkan peran utama dalam meningkatkan kualitas hidup, kesejahteraan emosional, dan kebahagiaan. Artikel ini akan membahas mengapa pentingnya menjalin hubungan yang sehat dalam kehidupan kita. </p>
 
                     <p>Mari kita eksplorasi lebih lanjut mengenai berbagai manfaat yang bisa didapat melalui hubungan yang sehat. Simak dengan seksama.</p>
@@ -170,7 +166,7 @@ class ArtikelSeeder extends Seeder
                     <section>
                         <p>Dalam kehidupan yang semakin kompleks ini, penting untuk menghargai peran hubungan yang sehat. Hubungan yang baik memberikan manfaat kesehatan mental, fisik, dan emosional yang besar. Mereka juga berfungsi sebagai sumber dukungan, pertumbuhan pribadi, dan kebahagiaan. Oleh karena itu, investasi dalam membangun dan menjaga hubungan yang sehat adalah langkah yang bijak untuk meningkatkan kualitas hidup kita secara keseluruhan. Jadi, mari kita perjuangkan hubungan yang sehat dalam kehidupan kita dan nikmati manfaatnya yang tak ternilai harganya.</p>
                     </section>
-                '
+                ',
             ],
         ];
         // Artikel::insert($data);

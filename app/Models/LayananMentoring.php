@@ -2,10 +2,8 @@
 
 namespace App\Models;
 
-use App\Models\Psikolog;
-use App\Models\PsikologMentoring;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class LayananMentoring extends Model
@@ -13,16 +11,18 @@ class LayananMentoring extends Model
     use HasFactory;
 
     protected $table = 'layanan_mentoring';
+
     protected $guarded = ['id'];
+
     protected $fillable = [
         'tipe_layanan',
         'nama_layanan',
-        'slug'
+        'slug',
     ];
 
     public function paket_layanan_mentoring()
     {
-        return $this->hasMany(PaketLayananMentoring::class,'id');
+        return $this->hasMany(PaketLayananMentoring::class, 'id');
     }
 
     // public function psikologs()
@@ -32,8 +32,6 @@ class LayananMentoring extends Model
 
     /**
      * The psikolog_non_profesional that belong to the LayananMentoring
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function psikolog_mentoring(): BelongsToMany
     {

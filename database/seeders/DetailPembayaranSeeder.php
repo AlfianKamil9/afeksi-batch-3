@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\DetailPembayaran;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DetailPembayaranSeeder extends Seeder
@@ -18,7 +17,7 @@ class DetailPembayaranSeeder extends Seeder
             'tgl_konsultasi' => '2023-07-10',
             'jam_konsultasi' => '20.00',
             'detail_masalah' => 'di ghosting',
-            'expired_date'  => '2023-10-10'
+            'expired_date' => '2023-10-10',
         ]);
 
         DetailPembayaran::insert([
@@ -26,7 +25,7 @@ class DetailPembayaranSeeder extends Seeder
             'tgl_konsultasi' => '2023-07-10',
             'jam_konsultasi' => '20.00',
             'detail_masalah' => 'di selingkuhin',
-            'expired_date'  => '2023-10-11'
+            'expired_date' => '2023-10-11',
         ]);
     }
 }

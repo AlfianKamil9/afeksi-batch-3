@@ -4,20 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\GuestStar;
-use App\Models\MyMentoring;
 use Illuminate\Database\Seeder;
-use Database\Seeders\UserSeeder;
-use Database\Seeders\EventSeeder;
-use Database\Seeders\RolesSeeder;
-use Database\Seeders\VoucherSeeder;
-use Database\Seeders\EducationUserSeeder;
-use Database\Seeders\EventCategorySeeder;
-use Database\Seeders\PaketLayananMentoringSeeder;
-use Database\Seeders\PaketLayananProfessionalKonselingSeeder;
-use Database\Seeders\RatingKonselorSeeder;
-use Database\Seeders\MyEbookSeeder;
-use Database\Seeders\MyMentoringSeeder;
 
 class DatabaseSeeder extends Seeder
 {

@@ -8,15 +8,18 @@ use Illuminate\Http\Resources\Json\JsonResource;
 class AuthResource extends JsonResource
 {
     public $status;
+
     public $message;
+
     public $resource;
 
     public function __construct($status, $message, $resource)
     {
         parent::__construct($resource);
-        $this->status  = $status;
+        $this->status = $status;
         $this->message = $message;
     }
+
     /**
      * Transform the resource into an array.
      *
@@ -25,9 +28,9 @@ class AuthResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'success'   => $this->status,
-            'message'   => $this->message,
-            'data'      => $this->resource
+            'success' => $this->status,
+            'message' => $this->message,
+            'data' => $this->resource,
         ];
     }
 }

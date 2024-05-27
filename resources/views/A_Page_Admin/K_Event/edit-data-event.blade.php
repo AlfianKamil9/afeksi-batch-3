@@ -20,71 +20,72 @@
             <div class="row p-3 mt-3">
                 <div class="col-md-6">
                     <div class="mb-4 d-md-flex align-items-center">
-                        <label class="form-label mb-0">Category Event Id</label>
-                        <input type="text" class="form-control" />
+                        <label class="form-label mb-0">Category Event</label>
+                        <select id="customSelect" class="form-select" name="category_event_id">
+                            @foreach ($e as $item)
+                                <option value="{{ $item->id }}" @if($item->id == $event->category_event_id) selected @endif >{{ $item->category_event_name }}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="mb-4 d-md-flex align-items-center">
                         <label class="form-label mb-0">Activity Categori Event</label>
                         <select id="customSelect" class="form-select">
-                            <option selected>-- Pilih Salah Satu --</option>
-                            <option>Webinar</option>
-                            <option>Campaign</option>
+                            <option value="WEBINAR" {{ $event->activity_category_event == 'WEBINAR' ? 'selected' : '' }}>Webinar</option>
+                            <option value="CAMPAIGN" {{ $event->activity_category_event == 'CAMPAIGN' ? 'selected' : '' }}>Campaign</option>
                         </select>
                     </div>
                     <div class="mb-4 d-md-flex align-items-center">
                         <label class="form-label">Title Event</label>
-                        <textarea class="form-control" rows="3"></textarea>
+                        <textarea class="form-control" rows="3" name="title_event" >{{ $event->title_event }}</textarea>
                     </div>
                     <div class="mb-4 d-md-flex align-items-center">
                         <label class="form-label mb-0">Slug Event</label>
-                        <input type="text" class="form-control" />
+                        <input type="text" class="form-control"  name="slug_event" value="{{ $event->slug_event }}" />
                     </div>
                     <div class="mb-4 d-md-flex align-items-center">
                         <label class="form-label mb-0">Time Categori Event</label>
                         <select id="customSelect" class="form-select">
-                            <option selected>-- Pilih Salah Satu --</option>
-                            <option>Online Zoom</option>
-                            <option>Offline</option>
+                            <option value="ONLINE" {{ $event->time_category_event == 'ONLINE' ? 'selected' : '' }}>Online Via Zoom</option>
+                             <option value="OFFLINE" {{ $event->time_category_event == 'OFFLINE' ? 'selected' : '' }}>Offline</option>
                         </select>
                     </div>
                     <div class="mb-4 d-md-flex align-items-center">
-                        <label class="form-label mb-0">Pay Categori Event</label>
+                        <label class="form-label mb-0">Pay Category Event</label>
                         <select id="customSelect" class="form-select">
-                            <option selected>-- Pilih Salah Satu --</option>
-                            <option>Gratis</option>
-                            <option>Berbayar</option>
+                             <option value="PAID" {{ $event->pay_category_event == 'PAID' ? 'selected' : '' }}>Berbayar</option>
+                              <option value="FREE" {{ $event->pay_category_event == 'FREE' ? 'selected' : '' }}>Gratis</option>
                         </select>
                     </div>
                     <div class="mb-4 d-md-flex align-items-center">
                         <label class="form-label mb-0">Registration Start</label>
-                        <input type="date" class="form-control" placeholder="Masukkan Tanggal" />
+                        <input type="date" class="form-control" placeholder="Masukkan Tanggal" name="registration_start" value="{{ $event->registration_start }}" />
                     </div>
                     <div class="mb-4 d-md-flex align-items-center">
                         <label class="form-label mb-0">Registration End</label>
-                        <input type="date" class="form-control" placeholder="Masukkan Tanggal" />
+                        <input type="date" class="form-control" placeholder="Masukkan Tanggal"  name="registration_end" value="{{ $event->registration_end }}" />
                     </div>
                     <div class="mb-4 d-md-flex align-items-center">
                         <label class="form-label mb-0">Date Event</label>
-                        <input type="date" class="form-control" placeholder="Masukkan Tanggal" />
+                        <input type="date" class="form-control" placeholder="Masukkan Tanggal"  name="date_event" value="{{ $event->date_event }}" />
                     </div>
                     <div class="mb-4 d-md-flex align-items-center">
                         <label class="form-label mb-0">Time Start</label>
-                        <input type="time" class="form-control" placeholder="Masukkan Jam" />
+                        <input type="time" class="form-control" placeholder="Masukkan Jam"  name="time_start" value="{{ $event->time_start }}" />
                     </div>
                     <div class="mb-4 d-md-flex align-items-center">
                         <label class="form-label mb-0">Time Finish</label>
-                        <input type="time" class="form-control" placeholder="Masukkan Jam" />
+                        <input type="time" class="form-control" placeholder="Masukkan Jam"  name="time_finish" value="{{ $event->time_finish }}" />
                     </div>
                     <div class="mb-4 d-md-flex align-items-center">
                         <label class="form-label mb-0">Price Event</label>
-                        <input type="text" class="form-control" />
+                        <input type="text" class="form-control" name="price_event" value="{{ $event->price_event }}" />
                     </div>
                     <div class="mb-4 d-md-flex align-items-center">
                         <label class="form-label mb-0">Status Event</label>
                         <select id="customSelect" class="form-select">
-                            <option selected>-- Pilih Salah Satu --</option>
-                            <option>Selesai</option>
-                            <option>Pending</option>
+                            <option value="ONGOING" {{ $event->status_event == 'ONGOING' ? 'selected' : '' }}>ONGOING</option>
+                            <option value="FINISH" {{ $event->status_event == 'FINISH' ? 'selected' : '' }}>FINISH</option>
+                            <option value="DRAFT" {{ $event->status_event == 'DRAFT' ? 'selected' : '' }}>DRAFT</option>
                         </select>
                     </div>
 
@@ -111,21 +112,25 @@
                     </div>
 
                     <div class="mb-4 d-md-flex align-items-center">
-                        <label class="form-label">Title Event</label>
-                        <textarea class="form-control" rows="3"></textarea>
+                        <label class="form-label">Description Event</label>
+                        <textarea class="form-control" rows="3" name="description_event">{{ $event->description_event }}</textarea>
                     </div>
                     <div class="mb-4 d-md-flex align-items-center">
-                        <label class="form-label mb-0">Place</label>
-                        <input type="text" class="form-control" />
+                        <label class="form-label me-2">Place</label>
+                        <input type="text" class="form-control" name="is_place" value="{{ $event->is_place }}" />
                     </div>
                     <div class="mb-4 d-md-flex align-items-center">
-                        <label class="form-label mb-0">Link</label>
-                        <input type="text" class="form-control" />
+                        <label class="form-label me-2">Link</label>
+                        <input type="text" class="form-control" name="isLink" value="{{ $event->isLink }}" />
+                    </div>
+                    <div class="mb-4 d-md-flex align-items-center">
+                        <label class="form-label mb-0">Total Partisipan</label>
+                        <input type="text" class="form-control" name="partisipan" value="{{ $event->partisipan }}" />
                     </div>
                     <div>
                         <div class="mb-4 d-md-flex align-items-center">
                             <label for="formFile" class="form-label">Foto Acara</label>
-                            <input class="form-control" type="file" id="previewFoto" accept="image/*">
+                            <input class="form-control" type="file" name="foto_acara" id="previewFoto" accept="image/*">
                         </div>
                         <div class="mb-4">
                             <img id="previewimg" alt="Preview Gambar" class="img-preview">

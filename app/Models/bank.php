@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class bank extends Model
 {
     use HasFactory;
+
     protected $fillable = [
-        'bank'
+        'bank',
     ];
 }

@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Models\User;
-use Illuminate\View\View;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\View\View;
 
 class PasswordResetLinkController extends Controller
 {
@@ -27,16 +27,15 @@ class PasswordResetLinkController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-         $validate = Validator::make($request->all(), [
-            'email' => 'required|email:dns'
+        $validate = Validator::make($request->all(), [
+            'email' => 'required|email:dns',
         ]);
 
-      
         $user = User::where('email', $request->email)->pluck('email')->first();
-        
+
         if ($validate->fails()) {
             return back()->with('error', 'Error, Please email must be inputed correctly');
-        } else if (!$user) {
+        } elseif (! $user) {
             return back()->with('error', 'Error, Your email is Not Found')->with('email', $request->email);
         }
 

@@ -9,6 +9,7 @@ class Ecourse extends Model
 {
     use HasFactory;
 
-    protected $table = "ecourse";
-    protected $fillable = ["nama_course","instruktur","deskripsi","durasi","level","harga","link_akses", 'cover_ecourse'];
+    protected $table = 'ecourse';
+
+    protected $fillable = ['nama_course', 'instruktur', 'deskripsi', 'durasi', 'level', 'harga', 'link_akses', 'cover_ecourse'];
 }
