@@ -223,21 +223,17 @@ Route::fallback(function () {
     return view('errors.404'); // Menampilkan halaman 404
 });
 
-
+// login and register
 Route::view('/admin/login', 'pages.auth.admin.login')->name('login.admin');
 Route::view('/admin/register', 'pages.auth.admin.register')->name('register.admin');
+// main dashboard
 Route::view('/admin/dashboard', 'pages.admin-dashboard')->name('admin-dashboard');
-Route::view('/admin/event', 'pages.admin-event')->name('admin.event');
+// events
+Route::view('/admin/events', 'pages.admin-event')->name('admin.event');
+Route::view('/admin/events/add', 'pages.Dashboard.Event.tambah-data-event')->name('tambah-data-event');
+Route::view('/admin/events/detail', 'pages.Dashboard.Event.detail-data-event')->name('detail-data-event');
+Route::view('/admin/events/edit', 'pages.Dashboard.Event.edit-data-event')->name('edit-data-event');
+// orders
 Route::view('/admin/orders', 'pages.admin-orders')->name('admin.orders');
+Route::view('/admin/orders/detail', 'pages.admin-order-detail')->name('admin.order-detail');
 
-
-// Admin Tambah, Edit dan Detail Pengelolaan Event
-Route::view('/admin/event/tambahdata', 'pages.Dashboard.Event.tambah-data-event')->name('tambah-data-event');
-Route::view('/admin/event/detaildata', 'pages.Dashboard.Event.detail-data-event')->name('detail-data-event');
-Route::view('/admin/event/editdata', 'pages.Dashboard.Event.edit-data-event')->name('edit-data-event');
-
-
-// Admin Tambah, Edit dan Detail Pengelolaan Artikel
-Route::view('/admin/artikel/tambahdata', 'pages.Dashboard.Artikel.tambah-data-artikel')->name('tambah-data-artikel');
-Route::view('/admin/artikel/detaildata', 'pages.Dashboard.Artikel.detail-data-artikel')->name('detail-data-artikel');
-Route::view('/admin/artikel/editdata', 'pages.Dashboard.Artikel.edit-data-artikel')->name('edit-data-artikel');
