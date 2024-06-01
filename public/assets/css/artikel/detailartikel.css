@@ -1,5 +1,6 @@
 .bg-event {
     background-color: #f4f4f4;
+    box-sizing: border-box; /* Ensure padding is included in the element's total width and height */
 }
 
 .bg-event h1 {
@@ -12,17 +13,22 @@
 }
 .row .col-md-6 .mb-4 label {
     color: #7b7b7b;
-    width: 100%;
+    width: 40%;
 }
-.row .col-md-6 .mb-4 input,
-.row .col-md-6 .mb-4 .form-select,
-.row .col-md-6 .mb-4 textarea {
-    border: 1px solid #bdbdbd;
-    background-color: transparent;
+.row .col-md-12 .mb-4 label {
     color: #7b7b7b;
+    width: 25%;
 }
+.row .col-md-6 .mb-4 p {
+    color: #7b7b7b;
+    width: 50%;
+    word-wrap: break-word;
+}
+/* .row .col-md-6 .mb-4 p {
+    color: #7b7b7b;
+} */
 button {
-    background: #1121b7;
+    background: #7b7b7b;
     color: white;
     padding: 5px 20px 5px 20px;
 }
@@ -41,6 +47,16 @@ button:hover {
 .img-preview {
     width: 50%;
     height: 50%;
-    display: none;
     cursor: pointer;
+}
+
+@media only screen and (max-width: 500px) {
+    .row .col-md-6 .mb-4 .w-100 {
+        padding-right: 20%;
+    }
+    .img-preview {
+        width: 80%;
+        height: 80%;
+        cursor: pointer;
+    }
 }

@@ -235,3 +235,9 @@ Route::view('/admin/orders', 'pages.admin-orders')->name('admin.orders');
 Route::view('/admin/event/tambahdata', 'pages.Dashboard.Event.tambah-data-event')->name('tambah-data-event');
 Route::view('/admin/event/detaildata', 'pages.Dashboard.Event.detail-data-event')->name('detail-data-event');
 Route::view('/admin/event/editdata', 'pages.Dashboard.Event.edit-data-event')->name('edit-data-event');
+
+
+// Admin Tambah, Edit dan Detail Pengelolaan Artikel
+Route::view('/admin/artikel/tambahdata', 'pages.Dashboard.Artikel.tambah-data-artikel')->name('tambah-data-artikel');
+Route::view('/admin/artikel/detaildata', 'pages.Dashboard.Artikel.detail-data-artikel')->name('detail-data-artikel');
+Route::view('/admin/artikel/editdata', 'pages.Dashboard.Artikel.edit-data-artikel')->name('edit-data-artikel');
