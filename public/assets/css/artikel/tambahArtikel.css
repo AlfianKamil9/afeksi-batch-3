@@ -14,6 +14,11 @@
     color: #7b7b7b;
     width: 100%;
 }
+.row .col-md-12 .mb-4 label {
+    color: #7b7b7b;
+    width: 25%;
+}
+.row .col-md-12 .mb-4 textarea,
 .row .col-md-6 .mb-4 input,
 .row .col-md-6 .mb-4 .form-select,
 .row .col-md-6 .mb-4 textarea {
