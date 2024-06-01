@@ -8,7 +8,8 @@
     <link rel="shortcut icon" style="" href="/assets/img/logo-copy.png" type="image/x-icon" />
     @yield('styles')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
@@ -19,6 +20,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <!-- swipper for slider -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+    {{-- CKEditor  --}}
+    <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
+
+
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -35,8 +40,8 @@
 <body>
 
     @if (Route::currentRouteName() != 'login.admin' && Route::currentRouteName() != 'register.admin')
-    <!-- {{-- @include('partials.admin-sidebar', ['sidebarContent' => $sidebarContent]) --}} -->
-    @include('partials.admin-sidebar')
+        <!-- {{-- @include('partials.admin-sidebar', ['sidebarContent' => $sidebarContent]) --}} -->
+        @include('partials.admin-sidebar')
     @endif
 
     <!-- {{-- <div class="content">
@@ -46,7 +51,9 @@
     <script type="text/javascript" src="https://unpkg.com/external-svg-loader@1.0.0/svg-loader.min.js" async></script>
     <!-- Tambahkan file JavaScript Flatpickr -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
+    </script>
     @yield('script')
 </body>
 

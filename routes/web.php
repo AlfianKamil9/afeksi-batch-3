@@ -237,7 +237,15 @@ Route::view('/admin/events/edit', 'pages.Dashboard.Event.edit-data-event')->name
 Route::view('/admin/orders', 'pages.admin-orders')->name('admin.orders');
 Route::view('/admin/orders/detail', 'pages.admin-order-detail')->name('admin.order-detail');
 
+<<<<<<< HEAD
 // article
 Route::view('/admin/articles', 'pages.admin-article')->name('admin.article');
 Route::view('/admin/guestars', 'pages.admin-gueststar')->name('admin.gueststar');
 
+=======
+
+// Admin Tambah, Edit dan Detail Pengelolaan Artikel
+Route::view('/admin/artikel/tambahdata', 'pages.Dashboard.Artikel.tambah-data-artikel')->name('tambah-data-artikel');
+Route::view('/admin/artikel/detaildata', 'pages.Dashboard.Artikel.detail-data-artikel')->name('detail-data-artikel');
+Route::view('/admin/artikel/editdata', 'pages.Dashboard.Artikel.edit-data-artikel')->name('edit-data-artikel');
+>>>>>>> bc615e76fb34061e6936e83335e66fcee97a1354
