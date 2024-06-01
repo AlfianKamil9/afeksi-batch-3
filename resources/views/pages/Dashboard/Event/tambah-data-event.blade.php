@@ -7,7 +7,7 @@
 @endsection
 
 @section('sidebarContent')
-    <div class="p-4">
+    <div class="container p-4">
         <div>
             <h4 class="fw-bold">Tambah Data Event</h4>
             <p>Tambahkan data acara dan kegiatan terkait</p>

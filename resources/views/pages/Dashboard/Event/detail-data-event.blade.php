@@ -7,8 +7,8 @@
 @endsection
 
 @section('sidebarContent')
-    <div class="p-4">
-        <div >
+    <div class="container p-4">
+        <div>
             <h4 class="fw-bold">Pengelolaan Event</h4>
             <p>Kelola dan atur semua acara dan kegiatan terkait</p>
         </div>
@@ -57,7 +57,7 @@
                     </div>
                     <div class="mb-4 d-md-flex align-items-center">
                         <label class="form-label mb-0">Registration Start</label>
-                        <input type="date" class="form-control" placeholder="Masukkan Tanggal"/>
+                        <input type="date" class="form-control" placeholder="Masukkan Tanggal" />
                     </div>
                     <div class="mb-4 d-md-flex align-items-center">
                         <label class="form-label mb-0">Registration End</label>
@@ -70,7 +70,7 @@
                     <div class="mb-4 d-md-flex align-items-center">
                         <label class="form-label mb-0" for="timeStart">Time Start</label>
                         <input type="time" class="form-control" placeholder="Masukkan Jam" />
-                    </div>                    
+                    </div>
                     <div class="mb-4 d-md-flex align-items-center">
                         <label class="form-label mb-0">Time Finish</label>
                         <input type="time" class="form-control" placeholder="Masukkan Jam" />
