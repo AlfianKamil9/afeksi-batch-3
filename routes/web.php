@@ -239,11 +239,13 @@ Route::view('/admin/orders/detail', 'pages.admin-order-detail')->name('admin.ord
 
 // article
 Route::view('/admin/articles', 'pages.admin-article')->name('admin.article');
-Route::view('/admin/guestars', 'pages.admin-gueststar')->name('admin.gueststar');
-Route::view('/admin/edit/guestars', 'pages.admin-edit-guestar')->name('admin.edit-guestar');
-Route::view('/admin/add/guestars', 'pages.admin-add-guestar')->name('admin.add-guestar');
+Route::view('/admin/articles/add', 'pages.Dashboard.Artikel.tambah-data-artikel')->name('tambah-data-artikel');
+Route::view('/admin/articles/detail', 'pages.Dashboard.Artikel.detail-data-artikel')->name('detail-data-artikel');
+Route::view('/admin/articles/edit', 'pages.Dashboard.Artikel.edit-data-artikel')->name('edit-data-artikel');
 
-// Admin Tambah, Edit dan Detail Pengelolaan Artikel
-Route::view('/admin/artikel/tambahdata', 'pages.Dashboard.Artikel.tambah-data-artikel')->name('tambah-data-artikel');
-Route::view('/admin/artikel/detaildata', 'pages.Dashboard.Artikel.detail-data-artikel')->name('detail-data-artikel');
-Route::view('/admin/artikel/editdata', 'pages.Dashboard.Artikel.edit-data-artikel')->name('edit-data-artikel');
+
+// guestars
+Route::view('/admin/guestars', 'pages.admin-gueststar')->name('admin.gueststar');
+Route::view('/admin/guestars/edit', 'pages.admin-edit-guestar')->name('admin.edit-guestar');
+Route::view('/admin/guestars/add', 'pages.admin-add-guestar')->name('admin.add-guestar');
+
