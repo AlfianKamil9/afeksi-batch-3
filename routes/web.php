@@ -224,18 +224,18 @@ Route::middleware(['auth', 'verified'])->group(function () {
         });
     });
 
-    // DASHBOARD ADMIN
-    Route::middleware(['auth', 'only-admin'])->group(function () {
-        Route::name('admin.')->prefix('/admin')->group(function () {
-            // DASHBOARD ADMIN
-            // DASHBOARD ADMIN
-            Route::get('/dashboard', [adminDashboardController::class, 'index'])->name('dashboard.index');
-            // KELOLA EVENT (WEBINAR & CAMPAIGN)
-            Route::get('/events', [eventDashboardController::class, 'index'])->name('events');
-            Route::get('/delete/{id}', [eventDashboardController::class, 'destroy'])->name('event.destroy');
-            Route::get('/events/add', [eventDashboardController::class, 'showAdd'])->name(('event.add'));
-        });
-    });
+    // // DASHBOARD ADMIN
+    // Route::middleware(['auth', 'only-admin'])->group(function () {
+    //     Route::name('admin.')->prefix('/admin')->group(function () {
+    //         // DASHBOARD ADMIN
+    //         // DASHBOARD ADMIN
+    //         Route::get('/dashboard', [adminDashboardController::class, 'index'])->name('dashboard.index');
+    //         // KELOLA EVENT (WEBINAR & CAMPAIGN)
+    //         Route::get('/events', [eventDashboardController::class, 'index'])->name('events');
+    //         Route::get('/delete/{id}', [eventDashboardController::class, 'destroy'])->name('event.destroy');
+    //         Route::get('/events/add', [eventDashboardController::class, 'showAdd'])->name(('event.add'));
+    //     });
+    // });
 
     // DASHBOARD KONSELOR
     Route::middleware(['auth', 'only-konselor'])->group(function () {
