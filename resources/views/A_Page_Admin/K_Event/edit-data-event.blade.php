@@ -7,11 +7,14 @@
 @endsection
 
 @section('sidebarContent')
-    <div class="p-4">
-        <div >
-            <h4 class="fw-bold">Pengelolaan Event</h4>
-            <p>Kelola dan atur semua acara dan kegiatan terkait</p>
-        </div>
+
+<form action="{{ route ('')}}" method="post"></form>
+<div class="p-4">
+        @csrf
+    <div >
+        <h4 class="fw-bold">Pengelolaan Event</h4>
+        <p>Kelola dan atur semua acara dan kegiatan terkait</p>
+    </div>
         {{-- @if ($errors->any())
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
             <strong>Gagal</strong>
@@ -167,6 +170,7 @@
             </div>
         </div>
     </div>
+
 
 @section('script')
     <script src="/assets/js/tambah-event.js"></script>

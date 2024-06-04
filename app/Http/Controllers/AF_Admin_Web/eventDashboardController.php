@@ -180,12 +180,10 @@ class eventDashboardController extends Controller
     /*
      * MELAKUKAN PROSES UPDATE EVENT
      */
-    public function update(Request $request, $id)
-    {
-        $e = EventCategory::all();
-        $event = Event::with('event_categories')->findOrFail($id);
-        $event->update($request->all());
-        return redirect()->route('admin.events.index')->with('success', 'Data Berhasil Diupdate');
-    
-    }
+   public function update(Request $request, $id){
+    $event = Event::with('event_categories')->findOrFail($id);
+    $event->update($request->all());
+    return redirect()->route('admin.events.index')->with('success', 'Data Berhasil DiUpdate');
+
+   }
 }
