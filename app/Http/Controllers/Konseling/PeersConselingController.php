@@ -152,62 +152,26 @@ class PeersConselingController extends Controller
     /**
      *  MEMPROSES PEMBAYARAN
      */
-    public function checkoutPeersKonseling(Request $request, $ref_transaction_layanan)
-    {
-        $ref = $ref_transaction_layanan;
-        // JIKA ADA VOUCHER YANG DIAPPLY *//
-        if (isset($request->voucher)) {
-            $request->validate([
-                'voucher' => 'required',
-                'total' => 'required',
-            ]);
+ 
 
-            // UPDATE STOK VOUCHER HABIS DIGUNAKAN
-            $voucher = Voucher::where('kode', $request->voucher)->first();
-            $voucher->stok_voucher = $voucher->stok_voucher - 1;
-            $voucher->save();
+public function checkoutPeersKonseling(Request $request, $ref_transaction_layanan)
+{
+    $ref = $ref_transaction_layanan;
+    // JIKA ADA VOUCHER YANG DIAPPLY //
+    if (isset($request->voucher)) {
+        $request->validate([
+            'voucher' => 'required',
+            'total' => 'required',
+        ]);
 
-            // UPDATE PEMBAYARAN
-            $pembayaran = PembayaranLayanan::with('paket_layanan_konseling.layanan_konseling')->where('ref_transaction_layanan', $ref)->first();
-            $pembayaran->voucher_id = $voucher->id;
-            $pembayaran->total_payment = $request->total;
-            $pembayaran->save();
+        // UPDATE STOK VOUCHER HABIS DIGUNAKAN
+        $voucher = Voucher::where('kode', $request->voucher)->first();
+        $voucher->stok_voucher = $voucher->stok_voucher - 1;
+        $voucher->save();
 
-            $url = 'https://app.sandbox.midtrans.com/snap/v1/transactions';
-            $serverkey = config('midtrans.midtrans.server_key');
-            $serverBase64 = base64_encode($serverkey.':');
-            $response = Http::withHeaders([
-                'Accept' => 'application/json',
-                'Authorization' => 'Basic '.$serverBase64,
-                'Content-Type' => 'application/json',
-            ])->post($url, [
-                'transaction_details' => [
-                    'order_id' => $ref,
-                    'gross_amount' => $request->total,
-                ],
-                'credit_card' => [
-                    'secure' => true,
-                ],
-                'customer_details' => [
-                    'first_name' => auth()->user()->nama,
-                    'email' => auth()->user()->email,
-                    'phone' => auth()->user()->no_whatsapp,
-                ],
-            ]);
-
-            if ($response->successful()) {
-                return redirect()->to($response['redirect_url']);
-            } else {
-                return response()->json(['error' => 'Failed to create transaction'], 500);
-            }
-        }
-
-        /**
-         * JIKA TIDAK ADA VOUCHER YANG DIAPPLY
-         */
         // UPDATE PEMBAYARAN
         $pembayaran = PembayaranLayanan::with('paket_layanan_konseling.layanan_konseling')->where('ref_transaction_layanan', $ref)->first();
-        // $pembayaran->status = 'PENDING';
+        $pembayaran->voucher_id = $voucher->id;
         $pembayaran->total_payment = $request->total;
         $pembayaran->save();
 
@@ -218,7 +182,9 @@ class PeersConselingController extends Controller
             'Accept' => 'application/json',
             'Authorization' => 'Basic '.$serverBase64,
             'Content-Type' => 'application/json',
-        ])->post($url, [
+        ])
+        ->withoutVerifying()  
+        ->post($url, [
             'transaction_details' => [
                 'order_id' => $ref,
                 'gross_amount' => $request->total,
@@ -239,4 +205,45 @@ class PeersConselingController extends Controller
             return response()->json(['error' => 'Failed to create transaction'], 500);
         }
     }
+
+    /**
+     * JIKA TIDAK ADA VOUCHER YANG DIAPPLY
+     */
+    // UPDATE PEMBAYARAN
+    $pembayaran = PembayaranLayanan::with('paket_layanan_konseling.layanan_konseling')->where('ref_transaction_layanan', $ref)->first();
+    // $pembayaran->status = 'PENDING';
+    $pembayaran->total_payment = $request->total;
+    $pembayaran->save();
+
+    $url = 'https://app.sandbox.midtrans.com/snap/v1/transactions';
+    $serverkey = config('midtrans.midtrans.server_key');
+    $serverBase64 = base64_encode($serverkey.':');
+    $response = Http::withHeaders([
+        'Accept' => 'application/json',
+        'Authorization' => 'Basic '.$serverBase64,
+        'Content-Type' => 'application/json',
+    ])
+    ->withoutVerifying()  
+    ->post($url, [
+        'transaction_details' => [
+            'order_id' => $ref,
+            'gross_amount' => $request->total,
+        ],
+        'credit_card' => [
+            'secure' => true,
+        ],
+        'customer_details' => [
+            'first_name' => auth()->user()->nama,
+            'email' => auth()->user()->email,
+            'phone' => auth()->user()->no_whatsapp,
+        ],
+    ]);
+
+    if ($response->successful()) {
+        return redirect()->to($response['redirect_url']);
+    } else {
+        return response()->json(['error' => 'Failed to create transaction'], 500);
+    }
+}
+
 }
