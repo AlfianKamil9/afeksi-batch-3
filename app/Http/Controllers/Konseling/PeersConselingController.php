@@ -106,7 +106,7 @@ class PeersConselingController extends Controller
             'detail_masalah' => $request->detail_masalah,
         ]);
         PembayaranLayanan::where('ref_transaction_layanan', $ref_transaction_layanan)->update([
-            'status' => 'UNPAID(BUTUH BAYAR)',
+            'status' => 'PAID',
             'konselor_id' => $randomKonselor,
         ]);
 
