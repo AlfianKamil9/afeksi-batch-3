@@ -1,0 +1,73 @@
+.bg-event {
+    background-color: #f4f4f4;
+}
+
+.bg-event h1 {
+    color: black;
+}
+
+.bg-event hr {
+    border: 1px solid #7b7b7b4d;
+    margin: 0;
+}
+.img-psikolog {
+    width: 10rem;
+    height: 10rem;
+}
+
+.img-psikolog img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 100%;
+}
+.d-flex .ms-md-5 #pilihfile {
+    padding: 8px 20px 8px 20px;
+    border-radius: 5px;
+    background-color: #4c2bdb;
+    border: none;
+    color: white;
+}
+.d-flex .ms-md-5 #pilihfile:hover {
+    background-color: black;
+}
+.d-flex .ms-md-5 #hapusfile {
+    padding: 8px 20px 8px 20px;
+    border-radius: 5px;
+    background-color: #7b7b7b;
+    border: none;
+    color: white;
+}
+.d-flex .ms-md-5 #hapusfile:hover {
+    background-color: black;
+}
+#fileInput {
+    display: none;
+}
+.d-md-flex .form-control {
+    border: 1px solid #7b7b7b;
+    color: #7b7b7b;
+    background-color: transparent;
+}
+.form-label {
+    color: #7b7b7b;
+}
+.btn-psikolog {
+    padding: 8px 20px 8px 20px;
+    border-radius: 5px;
+    background-color: #4c2bdb;
+    border: none;
+    color: white;
+}
+.btn-psikolog:hover {
+    background-color: black;
+}
+.d-grid {
+    justify-items: center;
+}
+@media only screen and (max-width: 500px) {
+    .img-psikolog {
+        width: 8rem;
+        height: 8rem;
+    }
+}
