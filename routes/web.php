@@ -249,3 +249,6 @@ Route::view('/admin/guestars', 'pages.admin-gueststar')->name('admin.gueststar')
 Route::view('/admin/guestars/edit', 'pages.admin-edit-guestar')->name('admin.edit-guestar');
 Route::view('/admin/guestars/add', 'pages.admin-add-guestar')->name('admin.add-guestar');
 
+// Psikolog
+Route::view('/admin/psikolog/edit', 'pages.Dashboard.Psikolog.edit-data-psikolog')->name('edit-data-psikolog');
+Route::view('/admin/psikolog/detail', 'pages.Dashboard.Psikolog.detail-data-psikolog')->name('detail-data-psikolog');
