@@ -250,4 +250,5 @@ Route::view('/admin/guestars/edit', 'pages.admin-edit-guestar')->name('admin.edi
 Route::view('/admin/guestars/add', 'pages.admin-add-guestar')->name('admin.add-guestar');
 
 // psychologist
+Route::view('/admin/psikolog', 'pages.admin-psychology')->name('admin.psychology');
 Route::view('/admin/add/psychologist', 'pages.admin-add-psychologist')->name('admin.add-psychologist');
