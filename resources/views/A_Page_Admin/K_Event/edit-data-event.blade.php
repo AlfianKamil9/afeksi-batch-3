@@ -7,8 +7,8 @@
 @endsection
 
 @section('sidebarContent')
-    <div class="p-4">
-        <div >
+    <div class="container p-4">
+        <div>
             <h4 class="fw-bold">Pengelolaan Event</h4>
             <p>Kelola dan atur semua acara dan kegiatan terkait</p>
         </div>

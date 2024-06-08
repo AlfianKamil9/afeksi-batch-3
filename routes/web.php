@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\AF_Admin_Web\adminDashboardController;
+use App\Http\Controllers\AF_Admin_Web\articleDashboardController;
 use App\Http\Controllers\AF_Admin_Web\eventDashboardController;
+use App\Http\Controllers\AF_Admin_Web\guestStarDashboardController;
 use App\Http\Controllers\AF_Admin_Web\transactionDashboardController;
 use App\Http\Controllers\API\NotificationPaymentEventController;
 use App\Http\Controllers\Artikel\artikelController;
@@ -218,22 +220,17 @@ Route::middleware(['auth', 'verified'])->group(function () {
                 Route::get('/{ref_transaction_event}', [transactionDashboardController::class, 'showDetail'])->name('detail');
                 Route::post('/{ref_transaction_event}/delete', [transactionDashboardController::class, 'delete'])->name('delete');
             });
-
-            Route::get('/events/{id}', [eventDashboardController::class, 'Update'])->name(('event.update'));
-
-        });
-    });
-
-    // DASHBOARD ADMIN
-    Route::middleware(['auth', 'only-admin'])->group(function () {
-        Route::name('admin.')->prefix('/admin')->group(function () {
-            // DASHBOARD ADMIN
-            // DASHBOARD ADMIN
-            Route::get('/dashboard', [adminDashboardController::class, 'index'])->name('dashboard.index');
-            // KELOLA EVENT (WEBINAR & CAMPAIGN)
-            Route::get('/events', [eventDashboardController::class, 'index'])->name('events');
-            Route::get('/delete/{id}', [eventDashboardController::class, 'destroy'])->name('event.destroy');
-            Route::get('/events/add', [eventDashboardController::class, 'showAdd'])->name(('event.add'));
+            // KELOLA ARTIKEL
+            Route::name('articles.')->prefix('/article')->group(function () {
+                Route::get('', [articleDashboardController::class, 'index'])->name('index');
+                Route::get('/{id}', [articleDashboardController::class, 'show'])->name('detail');
+                Route::get('/add', [articleDashboardController::class, 'create'])->name('create');
+                Route::get('/edit/{id}', [articleDashboardController::class, 'edit'])->name('edit');
+            });
+            // KELOLA GUESTSTAR
+            Route::name('gueststar.')->prefix('/gueststar')->group(function () {
+                Route::get('', [guestStarDashboardController::class, 'index'])->name('index');
+            });
         });
     });
 
@@ -256,7 +253,30 @@ Route::middleware(['auth', 'verified'])->group(function () {
 // Route::get('/midtrans/error', [NotificationPaymentEventController::class, 'errorRedirect']);
 // // Route::post('/midtrans/notification-hooks', HandleAfterPayment::class);
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 Route::fallback(function () {
     return view('errors.404'); // Menampilkan halaman 404
 });
+
+// // login and register
+// Route::view('/admin/login', 'pages.auth.admin.login')->name('login.admin');
+// Route::view('/admin/register', 'pages.auth.admin.register')->name('register.admin');
+// // main dashboard
+// Route::view('/admin/dashboard', 'pages.admin-dashboard')->name('admin-dashboard');
+// // events
+// Route::view('/admin/events', 'pages.admin-event')->name('admin.event');
+// Route::view('/admin/events/add', 'pages.Dashboard.Event.tambah-data-event')->name('tambah-data-event');
+// Route::view('/admin/events/detail', 'pages.Dashboard.Event.detail-data-event')->name('detail-data-event');
+// Route::view('/admin/events/edit', 'pages.Dashboard.Event.edit-data-event')->name('edit-data-event');
+// // orders
+// Route::view('/admin/orders', 'pages.admin-orders')->name('admin.orders');
+// Route::view('/admin/orders/detail', 'pages.admin-order-detail')->name('admin.order-detail');
+
+// article
+// Route::view('/admin/articles', 'pages.admin-article')->name('admin.article');
+// Route::view('/admin/guestars', 'pages.admin-gueststar')->name('admin.gueststar');
+
+// // Admin Tambah, Edit dan Detail Pengelolaan Artikel
+// Route::view('/admin/artikel/tambahdata', 'pages.Dashboard.Artikel.tambah-data-artikel')->name('tambah-data-artikel');
+// Route::view('/admin/artikel/detaildata', 'pages.Dashboard.Artikel.detail-data-artikel')->name('detail-data-artikel');
+// Route::view('/admin/artikel/editdata', 'pages.Dashboard.Artikel.edit-data-artikel')->name('edit-data-artikel');

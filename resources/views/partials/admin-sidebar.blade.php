@@ -49,7 +49,7 @@
                     </svg>
                     Kelola Event
                 </a>
-                <a class=" side-item p-2 d-flex align-items-center" href="#!">
+                <a class=" side-item p-2 d-flex align-items-center" href="{{ route('admin.articles.index') }}">
                     <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_4712_8480)">
                             <path

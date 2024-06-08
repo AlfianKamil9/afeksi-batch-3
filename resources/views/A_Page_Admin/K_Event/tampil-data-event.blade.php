@@ -9,7 +9,7 @@
 @section('sidebarContent')
 <form action="" method="post" enctype="multipart/form-data">
     @csrf
-    <div class="p-4">
+    <div class="container p-4">
         <div>
             <h4 class="fw-bold">Edit Data Event</h4>
             {{-- <p>Tambahkan data acara dan kegiatan terkait</p> --}}
