@@ -250,7 +250,7 @@ Route::view('/admin/guestars/edit', 'pages.admin-edit-guestar')->name('admin.edi
 Route::view('/admin/guestars/add', 'pages.admin-add-guestar')->name('admin.add-guestar');
 
 // psychologist
-Route::view('/admin/psikolog', 'pages.admin-psychology')->name('admin.psychology');
-Route::view('/admin/add/psychologist', 'pages.admin-add-psychologist')->name('admin.add-psychologist');
-Route::view('/admin/psikolog/edit', 'pages.Dashboard.Psikolog.edit-data-psikolog')->name('edit-data-psikolog');
-Route::view('/admin/psikolog/detail', 'pages.Dashboard.Psikolog.detail-data-psikolog')->name('detail-data-psikolog');
+Route::view('/admin/psychologist', 'pages.admin-psychology')->name('admin.psychology');
+Route::view('/admin/psychologist/add', 'pages.admin-add-psychologist')->name('admin.add-psychologist');
+Route::view('/admin/psychologist/edit', 'pages.Dashboard.Psikolog.edit-data-psikolog')->name('edit-data-psikolog');
+Route::view('/admin/psychologist/detail', 'pages.Dashboard.Psikolog.detail-data-psikolog')->name('detail-data-psikolog');
