@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers\AF_Admin_Web;
 
+use App\Models\Artikel;
 use App\Http\Controllers\Controller;
 
 class articleDashboardController extends Controller
 {
     public function index()
     {
-        return view('A_Page_Admin.Article.admin-article');
+        $artikels = Artikel::all();
+        return view('A_Page_Admin.Article.admin-article', compact('artikels'));
     }
 
     public function show()

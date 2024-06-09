@@ -27,7 +27,7 @@
         <div class="box-2 mb-0">
             <div class="d-block ms-2 py-2">
                 <div class="count-info">
-                    <p class="text-count p-0 m-0 fw-bolder text-center font-small">12 Artikel</p>
+                    <p class="text-count p-0 m-0 fw-bolder text-center font-small">{{ $artikels->count() }} Artikel</p>
                 </div>
                 <p class="mb-0 mt-2 font-small">Berikut ini daftar Artikel yang telah dibuat</p>
             </div>
@@ -36,55 +36,36 @@
                     <tr class="fw-bold text-center font-small t-head">
                         <th class="th title">Title</th>
                         <th class="th date">Date</th>
-                        <th class="th jdl">Judul</th>
+                        <th class="th jdl">Topik</th>
                         <th class="th slug">Slug</th>
                         <th class="th aksi">Aksi</th>
                         <th class="th detail">
                         <img class="m-0 p-0" src="/assets/img/admin/detail.png" alt="img_detail" style="width: 18px; height: 18px ;">
                         </th>
                     </tr>
-                    <tr class="font-smaller fb">
-                        <td class="px-2 py-1">Love bombing: A Trend for Tossing and Turning The Feelings</td>
-                        <td class="px-2 py-1 text-center">Sabtu, 24/09/23</td>
-                        <td class="px-2 py-1 ">Pentingnya Membangun Hubungan Yang Sehat Dalam Kehidupan</td>
-                        <td class="px-2 py-1">https://afeksi.ahay.my.id/artikel</td>
-                        <td class="px-2 py-1 font-lg">
-                            <div class="d-flex justify-content-center gap-2">
-                                <div class="edit-container position-relative">
-                                <img class="edit-icon position-absolute" src="/assets/img/admin/pencil.png" alt="edit_img">
-                                    <button class="btn-edit fw-bolder py-1">Edit</button>
+                    @foreach ($artikels as $artikel)
+                        <tr class="font-smaller fb">
+                            <td class="px-2 py-1">{{ $artikel->judul_artikel }}</td>
+                            <td class="px-2 py-1 text-center">{{ $artikel->created_at }}</td>
+                            <td class="px-2 py-1 ">{{ $artikel->topik }}</td>
+                            <td class="px-2 py-1">{{ $artikel->slug }}</td>
+                            <td class="px-2 py-1 font-lg">
+                                <div class="d-flex justify-content-center gap-2">
+                                    <div class="edit-container position-relative">
+                                    <img class="edit-icon position-absolute" src="/assets/img/admin/pencil.png" alt="edit_img">
+                                        <a href="{{ route('admin.articles.edit', $artikel->id) }}" type="button" class="btn btn-primary btn-edit fw-bolder py-1">Edit</a>
+                                    </div>
+                                    <div class="delete-container position-relative">
+                                    <img class="trash-icon position-absolute" src="/assets/img/admin/trash.png" alt="trash_img">
+                                        <a href="" class="btn-delete fw-bolder py-1">Hapus</a>
+                                    </div>
                                 </div>
-                                <div class="delete-container position-relative">
-                                <img class="trash-icon position-absolute" src="/assets/img/admin/trash.png" alt="trash_img">
-                                    <button class="btn-delete fw-bolder py-1">Hapus</button>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="px-2 py-1 text-center">
-                            <img class="m-0 p-0" src="/assets/img/admin/detail-2.png" alt="img_detail" style="width: 18px; height: 18px ; cursor:pointer;">
-                        </td>
-                    </tr>
-                    <tr class="font-smaller fb">
-                        <td class="px-2 py-1">Love bombing: A Trend for Tossing and Turning The Feelings</td>
-                        <td class="px-2 py-1 text-center">Sabtu, 24/09/23</td>
-                        <td class="px-2 py-1 ">Pentingnya Membangun Hubungan Yang Sehat Dalam Kehidupan</td>
-                        <td class="px-2 py-1">https://afeksi.ahay.my.id/artikel</td>
-                        <td class="px-2 py-1 font-lg">
-                            <div class="d-flex justify-content-center gap-2">
-                                <div class="edit-container position-relative">
-                                <img class="edit-icon position-absolute" src="/assets/img/admin/pencil.png" alt="edit_img">
-                                    <button class="btn-edit fw-bolder py-1">Edit</button>
-                                </div>
-                                <div class="delete-container position-relative">
-                                <img class="trash-icon position-absolute" src="/assets/img/admin/trash.png" alt="trash_img">
-                                    <button class="btn-delete fw-bolder py-1">Hapus</button>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="px-2 py-1 text-center">
-                            <img class="m-0 p-0" src="/assets/img/admin/detail-2.png" alt="img_detail" style="width: 18px; height: 18px ; cursor:pointer;">
-                        </td>
-                    </tr>
+                            </td>
+                            <td class="px-2 py-1 text-center">
+                                <img class="m-0 p-0" src="/assets/img/admin/detail-2.png" alt="img_detail" style="width: 18px; height: 18px ; cursor:pointer;">
+                            </td>
+                        </tr>
+                    @endforeach
                 </table>
             </form>
         </div>
