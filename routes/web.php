@@ -4,6 +4,7 @@ use App\Http\Controllers\AF_Admin_Web\adminDashboardController;
 use App\Http\Controllers\AF_Admin_Web\articleDashboardController;
 use App\Http\Controllers\AF_Admin_Web\eventDashboardController;
 use App\Http\Controllers\AF_Admin_Web\guestStarDashboardController;
+use App\Http\Controllers\AF_Admin_Web\psikologDashboardController;
 use App\Http\Controllers\AF_Admin_Web\transactionDashboardController;
 use App\Http\Controllers\API\NotificationPaymentEventController;
 use App\Http\Controllers\Artikel\artikelController;
@@ -230,6 +231,16 @@ Route::middleware(['auth', 'verified'])->group(function () {
             // KELOLA GUESTSTAR
             Route::name('gueststar.')->prefix('/gueststar')->group(function () {
                 Route::get('', [guestStarDashboardController::class, 'index'])->name('index');
+                Route::get('/{id}', [guestStarDashboardController::class, 'show'])->name('detail');
+                Route::get('/add', [guestStarDashboardController::class, 'create'])->name('create');
+                Route::get('/edit/{id}', [guestStarDashboardController::class, 'edit'])->name('edit');
+            });
+            // KELOLA PSYCOLOG
+            Route::name('psikolog.')->prefix('/psycolog')->group(function () {
+                Route::get('', [psikologDashboardController::class, 'index'])->name('index');
+                Route::get('/{id}', [psikologDashboardController::class, 'show'])->name('detail');
+                Route::get('/add', [psikologDashboardController::class, 'create'])->name('create');
+                Route::get('/edit/{id}', [psikologDashboardController::class, 'edit'])->name('edit');
             });
         });
     });
@@ -273,10 +284,28 @@ Route::fallback(function () {
 // Route::view('/admin/orders/detail', 'pages.admin-order-detail')->name('admin.order-detail');
 
 // article
-// Route::view('/admin/articles', 'pages.admin-article')->name('admin.article');
-// Route::view('/admin/guestars', 'pages.admin-gueststar')->name('admin.gueststar');
+// 
+// // Route::view('/admin/articles', 'pages.admin-article')->name('admin.article');
+// // Route::view('/admin/guestars', 'pages.admin-gueststar')->name('admin.gueststar');
 
-// // Admin Tambah, Edit dan Detail Pengelolaan Artikel
-// Route::view('/admin/artikel/tambahdata', 'pages.Dashboard.Artikel.tambah-data-artikel')->name('tambah-data-artikel');
-// Route::view('/admin/artikel/detaildata', 'pages.Dashboard.Artikel.detail-data-artikel')->name('detail-data-artikel');
-// Route::view('/admin/artikel/editdata', 'pages.Dashboard.Artikel.edit-data-artikel')->name('edit-data-artikel');
+// // // Admin Tambah, Edit dan Detail Pengelolaan Artikel
+// // Route::view('/admin/artikel/tambahdata', 'pages.Dashboard.Artikel.tambah-data-artikel')->name('tambah-data-artikel');
+// // Route::view('/admin/artikel/detaildata', 'pages.Dashboard.Artikel.detail-data-artikel')->name('detail-data-artikel');
+// // Route::view('/admin/artikel/editdata', 'pages.Dashboard.Artikel.edit-data-artikel')->name('edit-data-artikel');
+// =======
+// Route::view('/admin/articles', 'pages.admin-article')->name('admin.article');
+// Route::view('/admin/articles/add', 'pages.Dashboard.Artikel.tambah-data-artikel')->name('tambah-data-artikel');
+// Route::view('/admin/articles/detail', 'pages.Dashboard.Artikel.detail-data-artikel')->name('detail-data-artikel');
+// Route::view('/admin/articles/edit', 'pages.Dashboard.Artikel.edit-data-artikel')->name('edit-data-artikel');
+
+
+// guestars
+// Route::view('/admin/guestars', 'pages.admin-gueststar')->name('admin.gueststar');
+// Route::view('/admin/guestars/edit', 'pages.admin-edit-guestar')->name('admin.edit-guestar');
+// Route::view('/admin/guestars/add', 'pages.admin-add-guestar')->name('admin.add-guestar');
+
+// psychologist
+Route::view('/admin/psychologist', 'pages.admin-psychology')->name('admin.psychology');
+Route::view('/admin/psychologist/add', 'pages.admin-add-psychologist')->name('admin.add-psychologist');
+Route::view('/admin/psychologist/edit', 'pages.Dashboard.Psikolog.edit-data-psikolog')->name('edit-data-psikolog');
+Route::view('/admin/psychologist/detail', 'pages.Dashboard.Psikolog.detail-data-psikolog')->name('detail-data-psikolog');
