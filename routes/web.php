@@ -138,7 +138,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::post('/{ref_transaction_layanan}/submit-form-peers-konseling', [peersConselingController::class, 'submitDataDiri'])->name('konseling.process.form');
         //CHECKOUT
         Route::get('/{ref_transaction_layanan}/pembayaran', [peersConselingController::class, 'showPembayaran'])->name('konseling.checkout');
-        Route::post('/{ref_transaction_layanan}/checkout', [peersConselingController::class, 'showCheckout'])->name('konseling.process.checkout');
+        Route::post('/{ref_transaction_layanan}/checkout', [peersConselingController::class, 'processCheckout'])->name('konseling.process.checkout');
+        Route::get('/{ref_transaction_layanan}/konfirmasi', [peersConselingController::class, 'showCheckout'])->name('konseling.show.confirmation');
     });
 
     // NOTIFICATION AFTER PEMBAYARAN PROFESIONAL KONSELING---
@@ -220,7 +221,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
             });
 
             Route::get('/events/{id}', [eventDashboardController::class, 'Update'])->name(('event.update'));
-
         });
     });
 
@@ -256,7 +256,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 // Route::get('/midtrans/error', [NotificationPaymentEventController::class, 'errorRedirect']);
 // // Route::post('/midtrans/notification-hooks', HandleAfterPayment::class);
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 Route::fallback(function () {
     return view('errors.404'); // Menampilkan halaman 404
 });

@@ -9,7 +9,7 @@
 
 
 @section('headForPayment')
-    <script type="text/javascript" src="https://app.stg.midtrans.com/snap/snap.js"
+    <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js"
         data-client-key="{{ config('midtrans.midtrans.client_key') }}"></script>
 @endsection
 
@@ -92,17 +92,13 @@
     </div>
 
 
-
-
-
-
     <script src="/assets/js/pembayaran.js"></script>
     <script type="text/javascript">
         // For example trigger on button clicked, or any time you need
         var payButton = document.getElementById('pay-button');
         payButton.addEventListener('click', function() {
             // Trigger snap popup. @TODO: Replace TRANSACTION_TOKEN_HERE with your transaction token.
-            window.snap.pay('{{ $snapToken }}', {
+            snap.pay('{{ $snapToken }}', {
                 onSuccess: function(result) {
                     /* You may add your own implementation here */
                     alert("payment success!");
@@ -125,7 +121,8 @@
             });
         });
     </script>
-
-
-
 @endsection
+
+{{-- @section('script') --}}
+    
+{{-- @endsection --}}

@@ -153,8 +153,9 @@ class PeersConselingController extends Controller
      */
 
 
-    public function showCheckout(Request $request, $ref_transaction_layanan)
+    public function processCheckout(Request $request, $ref_transaction_layanan)
     {
+
         $ref = $ref_transaction_layanan;
         // JIKA ADA VOUCHER YANG DIAPPLY // 
         if (isset($request->voucher)) {
@@ -171,33 +172,10 @@ class PeersConselingController extends Controller
             // UPDATE PEMBAYARAN
             $pembayaran = PembayaranLayanan::with('paket_layanan_konseling.layanan_konseling')->where('ref_transaction_layanan', $ref)->first();
             $pembayaran->voucher_id = $voucher->id;
-            $pembayaran->total_payment = $request->total;
+            $pembayaran->total_payment = $request->total - $voucher->jumlah_diskon;
             $pembayaran->save();
 
-            // Set your Merchant Server Key
-            \Midtrans\Config::$serverKey = config('midtrans.midtrans.server_key');
-            // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
-            \Midtrans\Config::$isProduction = false;
-            // Set sanitization on (default)
-            \Midtrans\Config::$isSanitized = true;
-            // Set 3DS transaction for credit card to true
-            \Midtrans\Config::$is3ds = true;
-
-            $params = array(
-                'transaction_details' => [
-                    'order_id' => $ref,
-                    'gross_amount' => $request->total,
-                ],
-                'customer_details' => [
-                    'first_name' => auth()->user()->nama,
-                    'email' => auth()->user()->email,
-                    'phone' => auth()->user()->no_whatsapp,
-                ],
-            );
-
-            $snapToken = \Midtrans\Snap::getSnapToken($params);
-
-            return view('pages.PeersKonseling.checkout-peers', compact('snapToken', 'pembayaran'));
+            return redirect()->route('peers.konseling.show.confirmation', $ref);
         }
 
         /**
@@ -208,7 +186,17 @@ class PeersConselingController extends Controller
         // $pembayaran->status = 'PENDING';
         $pembayaran->total_payment = $request->total;
         $pembayaran->save();
-        
+
+        return redirect()->route('peers.konseling.show.confirmation', $ref);
+    }
+
+    // SHOW CHECKOUT
+
+    public function showCheckout($ref_transaction_layanan)
+    {
+
+        $pembayaran = PembayaranLayanan::with('paket_layanan_konseling.layanan_konseling')->where('ref_transaction_layanan', $ref_transaction_layanan)->first();
+
         // Set your Merchant Server Key
         \Midtrans\Config::$serverKey = config('midtrans.midtrans.server_key');
         // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
@@ -220,9 +208,17 @@ class PeersConselingController extends Controller
 
         $params = array(
             'transaction_details' => array(
-                'order_id' => $ref,
-                'gross_amount' => $request->total,
+                'order_id' => $pembayaran->ref_transaction_layanan,
+                'gross_amount' => $pembayaran->total_payment,
             ),
+            'item_details' => [
+                [
+                    'id' => 1,
+                    'price' => $pembayaran->total_payment,
+                    'quantity' => 1,
+                    'name' => $pembayaran->paket_layanan_konseling->layanan_konseling->nama_layanan,
+                ],
+            ],
             'customer_details' => array(
                 'first_name' => auth()->user()->nama,
                 'email' => auth()->user()->email,
