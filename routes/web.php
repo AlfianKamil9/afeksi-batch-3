@@ -138,7 +138,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::post('/{ref_transaction_layanan}/submit-form-peers-konseling', [peersConselingController::class, 'submitDataDiri'])->name('konseling.process.form');
         //CHECKOUT
         Route::get('/{ref_transaction_layanan}/pembayaran', [peersConselingController::class, 'showPembayaran'])->name('konseling.checkout');
-        Route::post('/{ref_transaction_layanan}/checkout', [peersConselingController::class, 'checkoutPeersKonseling'])->name('konseling.process.checkout');
+        Route::post('/{ref_transaction_layanan}/checkout', [peersConselingController::class, 'showCheckout'])->name('konseling.process.checkout');
     });
 
     // NOTIFICATION AFTER PEMBAYARAN PROFESIONAL KONSELING---

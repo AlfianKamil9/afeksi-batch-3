@@ -116,7 +116,7 @@
                         <div class="py-3 px-4 col-4 text-center">
                             <div class="p-0">
                                 <p class="status @if($item->status == 'PAID') selesai @elseif($item->status == 'PENDING' || $item->status == 'UNPAID(BUTUH BAYAR)') menunggu @else gagal @endif ">
-                                  @if($item->status == 'PAID') Selesai @elseif($item->status == 'PENDING') Menunggu Pembayaran @elseif($item->status == 'UNPAID(BUTUH BAYAR)') Langkapi Metode Pembayaran @elseif($item->status == 'EXPIRED') Gagal @endif
+                                  @if($item->status == 'PAID') Selesai @elseif($item->status == 'PENDING') Menunggu Pembayaran @elseif($item->status == 'UNPAID(BUTUH BAYAR)') Lengkapi Metode Pembayaran @elseif($item->status == 'EXPIRED') Gagal @endif
                                   </p>                      
                             </div>
                         </div>
