@@ -254,3 +254,7 @@ Route::view('/admin/psychologist', 'pages.admin-psychology')->name('admin.psycho
 Route::view('/admin/psychologist/add', 'pages.admin-add-psychologist')->name('admin.add-psychologist');
 Route::view('/admin/psychologist/edit', 'pages.Dashboard.Psikolog.edit-data-psikolog')->name('edit-data-psikolog');
 Route::view('/admin/psychologist/detail', 'pages.Dashboard.Psikolog.detail-data-psikolog')->name('detail-data-psikolog');
+
+// Konselor
+Route::view('/admin/konselor/edit', 'pages.Dashboard.Konselor.edit-data-konselor')->name('edit-data-konselor');
+Route::view('/admin/konselor/detail', 'pages.Dashboard.Konselor.detail-data-konselor')->name('detail-data-konselor');
