@@ -2,7 +2,7 @@
 @section('title', 'Psikologi Admin | AFEKSI')
 
 @section('styles')
-<link rel="stylesheet" href="/assets/css/admin-psychology.css">
+<link rel="stylesheet" href="/assets/css/psikolog/admin-psychology.css">
 @endsection
 
 @section('sidebarContent')

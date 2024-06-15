@@ -3,7 +3,7 @@
 @section('title', 'Event Admin | AFEKSI')
 
 @section('styles')
-<link rel="stylesheet" href="/assets/css/admin-event.css">
+<link rel="stylesheet" href="/assets/css/event/admin-event.css">
 @endsection
 
 

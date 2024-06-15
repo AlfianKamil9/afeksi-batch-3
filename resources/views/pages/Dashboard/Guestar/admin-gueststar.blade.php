@@ -3,7 +3,7 @@
 @section('title', 'Guestar Admin | AFEKSI')
 
 @section('styles')
-<link rel="stylesheet" href="/assets/css/admin-articleGueststar.css">
+<link rel="stylesheet" href="/assets/css/artikel/admin-articleGueststar.css">
 @endsection
 
 @section('sidebarContent')
