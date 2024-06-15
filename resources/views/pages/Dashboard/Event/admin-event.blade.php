@@ -19,8 +19,8 @@
         <div class="box d-flex">
             <nav class="py-2 align-content-center w-100">
                 <div class="nav" id="nav-tab" role="tab">
-                    <p class="text-tab m-0 fs-5 fw-semibold nav-link active mt-1" id="nav-webinar-tab" data-bs-toggle="tab" data-bs-target="#nav-webinar" role="tab" aria-controls="nav-webinar" aria-selected="true">Webinar</p>
-                    <p class="text-tab m-0 fs-5 fw-semibold nav-link mt-1" id="nav-campaign-tab" data-bs-toggle="tab" data-bs-target="#nav-campaign" role="tab" aria-controls="nav-campaign" aria-selected="false">Campaign</p>
+                    <p class="text-tab m-0 fs-5 fw-semibold nav-link active" id="nav-webinar-tab" data-bs-toggle="tab" data-bs-target="#nav-webinar" role="tab" aria-controls="nav-webinar" aria-selected="true">Webinar</p>
+                    <p class="text-tab m-0 fs-5 fw-semibold nav-link" id="nav-campaign-tab" data-bs-toggle="tab" data-bs-target="#nav-campaign" role="tab" aria-controls="nav-campaign" aria-selected="false">Campaign</p>
                     <form class="form-inline d-flex align-content-center my-2 gap-2 me-3 form-action">
                         <div class="search-container">
                             <img class="search-icon" src="/assets/img/admin/search.png" alt="search img" style="width: 20px; height:20px;">
