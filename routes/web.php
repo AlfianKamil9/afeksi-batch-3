@@ -229,7 +229,7 @@ Route::view('/admin/register', 'pages.auth.admin.register')->name('register.admi
 // main dashboard
 Route::view('/admin/dashboard', 'pages.admin-dashboard')->name('admin-dashboard');
 // events
-Route::view('/admin/events', 'pages.admin-event')->name('admin.event');
+Route::view('/admin/events', 'pages.Dashboard.Event.admin-event')->name('admin.event');
 Route::view('/admin/events/add', 'pages.Dashboard.Event.tambah-data-event')->name('tambah-data-event');
 Route::view('/admin/events/detail', 'pages.Dashboard.Event.detail-data-event')->name('detail-data-event');
 Route::view('/admin/events/edit', 'pages.Dashboard.Event.edit-data-event')->name('edit-data-event');
@@ -238,25 +238,26 @@ Route::view('/admin/orders', 'pages.admin-orders')->name('admin.orders');
 Route::view('/admin/orders/detail', 'pages.admin-order-detail')->name('admin.order-detail');
 
 // article
-Route::view('/admin/articles', 'pages.admin-article')->name('admin.article');
+Route::view('/admin/articles', 'pages.Dashboard.Artikel.admin-article')->name('admin.article');
 Route::view('/admin/articles/add', 'pages.Dashboard.Artikel.tambah-data-artikel')->name('tambah-data-artikel');
 Route::view('/admin/articles/detail', 'pages.Dashboard.Artikel.detail-data-artikel')->name('detail-data-artikel');
 Route::view('/admin/articles/edit', 'pages.Dashboard.Artikel.edit-data-artikel')->name('edit-data-artikel');
 
 
 // guestars
-Route::view('/admin/guestars', 'pages.admin-gueststar')->name('admin.gueststar');
+Route::view('/admin/guestars', 'pages.Dashboard.Guestar.admin-gueststar')->name('admin.gueststar');
 Route::view('/admin/guestars/edit', 'pages..Dashboard.Guestar.admin-edit-guestar')->name('admin.edit-guestar');
 Route::view('/admin/guestars/add', 'pages.Dashboard.Guestar.admin-add-guestar')->name('admin.add-guestar');
 
 // psychologist
-Route::view('/admin/psychologist', 'pages.admin-psychology')->name('admin.psychology');
+Route::view('/admin/psychologist', 'pages.Dashboard.Psikolog.admin-psychology')->name('admin.psychology');
 Route::view('/admin/psychologist/add', 'pages.Dashboard.Psikolog.admin-add-psychologist')->name('admin.add-psychologist');
 Route::view('/admin/psychologist/edit', 'pages.Dashboard.Psikolog.edit-data-psikolog')->name('edit-data-psikolog');
 Route::view('/admin/psychologist/detail', 'pages.Dashboard.Psikolog.detail-data-psikolog')->name('detail-data-psikolog');
 
 
 // counselor
+Route::view('/admin/counselor', 'pages.Dashboard.Konselor.konselor')->name('admin.konselor');
 Route::view('/admin/counselor/add', 'pages.Dashboard.Konselor.admin-add-counselor')->name('admin.add-counselor');
 Route::view('/admin/counselor/edit', 'pages.Dashboard.Konselor.edit-data-konselor')->name('edit-data-konselor');
 Route::view('/admin/counselor/detail', 'pages.Dashboard.Konselor.detail-data-konselor')->name('detail-data-konselor');
