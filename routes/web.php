@@ -246,15 +246,18 @@ Route::view('/admin/articles/edit', 'pages.Dashboard.Artikel.edit-data-artikel')
 
 // guestars
 Route::view('/admin/guestars', 'pages.admin-gueststar')->name('admin.gueststar');
-Route::view('/admin/guestars/edit', 'pages.admin-edit-guestar')->name('admin.edit-guestar');
-Route::view('/admin/guestars/add', 'pages.admin-add-guestar')->name('admin.add-guestar');
+Route::view('/admin/guestars/edit', 'pages..Dashboard.Guestar.admin-edit-guestar')->name('admin.edit-guestar');
+Route::view('/admin/guestars/add', 'pages.Dashboard.Guestar.admin-add-guestar')->name('admin.add-guestar');
 
 // psychologist
 Route::view('/admin/psychologist', 'pages.admin-psychology')->name('admin.psychology');
-Route::view('/admin/psychologist/add', 'pages.admin-add-psychologist')->name('admin.add-psychologist');
+Route::view('/admin/psychologist/add', 'pages.Dashboard.Psikolog.admin-add-psychologist')->name('admin.add-psychologist');
 Route::view('/admin/psychologist/edit', 'pages.Dashboard.Psikolog.edit-data-psikolog')->name('edit-data-psikolog');
 Route::view('/admin/psychologist/detail', 'pages.Dashboard.Psikolog.detail-data-psikolog')->name('detail-data-psikolog');
 
-// Konselor
-Route::view('/admin/konselor/edit', 'pages.Dashboard.Konselor.edit-data-konselor')->name('edit-data-konselor');
-Route::view('/admin/konselor/detail', 'pages.Dashboard.Konselor.detail-data-konselor')->name('detail-data-konselor');
+
+// counselor
+Route::view('/admin/counselor/add', 'pages.Dashboard.Konselor.admin-add-counselor')->name('admin.add-counselor');
+Route::view('/admin/counselor/edit', 'pages.Dashboard.Konselor.edit-data-konselor')->name('edit-data-konselor');
+Route::view('/admin/counselor/detail', 'pages.Dashboard.Konselor.detail-data-konselor')->name('detail-data-konselor');
+
