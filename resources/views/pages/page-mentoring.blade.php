@@ -172,17 +172,20 @@
         <script>
             $(document).ready(function() {
                 $('#parenting').click(function() {
-                    window.location.href = '{{ route('mentoring.parenting') }}'
+                    //window.location.href = '{{ route('mentoring.parenting') }}'
+                    alert('Layanan Belum Tersedia');
                 });
                 //
                 $('#pre-marriage').click(function(event) {
-                    event.preventDefault();
-                    window.location.href = '{{ route('mentoring.pre-marriage') }}'
+                    // event.preventDefault();
+                    // window.location.href = '{{ route('mentoring.pre-marriage') }}'
+                    alert('Layanan Belum Tersedia');
                 });
                 //
                 $('#relationship').click(function(event) {
-                    event.preventDefault();
-                    window.location.href = '{{ route('mentoring.relationship') }}'
+                    // event.preventDefault();
+                    // window.location.href = '{{ route('mentoring.relationship') }}'
+                    alert('Layanan Belum Tersedia');
                 });
             });
         </script>
