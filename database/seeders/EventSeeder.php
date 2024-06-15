@@ -136,7 +136,7 @@ class EventSeeder extends Seeder
             ],
         ];
 
-        for ($i = 0; $i < 25; $i++) {
+        for ($i = 0; $i < count($data); $i++) {
             Event::create([
                 'category_event_id' => $data[$i][0],
                 'title_event' => $data[$i][1],

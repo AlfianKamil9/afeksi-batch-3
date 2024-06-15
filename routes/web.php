@@ -141,7 +141,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::post('/{ref_transaction_layanan}/submit-form-peers-konseling', [peersConselingController::class, 'submitDataDiri'])->name('konseling.process.form');
         //CHECKOUT
         Route::get('/{ref_transaction_layanan}/pembayaran', [peersConselingController::class, 'showPembayaran'])->name('konseling.checkout');
-        Route::post('/{ref_transaction_layanan}/checkout', [peersConselingController::class, 'checkoutPeersKonseling'])->name('konseling.process.checkout');
+        Route::post('/{ref_transaction_layanan}/checkout', [peersConselingController::class, 'processCheckout'])->name('konseling.process.checkout');
+        Route::get('/{ref_transaction_layanan}/konfirmasi', [peersConselingController::class, 'showCheckout'])->name('konseling.show.confirmation');
     });
 
     // NOTIFICATION AFTER PEMBAYARAN PROFESIONAL KONSELING---
@@ -242,6 +243,20 @@ Route::middleware(['auth', 'verified'])->group(function () {
                 Route::get('/add', [psikologDashboardController::class, 'create'])->name('create');
                 Route::get('/edit/{id}', [psikologDashboardController::class, 'edit'])->name('edit');
             });
+            Route::get('/events/{id}', [eventDashboardController::class, 'Update'])->name(('event.update'));
+        });
+    });
+
+    // DASHBOARD ADMIN
+    Route::middleware(['auth', 'only-admin'])->group(function () {
+        Route::name('admin.')->prefix('/admin')->group(function () {
+            // DASHBOARD ADMIN
+            // DASHBOARD ADMIN
+            Route::get('/dashboard', [adminDashboardController::class, 'index'])->name('dashboard.index');
+            // KELOLA EVENT (WEBINAR & CAMPAIGN)
+            Route::get('/events', [eventDashboardController::class, 'index'])->name('events');
+            Route::get('/delete/{id}', [eventDashboardController::class, 'destroy'])->name('event.destroy');
+            Route::get('/events/add', [eventDashboardController::class, 'showAdd'])->name(('event.add'));
         });
     });
 
