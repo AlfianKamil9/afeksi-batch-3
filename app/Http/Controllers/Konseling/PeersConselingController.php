@@ -155,7 +155,6 @@ class PeersConselingController extends Controller
 
     public function processCheckout(Request $request, $ref_transaction_layanan)
     {
-
         $ref = $ref_transaction_layanan;
         // JIKA ADA VOUCHER YANG DIAPPLY // 
         if (isset($request->voucher)) {
@@ -229,5 +228,48 @@ class PeersConselingController extends Controller
         $snapToken = \Midtrans\Snap::getSnapToken($params);
 
         return view('pages.PeersKonseling.checkout-peers', compact('snapToken', 'pembayaran'));
+    }
+
+    public function callback(Request $request)
+    {
+        $serverKey = config('midtrans.midtrans.server_key');
+        $hashed = hash("sha512", $request->order_id . $request->status_code . $request->gross_amount . $serverKey);
+        if ($hashed == $request->signature_key) {
+            $pembayaran = PembayaranLayanan::where('ref_transaction_layanan', $request->order_id);
+            $type = $request->payment_type;
+            $fraud = $request->fraud_status;
+            $status = $request->transaction_status;
+            if ($status == 'capture') {
+                if ($type == 'credit_card') {
+                    if ($fraud == 'challenge') {
+                        $pembayaran->status = 'CHALLENGE';
+                        $pembayaran->payment_method = $request->payment_type;
+                    } else {
+                        $pembayaran->status = 'SUCCESS';
+                        $pembayaran->payment_method = $request->payment_type;
+                    }
+                }
+            } elseif ($status == 'settlement') {
+                $pembayaran->status = 'PAID';
+                $pembayaran->payment_method = $request->payment_type;
+            } elseif ($status == 'pending') {
+                $pembayaran->status = 'PENDING';
+                $pembayaran->payment_method = $request->payment_type;
+            } elseif ($status == 'deny') {
+                $pembayaran->status = 'UNPAID';
+                $pembayaran->payment_method = $request->payment_type;
+            } elseif ($status == 'expire') {
+                $pembayaran->status = 'EXPIRED';
+                $pembayaran->payment_method = $request->payment_type;
+            } elseif ($status == 'cancel') {
+                $pembayaran->status = 'FAILED';
+                $pembayaran->payment_method = $request->payment_type;
+            }
+
+            $pembayaran->update([
+                'status' => $pembayaran->status,
+                'payment_method' => $pembayaran->payment_method
+            ]);
+        }
     }
 }
