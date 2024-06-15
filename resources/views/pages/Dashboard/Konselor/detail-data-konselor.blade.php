@@ -69,7 +69,6 @@
                 <div class="text-center mt-md-5 mt-3">
                     <button class="btn-psikolog">Keluar</button>
                 </div>
-
             </div>
         </div>
     </div>
