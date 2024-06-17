@@ -7,15 +7,15 @@
 @endsection
 
 @section('sidebarContent')
-
-<form action="{{ route ('')}}" method="post"></form>
+<form action="{{ route('admin.events.update', ['id'=> $event->id])}}" method="post">
+    @csrf               
 <div class="p-4">
-        @csrf
+      
     <div >
         <h4 class="fw-bold">Pengelolaan Event</h4>
         <p>Kelola dan atur semua acara dan kegiatan terkait</p>
     </div>
-        {{-- @if ($errors->any())
+        @if ($errors->any())
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
             <strong>Gagal</strong>
             <ul>
@@ -25,7 +25,7 @@
             </ul>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
-    @endif --}}
+    @endif
         <div class="mt-3 bg-event shadow-sm">
             <div class="p-3">
                 <h1 class="fw-bold fs-5 m-0 text-center">Edit Data</h1>
@@ -170,7 +170,7 @@
             </div>
         </div>
     </div>
-
+</form>
 
 @section('script')
     <script src="/assets/js/tambah-event.js"></script>

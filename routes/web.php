@@ -219,7 +219,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
                 Route::post('/{ref_transaction_event}/delete', [transactionDashboardController::class, 'delete'])->name('delete');
             });
 
-            // Route::get('/events/{id}', [eventDashboardController::class, 'Update'])->name(('event.update'));
+            Route::get('/events/{id}', [eventDashboardController::class, 'Update'])->name(('event.update'));
 
         });
     });

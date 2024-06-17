@@ -75,7 +75,7 @@
                     <div class="card py-3" style="background-color: #E3D8FF; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);">
                         <div class="card-body d-flex flex-row justify-content-around align-items-center">
                             <div class="d-flex flex-column">
-                                <p style="font-size: 24px; font-weight: 600; margin: 0;"></p>
+                                <p style="font-size: 24px; font-weight: 600; margin: 0;">10</p>
                                 <p style="font-size: 16px; font-weight: 400; margin: 0;">Acara Event</p>
                             </div>
                             <div
