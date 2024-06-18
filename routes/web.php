@@ -262,3 +262,6 @@ Route::view('/admin/counselor/add', 'pages.Dashboard.Konselor.admin-add-counselo
 Route::view('/admin/counselor/edit', 'pages.Dashboard.Konselor.edit-data-konselor')->name('edit-data-konselor');
 Route::view('/admin/counselor/detail', 'pages.Dashboard.Konselor.detail-data-konselor')->name('detail-data-konselor');
 
+// PopUp Konseling dan mentoring
+Route::view('/konseling/popupkonseling', 'pages.popUp.popUpKonseling')->name('popUpKonseling');
+Route::view('/mentoring/popupmentoring', 'pages.popUp.popUpMentoring')->name('popUpMentoring');

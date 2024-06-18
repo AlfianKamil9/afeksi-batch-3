@@ -1,0 +1,120 @@
+body {
+    background-color: rgb(182, 182, 182, 0.6) !important;
+}
+.container-fluid,
+footer {
+    opacity: 0.6;
+}
+
+/* HEADER */
+div .container-fluid {
+    background: rgb(96, 121, 253);
+    background: linear-gradient(
+        270deg,
+        rgba(96, 121, 253, 0) 24%,
+        rgba(93, 118, 253, 0.35518520152201505) 32%,
+        rgba(95, 120, 253, 1) 45%
+    );
+    color: white;
+    padding: 5rem;
+    position: relative;
+}
+
+div .container-fluid img {
+    max-width: 40rem;
+    position: absolute;
+    top: 50%;
+    right: 0rem;
+    transform: translateY(-50%);
+    z-index: -1;
+}
+
+.background {
+    position: absolute;
+}
+.left {
+    top: 22rem;
+    left: 0rem;
+}
+
+.right {
+    top: 14.5rem;
+    right: 0px;
+    z-index: -1;
+}
+.card-popUp {
+    position: relative;
+    padding: 20px;
+    width: 50%;
+    border-radius: 10px;
+    margin-bottom: 6rem;
+    background-color: #f4f4f4;
+    opacity: 1 !important;
+}
+
+.card-popUp .d-md-flex button {
+    background-color: #233dff;
+    padding: 5px 20px 5px 20px;
+    color: white;
+    border: white;
+    border-radius: 5px;
+}
+.card-popUp .d-md-flex button:hover {
+    background-color: black;
+}
+
+/* RESPONSIVE */
+@media only screen and (max-width: 900px) {
+    /* For tablets: */
+    div .container-fluid {
+        padding: 2rem;
+    }
+    div .container-fluid img {
+        right: -8rem;
+    }
+    .left {
+        top: 15rem;
+        left: 0rem;
+    }
+
+    .right {
+        top: 14.5rem;
+        right: 0px;
+        z-index: -1;
+    }
+    .card-popUp {
+        width: 70%;
+    }
+}
+@media only screen and (max-width: 500px) {
+    /* For mobile phones: */
+    div .container-fluid {
+        background: rgb(96, 121, 253);
+        background: linear-gradient(
+            280deg,
+            rgba(96, 121, 253, 0) 24%,
+            rgba(93, 118, 253, 0.35518520152201505) 32%,
+            rgba(95, 120, 253, 1) 45%
+        );
+        color: inear-gradient(
+            360deg,
+            rgba(96, 121, 253, 0) 24%,
+            rgba(93, 118, 253, 0.35518520152201505) 32%,
+            rgba(95, 120, 253, 1) 45%
+        );
+        padding: 2rem;
+        position: relative;
+    }
+    div .container-fluid img {
+        right: -40%;
+        width: 150%;
+        top: 50%;
+    }
+    .card-popUp {
+        padding: 10px;
+        width: 100%;
+        border-radius: 8px;
+        margin-bottom: 4rem;
+        text-align: center;
+    }
+}
