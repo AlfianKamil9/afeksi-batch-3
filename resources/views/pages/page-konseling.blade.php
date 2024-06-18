@@ -60,7 +60,7 @@
                         menyediakan situasi belajar.</p>
                 </div>
                 <div class="col-md">
-                    <img src="assets/img/konseling/hero.png" alt="Header" class="img-fluid" />
+                    <img src="/assets/img/konseling/hero.png" alt="Header" class="img-fluid" />
                 </div>
             </div>
         </div>
@@ -88,13 +88,13 @@
             <div class="col-md-12 mt-4">
                 <div class="row g-5">
                     <div class="col-md-12 col-lg-6 text-center">
-                        <img src="assets/img/mentoring/content.png" width="90%" class="img-fluid" />
+                        <img src="/assets/img/mentoring/content.png" width="90%" class="img-fluid" />
                     </div>
 
                     <div class="col-md-12 col-lg-4 justify-content-center d-flex flex-column ms-0 ms-md-5">
                         <div class="d-flex flex-row">
                             <div class="d-flex align-items-center mb-3">
-                                <img src="assets/img/mentoring/point.png" alt="" class="me-3" />
+                                <img src="/assets/img/mentoring/point.png" alt="" class="me-3" />
                                 <div class="d-flex flex-column">
                                     <h6 class="fw-bold">Memberikan Inspirasi</h6>
                                     <p class="text-body-tertiary fw-bold">
@@ -107,7 +107,7 @@
 
                         <div class="d-flex flex-row">
                             <div class="d-flex align-items-center mb-3">
-                                <img src="assets/img/mentoring/point.png" alt="" class="me-3" />
+                                <img src="/assets/img/mentoring/point.png" alt="" class="me-3" />
                                 <div class="d-flex flex-column">
                                     <h6 class="fw-bold">Jalur Karir yang Tepat</h6>
                                     <p class="text-body-tertiary fw-bold">
@@ -120,7 +120,7 @@
 
                         <div class="d-flex flex-row">
                             <div class="d-flex align-items-center">
-                                <img src="assets/img/mentoring/point.png" alt="" class="me-3" />
+                                <img src="/assets/img/mentoring/point.png" alt="" class="me-3" />
                                 <div class="d-flex flex-column">
                                     <h6 class="fw-bold">Cara Untuk Bertumbuh</h6>
                                     <p class="text-body-tertiary fw-bold">
@@ -192,7 +192,7 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <img src="assets/img/konseling/RevisiKonseling-2.png" alt="Gambar Anda"
+                            <img src="/assets/img/konseling/RevisiKonseling-2.png" alt="Gambar Anda"
                                 class="img-fluid text-end img-konseling" />
                         </div>
                     </div>
@@ -204,7 +204,7 @@
         <div class="container mt-5">
             <div class="row">
                 <div class="col-md-6 order-md-2 text-center">
-                    <img src="assets/img/konseling/content.png" class="img-fluid w-50" alt="Image" />
+                    <img src="/assets/img/konseling/content.png" class="img-fluid w-50" alt="Image" />
                 </div>
                 <div class="col-md-6 order-md-1">
                     <h2 class="fw-bold">
@@ -217,13 +217,13 @@
                         hubungan yang lebih baik!
                     </p>
                     <div class="checklist me-3">
-                        <img src="assets/img/konseling/vector.png" class="me-3" /> Pilih
+                        <img src="/assets/img/konseling/vector.png" class="me-3" /> Pilih
                         Paket <br />
-                        <img src="assets/img/konseling/vector.png" class="me-3" /> Pilih
+                        <img src="/assets/img/konseling/vector.png" class="me-3" /> Pilih
                         Psikolog <br />
-                        <img src="assets/img/konseling/vector.png" class="me-3" /> Isi
+                        <img src="/assets/img/konseling/vector.png" class="me-3" /> Isi
                         Identitas & Pilih Jadwal <br />
-                        <img src="assets/img/konseling/vector.png" class="me-3" />
+                        <img src="/assets/img/konseling/vector.png" class="me-3" />
                         Pembayaran
                     </div>
                 </div>
@@ -234,18 +234,18 @@
             <div class="container-md py-5 px-4 rounded" style="background-color: #5a74fd; z-index: -3">
                 <div class="row justify-content-center align-items-center">
                     <div class="col-md-6 text-center">
-                        <img src="assets/img/konseling/tanyaadmin/tanyadmin.png" alt="tanyadmin" class="img-fluid"
+                        <img src="/assets/img/konseling/tanyaadmin/tanyadmin.png" alt="tanyadmin" class="img-fluid"
                             width="400" />
                     </div>
                     <div class="col-md-5 position-relative" style="z-index: 0">
-                        <img src="assets/img/konseling/tanyaadmin/Ellipse 1215.svg" alt=""
+                        <img src="/assets/img/konseling/tanyaadmin/Ellipse 1215.svg" alt=""
                             style="
                   position: absolute;
                   top: 40px;
                   right: 120px;
                   z-index: -1;
                 " />
-                        <img src="assets/img/konseling/tanyaadmin/Ellipse 1215.svg" alt=""
+                        <img src="/assets/img/konseling/tanyaadmin/Ellipse 1215.svg" alt=""
                             style="
                   width: 30px;
                   position: absolute;
@@ -406,7 +406,7 @@
 
 
 @section('script')
-    <script src="./assets/js/konseling-slider.js"></script>"
+    <script src="./assets/js/konseling-slider.js"></script>
 @endsection
 
 @section('script')
