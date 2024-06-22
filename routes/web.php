@@ -265,3 +265,6 @@ Route::view('/admin/counselor/detail', 'pages.Dashboard.Konselor.detail-data-kon
 // PopUp Konseling dan mentoring
 Route::view('/konseling/popupkonseling', 'pages.popUp.popUpKonseling')->name('popUpKonseling');
 Route::view('/mentoring/popupmentoring', 'pages.popUp.popUpMentoring')->name('popUpMentoring');
+
+// Peers Konseling
+Route::view('/paket-konseling', 'flow-design-baru.paket-konseling')->name('paket-konseling');
