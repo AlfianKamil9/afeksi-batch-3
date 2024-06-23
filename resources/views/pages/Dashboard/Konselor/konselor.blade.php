@@ -1,14 +1,14 @@
 @extends('../layout-admin')
-@section('title', 'Psikologi Admin | AFEKSI')
+@section('title', 'Konselor Admin | AFEKSI')
 
-@section('styles')
-<link rel="stylesheet" href="/assets/css/psikolog/admin-psychology.css">
+@section("styles")
+<link rel="stylesheet" href="/assets/css/Konselor/konselor.css">
 @endsection
 
 @section('sidebarContent')
 <div class="m-4">
-    <p class="fw-bold fs-4 mb-0">Pengelolaan Psikolog</p>
-    <p class="fs-6 mb-0">Kelola dan atur semua psikolog dengan baik</p>
+    <p class="fw-bold fs-4 mb-0">Pengelolaan Konselor</p>
+    <p class="fs-6 mb-0">Kelola dan atur semua konselor dengan baik</p>
     <div class="container-fluid mt-2 p-0">
         <div class="box p-0 mb-0">
             <div class="d-flex justify-content-end gap-2 me-2 py-2">
@@ -26,9 +26,9 @@
         <div class="box-2 mb-0">
             <div class="d-block ms-2 py-2">
                 <div class="count-info">
-                    <p class="text-count p-0 m-0 fw-bolder text-center font-small">12 Psikolog</p>
+                    <p class="text-count p-0 m-0 fw-bolder text-center font-small">12 Konselor</p>
                 </div>
-                <p class="mb-0 mt-2 font-small">Berikut ini daftar Guestar Psikolog yang telah dibuat</p>
+                <p class="mb-0 mt-2 font-small">Berikut ini daftar Konselor yang telah dibuat</p>
             </div>
             <form action="" class="w-100 mt-1 table-responsive p-0">
                 <table class="w-100 m-0">

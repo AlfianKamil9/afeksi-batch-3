@@ -1,0 +1,163 @@
+* {
+    font-family: "Rubik", sans-serif;
+    text-decoration: none !important;
+}
+
+.wrapper {
+    height: 50vh;
+    padding-top: 7rem;
+    max-width: 800px !important;
+    margin: auto !important;
+}
+
+#progressbar {
+    margin-bottom: 30px;
+    overflow: hidden;
+    padding: 0;
+    color: black;
+}
+
+#progressbar .active {
+    color: black;
+    font-weight: bold;
+}
+
+#progressbar li {
+    list-style-type: none;
+    font-size: 13px;
+    width: 25%;
+    float: left;
+    position: relative;
+    font-weight: 400;
+}
+
+#progressbar #step:before {
+    content: attr(data-content);
+}
+
+#progressbar #step.finish:before {
+    content: "✔";
+}
+
+#progressbar li:before {
+    width: 40px;
+    height: 40px;
+    line-height: 35px;
+    display: block;
+    font-size: 15px;
+    border: solid 3px #3959a5;
+    color: #3959a5;
+    background: white;
+    border-radius: 50%;
+    margin: 0 auto 10px auto;
+    padding: 2px;
+}
+
+#progressbar li:after {
+    content: "";
+    width: 100%;
+    height: 2px;
+    background: #3959a5;
+    position: absolute;
+    left: 100%;
+    transform: translateX(-50%);
+    top: 20px;
+    z-index: -1;
+}
+
+#progressbar li:last-child:after {
+    display: none;
+}
+
+
+#progressbar li.active:before,
+#progressbar li.active:after {
+    background: #182bcf;
+    color: white;
+}
+
+#progressbar li.finish:before,
+#progressbar li.finish:after {
+    background: #2f8d46;
+    color: white;
+}
+
+.font-head {
+    font-size: 20px;
+}
+
+.font-head2 {
+    font-size: 20px;
+}
+
+.font-s {
+    color: #64748B;
+}
+
+.font-ss {
+    font-size: 12px;
+}
+
+.card {
+    height: 70vh;
+    max-height: 75vh !important;
+    width: 20rem !important;
+    background-color: #F4F4F4;
+}
+
+.col {
+    background-color: #F4F4F4 !important;
+    border-radius: 15px !important;
+    -webkit-border-radius: 15px !important;
+    -moz-border-radius: 15px !important;
+    -ms-border-radius: 15px !important;
+    -o-border-radius: 15px !important;
+    border: 1.5px solid #7B7B7B !important;
+}
+
+.img-layanan {
+    width: 100%;
+}
+
+.btn-blue {
+    background-color: #233DFF;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    font-weight: 500;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.btn-blue:hover {
+    background-color: #5165ff;
+}
+
+@media (max-width: 650px) {
+    .wrapper {
+        height: 40vh;
+    }
+
+    #progressbar li:before {
+        width: 35px;
+        height: 35px;
+        line-height: 30px;
+        font-size: 14px;
+        padding: 0px;
+    }
+    #progressbar li:after {
+        height: 2px;
+        background: #3959a5;
+        position: absolute;
+        left: 100%;
+        transform: translateX(-50%);
+        top: 18px;
+        z-index: -1;
+    }
+    strong {
+        font-size: 10px;
+    }
+}
+

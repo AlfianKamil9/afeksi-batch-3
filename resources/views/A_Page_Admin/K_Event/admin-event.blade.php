@@ -1,3 +1,4 @@
+<<<<<<< HEAD:resources/views/A_Page_Admin/K_Event/admin-event.blade.php
 @extends('layout-admin')
 
 @section('title', 'Kelola Event | AFEKSI')
@@ -5,6 +6,7 @@
 @section('styles')
     <link rel="stylesheet" href="/assets/css/admin-event.css">
 @endsection
+
 
 @section('sidebarContent')
 <div class="m-4">
@@ -14,6 +16,7 @@
         <div class="box d-flex">
             <nav class="py-2 align-content-center w-100">
                 <div class="nav" id="nav-tab" role="tab">
+<<<<<<< HEAD:resources/views/A_Page_Admin/K_Event/admin-event.blade.php
                     <p class="text-tab m-0 fs-5 fw-semibold nav-link active mt-1" id="nav-webinar-tab" data-bs-toggle="tab" data-bs-target="#nav-webinar" role="tab" aria-controls="nav-webinar" aria-selected="true">Webinar & Campaign</p>
                     {{-- <p class="text-tab m-0 fs-5 fw-semibold nav-link mt-1" id="nav-campaign-tab" data-bs-toggle="tab" data-bs-target="#nav-campaign" role="tab" aria-controls="nav-campaign" aria-selected="false">Campaign</p> --}}
                     <form class="form-inline d-flex align-content-center my-2 gap-2 me-3 form-action">
@@ -40,7 +43,6 @@
                 <div class="mt-1 ms-3">
                     <button class="count btn fw-bold px-4 py-0 font-small my-1">{{ $event->where('activity_category_event', 'WEBINAR')->count() }} Webinar</button>
                     <button class="count btn fw-bold px-4 py-0 font-small my-1">{{ $event->where('activity_category_event', 'CAMPAIGN')->count() }} Campaign</button>
-                    
                 </div>
                 <div class="mt-1 w-100 table-responsive mb-1">
                     <table class="w-100">
@@ -121,5 +123,4 @@
     })
 </script>
 @endsection
-
 
