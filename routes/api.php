@@ -18,7 +18,9 @@
 // });
 
 use App\Http\Controllers\API\NotificationPaymentEventController;
+use App\Http\Controllers\Konseling\PeersConselingController;
 use Illuminate\Support\Facades\Route;
 
 //MIDTRANS NOTIFICATION
 Route::post('/midtrans/callback', [NotificationPaymentEventController::class, 'callback']);
+Route::post('/midtrans-callback', [PeersConselingController::class, 'callback']);

@@ -1,0 +1,51 @@
+.bg-event {
+    background-color: #f4f4f4;
+}
+
+.bg-event h1 {
+    color: black;
+}
+
+.bg-event hr {
+    border: 1px solid #7b7b7b4d;
+    margin: 0;
+}
+.row .col-md-6 .mb-4 label {
+    color: #7b7b7b;
+    width: 100%;
+}
+.row .col-md-12 .mb-4 label {
+    color: #7b7b7b;
+    width: 25%;
+}
+.row .col-md-12 .mb-4 textarea,
+.row .col-md-6 .mb-4 input,
+.row .col-md-6 .mb-4 .form-select,
+.row .col-md-6 .mb-4 textarea {
+    border: 1px solid #bdbdbd;
+    background-color: transparent;
+    color: #7b7b7b;
+}
+button {
+    background: #1121b7;
+    color: white;
+    padding: 5px 20px 5px 20px;
+}
+button:hover {
+    background: black;
+}
+
+.custom-option {
+    border: 1px solid #bdbdbd;
+    color: #7b7b7b;
+    padding: 10px !important;
+    background: #f4f4f4;
+    border-radius: 0.375rem !important;
+}
+
+.img-preview {
+    width: 50%;
+    height: 50%;
+    display: none;
+    cursor: pointer;
+}

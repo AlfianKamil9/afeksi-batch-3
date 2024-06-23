@@ -23,7 +23,7 @@
                 untuk memberikan pemahaman, dukungan, dan alat yang diperlukan untuk mengatasi masalah yang mungkin muncul dalam hubungan, serta memperkuat ikatan antarindividu dan pasangan.
               </p>
             </div>
-            <a href="/mentoring/{{ $slug }}/pilih-paket-yang-diinginkan" type="button" class="btn btn-join mt-3 fw-bold">Pilih Paket</a>
+            <a href="#" type="button" class="btn btn-join mt-3 fw-bold">Pilih Paket</a>
           </div>
           <div class="col-lg-4 m-3">
             <img class="hero-image" src="assets/img/relationship-konseling/hero-img.png" />

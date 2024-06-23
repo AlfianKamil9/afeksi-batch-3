@@ -292,12 +292,12 @@
                             </div>
                         </div>
                         <div>
-                            <form action="{{ route('professional.konseling.create.first') }}" method="post">
-                                @csrf
+                            {{-- <form action="{{ route('professional.konseling.create.first') }}" method="post">
+                                @csrf --}}
                                 <div class="text-center mt-3 mb-3">
-                                    <button type="submit" class="p-2 ps-md-5 pe-md-5 rounded-3 bg-btn">Pilih Konselor</button>
+                                    <button type="submit" onclick="alert('Layanan Belum Tersedia')" class="p-2 ps-md-5 pe-md-5 rounded-3 bg-btn">Pilih Konselor</button>
                                 </div>
-                            </form>
+                            {{-- </form> --}}
                         </div>
                     </div>
                 </div>

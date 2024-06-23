@@ -42,6 +42,8 @@
       @yield('content')
     </div>
 
+
+    @yield('script')
     <script type="text/javascript" src="https://unpkg.com/external-svg-loader@1.0.0/svg-loader.min.js" async></script>
   <!-- Tambahkan file JavaScript Flatpickr -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>

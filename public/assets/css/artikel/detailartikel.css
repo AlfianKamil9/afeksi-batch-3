@@ -1,0 +1,62 @@
+.bg-event {
+    background-color: #f4f4f4;
+    box-sizing: border-box; /* Ensure padding is included in the element's total width and height */
+}
+
+.bg-event h1 {
+    color: black;
+}
+
+.bg-event hr {
+    border: 1px solid #7b7b7b4d;
+    margin: 0;
+}
+.row .col-md-6 .mb-4 label {
+    color: #7b7b7b;
+    width: 40%;
+}
+.row .col-md-12 .mb-4 label {
+    color: #7b7b7b;
+    width: 25%;
+}
+.row .col-md-6 .mb-4 p {
+    color: #7b7b7b;
+    width: 50%;
+    word-wrap: break-word;
+}
+/* .row .col-md-6 .mb-4 p {
+    color: #7b7b7b;
+} */
+button {
+    background: #7b7b7b;
+    color: white;
+    padding: 5px 20px 5px 20px;
+}
+button:hover {
+    background: black;
+}
+
+.custom-option {
+    border: 1px solid #bdbdbd;
+    color: #7b7b7b;
+    padding: 10px !important;
+    background: #f4f4f4;
+    border-radius: 0.375rem !important;
+}
+
+.img-preview {
+    width: 50%;
+    height: 50%;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 500px) {
+    .row .col-md-6 .mb-4 .w-100 {
+        padding-right: 20%;
+    }
+    .img-preview {
+        width: 80%;
+        height: 80%;
+        cursor: pointer;
+    }
+}

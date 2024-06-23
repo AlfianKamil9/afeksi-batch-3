@@ -7,6 +7,7 @@
 @endsection
 
 @section('sidebarContent')
+<<<<<<< HEAD
 <form action="{{ route('admin.events.update', ['id'=> $event->id])}}" method="post">
     @csrf               
 <div class="p-4">
@@ -24,6 +25,12 @@
                 @endforeach
             </ul>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+=======
+    <div class="container p-4">
+        <div>
+            <h4 class="fw-bold">Pengelolaan Event</h4>
+            <p>Kelola dan atur semua acara dan kegiatan terkait</p>
+>>>>>>> backend
         </div>
     @endif
         <div class="mt-3 bg-event shadow-sm">

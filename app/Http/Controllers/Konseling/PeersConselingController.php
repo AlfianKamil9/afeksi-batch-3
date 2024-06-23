@@ -21,12 +21,11 @@ class PeersConselingController extends Controller
      */
     public function processFirstPeers(Request $request)
     {
-        $ref = 'PEERS-'.strtoupper(Str::random(5)).Carbon::now()->format('dmYHis');
+        $ref = 'PEERS-' . strtoupper(Str::random(5)) . Carbon::now()->format('dmYHis');
         PembayaranLayanan::create([
             'ref_transaction_layanan' => $ref,
             'status' => 'UNPAID',
             'user_id' => auth()->user()->id,
-            'konseling_id' => $request->value_id,
         ]);
 
         return redirect()->route('peers.konseling.pilihan.paket', $ref);
@@ -131,7 +130,7 @@ class PeersConselingController extends Controller
             if (isset($request->voucher)) {
                 $now = Carbon::now();
                 $kode = Voucher::where('kode', $request->voucher)->where('expired_date', '>=', $now)->where('stok_voucher', '>', 0)->first();
-                if (! $kode) {
+                if (!$kode) {
                     return back()->with('error', 'Kode Voucher tidak Valid ');
                 }
                 session()->put('apply', [
@@ -152,10 +151,12 @@ class PeersConselingController extends Controller
     /**
      *  MEMPROSES PEMBAYARAN
      */
-    public function checkoutPeersKonseling(Request $request, $ref_transaction_layanan)
+
+
+    public function processCheckout(Request $request, $ref_transaction_layanan)
     {
         $ref = $ref_transaction_layanan;
-        // JIKA ADA VOUCHER YANG DIAPPLY *//
+        // JIKA ADA VOUCHER YANG DIAPPLY // 
         if (isset($request->voucher)) {
             $request->validate([
                 'voucher' => 'required',
@@ -170,36 +171,10 @@ class PeersConselingController extends Controller
             // UPDATE PEMBAYARAN
             $pembayaran = PembayaranLayanan::with('paket_layanan_konseling.layanan_konseling')->where('ref_transaction_layanan', $ref)->first();
             $pembayaran->voucher_id = $voucher->id;
-            $pembayaran->total_payment = $request->total;
+            $pembayaran->total_payment = $request->total - $voucher->jumlah_diskon;
             $pembayaran->save();
 
-            $url = 'https://app.sandbox.midtrans.com/snap/v1/transactions';
-            $serverkey = config('midtrans.midtrans.server_key');
-            $serverBase64 = base64_encode($serverkey.':');
-            $response = Http::withHeaders([
-                'Accept' => 'application/json',
-                'Authorization' => 'Basic '.$serverBase64,
-                'Content-Type' => 'application/json',
-            ])->post($url, [
-                'transaction_details' => [
-                    'order_id' => $ref,
-                    'gross_amount' => $request->total,
-                ],
-                'credit_card' => [
-                    'secure' => true,
-                ],
-                'customer_details' => [
-                    'first_name' => auth()->user()->nama,
-                    'email' => auth()->user()->email,
-                    'phone' => auth()->user()->no_whatsapp,
-                ],
-            ]);
-
-            if ($response->successful()) {
-                return redirect()->to($response['redirect_url']);
-            } else {
-                return response()->json(['error' => 'Failed to create transaction'], 500);
-            }
+            return redirect()->route('peers.konseling.show.confirmation', $ref);
         }
 
         /**
@@ -211,32 +186,90 @@ class PeersConselingController extends Controller
         $pembayaran->total_payment = $request->total;
         $pembayaran->save();
 
-        $url = 'https://app.sandbox.midtrans.com/snap/v1/transactions';
-        $serverkey = config('midtrans.midtrans.server_key');
-        $serverBase64 = base64_encode($serverkey.':');
-        $response = Http::withHeaders([
-            'Accept' => 'application/json',
-            'Authorization' => 'Basic '.$serverBase64,
-            'Content-Type' => 'application/json',
-        ])->post($url, [
-            'transaction_details' => [
-                'order_id' => $ref,
-                'gross_amount' => $request->total,
+        return redirect()->route('peers.konseling.show.confirmation', $ref);
+    }
+
+    // SHOW CHECKOUT
+
+    public function showCheckout($ref_transaction_layanan)
+    {
+
+        $pembayaran = PembayaranLayanan::with('paket_layanan_konseling.layanan_konseling')->where('ref_transaction_layanan', $ref_transaction_layanan)->first();
+
+        // Set your Merchant Server Key
+        \Midtrans\Config::$serverKey = config('midtrans.midtrans.server_key');
+        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+        \Midtrans\Config::$isProduction = false;
+        // Set sanitization on (default)
+        \Midtrans\Config::$isSanitized = true;
+        // Set 3DS transaction for credit card to true
+        \Midtrans\Config::$is3ds = true;
+
+        $params = array(
+            'transaction_details' => array(
+                'order_id' => $pembayaran->ref_transaction_layanan,
+                'gross_amount' => $pembayaran->total_payment,
+            ),
+            'item_details' => [
+                [
+                    'id' => 1,
+                    'price' => $pembayaran->total_payment,
+                    'quantity' => 1,
+                    'name' => $pembayaran->paket_layanan_konseling->layanan_konseling->nama_layanan,
+                ],
             ],
-            'credit_card' => [
-                'secure' => true,
-            ],
-            'customer_details' => [
+            'customer_details' => array(
                 'first_name' => auth()->user()->nama,
                 'email' => auth()->user()->email,
                 'phone' => auth()->user()->no_whatsapp,
-            ],
-        ]);
+            ),
+        );
 
-        if ($response->successful()) {
-            return redirect()->to($response['redirect_url']);
-        } else {
-            return response()->json(['error' => 'Failed to create transaction'], 500);
+        $snapToken = \Midtrans\Snap::getSnapToken($params);
+
+        return view('pages.PeersKonseling.checkout-peers', compact('snapToken', 'pembayaran'));
+    }
+
+    public function callback(Request $request)
+    {
+        $serverKey = config('midtrans.midtrans.server_key');
+        $hashed = hash("sha512", $request->order_id . $request->status_code . $request->gross_amount . $serverKey);
+        if ($hashed == $request->signature_key) {
+            $pembayaran = PembayaranLayanan::where('ref_transaction_layanan', $request->order_id);
+            $type = $request->payment_type;
+            $fraud = $request->fraud_status;
+            $status = $request->transaction_status;
+            if ($status == 'capture') {
+                if ($type == 'credit_card') {
+                    if ($fraud == 'challenge') {
+                        $pembayaran->status = 'CHALLENGE';
+                        $pembayaran->payment_method = $request->payment_type;
+                    } else {
+                        $pembayaran->status = 'SUCCESS';
+                        $pembayaran->payment_method = $request->payment_type;
+                    }
+                }
+            } elseif ($status == 'settlement') {
+                $pembayaran->status = 'PAID';
+                $pembayaran->payment_method = $request->payment_type;
+            } elseif ($status == 'pending') {
+                $pembayaran->status = 'PENDING';
+                $pembayaran->payment_method = $request->payment_type;
+            } elseif ($status == 'deny') {
+                $pembayaran->status = 'UNPAID';
+                $pembayaran->payment_method = $request->payment_type;
+            } elseif ($status == 'expire') {
+                $pembayaran->status = 'EXPIRED';
+                $pembayaran->payment_method = $request->payment_type;
+            } elseif ($status == 'cancel') {
+                $pembayaran->status = 'FAILED';
+                $pembayaran->payment_method = $request->payment_type;
+            }
+
+            $pembayaran->update([
+                'status' => $pembayaran->status,
+                'payment_method' => $pembayaran->payment_method
+            ]);
         }
     }
 }
