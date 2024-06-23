@@ -28,7 +28,7 @@
           <a href="#section-notes" type="button" class="btn btn-join mt-4 fw-medium">Gabung Jadi Konselor</a>
         </div>
         <div class="col-lg-4 m-3">
-          <img class="hero-image img-fluid" src="assets/img/pendaftaran-konselor/image-1.svg" />
+          <img class="hero-image img-fluid" src="/assets/img/pendaftaran-konselor/image-1.svg" />
         </div>
       </div>
     </div>
@@ -49,7 +49,7 @@
             <div class="card-body text-white">
               <div class="d-flex flex-column justify-content-start align-items-start white">
                 <div class="justify-content-lg-start mb-4 mt-2">
-                  <img src="assets/img/pendaftaran-konselor/fleksibilitas.png" alt="Fleksibilitas Waktu" class="card-img" />
+                  <img src="/assets/img/pendaftaran-konselor/fleksibilitas.png" alt="Fleksibilitas Waktu" class="card-img" />
                 </div>
                 <h5 class="card-title fw-semibold">Fleksibilitas Waktu</h5>
                 <p class="card-text mt-3">Gak usah khawatir soal jam kerja yang kaku. Di sini, anda bisa atur jadwal sesuai keinginanmu..</p>
@@ -62,7 +62,7 @@
             <div class="card-body">
               <div class="d-flex flex-column justify-content-start align-items-start white">
                 <div class="justify-content-lg-start mb-4 mt-2">
-                  <img src="assets/img/pendaftaran-konselor/agen.png" alt="Jadi Agen Perubahan" class="card-img" />
+                  <img src="/assets/img/pendaftaran-konselor/agen.png" alt="Jadi Agen Perubahan" class="card-img" />
                 </div>
                 <h5 class="card-title fw-semibold">Jadi Agen Perubahan</h5>
                 <p class="card-text mt-3">Anda dapat menjadi agen perubahan positif dalam kehidupan mereka dan menciptakan dampak positif dalam hidup orang lain.</p>
@@ -75,7 +75,7 @@
             <div class="card-body">
               <div class="d-flex flex-column justify-content-start align-items-start">
                 <div class="justify-content-lg-start mb-4 mt-2">
-                  <img src="assets/img/pendaftaran-konselor/jangkauan-luas.png" alt="Jangkauan Luas" class="card-img" />
+                  <img src="/assets/img/pendaftaran-konselor/jangkauan-luas.png" alt="Jangkauan Luas" class="card-img" />
                 </div>
                 <h5 class="card-title fw-semibold">Jangkuan Luas</h5>
                 <p class="card-text mt-3">Beragam individu yang memiliki latar belakang dan kebutuhan akan berinteraksi dengan Anda.</p>
@@ -88,7 +88,7 @@
             <div class="card-body">
               <div class="d-flex flex-column justify-content-start align-items-start">
                 <div class="justify-content-lg-start mb-4 mt-2">
-                  <img src="assets/img/pendaftaran-konselor/pengembangan-diri.png" alt="Pengembangan Diri & Karir" class="card-img" />
+                  <img src="/assets/img/pendaftaran-konselor/pengembangan-diri.png" alt="Pengembangan Diri & Karir" class="card-img" />
                 </div>
                 <h5 class="card-title fw-semibold">Pengembangan Diri & Karir</h5>
                 <p class="card-text mt-3">Dukungan penuh, panduan, pelatihan khusus, bimbingan personal, dan sumber daya relevan.</p>
@@ -101,7 +101,7 @@
             <div class="card-body">
               <div class="d-flex flex-column justify-content-start align-items-start">
                 <div class="justify-content-lg-start mb-4 mt-2">
-                  <img src="assets/img/pendaftaran-konselor/dukungan-jaringan.png" alt="Dukungan Jaringan Profesional" class="card-img" />
+                  <img src="/assets/img/pendaftaran-konselor/dukungan-jaringan.png" alt="Dukungan Jaringan Profesional" class="card-img" />
                 </div>
                 <h5 class="card-title fw-semibold">Dukungan Jaringan Profesional</h5>
                 <p class="card-text mt-3">Jadilah bagian dari tim yang multikultural, bersemangat, dan menyenangkan untuk saling berbagi.</p>
@@ -114,7 +114,7 @@
             <div class="card-body">
               <div class="d-flex flex-column justify-content-start align-items-start">
                 <div class="justify-content-lg-start mb-4 mt-2">
-                  <img src="assets/img/pendaftaran-konselor/gaji.png" alt="Gaji Kompetitif" class="card-img" />
+                  <img src="/assets/img/pendaftaran-konselor/gaji.png" alt="Gaji Kompetitif" class="card-img" />
                 </div>
                 <h5 class="card-title fw-semibold">Gaji Kompetitif</h5>
                 <p class="card-text mt-3">Lebih fokus pada layanan konseling Anda. Potensi pendapatan terjamin melalui konseling yang berarti</p>
@@ -139,7 +139,7 @@
 
       <div class="row mt-3">
         <div class="col-md-5">
-          <img src="assets/img/pendaftaran-konselor/4-image.png" alt="Tugas Tanggung Jawab" class="img-fluid" />
+          <img src="/assets/img/pendaftaran-konselor/4-image.png" alt="Tugas Tanggung Jawab" class="img-fluid" />
         </div>
         <div class="col-md-7">
           <div class="d-flex flex-column">
@@ -188,31 +188,31 @@
             <div class="slide-content">
               <div class="card-wrapper swiper-wrapper">
                 <div class="swiper-slide">
-                  <img src="assets/img/pendaftaran-konselor/Ellipse.png" alt="" style="width: 50px" />
+                  <img src="/assets/img/pendaftaran-konselor/Ellipse.png" alt="" style="width: 50px" />
                   <h4 class="fw-bold">Nama Client</h4>
                   <p>Psikolog</p>
                   <span>Lorem ipsum dolor sit amet consectetur. Id tellus purus pellentesque lorem et elit faucibus sit duis.</span>
                 </div>
                 <div class="swiper-slide">
-                  <img src="assets/img/pendaftaran-konselor/Ellipse.png" alt="" style="width: 50px" />
+                  <img src="/assets/img/pendaftaran-konselor/Ellipse.png" alt="" style="width: 50px" />
                   <h4 class="fw-bold">Nama Client</h4>
                   <p>Psikolog</p>
                   <span>Lorem ipsum dolor sit amet consectetur. Id tellus purus pellentesque lorem et elit faucibus sit duis.</span>
                 </div>
                 <div class="swiper-slide">
-                  <img src="assets/img/pendaftaran-konselor/Ellipse.png" alt="" style="width: 50px" />
+                  <img src="/assets/img/pendaftaran-konselor/Ellipse.png" alt="" style="width: 50px" />
                   <h4 class="fw-bold">Nama Client</h4>
                   <p>Psikolog</p>
                   <span>Lorem ipsum dolor sit amet consectetur. Id tellus purus pellentesque lorem et elit faucibus sit duis.</span>
                 </div>
                 <div class="swiper-slide">
-                  <img src="assets/img/pendaftaran-konselor/Ellipse.png" alt="" style="width: 50px" />
+                  <img src="/assets/img/pendaftaran-konselor/Ellipse.png" alt="" style="width: 50px" />
                   <h4 class="fw-bold">Nama Client</h4>
                   <p>Psikolog</p>
                   <span>Lorem ipsum dolor sit amet consectetur. Id tellus purus pellentesque lorem et elit faucibus sit duis.</span>
                 </div>
                 <div class="swiper-slide">
-                  <img src="assets/img/pendaftaran-konselor/Ellipse.png" alt="" style="width: 50px" />
+                  <img src="/assets/img/pendaftaran-konselor/Ellipse.png" alt="" style="width: 50px" />
                   <h4 class="fw-bold">Nama Client</h4>
                   <p>Psikolog</p>
                   <span>Lorem ipsum dolor sit amet consectetur. Id tellus purus pellentesque lorem et elit faucibus sit duis.</span>
@@ -244,7 +244,7 @@
         <div class="row justify-content-center">
           <div class="col-md-4 mb-3">
             <div class="card shadow col-join">
-              <img src="assets/img/pendaftaran-konselor/Peer-konselor.png" class="card-img-top img-fluid" alt="Peer Konselor" style="background-size: cover" />
+              <img src="/assets/img/pendaftaran-konselor/Peer-konselor.png" class="card-img-top img-fluid" alt="Peer Konselor" style="background-size: cover" />
               <div class="card-body">
                 <h5 class="card-title fw-bold" style="color: #2139f9">Peer Konselor</h5>
                 <p class="card-text" style="color: #717171">Mewadahi Niat Baik Semua Orang yang Ingin Terlibat Langsung di Lapangan sebagai Peer Konselor. Siapapun Bisa Bergabung!</p>
@@ -254,7 +254,7 @@
           </div>
           <div class="col-md-4 mb-3">
             <div class="card shadow col-join">
-              <img src="assets/img/pendaftaran-konselor/relationship-konselor.png" class="card-img-top img-fluid" alt="Realtionship Konselor" style="background-size: cover" />
+              <img src="/assets/img/pendaftaran-konselor/relationship-konselor.png" class="card-img-top img-fluid" alt="Realtionship Konselor" style="background-size: cover" />
               <div class="card-body">
                 <h5 class="card-title fw-bold" style="color: #2139f9">Relationship Konselor</h5>
                 <p class="card-text" style="color: #717171">Mewadahi Niat Baik Semua Orang yang Ingin Terlibat Langsung di Lapangan sebagai Relationship konselor. Siapapun Bisa Bergabung!</p>
@@ -271,7 +271,7 @@
 @include('../partials/footer') 
 
 @section('script')
-   <script src="assets/js/slider.js"></script>
+   <script src="/assets/js/slider.js"></script>
   @endsection
 
 @endsection

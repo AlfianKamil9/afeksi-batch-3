@@ -73,11 +73,15 @@ Route::get('/rekap-history', [RekapHistoriController::class, 'showRekapHistory']
 Route::get('/rekaphistory/{slug}', [RekapHistoriController::class, 'showRekapHistoryDetail'])->name('recap.history.detail');
 
 // KARIER
-Route::get('/karir', [karirController::class, 'index'])->name('karir');
-Route::get('/join-konselor', function () {
-    return view('pages.Karir.pendaftaran-konselor');
-})->name('pendaftaran.konselor');
-Route::get('/join-volunteer', [Volunteer::class, 'index'])->name('join.volunteer');
+Route::prefix('/career')->group(function () {
+    Route::view('/next-develop', 'pages.popUp.popUpKarir')->name('career.next.develop');
+
+    Route::get('', [karirController::class, 'index'])->name('karir');
+    Route::get('/join-konselor', function () {
+        return view('pages.Karir.pendaftaran-konselor');
+    })->name('pendaftaran.konselor');
+    Route::get('/join-volunteer', [Volunteer::class, 'index'])->name('join.volunteer');
+});
 
 // KONSELING
 Route::get('/konseling', function () {
@@ -130,22 +134,23 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // ----------------------------------------------------------------------------------------
 
-    // PENDAFTARAN RELATIONSHIP KONSELOR
-    Route::get('/pendaftaran-relationship-konselor', [RelationshipKonselor::class, 'index'])->name('pendaftaran-relationship-konselor');
-    Route::post('/pendaftaran-relationship-konselor/create', [RelationshipKonselor::class, 'store']);
-    // PENDAFTARAN PEER KONSELOR
-    Route::get('/pendaftaran-peer-konselor', [PeerKonselor::class, 'index'])->name('pendaftaran-peer-konselor');
-    Route::post('/pendaftaran-peer-konselor', [PeerKonselor::class, 'store'])->name('store-peer-konselor');
-    // PENDAFTARAN INTERNSHIP
-    Route::get('/internship/{slug}', [Internship::class, 'show'])->name('internship.detail');
-    Route::post('/Registerinternship', [Internship::class, 'store'])->name('internship.register');
-    // PENDAFTARAN BRAND AMBASSADOR (VOLUNTEER)
-    Route::get('/pendaftaran-brand-ambassador', [BrandAmbasador::class, 'index'])->name('volunteer.brand-ambassador');
-    Route::post('/pendaftaran-brand-ambassador/create', [BrandAmbasador::class, 'store'])->name('volunteer.register-brand-ambassador');
-    // PENDAFTARAN RELATIONSHIP HEROES (VOLUNTEER)
-    Route::get('/pendaftaran-relationship-heroes', [RelationshipHeroes::class, 'index'])->name('volunteer.relationship-heroes');
-    Route::post('/pendaftaran-relationship-heroes', [RelationshipHeroes::class, 'store'])->name('volunteer.store-relationship-heroes');
-
+    Route::prefix('/career')->group(function () {
+        // PENDAFTARAN RELATIONSHIP KONSELOR
+        Route::get('/pendaftaran-relationship-konselor', [RelationshipKonselor::class, 'index'])->name('pendaftaran-relationship-konselor');
+        Route::post('/pendaftaran-relationship-konselor/create', [RelationshipKonselor::class, 'store']);
+        // PENDAFTARAN PEER KONSELOR
+        Route::get('/pendaftaran-peer-konselor', [PeerKonselor::class, 'index'])->name('pendaftaran-peer-konselor');
+        Route::post('/pendaftaran-peer-konselor', [PeerKonselor::class, 'store'])->name('store-peer-konselor');
+        // PENDAFTARAN INTERNSHIP
+        Route::get('/internship/{slug}', [Internship::class, 'show'])->name('internship.detail');
+        Route::post('/Registerinternship', [Internship::class, 'store'])->name('internship.register');
+        // PENDAFTARAN BRAND AMBASSADOR (VOLUNTEER)
+        Route::get('/pendaftaran-brand-ambassador', [BrandAmbasador::class, 'index'])->name('volunteer.brand-ambassador');
+        Route::post('/pendaftaran-brand-ambassador/create', [BrandAmbasador::class, 'store'])->name('volunteer.register-brand-ambassador');
+        // PENDAFTARAN RELATIONSHIP HEROES (VOLUNTEER)
+        Route::get('/pendaftaran-relationship-heroes', [RelationshipHeroes::class, 'index'])->name('volunteer.relationship-heroes');
+        Route::post('/pendaftaran-relationship-heroes', [RelationshipHeroes::class, 'store'])->name('volunteer.store-relationship-heroes');
+    });
     //--------------------------------------------------------------------------------------
 
     // PENDAFTARAN KEGIATAN
