@@ -20,7 +20,7 @@ class ProfileController extends Controller
         $userEducation = UserEducation::where('user_id', auth()->user()->id)->first();
         $instansi = $userEducation ? $userEducation->instansi : null;
 
-        return view('pages.dashboard-profile', compact('instansi'));
+        return view('pages.DashboardUser.dashboard-profile', compact('instansi'));
     }
 
     public function processChanges(Request $request)
@@ -81,7 +81,7 @@ class ProfileController extends Controller
 
     public function showUbahPassword()
     {
-        return view('pages.ubah-password');
+        return view('pages.DashboardUser.ubah-password');
     }
 
     public function processChangePassword(Request $request)
@@ -102,7 +102,7 @@ class ProfileController extends Controller
             'password' => $request->input('current_password'),
         ];
 
-        if (! Auth::attempt($credentials)) {
+        if (!Auth::attempt($credentials)) {
             return redirect()->back()->withErrors(['current_password' => 'Password lama tidak sesuai']);
         }
 
@@ -111,12 +111,11 @@ class ProfileController extends Controller
         ]);
 
         return redirect()->route('dashboard.profile.index')->with('success', 'Success update Password');
-
     }
 
     public function showUbahFoto()
     {
-        return view('pages.ubah-foto-profile');
+        return view('pages.DashboardUser.ubah-foto-profile');
     }
 
     public function processChangeFoto(Request $request)
@@ -128,13 +127,13 @@ class ProfileController extends Controller
             return back()->with('error', $validate->message());
         }
         $user = Auth::user();
-        $adaFile = public_path('/assets/img/profile/'.$user->avatar);
+        $adaFile = public_path('/assets/img/profile/' . $user->avatar);
         if ($user->avatar && file_exists($adaFile)) {
             unlink($adaFile);
             //Storage::delete('public/user/profile_pictures/'.$user->avatar);
         }
         $file = $request->file('upload_image');
-        $fileName = Str::lower(Str::random(5)).'_'.time().'.'.$file->getClientOriginalExtension();
+        $fileName = Str::lower(Str::random(5)) . '_' . time() . '.' . $file->getClientOriginalExtension();
         //$file->storeAs('public/user/profile_pictures', $fileName); // Simpan gambar di direktori storage/app/public/profile_pictures
         $file->move(public_path('/assets/img/profile'), $fileName);
         User::where('id', $user->id)->update([

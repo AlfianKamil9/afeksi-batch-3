@@ -15,6 +15,6 @@ class IndexController extends Controller
             ->get();
 
         //return response()->json($dataProfesionalKonseling);
-        return view('pages.dashboard', compact('dataProfesionalKonseling'));
+        return view('pages.DashboardUser.dashboard', compact('dataProfesionalKonseling'));
     }
 }

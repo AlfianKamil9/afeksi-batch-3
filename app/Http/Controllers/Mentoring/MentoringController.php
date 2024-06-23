@@ -32,26 +32,4 @@ class MentoringController extends Controller
 
         return view('pages.LayananMentoring.parenting-mentoring', compact('slug'));
     }
-
-    public function showPaketMentoring($slug_item_mentoring)
-    {
-        $mentoring = LayananMentoring::where('slug', $slug_item_mentoring)->firstOrFail();
-        $data = PaketLayananMentoring::where('layanan_mentoring_id', $mentoring->id)->get();
-        $layanan = $mentoring->nama_layanan;
-
-        return view('pages.LayananMentoring.paket-mentoring', compact('data', 'layanan'));
-    }
-
-    public function savePaketYangDipilih(Request $request)
-    {
-        $ref = 'DEV-'.strtoupper(Str::random(5)).Carbon::now()->format('dmYHis');
-        PembayaranLayanan::create([
-            'user_id' => auth()->user()->id,
-            'ref_transaction_layanan' => $ref,
-            'status' => 'UNPAID',
-            'paket_layanan_mentoring_id' => $request->id_paket,
-        ]);
-
-        return redirect('/mentoring/'.$ref.'/data-diri');
-    }
 }

@@ -15,7 +15,7 @@ class RekapTransaction extends Controller
             ->get();
 
         //return response()->json($dataProfesionalKonseling);
-        return view('pages.rekap-transaksi', compact('dataProfesionalKonseling'));
+        return view('pages.DashboardUser.rekap-transaksi', compact('dataProfesionalKonseling'));
     }
 
     public function cancelingOrder(Request $request)

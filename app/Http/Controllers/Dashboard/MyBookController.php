@@ -8,6 +8,6 @@ class MyBookController extends Controller
 {
     public function showMyBook()
     {
-        return view('pages.e-book');
+        return view('pages.E-books.e-book');
     }
 }

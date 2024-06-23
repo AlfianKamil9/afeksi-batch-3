@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Peers;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class bank extends Model
+class PeersPaket extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'bank',
+        'nama_paket', 'headline_paket', 'harga_paket', 'deskripsi_paket', 'status'
     ];
 }
