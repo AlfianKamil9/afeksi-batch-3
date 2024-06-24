@@ -11,7 +11,8 @@ class guestStarDashboardController extends Controller
 {
     public function index(Request $request)
     {
-        $guestStar = new GuestStar();
+        $guestStar = GuestStar::query();
+
         if ($request->has('search')) {
             $search = $request->input('search');
             $guestStar = $guestStar->where('nama_psikolog', 'LIKE', '%' . $search . '%');
@@ -19,8 +20,9 @@ class guestStarDashboardController extends Controller
 
         $dataFilter = $request->input('sort_data');
         if ($dataFilter == 'latest') {
-            $guestStar->orderBy('id', 'desc');
+            $guestStar = $guestStar->orderBy('id', 'desc');
         }
+
         $guestStar = $guestStar->paginate(10);
 
         return view('A_Page_Admin.GuestStar.admin-gueststar', compact('guestStar'));
@@ -71,7 +73,7 @@ class guestStarDashboardController extends Controller
     public function update(Request $request, $id)
     {
         $guestStar = GuestStar::find($id);
-        
+
         // Validasi
         $messages = [
             'photo.required' => 'Foto Profil wajib diisi.',

@@ -38,7 +38,6 @@
             <div class="box mb-0">
                 <div class="d-flex justify-content-end gap-2 me-2 py-2">
                     <form action="{{ route('admin.gueststar.index') }}" method="GET">
-                        @csrf
                         <div class="search-container position-relative">
                             <img class="search-icon position-absolute" src="/assets/img/admin/search.png" alt="search_img">
                             <input class="inp-search font-small py-1" type="text" name="search" placeholder="Search..."
@@ -46,12 +45,11 @@
                         </div>
                     </form>
                     <form action="{{ route('admin.gueststar.index') }}" method="GET">
-                        @csrf
                         <div class="filter-container position-relative">
-                            <button class="btn-filter font-small py-1" value="latest" name="sort_data">Filter</button>
+                            <button type="submit" class="btn-filter font-small py-1" value="latest" name="sort_data">Filter</button>
                             <img class="filter-icon position-absolute" src="/assets/img/admin/filter.png" alt="filter_img">
                         </div>
-                    </form>
+                    </form>                    
                     <a href="{{ route('admin.gueststar.add') }}" type="button"
                         class="btn-add font-small py-1 px-2 fw-bold">Tambahkan Data</a>
                 </div>
