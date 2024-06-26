@@ -270,3 +270,4 @@ Route::view('/mentoring/popupmentoring', 'pages.popUp.popUpMentoring')->name('po
 Route::view('/paket-konseling', 'flow-design-baru.paket-konseling')->name('paket-konseling');
 Route::view('/pilih-konselor', 'flow-design-baru.layanan-konseling.1-pilih-konselor')->name('pilih-konselor');
 Route::view('/pilih-layanan', 'flow-design-baru.layanan-konseling.2-pilih-layanan')->name('pilih-layanan');
+Route::view('/pilih-paket-berbayar', 'flow-design-baru.layanan-konseling.1-pilih-paket-berbayar')->name('pilih-paket-berbayar');
