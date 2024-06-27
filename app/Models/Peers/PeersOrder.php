@@ -10,6 +10,6 @@ class PeersOrder extends Model
     use HasFactory;
 
     protected $fillable = [
-        'customer_id', 'paket_id', 'konselor_id', 'tanggal_order', 'status_order', 'total_price', 'platform'
+        'customer_id', 'ref', 'paket_id', 'konselor_id', 'tanggal_order', 'status_order', 'total_price', 'platform'
     ];
 }

@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use Database\Seeders\PeersKonselingNew\KonselorPeersKonselingNewSeeder;
+use Database\Seeders\PeersKonselingNew\PaketPeersKonselingNewSeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -29,17 +31,16 @@ class DatabaseSeeder extends Seeder
         $this->call(EcourseSeeder::class);
         $this->call(InternshipSeeder::class);
         $this->call(ArtikelSeeder::class);
-        $this->call(bankSeeder::class);
         $this->call(VoucherSeeder::class);
         $this->call(PaketLayananProfessionalKonselingSeeder::class);
         $this->call(PsikologMentoringSeeder::class);
-        $this->call(mentoringPsikologPivotSeeder::class);
         $this->call(konselingKonselorSeeder::class);
         $this->call(EducationUserSeeder::class);
         $this->call(TestimonialInternshipSeeder::class);
         $this->call(RatingKonselorSeeder::class);
         $this->call(MyEbookSeeder::class);
         $this->call(MyMentoringSeeder::class);
-
+        $this->call(PaketPeersKonselingNewSeeder::class);
+        $this->call(KonselorPeersKonselingNewSeeder::class);
     }
 }

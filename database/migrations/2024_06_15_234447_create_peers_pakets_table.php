@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nama_paket');
             $table->string('headline_paket');
             $table->string('harga_paket');
+            $table->string('durasi_paket');
             $table->text('deskripsi_paket');
             $table->enum('status_paket', ['free', 'paid']);
             $table->timestamps();

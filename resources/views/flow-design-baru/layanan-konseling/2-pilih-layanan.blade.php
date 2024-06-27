@@ -31,21 +31,30 @@
                 <img class="img-layanan" src="/assets/img/flow-design-baru/platform-chat.png" alt="img_konselor">
                 <p class="text-center fw-bold font-head2 mt-4 mb-3">Platform Chat</p>
                 <div class="d-flex justify-content-center">
-                    <button class="btn-blue font-ss fw-semi-bold mt-2 px-5 py-2">Pilih Platform</button>
+                    <form action="{{ route('peers-new.process-pilih-layanan', $ref ) }}" method="post">
+                    @csrf
+                    <button type="submit" name="platform" value="chat" class="btn-blue font-ss fw-semi-bold mt-2 px-5 py-2">Pilih Platform</button>
+                    </form>
                 </div>
             </div>
             <div class="card col p-2">
                 <img class="img-layanan" src="/assets/img/flow-design-baru/platform-panggilan.png" alt="img_konselor">
                 <p class="text-center fw-bold font-head2 mt-4 mb-3">Platform Panggilan Suara</p>
                 <div class="d-flex justify-content-center">
-                    <button class="btn-blue font-ss fw-semi-bold mt-2 px-5 py-2">Pilih Platform</button>
+                    <form action="{{ route('peers-new.process-pilih-layanan', $ref ) }}" method="post">
+                    @csrf
+                    <button type="submit" name="platform" value="call" class="btn-blue font-ss fw-semi-bold mt-2 px-5 py-2">Pilih Platform</button>
+                    </form>
                 </div>
             </div>
             <div class="card col p-2">
                 <img class="img-layanan" src="/assets/img/flow-design-baru/platform-vc.png" alt="img_konselor">
                 <p class="text-center fw-bold font-head2 mt-4 mb-3">Platform Panggilan Video</p>
                 <div class="d-flex justify-content-center">
-                    <button class="btn-blue font-ss fw-semi-bold mt-2 px-5 py-2">Pilih Platform</button>
+                    <form action="{{ route('peers-new.process-pilih-layanan', $ref ) }}" method="post">
+                    @csrf
+                    <button type="submit" name="platform" value="video" class="btn-blue font-ss fw-semi-bold mt-2 px-5 py-2">Pilih Platform</button>
+                    </form>
                 </div>
             </div>
         </div>

@@ -15,11 +15,12 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('customer_id');
             $table->unsignedBigInteger('paket_id');
-            $table->unsignedBigInteger('konselor_id');
-            $table->date('tanggal_order');
-            $table->enum('status_order', ['SUCCESS', 'PENDING', 'FAIL']);
-            $table->string('total_price');
-            $table->string('platform');
+            $table->unsignedBigInteger('konselor_id')->nullable();
+            $table->string('ref');
+            $table->date('tanggal_order')->nullable();
+            $table->enum('status_order', ['SUCCESS', 'PENDING', 'FAIL'])->nullable();
+            $table->string('total_price')->nullable();
+            $table->string('platform')->nullable();
             $table->timestamps();
 
             $table->foreign('customer_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');

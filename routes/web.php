@@ -1,39 +1,40 @@
 <?php
 
-use App\Http\Controllers\AF_Admin_Web\adminDashboardController;
-use App\Http\Controllers\AF_Admin_Web\articleDashboardController;
-use App\Http\Controllers\AF_Admin_Web\eventDashboardController;
-use App\Http\Controllers\AF_Admin_Web\guestStarDashboardController;
-use App\Http\Controllers\AF_Admin_Web\psikologDashboardController;
-use App\Http\Controllers\AF_Admin_Web\transactionDashboardController;
-use App\Http\Controllers\API\NotificationPaymentEventController;
-use App\Http\Controllers\Artikel\artikelController;
-use App\Http\Controllers\berandaController;
-use App\Http\Controllers\Dashboard\IndexController;
-use App\Http\Controllers\Dashboard\MyBookController;
-use App\Http\Controllers\Dashboard\ProfileController;
-use App\Http\Controllers\Dashboard\RekapTransaction;
-use App\Http\Controllers\Event\CampaignController;
-use App\Http\Controllers\Event\NotificationWebinar;
-use App\Http\Controllers\Event\WebinarController;
-use App\Http\Controllers\Karir\BrandAmbasador;
-use App\Http\Controllers\Karir\Internship;
-use App\Http\Controllers\Karir\karirController;
-use App\Http\Controllers\Karir\PeerKonselor;
-use App\Http\Controllers\Karir\RelationshipHeroes;
-use App\Http\Controllers\Karir\RelationshipKonselor;
-use App\Http\Controllers\Karir\Volunteer;
-use App\Http\Controllers\Konseling\PeersConselingController;
-use App\Http\Controllers\Konseling\ProfessionalController;
-use App\Http\Controllers\Mentoring\MentoringController;
-use App\Http\Controllers\Rekap\RekapHistoriController;
-use App\Http\Controllers\Transaksi\Event\WebinarTransaksiController;
-use App\Http\Controllers\Transaksi\Layanan\KonselingTransaksiController;
-use App\Http\Controllers\Transaksi\Layanan\MentoringTransaksiController;
-use App\Http\Controllers\Transaksi\NotifikasiKonseling;
-use App\Http\Controllers\Transaksi\NotifikasiMentoring;
 use App\Models\LayananKonseling;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Karir\Volunteer;
+use App\Http\Controllers\Karir\Internship;
+use App\Http\Controllers\berandaController;
+use App\Http\Controllers\Karir\PeerKonselor;
+use App\Http\Controllers\Karir\BrandAmbasador;
+use App\Http\Controllers\Karir\karirController;
+use App\Http\Controllers\Event\WebinarController;
+use App\Http\Controllers\Event\CampaignController;
+use App\Http\Controllers\Karir\RelationshipHeroes;
+use App\Http\Controllers\Artikel\artikelController;
+use App\Http\Controllers\Dashboard\IndexController;
+use App\Http\Controllers\Event\NotificationWebinar;
+use App\Http\Controllers\Dashboard\MyBookController;
+use App\Http\Controllers\Dashboard\RekapTransaction;
+use App\Http\Controllers\Karir\RelationshipKonselor;
+use App\Http\Controllers\Dashboard\ProfileController;
+use App\Http\Controllers\Rekap\RekapHistoriController;
+use App\Http\Controllers\Mentoring\MentoringController;
+use App\Http\Controllers\Transaksi\NotifikasiKonseling;
+use App\Http\Controllers\Transaksi\NotifikasiMentoring;
+use App\Http\Controllers\Konseling\ProfessionalController;
+use App\Http\Controllers\Konseling\PeersConselingController;
+use App\Http\Controllers\PeersKonselingNew\PeersConselingNew;
+use App\Http\Controllers\AF_Admin_Web\adminDashboardController;
+use App\Http\Controllers\AF_Admin_Web\eventDashboardController;
+use App\Http\Controllers\API\NotificationPaymentEventController;
+use App\Http\Controllers\AF_Admin_Web\articleDashboardController;
+use App\Http\Controllers\AF_Admin_Web\psikologDashboardController;
+use App\Http\Controllers\AF_Admin_Web\guestStarDashboardController;
+use App\Http\Controllers\Transaksi\Event\WebinarTransaksiController;
+use App\Http\Controllers\AF_Admin_Web\transactionDashboardController;
+use App\Http\Controllers\Transaksi\Layanan\KonselingTransaksiController;
+use App\Http\Controllers\Transaksi\Layanan\MentoringTransaksiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -129,6 +130,26 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::get('/{ref_transaction_layanan}/pembayaran', [peersConselingController::class, 'showPembayaran'])->name('konseling.checkout');
             Route::post('/{ref_transaction_layanan}/checkout', [peersConselingController::class, 'processCheckout'])->name('konseling.process.checkout');
             Route::get('/{ref_transaction_layanan}/konfirmasi', [peersConselingController::class, 'showCheckout'])->name('konseling.show.confirmation');
+        });
+
+        // PEERS FLOW BARU
+        Route::name('peers-new.')->prefix('/peers-konseling-new')->group(function () {
+            // SHOW PILIH PAKET
+            Route::get('/pilih-paket-konseling', [PeersConselingNew::class, 'show_pilih_paket'])->name('paket-konseling');
+            // PAKET NON BAYAR
+            Route::post('/process-paket-konseling', [PeersConselingNew::class, 'pilih_paket'])->name('pilih-paket');
+            // PILIH PAKET BERBAYAR
+            Route::get('/pilih-paket-berbayar', [PeersConselingNew::class, 'show_pilih_berbayar'])->name('paket-berbayar');
+            Route::post('/pilih-paket-berbayar', [PeersConselingNew::class, 'pilih_berbayar'])->name('pilih-paket-berbayar');
+            // PILIH KONSELOR
+            Route::get('/{ref}/pilih-konselor', [PeersConselingNew::class, 'pilih_konselor'])->name('pilih-konselor');
+            Route::post('/{ref}/pilih-konselor', [PeersConselingNew::class, 'process_pilih_konselor'])->name('process-pilih-konselor');
+            // LAYANAN SERVICE
+            Route::get('/{ref}/pilih-layanan', [PeersConselingNew::class, 'pilih_layanan'])->name('pilih-layanan');
+            Route::post('/{ref}/pilih-layanan', [PeersConselingNew::class, 'process_pilih_layanan'])->name('process-pilih-layanan');
+            // FORMULIR
+            Route::get('/{ref}/formulir', [PeersConselingNew::class, 'formulir'])->name('formulir');
+            Route::post('/{ref}/formulir', [PeersConselingNew::class, 'process_formulir'])->name('process-formulir');
         });
     });
 
