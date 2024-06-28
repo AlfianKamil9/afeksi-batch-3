@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('konselor_konseling_pivot', function (Blueprint $table) {
+        Schema::create('psikolog_profesional', function (Blueprint $table) {
             //$table->id();
             $table->unsignedBigInteger('konseling_id');
             $table->unsignedBigInteger('konselor_id');

@@ -16,27 +16,27 @@ class GuestStarSeeder extends Seeder
             [
                 'nama' => 'Heraldha Savira, Dip. ABRSM, S.Psi',
                 'profil' => 'Clinical Physcology Grads',
-                'avatar' => 'heralda.jpg',
+                'avatar' => 'mukcur.png',
             ],
             [
                 'nama' => 'Christy MS',
                 'profil' => 'Growth Mindset and Relationship Mentor',
-                'avatar' => 'christy.jpeg',
+                'avatar' => 'mukcur.png',
             ],
             [
                 'nama' => 'Elni Nainggolan',
                 'profil' => 'Sadar Sejak Dini Indonesia',
-                'avatar' => 'elni.jpeg',
+                'avatar' => 'mukcur.png',
             ],
             [
                 'nama' => 'Nindy Rahmatul Asro S.Psi',
                 'profil' => 'Counselor @utara.sc and Professional Public Speaker',
-                'avatar' => 'nindy.jpg',
+                'avatar' => 'mukcur.png',
             ],
             [
                 'nama' => 'Devina Faustanisa Nursyah Wibowo',
                 'profil' => 'TED x BU 2021 & Speaker and LPDP Awardee at Harvard University',
-                'avatar' => 'devina.jpg',
+                'avatar' => 'mukcur.png',
             ],
         ];
 
