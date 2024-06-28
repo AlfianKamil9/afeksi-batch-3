@@ -2,6 +2,7 @@
 @section('title', 'Add Guestar | AFEKSI')
 
 @section('styles')
+<link rel="stylesheet" href="/assets/css/guestar/admin-guestar.css">
 @endsection
 
 @section('sidebarContent')

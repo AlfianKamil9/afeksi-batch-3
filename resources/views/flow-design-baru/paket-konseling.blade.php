@@ -59,8 +59,12 @@
                             </div>
                             <p class="mb-0 text-dark text-start">Memberikan feedback/testimoni layanan konseling</p>
                         </div>
-                        <button class="mt-4 p-2 rounded-4 bg-primary text-white border-0">Pilih
-                            Paket</button>
+                        <form method="post" class="w-100" action="{{ route('peers-new.pilih-paket') }}">
+                            @csrf
+                            <div class="d-flex flex-column">
+                            <button type="submit" name="select_paket" value="0" class="mt-4 p-2 rounded-4 bg-primary text-white border-0">Pilih Paket</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -97,8 +101,12 @@
                             </div>
                             <p class="mb-0 text-dark text-start">Free e-book [khusus bundling session]</p>
                         </div>
-                        <button class="mt-4 p-2 rounded-4 bg-primary text-white border-0">Pilih
-                            Paket</button>
+                        <form method="post" class="w-100" action="{{ route('peers-new.pilih-paket') }}">
+                            @csrf
+                            <div class="d-flex flex-column">
+                            <button type="submit" name="select_paket" value="1" class="mt-4 p-2 rounded-4 bg-primary text-white border-0">Pilih Paket</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

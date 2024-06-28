@@ -10,6 +10,6 @@ class PeersPaket extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nama_paket', 'headline_paket', 'harga_paket', 'deskripsi_paket', 'status'
+        'nama_paket', 'headline_paket', 'harga_paket', 'durasi_paket', 'deskripsi_paket', 'status_paket'
     ];
 }

@@ -162,6 +162,32 @@
                     </div>
                 </div>
 
+                <div class="card mb-5 bg-card-custom border-0">
+                    <div class="row gap-0 align-items-end justify-content-center">
+                        <div class="col-md-6 p-md-4 align-self-center">
+                            <div class="card-body bg-body-custom rounded rounded-3">
+                                <h2 class="card-title mb-3 fw-bold">Peers Konseling New</h2>
+                                <p class="card-text mb-md-4 mb-5 mb-lg-5">Konsultasi non klinis dengan peers yang sudah
+                                    bersertifikasi bisa berkonsultasi secara individu maupun secara pasangan.</p>
+                                @auth
+                                        <button id="paket-new" class="btn btn-primary rounded-pill"
+                                            style="width: 200px">
+                                            Pilih
+                                        </button>
+                                    
+                                @else
+                                    <button class="btn btn-primary rounded-pill" type="submit" style="width: 200px"
+                                        id="btn-harus-login" style="width: 100px;">Pilih</button>
+                                @endauth
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <img src="/assets/img/konseling/RevisiKonseling-2.png" alt="Gambar Anda"
+                                class="img-fluid text-end img-konseling" />
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
 
@@ -310,6 +336,12 @@
             $(document).ready(function() {
                 $('#button-next-dev').click(function() {
                     window.location.href = '{{ route("next.develop") }}';
+                });
+            });
+
+            $(document).ready(function() {
+                $('#paket-new').click(function() {
+                    window.location.href = ' {{ route("peers-new.paket-konseling") }}';
                 });
             });
         </script>
