@@ -13,14 +13,14 @@
     <div class="container-fluid mt-2 p-0">
         <div class="box mb-0">
             <div class="d-flex justify-content-end gap-2 me-2 py-2">
-                <div class="search-container position-relative">
-                <img class="search-icon position-absolute" src="/assets/img/admin/search.png" alt="search_img">
-                    <input class="inp-search font-small py-1" type="text" placeholder="Search...">
-                </div>
-                <div class="filter-container position-relative">
-                    <button class="btn-filter font-small py-1">Filter</button>
-                    <img class="filter-icon position-absolute" src="/assets/img/admin/filter.png" alt="filter_img">
-                </div>
+                <form action="{{ route('admin.articles.search') }}" method="post">
+                    @csrf
+                    <div class="search-container position-relative">
+                        <img class="search-icon position-absolute" src="/assets/img/admin/search.png" alt="search_img">
+                            <input class="inp-search font-small py-1" type="text" name="search" placeholder="Search...">
+                        </div>
+                </form>
+                
                 <a type="button" href="{{ route('admin.articles.create') }}" class="btn btn-warning btn-add font-small py-1 px-2 fw-bold">Tambahkan Data</a>
             </div>
         </div>
@@ -58,12 +58,12 @@
                                     </div>
                                     <div class="delete-container position-relative">
                                     <img class="trash-icon position-absolute" src="/assets/img/admin/trash.png" alt="trash_img">
-                                        <a href="" class="btn-delete fw-bolder py-1">Hapus</a>
+                                        <a href="{{ route('admin.articles.delete', $artikel->id) }}" class="btn-delete fw-bolder py-1">Hapus</a>
                                     </div>
                                 </div>
                             </td>
                             <td class="px-2 py-1 text-center">
-                                <img class="m-0 p-0" src="/assets/img/admin/detail-2.png" alt="img_detail" style="width: 18px; height: 18px ; cursor:pointer;">
+                                <a href="{{ route('admin.articles.detail', $artikel->id) }}"><img class="m-0 p-0" src="/assets/img/admin/detail-2.png" alt="img_detail" style="width: 18px; height: 18px ; cursor:pointer;"></a>
                             </td>
                         </tr>
                     @endforeach

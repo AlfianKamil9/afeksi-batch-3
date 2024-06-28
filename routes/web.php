@@ -210,9 +210,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
             // KELOLA ARTIKEL
             Route::name('articles.')->prefix('/article')->group(function () {
                 Route::get('', [articleDashboardController::class, 'index'])->name('index');
-                Route::get('/{id}', [articleDashboardController::class, 'show'])->name('detail');
                 Route::get('/add', [articleDashboardController::class, 'create'])->name('create');
+                Route::post('/add', [articleDashboardController::class, 'createArticle'])->name('store');
+                Route::get('/{id}', [articleDashboardController::class, 'show'])->name('detail');
                 Route::get('/edit/{id}', [articleDashboardController::class, 'edit'])->name('edit');
+                Route::post('/update/{id}', [articleDashboardController::class, 'updateArtikel'])->name('update');
+                Route::get('/delete/{id}', [articleDashboardController::class, 'destroy'])->name('delete');
+                Route::post('/search', [articleDashboardController::class, 'search'])->name('search');
+
             });
             // KELOLA GUESTSTAR
             Route::name('gueststar.')->prefix('/gueststar')->group(function () {
