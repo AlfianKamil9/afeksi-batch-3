@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('psikolog_mentoring_pivot', function (Blueprint $table) {
+        Schema::create('psikolog_non_profesional', function (Blueprint $table) {
             //$table->id();
             $table->unsignedBigInteger('mentoring_id');
             $table->foreign('mentoring_id')->references('id')->on('layanan_non_professionals')->onDelete('restrict');

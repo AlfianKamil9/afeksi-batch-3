@@ -238,9 +238,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
             // KELOLA GUESTSTAR
             Route::name('gueststar.')->prefix('/gueststar')->group(function () {
                 Route::get('', [guestStarDashboardController::class, 'index'])->name('index');
-                Route::get('/{id}', [guestStarDashboardController::class, 'show'])->name('detail');
-                Route::get('/add', [guestStarDashboardController::class, 'create'])->name('create');
-                Route::get('/edit/{id}', [guestStarDashboardController::class, 'edit'])->name('edit');
+                Route::get('/add', [guestStarDashboardController::class, 'showAdd'])->name('add');
+                Route::post('/add', [guestStarDashboardController::class, 'createGuestStar'])->name('create');
+                Route::get('/edit/{id}', [guestStarDashboardController::class, 'showEdit'])->name('edit');
+                Route::post('/update/{id}', [guestStarDashboardController::class, 'update'])->name('update');
+                Route::get('/delete/{id}', [guestStarDashboardController::class, 'delete'])->name('delete');
             });
             // KELOLA PSYCOLOG
             Route::name('psikolog.')->prefix('/psycolog')->group(function () {
