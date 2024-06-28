@@ -3,12 +3,24 @@
 @section('title', 'Guestar Admin | AFEKSI')
 
 @section('styles')
-<link rel="stylesheet" href="/assets/css/artikel/admin-articleGueststar.css">
+    <link rel="stylesheet" href="/assets/css/artikel/admin-articleGueststar.css">
 @endsection
 
 @section('sidebarContent')
-
- <div class="m-4">
+    @if (session('success') || session('error'))
+        <div class="container position-fixed top-0 end-0 mt-5 pt-5 me-2" style="z-index: 9999;">
+            <div class="row justify-content-end">
+                <div class="col-md-4 mt-3">
+                    <div class="alert alert-{{ session('success') ? 'success' : 'danger' }} alert-dismissible fade show"
+                        role="alert">
+                        <strong>{{ session('success') ?? session('error') }}</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
+    <div class="m-4">
         <p class="fw-bold fs-4 mb-0">Pengelolaan Guestar</p>
         <p class="fs-6 mb-0">Kelola dan atur semua Guestar webinar untuk setiap detailnya</p>
         <div class="container-fluid mt-2 p-0">
@@ -23,10 +35,11 @@
                     </form>
                     <form action="{{ route('admin.gueststar.index') }}" method="GET">
                         <div class="filter-container position-relative">
-                            <button type="submit" class="btn-filter font-small py-1" value="latest" name="sort_data">Filter</button>
+                            <button type="submit" class="btn-filter font-small py-1" value="latest"
+                                name="sort_data">Filter</button>
                             <img class="filter-icon position-absolute" src="/assets/img/admin/filter.png" alt="filter_img">
                         </div>
-                    </form>                    
+                    </form>
                     <a href="{{ route('admin.gueststar.add') }}" type="button"
                         class="btn-add font-small py-1 px-2 fw-bold">Tambahkan Data</a>
                 </div>
@@ -53,7 +66,7 @@
                                         alt="photo_profile">
                                 </td>
                                 <td class="px-2 py-1 ">{{ $guestStar->nama_psikolog }}</td>
-                                <td class="px-2 py-1">{{ $guestStar->profil }}</td> 
+                                <td class="px-2 py-1">{{ $guestStar->profil }}</td>
                                 <td class="px-2 py-1 font-lg">
                                     <div class="d-flex justify-content-center gap-2">
                                         <div class="edit-container position-relative">
@@ -77,5 +90,5 @@
             </div>
         </div>
     </div>
-</div>
+    </div>
 @endsection
