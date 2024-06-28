@@ -26,11 +26,7 @@
                 dukungan untuk ibu, tetapi juga memberikan panduan tentang perawatan bayi dan perkembangannya.
               </p>
             </div>
-            @if (auth()->user()->no_whatsapp)
-              <a href="/mentoring/{{ $slug }}/pilih-paket-yang-diinginkan" type="button" class="btn btn-join mt-3 fw-bold">Pilih Paket</a>
-            @else
               <button class="btn btn-join mt-3 fw-bold" data-bs-toggle="modal" data-bs-target="#modalCompleteProfile">Pilih Paket</button>
-            @endif
           </div>
           <div class="col-lg-3 m-3">
             <img class="hero-image" src="assets/img/parenting-mentoring/hero-img.png" />

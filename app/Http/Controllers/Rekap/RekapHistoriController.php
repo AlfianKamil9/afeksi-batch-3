@@ -25,7 +25,7 @@ class RekapHistoriController extends Controller
 
         // Filter using input type text
         if ($request->has('input_search')) {
-            $query->where('title_event', 'like', '%'.$request->input('input_search').'%');
+            $query->where('title_event', 'like', '%' . $request->input('input_search') . '%');
         }
 
         // Filter by date using dropdown
@@ -71,7 +71,7 @@ class RekapHistoriController extends Controller
         }
 
         //return response()->json($data);
-        return view('pages.rekaphistory', ['data' => $data]);
+        return view('pages.RekapHistory.rekaphistory', ['data' => $data]);
     }
 
     public function showRekapHistoryDetail($slug)
@@ -82,6 +82,6 @@ class RekapHistoriController extends Controller
         $data->time_finish = Carbon::parse($data->time_finish)->format('H:i');
         $data->date_event = Carbon::parse($data->date_event)->format('d F Y');
 
-        return view('pages.rekaphistory-detail', ['data' => $data]);
+        return view('pages.RekapHistory.rekaphistory-detail', ['data' => $data]);
     }
 }

@@ -57,9 +57,10 @@
                   <p class="card-text" style="color: #717171">
                     Mulailah konsultasi masalahmu dengan psikolog terbaik kami. Dan Temukan Psikolog untuk menyelesaikan masalahmu !!!!
                   </p>
-                  <a href="{{ route('pendaftaran.konselor') }}" class="btn btn-selengkapnya w-100" style="background-color: #233dff; color: #ffffff; font-size: 14px; font-weight: 500"
+                  {{-- <a href="{{ route('pendaftaran.konselor') }}" class="btn btn-selengkapnya w-100" style="background-color: #233dff; color: #ffffff; font-size: 14px; font-weight: 500"
                     >Selengkapnya</a
-                  >
+                  > --}}
+                  <button type="submit" id="button-next-dev" class="btn btn-selengkapnya w-100" style="background-color: #233dff; color: #ffffff; font-size: 14px; font-weight: 500">Selengkapnya</button>
                 </div>
               </div>
             </div>
@@ -75,9 +76,10 @@
                   <p class="card-text" style="color: #717171">
                     Mulailah konsultasi masalahmu dengan Konselor terbaik kami. Dan Temukan Konselor untuk menyelesaikan masalahmu !!!!
                   </p>
-                  <a href="{{ route('join.volunteer') }}" class="btn btn-selengkapnya w-100" style="background-color: #233dff; color: #ffffff; font-size: 14px; font-weight: 500"
+                  {{-- <a href="{{ route('join.volunteer') }}" class="btn btn-selengkapnya w-100" style="background-color: #233dff; color: #ffffff; font-size: 14px; font-weight: 500"
                     >Selengkapnya</a
-                  >
+                  > --}}
+                  <button type="submit" id="button-next-dev1" class="btn btn-selengkapnya w-100" style="background-color: #233dff; color: #ffffff; font-size: 14px; font-weight: 500">Selengkapnya</button>
                 </div>
               </div>
             </div>
@@ -99,10 +101,10 @@
           </p>
         </div>
         <div class="img-container d-flex mt-5 gap-2 justify-content-lg-between justify-content-around px-lg-0 px-2 flex-wrap">
-          <img class="img" src="assets/img/karir/kegiatan.png" alt="" />
-          <img class="img" src="assets/img/karir/kegiatan (1).png" alt="" />
-          <img class="img" src="assets/img/karir/kegiatan (2).png" alt="" />
-          <img class="img" src="assets/img/karir/foto webinar 2 1 (1).png" alt="" />
+          <img class="img" src="/assets/img/karir/kegiatan.png" alt="" />
+          <img class="img" src="/assets/img/karir/kegiatan (1).png" alt="" />
+          <img class="img" src="/assets/img/karir/kegiatan (2).png" alt="" />
+          <img class="img" src="/assets/img/karir/foto webinar 2 1 (1).png" alt="" />
         </div>
       </div>
       <img class="background-vector" src="assets/img/karir/Vector.svg" alt="" />
@@ -126,39 +128,6 @@
                     >
                 </div>
               @endforeach
-<<<<<<< HEAD
-            {{-- <div class="swiper-slide">
-              <img src="../assets/img/landingpage/Ellipse.svg" alt="" style="width: 50px" />
-              <h4>Nama Client</h4>
-              <p>Mahasiswa</p>
-              <span>Sangat Rekomendasi Psikolog di Afeksi ini, karena masalah saya cepat teratasi dengan konsultasi dengan psikolog dari afeksi</span>
-            </div>
-            <div class="swiper-slide">
-              <img src="../assets/img/landingpage/Ellipse.svg" alt="" style="width: 50px" />
-              <h4>Nama Client</h4>
-              <p>Mahasiswa</p>
-              <span>Sangat Rekomendasi Psikolog di Afeksi ini, karena masalah saya cepat teratasi dengan konsultasi dengan psikolog dari afeksi</span>
-            </div>
-            <div class="swiper-slide">
-              <img src="../assets/img/landingpage/Ellipse.svg" alt="" style="width: 50px" />
-              <h4>Nama Client</h4>
-              <p>Mahasiswa</p>
-              <span>Sangat Rekomendasi Psikolog di Afeksi ini, karena masalah saya cepat teratasi dengan konsultasi dengan psikolog dari afeksi</span>
-            </div>
-            <div class="swiper-slide">
-              <img src="../assets/img/landingpage/Ellipse.svg" alt="" style="width: 50px" />
-              <h4>Nama Client</h4>
-              <p>Mahasiswa</p>
-              <span>Sangat Rekomendasi Psikolog di Afeksi ini, karena masalah saya cepat teratasi dengan konsultasi dengan psikolog dari afeksi</span>
-            </div>
-            <div class="swiper-slide">
-              <img src="../assets/img/landingpage/Ellipse.svg" alt="" style="width: 50px" />
-              <h4>Nama Client</h4>
-              <p>Mahasiswa</p>
-              <span>Sangat Rekomendasi Psikolog di Afeksi ini, karena masalah saya cepat teratasi dengan konsultasi dengan psikolog dari afeksi</span>
-            </div> --}}
-=======
->>>>>>> thimoty
           </div>
         </div>
 
@@ -172,19 +141,19 @@
     <!-- slider end -->
 
     <!-- Our team section -->
-    <div class="our-team text-center text-white mb-5" style="background-image: url('assets/img/karir/intern.png')">
+    <div class="our-team text-center text-white mb-5" style="background-image: url('/assets/img/karir/intern.png')">
       <h2 class="fw-bold mb-3">Be a part of our team</h2>
       <p>Raih kesempatan untuk mengembangkan diri dan berdampak bersama AFEKSI</p>
       <div class="box rounded-4 pt-4 pb-3 px-5 border">
-        <form action="/karir">
+        <form action="{{ route('karir') }}">
           <div class="row align-items-center">
               <div class="inputs col-md-3 mb-3">
                   <input type="text" class="form-control" placeholder="Search" name="nama_posisi" id="nama_posisi">
-                  <img src="assets/img/karir/search.png" alt="" class="input-icon">
+                  <img src="/assets/img/karir/search.png" alt="" class="input-icon">
               </div>
               <div class="col-md-3 mb-3 inputs">
                   <input type="text" class="form-control" placeholder="Location" name="tempat" id="tempat" value="Surabaya" readonly>
-                  <img src="assets/img/karir/location_on.png" alt="" class="input-icon">
+                  <img src="/assets/img/karir/location_on.png" alt="" class="input-icon">
                 </div>
               <div class="col-md-3 mb-3 inputs">
                   <select class="form-select" name="tipe_kerja" id="tipe_kerja">
@@ -193,7 +162,7 @@
                       <option value="Full Time">Full time</option>
                       <!-- Add more options as needed -->
                   </select>
-                  <img src="assets/img/karir/work.png" alt="" class="input-icon">
+                  <img src="/assets/img/karir/work.png" alt="" class="input-icon">
               </div>
               <div class="col-md-3 mb-3 d-flex gap-2 flex-wrap">
                   <button type="submit" class="btn btn-fill flex-fill">Temukan</button>
@@ -211,14 +180,15 @@
               <div class="text">
                 <h2 class="fw-bold">{{ $item->nama_posisi }}</h2>
                 <div class="d-flex gap-3">
-                  <img style="height: 24px" src="assets/img/karir/location_on.png" alt="" />
+                  <img style="height: 24px" src="/assets/img/karir/location_on.png" alt="" />
                   <p style="color: #233dff" class="fw-bold">Remote <span class="text-secondary">- {{ $item->tempat }}</span></p>
-                  <img style="height: 24px" src="assets/img/karir/work.png" alt="" />
+                  <img style="height: 24px" src="/assets/img/karir/work.png" alt="" />
                   <p><span class="text-secondary">Internship</span></p>
                 </div>
               </div>
               <div class="">
-                <a href="/internship/{{ $item->slug }}" class="text-decoration-none"><div class="btn btn-fill">Daftar Sekarang</div></a>
+                {{-- <a href="/internship/{{ $item->slug }}" class="text-decoration-none"></a> --}}
+                <button type="submit" onclick="clickPop({{ $item->id }})" class="btn btn-fill">Daftar Sekarang</button>
               </div>
             </div>
         @endforeach
@@ -233,7 +203,28 @@
 @include('../partials/footer') 
 
 @section('script')
-   <script src="assets/js/slider.js"></script>
-  @endsection
+  <script src="/assets/js/slider.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('#button-next-dev').click(function() {
+                    window.location.href = '{{ route("career.next.develop") }}';
+                });
+            });
+        </script>
+        <script>
+            $(document).ready(function() {
+                $('#button-next-dev1').click(function() {
+                    window.location.href = '{{ route("career.next.develop") }}';
+                });
+            });
+        </script>
+        <script>
+          function clickPop(id) {
+            window.location.href = '{{ route("career.next.develop") }}';
+          }
+        </script>
+@endsection
 
 @endsection

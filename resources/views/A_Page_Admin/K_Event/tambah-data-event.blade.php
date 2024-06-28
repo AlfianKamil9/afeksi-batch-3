@@ -7,9 +7,9 @@
 @endsection
 
 @section('sidebarContent')
-<form action="{{ route('admin.events.create') }}" method="post" enctype="multipart/form-data">
+<form action="{{ route('admin.events.create')}}" method="post" enctype="multipart/form-data">
     @csrf
-    <div class="p-4">
+    <div class="p-4">           
         <div>
             <h4 class="fw-bold">Tambah Data Event</h4>
             <p>Tambahkan data acara dan kegiatan terkait</p>

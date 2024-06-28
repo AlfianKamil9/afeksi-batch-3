@@ -7,16 +7,38 @@
 @endsection
 
 @section('sidebarContent')
+<<<<<<< HEAD
+<form action="{{ route('admin.events.update', ['id'=> $event->id])}}" method="post">
+    @csrf               
+<div class="p-4">
+      
+    <div >
+        <h4 class="fw-bold">Pengelolaan Event</h4>
+        <p>Kelola dan atur semua acara dan kegiatan terkait</p>
+    </div>
+        @if ($errors->any())
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Gagal</strong>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+=======
     <div class="container p-4">
         <div>
             <h4 class="fw-bold">Pengelolaan Event</h4>
             <p>Kelola dan atur semua acara dan kegiatan terkait</p>
+>>>>>>> backend
         </div>
+    @endif
         <div class="mt-3 bg-event shadow-sm">
             <div class="p-3">
                 <h1 class="fw-bold fs-5 m-0 text-center">Edit Data</h1>
             </div>
             <hr />
+           
             <div class="row p-3 mt-3">
                 <div class="col-md-6">
                     <div class="mb-4 d-md-flex align-items-center">
@@ -149,12 +171,13 @@
                 </div>
             </div>
             <div class="d-flex gap-2 justify-content-center">
-                <button class="rounded-2 border-0 mt-md-0 mb-3 mb-md-4 btn-simpan">Simpan</button>
-                <button class="rounded-2 border-0 mt-md-0 mb-3 mb-md-4 btn-hapus">Hapus</button>
-                <button class="rounded-2 border-0 mt-md-0 mb-3 mb-md-4 btn-keluar">Keluar</button>
+                <button class="rounded-2 border-0 mt-md-0 mb-3 mb-md-4 btn-simpan" type="submit">Simpan</button>
+                <button class="rounded-2 border-0 mt-md-0 mb-3 mb-md-4 btn-hapus" type="submit">Hapus</button>
+                <button class="rounded-2 border-0 mt-md-0 mb-3 mb-md-4 btn-keluar" type="submit">Keluar</button>
             </div>
         </div>
     </div>
+</form>
 
 @section('script')
     <script src="/assets/js/tambah-event.js"></script>

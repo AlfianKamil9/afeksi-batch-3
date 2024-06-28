@@ -123,7 +123,3 @@
         });
     </script>
 @endsection
-
-{{-- @section('script') --}}
-    
-{{-- @endsection --}}

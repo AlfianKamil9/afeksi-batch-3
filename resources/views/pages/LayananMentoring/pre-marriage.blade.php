@@ -26,7 +26,7 @@
                 yang sehat dan membangun hubungan yang langgeng.
               </p>
             </div>
-            <a href="/mentoring/{{ $slug }}/pilih-paket-yang-diinginkan" type="button" class="btn btn-join mt-3 fw-bold">Pilih Paket</a>
+            <a href="#" type="button" class="btn btn-join mt-3 fw-bold">Pilih Paket</a>
           </div>
           <div class="col-lg-3 m-3">
             <img class="hero-image" src="assets/img/parenting-mentoring/heropre.png" />

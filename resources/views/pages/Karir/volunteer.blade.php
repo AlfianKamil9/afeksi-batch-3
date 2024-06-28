@@ -31,7 +31,7 @@
         <a type="button" class="btn btn-join mt-4 fw-medium" href="#bergabung">Gabung Jadi Volunteer</a>
       </div>
       <div class="col-lg-4 m-3">
-        <img class="hero-image w-100" src="assets/img/volunteer/Banner.png" />
+        <img class="hero-image w-100" src="/assets/img/volunteer/Banner.png" />
       </div>
     </div>
   </div>
@@ -142,14 +142,14 @@
       </p>
     </div>
     <div class="img-container d-flex mt-5 gap-2 justify-content-lg-between justify-content-around px-lg-0 px-2 flex-wrap">
-      <img class="img" src="assets/img/volunteer/kegiatan.png" alt="" />
-      <img class="img" src="assets/img/volunteer/kegiatan (1).png" alt="" />
-      <img class="img" src="assets/img/volunteer/kegiatan4.png" alt="" />
-      <img class="img" src="assets/img/volunteer/kegiatan (3).png" alt="" />
+      <img class="img" src="/assets/img/volunteer/kegiatan.png" alt="" />
+      <img class="img" src="/assets/img/volunteer/kegiatan (1).png" alt="" />
+      <img class="img" src="/assets/img/volunteer/kegiatan4.png" alt="" />
+      <img class="img" src="/assets/img/volunteer/kegiatan (3).png" alt="" />
     </div>
   </div>
   <img class="background-vecassets/img/volunteer/ic_sharp-person.png" alt="" />
-  <img class="background-vectortwo" src="assets/img/volunteer/backgroundRight.png" alt="" />
+  <img class="background-vectortwo" src="/assets/img/volunteer/backgroundRight.png" alt="" />
 </div>
 <!-- Pertumbuhan karir section -->
 
@@ -161,7 +161,7 @@
       <div class="card-wrapper swiper-wrapper">
           @foreach ($testimonials as $data)
             <div class="swiper-slide" id="swipper-slide">
-                <img src="assets/img/about-us/{{ $data['foto'] }}" class="rounded-circle border shadow-sm" alt="" style="width: 50px; margin-bottom: 10px; height:50px; object-fit:cover" />
+                <img src="/assets/img/about-us/{{ $data['foto'] }}" class="rounded-circle border shadow-sm" alt="" style="width: 50px; margin-bottom: 10px; height:50px; object-fit:cover" />
                 <h4>{{ $data['nama'] }}</h4>
                 <p>{{ $data['posisi'] }}</p>
                 <span
@@ -169,39 +169,6 @@
                 >
             </div>
           @endforeach
-<<<<<<< HEAD
-        {{-- <div class="swiper-slide">
-          <img src="assets/img/about-us/bimo-transformed.png" class="rounded-circle border shadow-sm"  alt="" style="width: 50px; height:50px; object-fit:cover" />
-          <h4>Bimo Setyo</h4>
-          <p>IT Intern</p>
-          <span class="text-justify">Banyak insight yang saya dapat selama intern sebagai Staff IT di Afeksi dengan belajar berkordinasi dengan beberapa diisi dan belajar membangun startup dari nol.</span>
-        </div>
-        <div class="swiper-slide">
-          <img src="assets/img/about-us/octi-transformed.png" class="rounded-circle border shadow-sm"  alt="" style="width: 50px; height:50px; object-fit:cover" />
-          <h4>Octavia Syeira</h4>
-          <p>Innovator Program Intern</p>
-          <span class="text-justify">Magang di Afeksi telah membuka berbagai kesempatan bagi saya untuk terjun langsung dalam mengeksekusi suatu program/event.</span>
-        </div>
-        <div class="swiper-slide">
-          <img src="assets/img/about-us/santi-transformed.png" class="rounded-circle border shadow-sm"  alt="" style="width: 50px; height:50px; object-fit:cover" />
-          <h4>Elisabeth Desanti</h4>
-          <p>IT Intern</p>
-          <span class="text-justify">Sangat Rekomendasi Psikolog di Afeksi ini, karena masalah saya cepat teratasi dengan konsultasi dengan psikolog dari afeksi</span>
-        </div>
-        <div class="swiper-slide">
-          <img src="assets/img/about-us/bimo-transformed.png" class="rounded-circle border shadow-sm"  alt="" style="width: 50px; height:50px; object-fit:cover" />
-          <h4>Bimo Setyo</h4>
-          <p>IT Intern</p>
-          <span class="text-justify">Banyak insight yang saya dapat selama intern sebagai Staff IT di Afeksi dengan belajar berkordinasi dengan beberapa diisi dan belajar membangun startup dari nol.</span>
-        </div>
-        <div class="swiper-slide">
-          <img src="assets/img/about-us/octi-transformed.png" class="rounded-circle border shadow-sm"  alt="" style="width: 50px; height:50px; object-fit:cover" />
-          <h4>Octavia Syeira</h4>
-          <p>Innovator Program Intern</p>
-          <span class="text-justify">Magang di Afeksi telah membuka berbagai kesempatan bagi saya untuk terjun langsung dalam mengeksekusi suatu program/event.</span>
-        </div> --}}
-=======
->>>>>>> thimoty
       </div>
     </div>
 
@@ -217,7 +184,7 @@
 <!-- BERGABUNG BERSAMA KAMI -->
 
 <div id="bergabung" class="bergabung position-relative py-5 overflow-hidden">
-  <img class="background" src="assets/img/volunteer/backgroundbergabung.png" alt="" />
+  <img class="background" src="/assets/img/volunteer/backgroundbergabung.png" alt="" />
   <div class="container py-4 px-4" id="join-volunteer">
     <div class="row text-center mb-sm-3">
       <div class="col-sm">
@@ -229,7 +196,7 @@
       <div class="col-md-4 mb-3">
         <div class="card shadow col-join">
           <img
-            src="assets/img/volunteer/relationshiphero.png"
+            src="/assets/img/volunteer/relationshiphero.png"
             class="card-img-top img-fluid"
             alt="Peer Konselor"
             style="background-size: cover" />
@@ -247,7 +214,7 @@
       <div class="col-md-4 mb-3">
         <div class="card shadow col-join">
           <img
-            src="assets/img/volunteer/brand ambassador.png"
+            src="/assets/img/volunteer/brand ambassador.png"
             class="card-img-top img-fluid"
             alt="Realtionship Konselor"
             style="background-size: cover" />
@@ -270,7 +237,7 @@
 @include('../partials/footer') 
 
 @section('script')
-  <script src="assets/js/slider.js"></script>
+  <script src="/assets/js/slider.js"></script>
 @endsection
 
 @endsection

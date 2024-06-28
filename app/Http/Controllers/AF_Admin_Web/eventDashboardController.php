@@ -80,7 +80,9 @@ class eventDashboardController extends Controller
     public function showEdit($id)
     {
         $e = EventCategory::all();
+        // dd($e);
         $event = Event::with('event_categories')->findOrFail($id);
+        // dd($event);
 
         return view('A_Page_Admin.K_Event.edit-data-event', compact('event', 'e'));
     }
@@ -178,8 +180,11 @@ class eventDashboardController extends Controller
     /*
      * MELAKUKAN PROSES UPDATE EVENT
      */
-    public function update(Request $request, $id)
-    {
-        // KODENYA DISINI
-    }
+   public function update(Request $request, $id){
+
+    $event = Event::with('event_categories')->findOrFail($id);
+    $event->update($request->all());
+    return redirect()->route('admin.events.index')->with('success', 'Data Berhasil DiUpdate');
+
+   }
 }

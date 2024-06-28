@@ -89,7 +89,7 @@
             <span>Social</span>
         </div>
         <div class="field shadow p-2 rounded">
-            <img src="assets/img/landingpage/union.png" alt="" />
+            <img src="/assets/img/landingpage/union.png" alt="" />
             <span>Equality Gender</span>
         </div>
         <div class="/field shadow p-2 rounded">
