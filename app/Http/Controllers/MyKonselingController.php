@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-class MyMentoringController extends Controller
+class MyKonselingController extends Controller
 {
     //
 }

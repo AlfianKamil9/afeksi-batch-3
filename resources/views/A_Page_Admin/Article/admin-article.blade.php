@@ -3,7 +3,7 @@
 @section('title', 'Artikel Admin | AFEKSI')
 
 @section('styles')
-<link rel="stylesheet" href="/assets/css/admin-articleGueststar.css">
+<link rel="stylesheet" href="/assets/css/artikel/admin-articleGueststar.css">
 @endsection
 
 @section('sidebarContent')
@@ -43,8 +43,7 @@
                         <img class="m-0 p-0" src="/assets/img/admin/detail.png" alt="img_detail" style="width: 18px; height: 18px ;">
                         </th>
                     </tr>
-<<<<<<< HEAD:resources/views/A_Page_Admin/Article/admin-article.blade.php
-                    @foreach ($artikels as $artikel)
+                     @foreach ($artikels as $artikel)
                         <tr class="font-smaller fb">
                             <td class="px-2 py-1">{{ $artikel->judul_artikel }}</td>
                             <td class="px-2 py-1 text-center">{{ $artikel->created_at }}</td>

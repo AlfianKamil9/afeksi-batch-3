@@ -78,8 +78,7 @@
                             <img class="m-0 p-0" src="/assets/img/admin/detail.png" alt="img_detail" style="width: 18px; height: 18px ;">
                         </th>
                     </tr>
-                    @if ($order->count() != 0)
-                        @foreach ($order as $item)     
+                        @forelse ($order as $item)     
                         <tr class="dataTab text-center font-small fw-semibold">
                             <td>{{ $item->ref_transaction_layanan }}</td>
                             <td>
@@ -144,11 +143,12 @@
                                 </a>
                             </td>
                         </tr>
-                    @endforeach
-
-                    @else
-                        <p class="text-center p-2">Belum Ada Data</p>
-                    @endif
+                        
+                    @empty
+                    <tr>
+                        <td colspan="6"><p class="text-center p-2">Belum Ada Data</p></td>
+                    </tr>
+                    @endforelse
                     
                 </table>
             </div>

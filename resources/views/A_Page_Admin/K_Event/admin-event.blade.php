@@ -1,10 +1,9 @@
-<<<<<<< HEAD:resources/views/A_Page_Admin/K_Event/admin-event.blade.php
 @extends('layout-admin')
 
 @section('title', 'Kelola Event | AFEKSI')
 
 @section('styles')
-    <link rel="stylesheet" href="/assets/css/admin-event.css">
+    <link rel="stylesheet" href="/assets/css/event/admin-event.css">
 @endsection
 
 
@@ -16,7 +15,6 @@
         <div class="box d-flex">
             <nav class="py-2 align-content-center w-100">
                 <div class="nav" id="nav-tab" role="tab">
-<<<<<<< HEAD:resources/views/A_Page_Admin/K_Event/admin-event.blade.php
                     <p class="text-tab m-0 fs-5 fw-semibold nav-link active mt-1" id="nav-webinar-tab" data-bs-toggle="tab" data-bs-target="#nav-webinar" role="tab" aria-controls="nav-webinar" aria-selected="true">Webinar & Campaign</p>
                     {{-- <p class="text-tab m-0 fs-5 fw-semibold nav-link mt-1" id="nav-campaign-tab" data-bs-toggle="tab" data-bs-target="#nav-campaign" role="tab" aria-controls="nav-campaign" aria-selected="false">Campaign</p> --}}
                     <form class="form-inline d-flex align-content-center my-2 gap-2 me-3 form-action">
