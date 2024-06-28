@@ -3,6 +3,7 @@
 namespace App\Models\Peers;
 
 use App\Models\User;
+use App\Models\Peers\PeersFormulir;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -27,5 +28,10 @@ class PeersOrder extends Model
     public function konselor()
     {
         return $this->belongsTo(PeersKonselor::class, 'konselor_id');
+    }
+
+    public function formulir()
+    {
+        return $this->hasOne(PeersFormulir::class, 'order_id');
     }
 }

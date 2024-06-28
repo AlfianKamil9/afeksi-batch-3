@@ -142,7 +142,7 @@ class PeersConselingNew extends Controller
 
     public function view_pembayaran($ref)
     {
-        $cek = PeersOrder::with('user', 'paket', 'konselor')->where('ref', $ref)->firstOrFail();
+        $cek = PeersOrder::with('user', 'paket', 'konselor', 'formulir')->where('ref', $ref)->firstOrFail();
         return $cek;
         return view('flow-design-baru.layanan-konseling.4-pembayaran', compact('cek'));
     }
