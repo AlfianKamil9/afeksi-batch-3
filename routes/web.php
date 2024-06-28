@@ -150,6 +150,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
             // FORMULIR
             Route::get('/{ref}/formulir', [PeersConselingNew::class, 'formulir'])->name('formulir');
             Route::post('/{ref}/formulir', [PeersConselingNew::class, 'process_formulir'])->name('process-formulir');
+            // CHECKOUT
+            Route::get('/{ref}/pembayaran', [PeersConselingNew::class, 'view_pembayaran'])->name('view-pembayaran');
         });
     });
 

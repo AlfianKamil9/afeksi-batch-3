@@ -137,6 +137,13 @@ class PeersConselingNew extends Controller
         if (!$form) {
             return 'gagal';
         }
-        return 'BERHASIL KURANG DETAIL';
+        return redirect()->route('peers-new.view-pembayaran', $ref);
+    }
+
+    public function view_pembayaran($ref)
+    {
+        $cek = PeersOrder::with('user', 'paket', 'konselor')->where('ref', $ref)->firstOrFail();
+        return $cek;
+        return view('flow-design-baru.layanan-konseling.4-pembayaran', compact('cek'));
     }
 }
