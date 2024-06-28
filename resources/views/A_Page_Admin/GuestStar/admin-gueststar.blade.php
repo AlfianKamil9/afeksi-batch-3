@@ -76,7 +76,7 @@
                                         alt="photo_profile">
                                 </td>
                                 <td class="px-2 py-1 ">{{ $guestStar->nama_psikolog }}</td>
-                                <td class="px-2 py-1">{{ $guestStar->profil }}</td>
+                                <td class="px-2 py-1">{{ $guestStar->profil }}</td> 
                                 <td class="px-2 py-1 font-lg">
                                     <div class="d-flex justify-content-center gap-2">
                                         <div class="edit-container position-relative">
