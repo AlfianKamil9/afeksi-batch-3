@@ -272,6 +272,7 @@ Route::view('/pilih-konselor', 'flow-design-baru.layanan-konseling-gratis.1-pili
 Route::view('/pilih-layanan', 'flow-design-baru.layanan-konseling-gratis.2-pilih-layanan')->name('pilih-layanan');
 Route::view('/data-diri', 'flow-design-baru.layanan-konseling-gratis.3-data-diri')->name('data-diri');
 Route::view('/hubungi-admin', 'flow-design-baru.layanan-konseling-gratis.hubungi-admin')->name('hubungi-admin');
+Route::view('/detail-pesanan', 'flow-design-baru.layanan-konseling-gratis.detail-pesanan')->name('detail-pesanan');
 Route::view('/selesai', 'flow-design-baru.layanan-konseling-gratis.kembali')->name('kembali-main');
 
 // peers konseling berbayar
