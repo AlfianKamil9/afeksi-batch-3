@@ -266,11 +266,14 @@ Route::view('/admin/counselor/detail', 'pages.Dashboard.Konselor.detail-data-kon
 Route::view('/konseling/popupkonseling', 'pages.popUp.popUpKonseling')->name('popUpKonseling');
 Route::view('/mentoring/popupmentoring', 'pages.popUp.popUpMentoring')->name('popUpMentoring');
 
-// Peers Konseling
+// Peers Konseling gratis
 Route::view('/paket-konseling', 'flow-design-baru.paket-konseling')->name('paket-konseling');
-Route::view('/pilih-konselor', 'flow-design-baru.layanan-konseling.1-pilih-konselor')->name('pilih-konselor');
-Route::view('/pilih-layanan', 'flow-design-baru.layanan-konseling.2-pilih-layanan')->name('pilih-layanan');
-Route::view('/data-diri', 'flow-design-baru.layanan-konseling.3-data-diri')->name('data-diri');
-Route::view('/pilih-paket-berbayar', 'flow-design-baru.layanan-konseling.1-pilih-paket-berbayar')->name('pilih-paket-berbayar');
-Route::view('/detail-pesanan', 'flow-design-baru.layanan-konseling.detail-pesanan')->name('detail-pesanan');
+Route::view('/pilih-konselor', 'flow-design-baru.layanan-konseling-gratis.1-pilih-konselor')->name('pilih-konselor');
+Route::view('/pilih-layanan', 'flow-design-baru.layanan-konseling-gratis.2-pilih-layanan')->name('pilih-layanan');
+Route::view('/data-diri', 'flow-design-baru.layanan-konseling-gratis.3-data-diri')->name('data-diri');
+Route::view('/hubungi-admin', 'flow-design-baru.layanan-konseling-gratis.hubungi-admin')->name('hubungi-admin');
+Route::view('/detail-pesanan', 'flow-design-baru.layanan-konseling-gratis.detail-pesanan')->name('detail-pesanan');
+Route::view('/selesai', 'flow-design-baru.layanan-konseling-gratis.kembali')->name('kembali-main');
 
+// peers konseling berbayar
+Route::view('/pilih-paket-berbayar', 'flow-design-baru.layanan-konseling-berbayar.1-pilih-paket-berbayar')->name('pilih-paket-berbayar');
